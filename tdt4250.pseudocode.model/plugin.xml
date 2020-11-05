@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated pseudocode -->
+      <package
+            uri="platform:/plugin/tdt4250.pseudocode.model/model/pseudocode.ecore"
+            class="tdt4250.pseudocode.PseudocodePackage"
+            genModel="model/pseudocode.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated pseudocode -->
+      <parser
+            type="pseudocode"
+            class="tdt4250.pseudocode.util.PseudocodeResourceFactoryImpl"/>
+   </extension>
+</plugin>
