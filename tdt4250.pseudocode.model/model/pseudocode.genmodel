@@ -53,5 +53,6 @@
     <genClasses ecoreClass="pseudocode.ecore#//Variable">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Variable/expressions"/>
     </genClasses>
+    <genClasses ecoreClass="pseudocode.ecore#//Stop"/>
   </genPackages>
 </genmodel:GenModel>

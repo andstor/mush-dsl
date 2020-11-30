@@ -26,6 +26,7 @@ import tdt4250.pseudocode.PseudoType;
 import tdt4250.pseudocode.PseudocodeFactory;
 import tdt4250.pseudocode.PseudocodePackage;
 import tdt4250.pseudocode.Statement;
+import tdt4250.pseudocode.Stop;
 import tdt4250.pseudocode.Variable;
 import tdt4250.pseudocode.VisibilityKind;
 import tdt4250.pseudocode.While;
@@ -148,6 +149,13 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	private EClass variableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass stopEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -536,6 +544,16 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
+	public EClass getStop() {
+		return stopEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getVisibilityKind() {
 		return visibilityKindEEnum;
 	}
@@ -617,6 +635,8 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		variableEClass = createEClass(VARIABLE);
 		createEReference(variableEClass, VARIABLE__EXPRESSIONS);
 
+		stopEClass = createEClass(STOP);
+
 		// Create enums
 		visibilityKindEEnum = createEEnum(VISIBILITY_KIND);
 	}
@@ -660,6 +680,7 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		ifEClass.getESuperTypes().add(this.getStatement());
 		whileEClass.getESuperTypes().add(this.getStatement());
 		variableEClass.getESuperTypes().add(this.getStatement());
+		stopEClass.getESuperTypes().add(this.getStatement());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(pseudoTypeEClass, PseudoType.class, "PseudoType", IS_ABSTRACT, !IS_INTERFACE,
@@ -744,6 +765,8 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		initEReference(getVariable_Expressions(), this.getExpression(), null, "expressions", null, 0, -1,
 				Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(stopEClass, Stop.class, "Stop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(visibilityKindEEnum, VisibilityKind.class, "VisibilityKind");

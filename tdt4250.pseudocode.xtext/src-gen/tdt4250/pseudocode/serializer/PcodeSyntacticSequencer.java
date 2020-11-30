@@ -22,24 +22,32 @@ import tdt4250.pseudocode.services.PcodeGrammarAccess;
 public class PcodeSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected PcodeGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_If_EqualsSignEqualsSignKeyword_3_0_or_GreaterThanSignEqualsSignKeyword_3_4_or_GreaterThanSignKeyword_3_3_or_LessThanSignEqualsSignKeyword_3_2_or_LessThanSignKeyword_3_1;
-	protected AbstractElementAlias match_Method_LineFeedKeyword_5_a;
-	protected AbstractElementAlias match_Method___ReturnKeyword_7_0_TypeParserRuleCall_7_1__a;
-	protected AbstractElementAlias match_PseudoClass_LineFeedKeyword_3_a;
+	protected AbstractElementAlias match_For___AllKeyword_3_2_0_EStringParserRuleCall_3_2_1___or___EStringParserRuleCall_3_0_0_EqualsSignKeyword_3_0_1_INTTerminalRuleCall_3_0_2_SemicolonKeyword_3_0_3_EStringParserRuleCall_3_0_4_EqualVariableParserRuleCall_3_0_5_TypeParserRuleCall_3_0_6_SemicolonKeyword_3_0_7_EStringParserRuleCall_3_0_8___HyphenMinusHyphenMinusKeyword_3_0_9_1_or_PlusSignPlusSignKeyword_3_0_9_0_or___HyphenMinusKeyword_3_0_9_3_0_INTTerminalRuleCall_3_0_9_3_1___or___PlusSignKeyword_3_0_9_2_0_INTTerminalRuleCall_3_0_9_2_1_______or___EStringParserRuleCall_3_1_0_ColonKeyword_3_1_1_EStringParserRuleCall_3_1_2___or___IntervalKeyword_3_3_0_INTTerminalRuleCall_3_3_1_ToKeyword_3_3_2_INTTerminalRuleCall_3_3_3_InKeyword_3_3_4_EStringParserRuleCall_3_3_5__;
+	protected AbstractElementAlias match_If_ElseKeyword_4_q;
+	protected AbstractElementAlias match_If___EStringParserRuleCall_2_1_q___ExclamationMarkKeyword_2_0_0_EStringParserRuleCall_2_0_1__q___TypeParserRuleCall_2_2_0_EqualVariableParserRuleCall_2_2_1_TypeParserRuleCall_2_2_2__q___EStringParserRuleCall_2_3_0_NotKeyword_2_3_1_q_ExistsKeyword_2_3_2__q__p;
+	protected AbstractElementAlias match_If___ElseifKeyword_3_0___EStringParserRuleCall_3_1_1_or___ExclamationMarkKeyword_3_1_0_0_EStringParserRuleCall_3_1_0_1___or___TypeParserRuleCall_3_1_2_0_EqualVariableParserRuleCall_3_1_2_1_TypeParserRuleCall_3_1_2_2______a;
+	protected AbstractElementAlias match_Stop_BreakKeyword_1_2_or_ContinueKeyword_1_3_or_StopKeyword_1_1_or___ReturnKeyword_1_0_0_TypeParserRuleCall_1_0_1__;
+	protected AbstractElementAlias match_While_TrueKeyword_2_0_or___ExclamationMarkKeyword_2_1_0_q_EStringParserRuleCall_2_1_1__;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (PcodeGrammarAccess) access;
-		match_If_EqualsSignEqualsSignKeyword_3_0_or_GreaterThanSignEqualsSignKeyword_3_4_or_GreaterThanSignKeyword_3_3_or_LessThanSignEqualsSignKeyword_3_2_or_LessThanSignKeyword_3_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getIfAccess().getEqualsSignEqualsSignKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getIfAccess().getGreaterThanSignEqualsSignKeyword_3_4()), new TokenAlias(false, false, grammarAccess.getIfAccess().getGreaterThanSignKeyword_3_3()), new TokenAlias(false, false, grammarAccess.getIfAccess().getLessThanSignEqualsSignKeyword_3_2()), new TokenAlias(false, false, grammarAccess.getIfAccess().getLessThanSignKeyword_3_1()));
-		match_Method_LineFeedKeyword_5_a = new TokenAlias(true, true, grammarAccess.getMethodAccess().getLineFeedKeyword_5());
-		match_Method___ReturnKeyword_7_0_TypeParserRuleCall_7_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getMethodAccess().getReturnKeyword_7_0()), new TokenAlias(false, false, grammarAccess.getMethodAccess().getTypeParserRuleCall_7_1()));
-		match_PseudoClass_LineFeedKeyword_3_a = new TokenAlias(true, true, grammarAccess.getPseudoClassAccess().getLineFeedKeyword_3());
+		match_For___AllKeyword_3_2_0_EStringParserRuleCall_3_2_1___or___EStringParserRuleCall_3_0_0_EqualsSignKeyword_3_0_1_INTTerminalRuleCall_3_0_2_SemicolonKeyword_3_0_3_EStringParserRuleCall_3_0_4_EqualVariableParserRuleCall_3_0_5_TypeParserRuleCall_3_0_6_SemicolonKeyword_3_0_7_EStringParserRuleCall_3_0_8___HyphenMinusHyphenMinusKeyword_3_0_9_1_or_PlusSignPlusSignKeyword_3_0_9_0_or___HyphenMinusKeyword_3_0_9_3_0_INTTerminalRuleCall_3_0_9_3_1___or___PlusSignKeyword_3_0_9_2_0_INTTerminalRuleCall_3_0_9_2_1_______or___EStringParserRuleCall_3_1_0_ColonKeyword_3_1_1_EStringParserRuleCall_3_1_2___or___IntervalKeyword_3_3_0_INTTerminalRuleCall_3_3_1_ToKeyword_3_3_2_INTTerminalRuleCall_3_3_3_InKeyword_3_3_4_EStringParserRuleCall_3_3_5__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getForAccess().getAllKeyword_3_2_0()), new TokenAlias(false, false, grammarAccess.getForAccess().getEStringParserRuleCall_3_2_1())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getForAccess().getEStringParserRuleCall_3_0_0()), new TokenAlias(false, false, grammarAccess.getForAccess().getEqualsSignKeyword_3_0_1()), new TokenAlias(false, false, grammarAccess.getForAccess().getINTTerminalRuleCall_3_0_2()), new TokenAlias(false, false, grammarAccess.getForAccess().getSemicolonKeyword_3_0_3()), new TokenAlias(false, false, grammarAccess.getForAccess().getEStringParserRuleCall_3_0_4()), new TokenAlias(false, false, grammarAccess.getForAccess().getEqualVariableParserRuleCall_3_0_5()), new TokenAlias(false, false, grammarAccess.getForAccess().getTypeParserRuleCall_3_0_6()), new TokenAlias(false, false, grammarAccess.getForAccess().getSemicolonKeyword_3_0_7()), new TokenAlias(false, false, grammarAccess.getForAccess().getEStringParserRuleCall_3_0_8()), new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getForAccess().getHyphenMinusKeyword_3_0_9_3_0()), new TokenAlias(false, false, grammarAccess.getForAccess().getINTTerminalRuleCall_3_0_9_3_1())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getForAccess().getPlusSignKeyword_3_0_9_2_0()), new TokenAlias(false, false, grammarAccess.getForAccess().getINTTerminalRuleCall_3_0_9_2_1())), new TokenAlias(false, false, grammarAccess.getForAccess().getHyphenMinusHyphenMinusKeyword_3_0_9_1()), new TokenAlias(false, false, grammarAccess.getForAccess().getPlusSignPlusSignKeyword_3_0_9_0()))), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getForAccess().getEStringParserRuleCall_3_1_0()), new TokenAlias(false, false, grammarAccess.getForAccess().getColonKeyword_3_1_1()), new TokenAlias(false, false, grammarAccess.getForAccess().getEStringParserRuleCall_3_1_2())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getForAccess().getIntervalKeyword_3_3_0()), new TokenAlias(false, false, grammarAccess.getForAccess().getINTTerminalRuleCall_3_3_1()), new TokenAlias(false, false, grammarAccess.getForAccess().getToKeyword_3_3_2()), new TokenAlias(false, false, grammarAccess.getForAccess().getINTTerminalRuleCall_3_3_3()), new TokenAlias(false, false, grammarAccess.getForAccess().getInKeyword_3_3_4()), new TokenAlias(false, false, grammarAccess.getForAccess().getEStringParserRuleCall_3_3_5())));
+		match_If_ElseKeyword_4_q = new TokenAlias(false, true, grammarAccess.getIfAccess().getElseKeyword_4());
+		match_If___EStringParserRuleCall_2_1_q___ExclamationMarkKeyword_2_0_0_EStringParserRuleCall_2_0_1__q___TypeParserRuleCall_2_2_0_EqualVariableParserRuleCall_2_2_1_TypeParserRuleCall_2_2_2__q___EStringParserRuleCall_2_3_0_NotKeyword_2_3_1_q_ExistsKeyword_2_3_2__q__p = new GroupAlias(true, false, new TokenAlias(false, true, grammarAccess.getIfAccess().getEStringParserRuleCall_2_1()), new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getIfAccess().getExclamationMarkKeyword_2_0_0()), new TokenAlias(false, false, grammarAccess.getIfAccess().getEStringParserRuleCall_2_0_1())), new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getIfAccess().getTypeParserRuleCall_2_2_0()), new TokenAlias(false, false, grammarAccess.getIfAccess().getEqualVariableParserRuleCall_2_2_1()), new TokenAlias(false, false, grammarAccess.getIfAccess().getTypeParserRuleCall_2_2_2())), new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getIfAccess().getEStringParserRuleCall_2_3_0()), new TokenAlias(false, true, grammarAccess.getIfAccess().getNotKeyword_2_3_1()), new TokenAlias(false, false, grammarAccess.getIfAccess().getExistsKeyword_2_3_2())));
+		match_If___ElseifKeyword_3_0___EStringParserRuleCall_3_1_1_or___ExclamationMarkKeyword_3_1_0_0_EStringParserRuleCall_3_1_0_1___or___TypeParserRuleCall_3_1_2_0_EqualVariableParserRuleCall_3_1_2_1_TypeParserRuleCall_3_1_2_2______a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getIfAccess().getElseifKeyword_3_0()), new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getIfAccess().getExclamationMarkKeyword_3_1_0_0()), new TokenAlias(false, false, grammarAccess.getIfAccess().getEStringParserRuleCall_3_1_0_1())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getIfAccess().getTypeParserRuleCall_3_1_2_0()), new TokenAlias(false, false, grammarAccess.getIfAccess().getEqualVariableParserRuleCall_3_1_2_1()), new TokenAlias(false, false, grammarAccess.getIfAccess().getTypeParserRuleCall_3_1_2_2())), new TokenAlias(false, false, grammarAccess.getIfAccess().getEStringParserRuleCall_3_1_1())));
+		match_Stop_BreakKeyword_1_2_or_ContinueKeyword_1_3_or_StopKeyword_1_1_or___ReturnKeyword_1_0_0_TypeParserRuleCall_1_0_1__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getStopAccess().getReturnKeyword_1_0_0()), new TokenAlias(false, false, grammarAccess.getStopAccess().getTypeParserRuleCall_1_0_1())), new TokenAlias(false, false, grammarAccess.getStopAccess().getBreakKeyword_1_2()), new TokenAlias(false, false, grammarAccess.getStopAccess().getContinueKeyword_1_3()), new TokenAlias(false, false, grammarAccess.getStopAccess().getStopKeyword_1_1()));
+		match_While_TrueKeyword_2_0_or___ExclamationMarkKeyword_2_1_0_q_EStringParserRuleCall_2_1_1__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, true, grammarAccess.getWhileAccess().getExclamationMarkKeyword_2_1_0()), new TokenAlias(false, false, grammarAccess.getWhileAccess().getEStringParserRuleCall_2_1_1())), new TokenAlias(false, false, grammarAccess.getWhileAccess().getTrueKeyword_2_0()));
 	}
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (ruleCall.getRule() == grammarAccess.getEStringRule())
 			return getEStringToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getEqualVariableRule())
+			return getEqualVariableToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getINTRule())
+			return getINTToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getTypeRule())
 			return getTypeToken(semanticObject, ruleCall, node);
 		return "";
@@ -53,6 +61,26 @@ public class PcodeSyntacticSequencer extends AbstractSyntacticSequencer {
 		if (node != null)
 			return getTokenText(node);
 		return "\"\"";
+	}
+	
+	/**
+	 * EqualVariable:
+	 * 	('==' |'<' |'<=' | '>' | '>=' | '!=')
+	 * ;
+	 */
+	protected String getEqualVariableToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "==";
+	}
+	
+	/**
+	 * terminal INT returns ecore::EInt: ('0'..'9')+;
+	 */
+	protected String getINTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "";
 	}
 	
 	/**
@@ -72,65 +100,108 @@ public class PcodeSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_If_EqualsSignEqualsSignKeyword_3_0_or_GreaterThanSignEqualsSignKeyword_3_4_or_GreaterThanSignKeyword_3_3_or_LessThanSignEqualsSignKeyword_3_2_or_LessThanSignKeyword_3_1.equals(syntax))
-				emit_If_EqualsSignEqualsSignKeyword_3_0_or_GreaterThanSignEqualsSignKeyword_3_4_or_GreaterThanSignKeyword_3_3_or_LessThanSignEqualsSignKeyword_3_2_or_LessThanSignKeyword_3_1(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Method_LineFeedKeyword_5_a.equals(syntax))
-				emit_Method_LineFeedKeyword_5_a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Method___ReturnKeyword_7_0_TypeParserRuleCall_7_1__a.equals(syntax))
-				emit_Method___ReturnKeyword_7_0_TypeParserRuleCall_7_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_PseudoClass_LineFeedKeyword_3_a.equals(syntax))
-				emit_PseudoClass_LineFeedKeyword_3_a(semanticObject, getLastNavigableState(), syntaxNodes);
+			if (match_For___AllKeyword_3_2_0_EStringParserRuleCall_3_2_1___or___EStringParserRuleCall_3_0_0_EqualsSignKeyword_3_0_1_INTTerminalRuleCall_3_0_2_SemicolonKeyword_3_0_3_EStringParserRuleCall_3_0_4_EqualVariableParserRuleCall_3_0_5_TypeParserRuleCall_3_0_6_SemicolonKeyword_3_0_7_EStringParserRuleCall_3_0_8___HyphenMinusHyphenMinusKeyword_3_0_9_1_or_PlusSignPlusSignKeyword_3_0_9_0_or___HyphenMinusKeyword_3_0_9_3_0_INTTerminalRuleCall_3_0_9_3_1___or___PlusSignKeyword_3_0_9_2_0_INTTerminalRuleCall_3_0_9_2_1_______or___EStringParserRuleCall_3_1_0_ColonKeyword_3_1_1_EStringParserRuleCall_3_1_2___or___IntervalKeyword_3_3_0_INTTerminalRuleCall_3_3_1_ToKeyword_3_3_2_INTTerminalRuleCall_3_3_3_InKeyword_3_3_4_EStringParserRuleCall_3_3_5__.equals(syntax))
+				emit_For___AllKeyword_3_2_0_EStringParserRuleCall_3_2_1___or___EStringParserRuleCall_3_0_0_EqualsSignKeyword_3_0_1_INTTerminalRuleCall_3_0_2_SemicolonKeyword_3_0_3_EStringParserRuleCall_3_0_4_EqualVariableParserRuleCall_3_0_5_TypeParserRuleCall_3_0_6_SemicolonKeyword_3_0_7_EStringParserRuleCall_3_0_8___HyphenMinusHyphenMinusKeyword_3_0_9_1_or_PlusSignPlusSignKeyword_3_0_9_0_or___HyphenMinusKeyword_3_0_9_3_0_INTTerminalRuleCall_3_0_9_3_1___or___PlusSignKeyword_3_0_9_2_0_INTTerminalRuleCall_3_0_9_2_1_______or___EStringParserRuleCall_3_1_0_ColonKeyword_3_1_1_EStringParserRuleCall_3_1_2___or___IntervalKeyword_3_3_0_INTTerminalRuleCall_3_3_1_ToKeyword_3_3_2_INTTerminalRuleCall_3_3_3_InKeyword_3_3_4_EStringParserRuleCall_3_3_5__(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_If_ElseKeyword_4_q.equals(syntax))
+				emit_If_ElseKeyword_4_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_If___EStringParserRuleCall_2_1_q___ExclamationMarkKeyword_2_0_0_EStringParserRuleCall_2_0_1__q___TypeParserRuleCall_2_2_0_EqualVariableParserRuleCall_2_2_1_TypeParserRuleCall_2_2_2__q___EStringParserRuleCall_2_3_0_NotKeyword_2_3_1_q_ExistsKeyword_2_3_2__q__p.equals(syntax))
+				emit_If___EStringParserRuleCall_2_1_q___ExclamationMarkKeyword_2_0_0_EStringParserRuleCall_2_0_1__q___TypeParserRuleCall_2_2_0_EqualVariableParserRuleCall_2_2_1_TypeParserRuleCall_2_2_2__q___EStringParserRuleCall_2_3_0_NotKeyword_2_3_1_q_ExistsKeyword_2_3_2__q__p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_If___ElseifKeyword_3_0___EStringParserRuleCall_3_1_1_or___ExclamationMarkKeyword_3_1_0_0_EStringParserRuleCall_3_1_0_1___or___TypeParserRuleCall_3_1_2_0_EqualVariableParserRuleCall_3_1_2_1_TypeParserRuleCall_3_1_2_2______a.equals(syntax))
+				emit_If___ElseifKeyword_3_0___EStringParserRuleCall_3_1_1_or___ExclamationMarkKeyword_3_1_0_0_EStringParserRuleCall_3_1_0_1___or___TypeParserRuleCall_3_1_2_0_EqualVariableParserRuleCall_3_1_2_1_TypeParserRuleCall_3_1_2_2______a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Stop_BreakKeyword_1_2_or_ContinueKeyword_1_3_or_StopKeyword_1_1_or___ReturnKeyword_1_0_0_TypeParserRuleCall_1_0_1__.equals(syntax))
+				emit_Stop_BreakKeyword_1_2_or_ContinueKeyword_1_3_or_StopKeyword_1_1_or___ReturnKeyword_1_0_0_TypeParserRuleCall_1_0_1__(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_While_TrueKeyword_2_0_or___ExclamationMarkKeyword_2_1_0_q_EStringParserRuleCall_2_1_1__.equals(syntax))
+				emit_While_TrueKeyword_2_0_or___ExclamationMarkKeyword_2_1_0_q_EStringParserRuleCall_2_1_1__(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
 	/**
 	 * Ambiguous syntax:
-	 *     '==' | '<' | '<=' | '>' | '>='
+	 *     (
+	  *         (
+	  *             EString 
+	  *             '=' 
+	  *             INT 
+	  *             ';' 
+	  *             EString 
+	  *             EqualVariable 
+	  *             Type 
+	  *             ';' 
+	  *             EString 
+	  *             ('++' | '--' | ('+' INT) | ('-' INT))
+	  *         ) | 
+	  *         (EString ':' EString) | 
+	  *         ('all' EString) | 
+	  *         (
+	  *             'interval' 
+	  *             INT 
+	  *             'to' 
+	  *             INT 
+	  *             'in' 
+	  *             EString
+	  *         )
+	  *     )
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) 'if' Type (ambiguity) Type (rule start)
+	 *     (rule start) 'for' '(' (ambiguity) ')' (rule start)
 	 */
-	protected void emit_If_EqualsSignEqualsSignKeyword_3_0_or_GreaterThanSignEqualsSignKeyword_3_4_or_GreaterThanSignKeyword_3_3_or_LessThanSignEqualsSignKeyword_3_2_or_LessThanSignKeyword_3_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_For___AllKeyword_3_2_0_EStringParserRuleCall_3_2_1___or___EStringParserRuleCall_3_0_0_EqualsSignKeyword_3_0_1_INTTerminalRuleCall_3_0_2_SemicolonKeyword_3_0_3_EStringParserRuleCall_3_0_4_EqualVariableParserRuleCall_3_0_5_TypeParserRuleCall_3_0_6_SemicolonKeyword_3_0_7_EStringParserRuleCall_3_0_8___HyphenMinusHyphenMinusKeyword_3_0_9_1_or_PlusSignPlusSignKeyword_3_0_9_0_or___HyphenMinusKeyword_3_0_9_3_0_INTTerminalRuleCall_3_0_9_3_1___or___PlusSignKeyword_3_0_9_2_0_INTTerminalRuleCall_3_0_9_2_1_______or___EStringParserRuleCall_3_1_0_ColonKeyword_3_1_1_EStringParserRuleCall_3_1_2___or___IntervalKeyword_3_3_0_INTTerminalRuleCall_3_3_1_ToKeyword_3_3_2_INTTerminalRuleCall_3_3_3_InKeyword_3_3_4_EStringParserRuleCall_3_3_5__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
 	/**
 	 * Ambiguous syntax:
-	 *     '
-	  *     '*
+	 *     'else'?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     name=EString '(' ')' (ambiguity) body=Body
-	 *     parameters+=Parameter ')' (ambiguity) body=Body
+	 *     (rule start) 'if' (EString? ('!' EString)? (Type EqualVariable Type)? (EString 'not'? 'exists')?)+ ('elseif' (('!' EString) | EString | (Type EqualVariable Type)))* (ambiguity) (rule start)
 	 */
-	protected void emit_Method_LineFeedKeyword_5_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_If_ElseKeyword_4_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
 	/**
 	 * Ambiguous syntax:
-	 *     ('return' Type)*
+	 *     (EString? ('!' EString)? (Type EqualVariable Type)? (EString 'not'? 'exists')?)+
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     body=Body (ambiguity) (rule end)
+	 *     (rule start) 'if' (ambiguity) ('elseif' (('!' EString) | EString | (Type EqualVariable Type)))* 'else'? (rule start)
 	 */
-	protected void emit_Method___ReturnKeyword_7_0_TypeParserRuleCall_7_1__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_If___EStringParserRuleCall_2_1_q___ExclamationMarkKeyword_2_0_0_EStringParserRuleCall_2_0_1__q___TypeParserRuleCall_2_2_0_EqualVariableParserRuleCall_2_2_1_TypeParserRuleCall_2_2_2__q___EStringParserRuleCall_2_3_0_NotKeyword_2_3_1_q_ExistsKeyword_2_3_2__q__p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
 	/**
 	 * Ambiguous syntax:
-	 *     '
-	  *     '*
+	 *     ('elseif' (('!' EString) | EString | (Type EqualVariable Type)))*
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     members+=Constructor (ambiguity) (rule end)
-	 *     members+=Constructor (ambiguity) members+=Method
-	 *     name=EString (ambiguity) (rule end)
-	 *     name=EString (ambiguity) members+=Method
+	 *     (rule start) 'if' (EString? ('!' EString)? (Type EqualVariable Type)? (EString 'not'? 'exists')?)+ (ambiguity) 'else'? (rule start)
 	 */
-	protected void emit_PseudoClass_LineFeedKeyword_3_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_If___ElseifKeyword_3_0___EStringParserRuleCall_3_1_1_or___ExclamationMarkKeyword_3_1_0_0_EStringParserRuleCall_3_1_0_1___or___TypeParserRuleCall_3_1_2_0_EqualVariableParserRuleCall_3_1_2_1_TypeParserRuleCall_3_1_2_2______a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('return' Type) | 'stop' | 'break' | 'continue'
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) (rule start)
+	 */
+	protected void emit_Stop_BreakKeyword_1_2_or_ContinueKeyword_1_3_or_StopKeyword_1_1_or___ReturnKeyword_1_0_0_TypeParserRuleCall_1_0_1__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     'true' | ('!'? EString)
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) 'while' (ambiguity) (rule start)
+	 */
+	protected void emit_While_TrueKeyword_2_0_or___ExclamationMarkKeyword_2_1_0_q_EStringParserRuleCall_2_1_1__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

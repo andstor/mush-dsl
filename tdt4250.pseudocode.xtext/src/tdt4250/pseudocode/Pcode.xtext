@@ -6,9 +6,9 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 PseudoClass returns PseudoClass:
 	{PseudoClass}
-	name=EString
+	'class' name=EString
 	(members+=Constructor)*
-	('\n')*
+	//('\n' + ('\n')*)
 	(members+=Method)*
 ;
 
@@ -25,19 +25,20 @@ Constructor returns Constructor:
 
 Method returns Method:
 	{Method}
-	name=EString
+	'method' name=EString
 	'('
-		(parameters+=Parameter ("," parameters+=Parameter)*)*		
+	(parameters+=Parameter ("," parameters+=Parameter)*)*		
 	')'
-	('\n')*
-			body=Body
-	('return' Type )*	
+	//('\n' ('\n')*)
+	body=Body	
 ;
 
 Body returns Body:
 	{Body}
-	statements += (Variable|If|For|While)*
+	statements += (Variable | If | For | While|Stop)*
+	statements+=Stop
 ;
+
 
 Variable returns Variable:
 	{Variable}
@@ -50,15 +51,27 @@ Expression returns Expression:
 
 If returns If:
 	{If}
-	'if' Type ('==' |'<' |'<=' | '>' | '>=') Type
+	'if' ('!'EString | EString| Type EqualVariable Type | EString ('not')? 'exists')*
+	('elseif' ('!'EString | EString| Type EqualVariable Type))*
+	('else')?
 ;
 For returns For:
 	{For}
-	'for(' ')'
+	'for''(' (
+	//Original for loop
+	(EString '=' INT ';' EString EqualVariable Type';' EString ('++'|'--'|'+' INT|'-' INT)) 
+	//For Each	
+	| (EString ':' EString)	
+	//Same as for each..
+	|('all' EString)
+	//for a given interval in list
+	|('interval' INT 'to' INT 'in' EString)
+	)')'
 ;
 
 While returns While:
 	{While}
+	'while' ('true'|('!')? EString)
 ;
 
 
@@ -67,8 +80,17 @@ Parameter returns Parameter:
 	name=EString
 ;
 
+Stop returns Stop:
+	{Stop}
+	('return' Type |'stop'| 'break'| 'continue')
+;
+
 Type:
 	(EString | DOUBLE | INT)
+;
+
+EqualVariable:
+	('==' |'<' |'<=' | '>' | '>=' | '!=')
 ;
 
 

@@ -85,6 +85,8 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 			return createWhile();
 		case PseudocodePackage.VARIABLE:
 			return createVariable();
+		case PseudocodePackage.STOP:
+			return createStop();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -272,6 +274,17 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	public Variable createVariable() {
 		VariableImpl variable = new VariableImpl();
 		return variable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Stop createStop() {
+		StopImpl stop = new StopImpl();
+		return stop;
 	}
 
 	/**

@@ -22,6 +22,7 @@ import tdt4250.pseudocode.If;
 import tdt4250.pseudocode.Method;
 import tdt4250.pseudocode.PseudoClass;
 import tdt4250.pseudocode.PseudocodePackage;
+import tdt4250.pseudocode.Stop;
 import tdt4250.pseudocode.Variable;
 import tdt4250.pseudocode.While;
 import tdt4250.pseudocode.services.PcodeGrammarAccess;
@@ -64,6 +65,9 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case PseudocodePackage.PSEUDO_CLASS:
 				sequence_PseudoClass(context, (PseudoClass) semanticObject); 
 				return; 
+			case PseudocodePackage.STOP:
+				sequence_Stop(context, (Stop) semanticObject); 
+				return; 
 			case PseudocodePackage.VARIABLE:
 				sequence_Variable(context, (Variable) semanticObject); 
 				return; 
@@ -80,7 +84,7 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Body returns Body
 	 *
 	 * Constraint:
-	 *     (statements+=Variable | statements+=If | statements+=For | statements+=While)*
+	 *     ((statements+=Variable | statements+=If | statements+=For | statements+=While | statements+=Stop)* statements+=Stop)
 	 */
 	protected void sequence_Body(ISerializationContext context, Body semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -176,6 +180,18 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     (name=EString members+=Constructor* members+=Method*)
 	 */
 	protected void sequence_PseudoClass(ISerializationContext context, PseudoClass semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Stop returns Stop
+	 *
+	 * Constraint:
+	 *     {Stop}
+	 */
+	protected void sequence_Stop(ISerializationContext context, Stop semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

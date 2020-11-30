@@ -29,42 +29,45 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.PseudoClass");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cPseudoClassAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cMembersAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cMembersConstructorParserRuleCall_2_0 = (RuleCall)cMembersAssignment_2.eContents().get(0);
-		private final Keyword cLineFeedKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cClassKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Assignment cMembersAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cMembersConstructorParserRuleCall_3_0 = (RuleCall)cMembersAssignment_3.eContents().get(0);
 		private final Assignment cMembersAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cMembersMethodParserRuleCall_4_0 = (RuleCall)cMembersAssignment_4.eContents().get(0);
 		
 		//PseudoClass:
-		//	{PseudoClass} name=EString
+		//	{PseudoClass}
+		//	'class' name=EString
 		//	members+=Constructor*
-		//	'\n'*
+		//	//('\n' + ('\n')*)
 		//	members+=Method*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{PseudoClass} name=EString members+=Constructor* '\n'* members+=Method*
+		//{PseudoClass} 'class' name=EString members+=Constructor* //('\n' + ('\n')*)
+		//members+=Method*
 		public Group getGroup() { return cGroup; }
 		
 		//{PseudoClass}
 		public Action getPseudoClassAction_0() { return cPseudoClassAction_0; }
 		
+		//'class'
+		public Keyword getClassKeyword_1() { return cClassKeyword_1; }
+		
 		//name=EString
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 		
 		//EString
-		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
+		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
 		
 		//members+=Constructor*
-		public Assignment getMembersAssignment_2() { return cMembersAssignment_2; }
+		public Assignment getMembersAssignment_3() { return cMembersAssignment_3; }
 		
 		//Constructor
-		public RuleCall getMembersConstructorParserRuleCall_2_0() { return cMembersConstructorParserRuleCall_2_0; }
+		public RuleCall getMembersConstructorParserRuleCall_3_0() { return cMembersConstructorParserRuleCall_3_0; }
 		
-		//'\n'*
-		public Keyword getLineFeedKeyword_3() { return cLineFeedKeyword_3; }
-		
+		////('\n' + ('\n')*)
 		//members+=Method*
 		public Assignment getMembersAssignment_4() { return cMembersAssignment_4; }
 		
@@ -154,88 +157,79 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.Method");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMethodAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Assignment cParametersAssignment_3_0 = (Assignment)cGroup_3.eContents().get(0);
-		private final RuleCall cParametersParameterParserRuleCall_3_0_0 = (RuleCall)cParametersAssignment_3_0.eContents().get(0);
-		private final Group cGroup_3_1 = (Group)cGroup_3.eContents().get(1);
-		private final Keyword cCommaKeyword_3_1_0 = (Keyword)cGroup_3_1.eContents().get(0);
-		private final Assignment cParametersAssignment_3_1_1 = (Assignment)cGroup_3_1.eContents().get(1);
-		private final RuleCall cParametersParameterParserRuleCall_3_1_1_0 = (RuleCall)cParametersAssignment_3_1_1.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Keyword cLineFeedKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cMethodKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Assignment cParametersAssignment_4_0 = (Assignment)cGroup_4.eContents().get(0);
+		private final RuleCall cParametersParameterParserRuleCall_4_0_0 = (RuleCall)cParametersAssignment_4_0.eContents().get(0);
+		private final Group cGroup_4_1 = (Group)cGroup_4.eContents().get(1);
+		private final Keyword cCommaKeyword_4_1_0 = (Keyword)cGroup_4_1.eContents().get(0);
+		private final Assignment cParametersAssignment_4_1_1 = (Assignment)cGroup_4_1.eContents().get(1);
+		private final RuleCall cParametersParameterParserRuleCall_4_1_1_0 = (RuleCall)cParametersAssignment_4_1_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cBodyAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final RuleCall cBodyBodyParserRuleCall_6_0 = (RuleCall)cBodyAssignment_6.eContents().get(0);
-		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
-		private final Keyword cReturnKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
-		private final RuleCall cTypeParserRuleCall_7_1 = (RuleCall)cGroup_7.eContents().get(1);
 		
 		//Method:
-		//	{Method} name=EString
+		//	{Method}
+		//	'method' name=EString
 		//	'(' (parameters+=Parameter ("," parameters+=Parameter)*)*
 		//	')'
-		//	'\n'*
-		//	body=Body ('return' Type)*;
+		//	//('\n' ('\n')*)
+		//	body=Body;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Method} name=EString '(' (parameters+=Parameter ("," parameters+=Parameter)*)* ')' '\n'* body=Body ('return' Type)*
+		//{Method} 'method' name=EString '(' (parameters+=Parameter ("," parameters+=Parameter)*)* ')' //('\n' ('\n')*)
+		//body=Body
 		public Group getGroup() { return cGroup; }
 		
 		//{Method}
 		public Action getMethodAction_0() { return cMethodAction_0; }
 		
+		//'method'
+		public Keyword getMethodKeyword_1() { return cMethodKeyword_1; }
+		
 		//name=EString
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 		
 		//EString
-		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
+		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
 		
 		//'('
-		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
+		public Keyword getLeftParenthesisKeyword_3() { return cLeftParenthesisKeyword_3; }
 		
 		//(parameters+=Parameter ("," parameters+=Parameter)*)*
-		public Group getGroup_3() { return cGroup_3; }
+		public Group getGroup_4() { return cGroup_4; }
 		
 		//parameters+=Parameter
-		public Assignment getParametersAssignment_3_0() { return cParametersAssignment_3_0; }
+		public Assignment getParametersAssignment_4_0() { return cParametersAssignment_4_0; }
 		
 		//Parameter
-		public RuleCall getParametersParameterParserRuleCall_3_0_0() { return cParametersParameterParserRuleCall_3_0_0; }
+		public RuleCall getParametersParameterParserRuleCall_4_0_0() { return cParametersParameterParserRuleCall_4_0_0; }
 		
 		//("," parameters+=Parameter)*
-		public Group getGroup_3_1() { return cGroup_3_1; }
+		public Group getGroup_4_1() { return cGroup_4_1; }
 		
 		//","
-		public Keyword getCommaKeyword_3_1_0() { return cCommaKeyword_3_1_0; }
+		public Keyword getCommaKeyword_4_1_0() { return cCommaKeyword_4_1_0; }
 		
 		//parameters+=Parameter
-		public Assignment getParametersAssignment_3_1_1() { return cParametersAssignment_3_1_1; }
+		public Assignment getParametersAssignment_4_1_1() { return cParametersAssignment_4_1_1; }
 		
 		//Parameter
-		public RuleCall getParametersParameterParserRuleCall_3_1_1_0() { return cParametersParameterParserRuleCall_3_1_1_0; }
+		public RuleCall getParametersParameterParserRuleCall_4_1_1_0() { return cParametersParameterParserRuleCall_4_1_1_0; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
+		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
 		
-		//'\n'*
-		public Keyword getLineFeedKeyword_5() { return cLineFeedKeyword_5; }
-		
+		////('\n' ('\n')*)
 		//body=Body
 		public Assignment getBodyAssignment_6() { return cBodyAssignment_6; }
 		
 		//Body
 		public RuleCall getBodyBodyParserRuleCall_6_0() { return cBodyBodyParserRuleCall_6_0; }
-		
-		//('return' Type)*
-		public Group getGroup_7() { return cGroup_7; }
-		
-		//'return'
-		public Keyword getReturnKeyword_7_0() { return cReturnKeyword_7_0; }
-		
-		//Type
-		public RuleCall getTypeParserRuleCall_7_1() { return cTypeParserRuleCall_7_1; }
 	}
 	public class BodyElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.Body");
@@ -247,21 +241,25 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final RuleCall cStatementsIfParserRuleCall_1_0_1 = (RuleCall)cStatementsAlternatives_1_0.eContents().get(1);
 		private final RuleCall cStatementsForParserRuleCall_1_0_2 = (RuleCall)cStatementsAlternatives_1_0.eContents().get(2);
 		private final RuleCall cStatementsWhileParserRuleCall_1_0_3 = (RuleCall)cStatementsAlternatives_1_0.eContents().get(3);
+		private final RuleCall cStatementsStopParserRuleCall_1_0_4 = (RuleCall)cStatementsAlternatives_1_0.eContents().get(4);
+		private final Assignment cStatementsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cStatementsStopParserRuleCall_2_0 = (RuleCall)cStatementsAssignment_2.eContents().get(0);
 		
 		//Body:
-		//	{Body} statements+=(Variable | If | For | While)*;
+		//	{Body} statements+=(Variable | If | For | While | Stop)*
+		//	statements+=Stop;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Body} statements+=(Variable | If | For | While)*
+		//{Body} statements+=(Variable | If | For | While | Stop)* statements+=Stop
 		public Group getGroup() { return cGroup; }
 		
 		//{Body}
 		public Action getBodyAction_0() { return cBodyAction_0; }
 		
-		//statements+=(Variable | If | For | While)*
+		//statements+=(Variable | If | For | While | Stop)*
 		public Assignment getStatementsAssignment_1() { return cStatementsAssignment_1; }
 		
-		//(Variable | If | For | While)
+		//(Variable | If | For | While | Stop)
 		public Alternatives getStatementsAlternatives_1_0() { return cStatementsAlternatives_1_0; }
 		
 		//Variable
@@ -275,6 +273,15 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		
 		//While
 		public RuleCall getStatementsWhileParserRuleCall_1_0_3() { return cStatementsWhileParserRuleCall_1_0_3; }
+		
+		//Stop
+		public RuleCall getStatementsStopParserRuleCall_1_0_4() { return cStatementsStopParserRuleCall_1_0_4; }
+		
+		//statements+=Stop
+		public Assignment getStatementsAssignment_2() { return cStatementsAssignment_2; }
+		
+		//Stop
+		public RuleCall getStatementsStopParserRuleCall_2_0() { return cStatementsStopParserRuleCall_2_0; }
 	}
 	public class VariableElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.Variable");
@@ -319,21 +326,41 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cIfAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cIfKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final RuleCall cTypeParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
-		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
-		private final Keyword cEqualsSignEqualsSignKeyword_3_0 = (Keyword)cAlternatives_3.eContents().get(0);
-		private final Keyword cLessThanSignKeyword_3_1 = (Keyword)cAlternatives_3.eContents().get(1);
-		private final Keyword cLessThanSignEqualsSignKeyword_3_2 = (Keyword)cAlternatives_3.eContents().get(2);
-		private final Keyword cGreaterThanSignKeyword_3_3 = (Keyword)cAlternatives_3.eContents().get(3);
-		private final Keyword cGreaterThanSignEqualsSignKeyword_3_4 = (Keyword)cAlternatives_3.eContents().get(4);
-		private final RuleCall cTypeParserRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Group cGroup_2_0 = (Group)cAlternatives_2.eContents().get(0);
+		private final Keyword cExclamationMarkKeyword_2_0_0 = (Keyword)cGroup_2_0.eContents().get(0);
+		private final RuleCall cEStringParserRuleCall_2_0_1 = (RuleCall)cGroup_2_0.eContents().get(1);
+		private final RuleCall cEStringParserRuleCall_2_1 = (RuleCall)cAlternatives_2.eContents().get(1);
+		private final Group cGroup_2_2 = (Group)cAlternatives_2.eContents().get(2);
+		private final RuleCall cTypeParserRuleCall_2_2_0 = (RuleCall)cGroup_2_2.eContents().get(0);
+		private final RuleCall cEqualVariableParserRuleCall_2_2_1 = (RuleCall)cGroup_2_2.eContents().get(1);
+		private final RuleCall cTypeParserRuleCall_2_2_2 = (RuleCall)cGroup_2_2.eContents().get(2);
+		private final Group cGroup_2_3 = (Group)cAlternatives_2.eContents().get(3);
+		private final RuleCall cEStringParserRuleCall_2_3_0 = (RuleCall)cGroup_2_3.eContents().get(0);
+		private final Keyword cNotKeyword_2_3_1 = (Keyword)cGroup_2_3.eContents().get(1);
+		private final Keyword cExistsKeyword_2_3_2 = (Keyword)cGroup_2_3.eContents().get(2);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cElseifKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Alternatives cAlternatives_3_1 = (Alternatives)cGroup_3.eContents().get(1);
+		private final Group cGroup_3_1_0 = (Group)cAlternatives_3_1.eContents().get(0);
+		private final Keyword cExclamationMarkKeyword_3_1_0_0 = (Keyword)cGroup_3_1_0.eContents().get(0);
+		private final RuleCall cEStringParserRuleCall_3_1_0_1 = (RuleCall)cGroup_3_1_0.eContents().get(1);
+		private final RuleCall cEStringParserRuleCall_3_1_1 = (RuleCall)cAlternatives_3_1.eContents().get(1);
+		private final Group cGroup_3_1_2 = (Group)cAlternatives_3_1.eContents().get(2);
+		private final RuleCall cTypeParserRuleCall_3_1_2_0 = (RuleCall)cGroup_3_1_2.eContents().get(0);
+		private final RuleCall cEqualVariableParserRuleCall_3_1_2_1 = (RuleCall)cGroup_3_1_2.eContents().get(1);
+		private final RuleCall cTypeParserRuleCall_3_1_2_2 = (RuleCall)cGroup_3_1_2.eContents().get(2);
+		private final Keyword cElseKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//If:
 		//	{If}
-		//	'if' Type ('==' | '<' | '<=' | '>' | '>=') Type;
+		//	'if' ('!' EString | EString | Type EqualVariable Type | EString 'not'? 'exists')* ('elseif' ('!' EString | EString |
+		//	Type EqualVariable Type))*
+		//	'else'?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{If} 'if' Type ('==' | '<' | '<=' | '>' | '>=') Type
+		//{If} 'if' ('!' EString | EString | Type EqualVariable Type | EString 'not'? 'exists')* ('elseif' ('!' EString | EString
+		//| Type EqualVariable Type))* 'else'?
 		public Group getGroup() { return cGroup; }
 		
 		//{If}
@@ -342,64 +369,288 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//'if'
 		public Keyword getIfKeyword_1() { return cIfKeyword_1; }
 		
-		//Type
-		public RuleCall getTypeParserRuleCall_2() { return cTypeParserRuleCall_2; }
+		//('!' EString | EString | Type EqualVariable Type | EString 'not'? 'exists')*
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 		
-		//('==' | '<' | '<=' | '>' | '>=')
-		public Alternatives getAlternatives_3() { return cAlternatives_3; }
+		//'!' EString
+		public Group getGroup_2_0() { return cGroup_2_0; }
 		
-		//'=='
-		public Keyword getEqualsSignEqualsSignKeyword_3_0() { return cEqualsSignEqualsSignKeyword_3_0; }
+		//'!'
+		public Keyword getExclamationMarkKeyword_2_0_0() { return cExclamationMarkKeyword_2_0_0; }
 		
-		//'<'
-		public Keyword getLessThanSignKeyword_3_1() { return cLessThanSignKeyword_3_1; }
+		//EString
+		public RuleCall getEStringParserRuleCall_2_0_1() { return cEStringParserRuleCall_2_0_1; }
 		
-		//'<='
-		public Keyword getLessThanSignEqualsSignKeyword_3_2() { return cLessThanSignEqualsSignKeyword_3_2; }
+		//EString
+		public RuleCall getEStringParserRuleCall_2_1() { return cEStringParserRuleCall_2_1; }
 		
-		//'>'
-		public Keyword getGreaterThanSignKeyword_3_3() { return cGreaterThanSignKeyword_3_3; }
-		
-		//'>='
-		public Keyword getGreaterThanSignEqualsSignKeyword_3_4() { return cGreaterThanSignEqualsSignKeyword_3_4; }
+		//Type EqualVariable Type
+		public Group getGroup_2_2() { return cGroup_2_2; }
 		
 		//Type
-		public RuleCall getTypeParserRuleCall_4() { return cTypeParserRuleCall_4; }
+		public RuleCall getTypeParserRuleCall_2_2_0() { return cTypeParserRuleCall_2_2_0; }
+		
+		//EqualVariable
+		public RuleCall getEqualVariableParserRuleCall_2_2_1() { return cEqualVariableParserRuleCall_2_2_1; }
+		
+		//Type
+		public RuleCall getTypeParserRuleCall_2_2_2() { return cTypeParserRuleCall_2_2_2; }
+		
+		//EString 'not'? 'exists'
+		public Group getGroup_2_3() { return cGroup_2_3; }
+		
+		//EString
+		public RuleCall getEStringParserRuleCall_2_3_0() { return cEStringParserRuleCall_2_3_0; }
+		
+		//'not'?
+		public Keyword getNotKeyword_2_3_1() { return cNotKeyword_2_3_1; }
+		
+		//'exists'
+		public Keyword getExistsKeyword_2_3_2() { return cExistsKeyword_2_3_2; }
+		
+		//('elseif' ('!' EString | EString | Type EqualVariable Type))*
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//'elseif'
+		public Keyword getElseifKeyword_3_0() { return cElseifKeyword_3_0; }
+		
+		//('!' EString | EString | Type EqualVariable Type)
+		public Alternatives getAlternatives_3_1() { return cAlternatives_3_1; }
+		
+		//'!' EString
+		public Group getGroup_3_1_0() { return cGroup_3_1_0; }
+		
+		//'!'
+		public Keyword getExclamationMarkKeyword_3_1_0_0() { return cExclamationMarkKeyword_3_1_0_0; }
+		
+		//EString
+		public RuleCall getEStringParserRuleCall_3_1_0_1() { return cEStringParserRuleCall_3_1_0_1; }
+		
+		//EString
+		public RuleCall getEStringParserRuleCall_3_1_1() { return cEStringParserRuleCall_3_1_1; }
+		
+		//Type EqualVariable Type
+		public Group getGroup_3_1_2() { return cGroup_3_1_2; }
+		
+		//Type
+		public RuleCall getTypeParserRuleCall_3_1_2_0() { return cTypeParserRuleCall_3_1_2_0; }
+		
+		//EqualVariable
+		public RuleCall getEqualVariableParserRuleCall_3_1_2_1() { return cEqualVariableParserRuleCall_3_1_2_1; }
+		
+		//Type
+		public RuleCall getTypeParserRuleCall_3_1_2_2() { return cTypeParserRuleCall_3_1_2_2; }
+		
+		//'else'?
+		public Keyword getElseKeyword_4() { return cElseKeyword_4; }
 	}
 	public class ForElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.For");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cForAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cForKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
+		private final Group cGroup_3_0 = (Group)cAlternatives_3.eContents().get(0);
+		private final RuleCall cEStringParserRuleCall_3_0_0 = (RuleCall)cGroup_3_0.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_3_0_1 = (Keyword)cGroup_3_0.eContents().get(1);
+		private final RuleCall cINTTerminalRuleCall_3_0_2 = (RuleCall)cGroup_3_0.eContents().get(2);
+		private final Keyword cSemicolonKeyword_3_0_3 = (Keyword)cGroup_3_0.eContents().get(3);
+		private final RuleCall cEStringParserRuleCall_3_0_4 = (RuleCall)cGroup_3_0.eContents().get(4);
+		private final RuleCall cEqualVariableParserRuleCall_3_0_5 = (RuleCall)cGroup_3_0.eContents().get(5);
+		private final RuleCall cTypeParserRuleCall_3_0_6 = (RuleCall)cGroup_3_0.eContents().get(6);
+		private final Keyword cSemicolonKeyword_3_0_7 = (Keyword)cGroup_3_0.eContents().get(7);
+		private final RuleCall cEStringParserRuleCall_3_0_8 = (RuleCall)cGroup_3_0.eContents().get(8);
+		private final Alternatives cAlternatives_3_0_9 = (Alternatives)cGroup_3_0.eContents().get(9);
+		private final Keyword cPlusSignPlusSignKeyword_3_0_9_0 = (Keyword)cAlternatives_3_0_9.eContents().get(0);
+		private final Keyword cHyphenMinusHyphenMinusKeyword_3_0_9_1 = (Keyword)cAlternatives_3_0_9.eContents().get(1);
+		private final Group cGroup_3_0_9_2 = (Group)cAlternatives_3_0_9.eContents().get(2);
+		private final Keyword cPlusSignKeyword_3_0_9_2_0 = (Keyword)cGroup_3_0_9_2.eContents().get(0);
+		private final RuleCall cINTTerminalRuleCall_3_0_9_2_1 = (RuleCall)cGroup_3_0_9_2.eContents().get(1);
+		private final Group cGroup_3_0_9_3 = (Group)cAlternatives_3_0_9.eContents().get(3);
+		private final Keyword cHyphenMinusKeyword_3_0_9_3_0 = (Keyword)cGroup_3_0_9_3.eContents().get(0);
+		private final RuleCall cINTTerminalRuleCall_3_0_9_3_1 = (RuleCall)cGroup_3_0_9_3.eContents().get(1);
+		private final Group cGroup_3_1 = (Group)cAlternatives_3.eContents().get(1);
+		private final RuleCall cEStringParserRuleCall_3_1_0 = (RuleCall)cGroup_3_1.eContents().get(0);
+		private final Keyword cColonKeyword_3_1_1 = (Keyword)cGroup_3_1.eContents().get(1);
+		private final RuleCall cEStringParserRuleCall_3_1_2 = (RuleCall)cGroup_3_1.eContents().get(2);
+		private final Group cGroup_3_2 = (Group)cAlternatives_3.eContents().get(2);
+		private final Keyword cAllKeyword_3_2_0 = (Keyword)cGroup_3_2.eContents().get(0);
+		private final RuleCall cEStringParserRuleCall_3_2_1 = (RuleCall)cGroup_3_2.eContents().get(1);
+		private final Group cGroup_3_3 = (Group)cAlternatives_3.eContents().get(3);
+		private final Keyword cIntervalKeyword_3_3_0 = (Keyword)cGroup_3_3.eContents().get(0);
+		private final RuleCall cINTTerminalRuleCall_3_3_1 = (RuleCall)cGroup_3_3.eContents().get(1);
+		private final Keyword cToKeyword_3_3_2 = (Keyword)cGroup_3_3.eContents().get(2);
+		private final RuleCall cINTTerminalRuleCall_3_3_3 = (RuleCall)cGroup_3_3.eContents().get(3);
+		private final Keyword cInKeyword_3_3_4 = (Keyword)cGroup_3_3.eContents().get(4);
+		private final RuleCall cEStringParserRuleCall_3_3_5 = (RuleCall)cGroup_3_3.eContents().get(5);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//For:
 		//	{For}
-		//	'for(' ')';
+		//	'for' '(' (EString '=' INT ';' EString EqualVariable Type ';' EString ('++' | '--' | '+' INT | '-' INT) | EString ':'
+		//	EString | 'all' EString | 'interval' INT 'to' INT 'in' EString) ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{For} 'for(' ')'
+		//{For} 'for' '(' (EString '=' INT ';' EString EqualVariable Type ';' EString ('++' | '--' | '+' INT | '-' INT) | EString
+		//':' EString | 'all' EString | 'interval' INT 'to' INT 'in' EString) ')'
 		public Group getGroup() { return cGroup; }
 		
 		//{For}
 		public Action getForAction_0() { return cForAction_0; }
 		
-		//'for('
+		//'for'
 		public Keyword getForKeyword_1() { return cForKeyword_1; }
 		
+		//'('
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
+		
+		//(EString '=' INT ';' EString EqualVariable Type ';' EString ('++' | '--' | '+' INT | '-' INT) | EString ':' EString |
+		//'all' EString | 'interval' INT 'to' INT 'in' EString)
+		public Alternatives getAlternatives_3() { return cAlternatives_3; }
+		
+		////Original for loop
+		//EString '=' INT ';' EString EqualVariable Type ';' EString ('++' | '--' | '+' INT | '-' INT)
+		public Group getGroup_3_0() { return cGroup_3_0; }
+		
+		//EString
+		public RuleCall getEStringParserRuleCall_3_0_0() { return cEStringParserRuleCall_3_0_0; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_3_0_1() { return cEqualsSignKeyword_3_0_1; }
+		
+		//INT
+		public RuleCall getINTTerminalRuleCall_3_0_2() { return cINTTerminalRuleCall_3_0_2; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_3_0_3() { return cSemicolonKeyword_3_0_3; }
+		
+		//EString
+		public RuleCall getEStringParserRuleCall_3_0_4() { return cEStringParserRuleCall_3_0_4; }
+		
+		//EqualVariable
+		public RuleCall getEqualVariableParserRuleCall_3_0_5() { return cEqualVariableParserRuleCall_3_0_5; }
+		
+		//Type
+		public RuleCall getTypeParserRuleCall_3_0_6() { return cTypeParserRuleCall_3_0_6; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_3_0_7() { return cSemicolonKeyword_3_0_7; }
+		
+		//EString
+		public RuleCall getEStringParserRuleCall_3_0_8() { return cEStringParserRuleCall_3_0_8; }
+		
+		//('++' | '--' | '+' INT | '-' INT)
+		public Alternatives getAlternatives_3_0_9() { return cAlternatives_3_0_9; }
+		
+		//'++'
+		public Keyword getPlusSignPlusSignKeyword_3_0_9_0() { return cPlusSignPlusSignKeyword_3_0_9_0; }
+		
+		//'--'
+		public Keyword getHyphenMinusHyphenMinusKeyword_3_0_9_1() { return cHyphenMinusHyphenMinusKeyword_3_0_9_1; }
+		
+		//'+' INT
+		public Group getGroup_3_0_9_2() { return cGroup_3_0_9_2; }
+		
+		//'+'
+		public Keyword getPlusSignKeyword_3_0_9_2_0() { return cPlusSignKeyword_3_0_9_2_0; }
+		
+		//INT
+		public RuleCall getINTTerminalRuleCall_3_0_9_2_1() { return cINTTerminalRuleCall_3_0_9_2_1; }
+		
+		//'-' INT
+		public Group getGroup_3_0_9_3() { return cGroup_3_0_9_3; }
+		
+		//'-'
+		public Keyword getHyphenMinusKeyword_3_0_9_3_0() { return cHyphenMinusKeyword_3_0_9_3_0; }
+		
+		//INT
+		public RuleCall getINTTerminalRuleCall_3_0_9_3_1() { return cINTTerminalRuleCall_3_0_9_3_1; }
+		
+		//EString ':' EString
+		public Group getGroup_3_1() { return cGroup_3_1; }
+		
+		//EString
+		public RuleCall getEStringParserRuleCall_3_1_0() { return cEStringParserRuleCall_3_1_0; }
+		
+		//':'
+		public Keyword getColonKeyword_3_1_1() { return cColonKeyword_3_1_1; }
+		
+		//EString
+		public RuleCall getEStringParserRuleCall_3_1_2() { return cEStringParserRuleCall_3_1_2; }
+		
+		//'all' EString
+		public Group getGroup_3_2() { return cGroup_3_2; }
+		
+		//'all'
+		public Keyword getAllKeyword_3_2_0() { return cAllKeyword_3_2_0; }
+		
+		//EString
+		public RuleCall getEStringParserRuleCall_3_2_1() { return cEStringParserRuleCall_3_2_1; }
+		
+		//'interval' INT 'to' INT 'in' EString
+		public Group getGroup_3_3() { return cGroup_3_3; }
+		
+		//'interval'
+		public Keyword getIntervalKeyword_3_3_0() { return cIntervalKeyword_3_3_0; }
+		
+		//INT
+		public RuleCall getINTTerminalRuleCall_3_3_1() { return cINTTerminalRuleCall_3_3_1; }
+		
+		//'to'
+		public Keyword getToKeyword_3_3_2() { return cToKeyword_3_3_2; }
+		
+		//INT
+		public RuleCall getINTTerminalRuleCall_3_3_3() { return cINTTerminalRuleCall_3_3_3; }
+		
+		//'in'
+		public Keyword getInKeyword_3_3_4() { return cInKeyword_3_3_4; }
+		
+		//EString
+		public RuleCall getEStringParserRuleCall_3_3_5() { return cEStringParserRuleCall_3_3_5; }
+		
 		//')'
-		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
 	}
 	public class WhileElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.While");
-		private final Action cWhileAction = (Action)rule.eContents().get(1);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cWhileAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cWhileKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Keyword cTrueKeyword_2_0 = (Keyword)cAlternatives_2.eContents().get(0);
+		private final Group cGroup_2_1 = (Group)cAlternatives_2.eContents().get(1);
+		private final Keyword cExclamationMarkKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
+		private final RuleCall cEStringParserRuleCall_2_1_1 = (RuleCall)cGroup_2_1.eContents().get(1);
 		
 		//While:
-		//	{While};
+		//	{While}
+		//	'while' ('true' | '!'? EString);
 		@Override public ParserRule getRule() { return rule; }
 		
+		//{While} 'while' ('true' | '!'? EString)
+		public Group getGroup() { return cGroup; }
+		
 		//{While}
-		public Action getWhileAction() { return cWhileAction; }
+		public Action getWhileAction_0() { return cWhileAction_0; }
+		
+		//'while'
+		public Keyword getWhileKeyword_1() { return cWhileKeyword_1; }
+		
+		//('true' | '!'? EString)
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+		
+		//'true'
+		public Keyword getTrueKeyword_2_0() { return cTrueKeyword_2_0; }
+		
+		//'!'? EString
+		public Group getGroup_2_1() { return cGroup_2_1; }
+		
+		//'!'?
+		public Keyword getExclamationMarkKeyword_2_1_0() { return cExclamationMarkKeyword_2_1_0; }
+		
+		//EString
+		public RuleCall getEStringParserRuleCall_2_1_1() { return cEStringParserRuleCall_2_1_1; }
 	}
 	public class ParameterElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.Parameter");
@@ -424,6 +675,49 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//EString
 		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
 	}
+	public class StopElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.Stop");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cStopAction_0 = (Action)cGroup.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
+		private final Keyword cReturnKeyword_1_0_0 = (Keyword)cGroup_1_0.eContents().get(0);
+		private final RuleCall cTypeParserRuleCall_1_0_1 = (RuleCall)cGroup_1_0.eContents().get(1);
+		private final Keyword cStopKeyword_1_1 = (Keyword)cAlternatives_1.eContents().get(1);
+		private final Keyword cBreakKeyword_1_2 = (Keyword)cAlternatives_1.eContents().get(2);
+		private final Keyword cContinueKeyword_1_3 = (Keyword)cAlternatives_1.eContents().get(3);
+		
+		//Stop:
+		//	{Stop} ('return' Type | 'stop' | 'break' | 'continue');
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{Stop} ('return' Type | 'stop' | 'break' | 'continue')
+		public Group getGroup() { return cGroup; }
+		
+		//{Stop}
+		public Action getStopAction_0() { return cStopAction_0; }
+		
+		//('return' Type | 'stop' | 'break' | 'continue')
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		
+		//'return' Type
+		public Group getGroup_1_0() { return cGroup_1_0; }
+		
+		//'return'
+		public Keyword getReturnKeyword_1_0_0() { return cReturnKeyword_1_0_0; }
+		
+		//Type
+		public RuleCall getTypeParserRuleCall_1_0_1() { return cTypeParserRuleCall_1_0_1; }
+		
+		//'stop'
+		public Keyword getStopKeyword_1_1() { return cStopKeyword_1_1; }
+		
+		//'break'
+		public Keyword getBreakKeyword_1_2() { return cBreakKeyword_1_2; }
+		
+		//'continue'
+		public Keyword getContinueKeyword_1_3() { return cContinueKeyword_1_3; }
+	}
 	public class TypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.Type");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -446,6 +740,41 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		
 		//INT
 		public RuleCall getINTTerminalRuleCall_2() { return cINTTerminalRuleCall_2; }
+	}
+	public class EqualVariableElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.EqualVariable");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Keyword cEqualsSignEqualsSignKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cLessThanSignKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cLessThanSignEqualsSignKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
+		private final Keyword cGreaterThanSignKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
+		private final Keyword cGreaterThanSignEqualsSignKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
+		private final Keyword cExclamationMarkEqualsSignKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
+		
+		//EqualVariable:
+		//	'==' | '<' | '<=' | '>' | '>=' | '!=';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'==' | '<' | '<=' | '>' | '>=' | '!='
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//'=='
+		public Keyword getEqualsSignEqualsSignKeyword_0() { return cEqualsSignEqualsSignKeyword_0; }
+		
+		//'<'
+		public Keyword getLessThanSignKeyword_1() { return cLessThanSignKeyword_1; }
+		
+		//'<='
+		public Keyword getLessThanSignEqualsSignKeyword_2() { return cLessThanSignEqualsSignKeyword_2; }
+		
+		//'>'
+		public Keyword getGreaterThanSignKeyword_3() { return cGreaterThanSignKeyword_3; }
+		
+		//'>='
+		public Keyword getGreaterThanSignEqualsSignKeyword_4() { return cGreaterThanSignEqualsSignKeyword_4; }
+		
+		//'!='
+		public Keyword getExclamationMarkEqualsSignKeyword_5() { return cExclamationMarkEqualsSignKeyword_5; }
 	}
 	public class EStringElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.EString");
@@ -522,7 +851,9 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	private final ForElements pFor;
 	private final WhileElements pWhile;
 	private final ParameterElements pParameter;
+	private final StopElements pStop;
 	private final TypeElements pType;
+	private final EqualVariableElements pEqualVariable;
 	private final VisibilityKindElements eVisibilityKind;
 	private final EStringElements pEString;
 	private final TerminalRule tDOUBLE;
@@ -547,7 +878,9 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		this.pFor = new ForElements();
 		this.pWhile = new WhileElements();
 		this.pParameter = new ParameterElements();
+		this.pStop = new StopElements();
 		this.pType = new TypeElements();
+		this.pEqualVariable = new EqualVariableElements();
 		this.eVisibilityKind = new VisibilityKindElements();
 		this.pEString = new EStringElements();
 		this.tDOUBLE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.DOUBLE");
@@ -581,9 +914,10 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 
 	
 	//PseudoClass:
-	//	{PseudoClass} name=EString
+	//	{PseudoClass}
+	//	'class' name=EString
 	//	members+=Constructor*
-	//	'\n'*
+	//	//('\n' + ('\n')*)
 	//	members+=Method*;
 	public PseudoClassElements getPseudoClassAccess() {
 		return pPseudoClass;
@@ -615,11 +949,12 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	}
 	
 	//Method:
-	//	{Method} name=EString
+	//	{Method}
+	//	'method' name=EString
 	//	'(' (parameters+=Parameter ("," parameters+=Parameter)*)*
 	//	')'
-	//	'\n'*
-	//	body=Body ('return' Type)*;
+	//	//('\n' ('\n')*)
+	//	body=Body;
 	public MethodElements getMethodAccess() {
 		return pMethod;
 	}
@@ -629,7 +964,8 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	}
 	
 	//Body:
-	//	{Body} statements+=(Variable | If | For | While)*;
+	//	{Body} statements+=(Variable | If | For | While | Stop)*
+	//	statements+=Stop;
 	public BodyElements getBodyAccess() {
 		return pBody;
 	}
@@ -660,7 +996,9 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	
 	//If:
 	//	{If}
-	//	'if' Type ('==' | '<' | '<=' | '>' | '>=') Type;
+	//	'if' ('!' EString | EString | Type EqualVariable Type | EString 'not'? 'exists')* ('elseif' ('!' EString | EString |
+	//	Type EqualVariable Type))*
+	//	'else'?;
 	public IfElements getIfAccess() {
 		return pIf;
 	}
@@ -671,7 +1009,8 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	
 	//For:
 	//	{For}
-	//	'for(' ')';
+	//	'for' '(' (EString '=' INT ';' EString EqualVariable Type ';' EString ('++' | '--' | '+' INT | '-' INT) | EString ':'
+	//	EString | 'all' EString | 'interval' INT 'to' INT 'in' EString) ')';
 	public ForElements getForAccess() {
 		return pFor;
 	}
@@ -681,7 +1020,8 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	}
 	
 	//While:
-	//	{While};
+	//	{While}
+	//	'while' ('true' | '!'? EString);
 	public WhileElements getWhileAccess() {
 		return pWhile;
 	}
@@ -700,6 +1040,16 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		return getParameterAccess().getRule();
 	}
 	
+	//Stop:
+	//	{Stop} ('return' Type | 'stop' | 'break' | 'continue');
+	public StopElements getStopAccess() {
+		return pStop;
+	}
+	
+	public ParserRule getStopRule() {
+		return getStopAccess().getRule();
+	}
+	
 	//Type:
 	//	EString | DOUBLE | INT;
 	public TypeElements getTypeAccess() {
@@ -708,6 +1058,16 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	
 	public ParserRule getTypeRule() {
 		return getTypeAccess().getRule();
+	}
+	
+	//EqualVariable:
+	//	'==' | '<' | '<=' | '>' | '>=' | '!=';
+	public EqualVariableElements getEqualVariableAccess() {
+		return pEqualVariable;
+	}
+	
+	public ParserRule getEqualVariableRule() {
+		return getEqualVariableAccess().getRule();
 	}
 	
 	//enum VisibilityKind:

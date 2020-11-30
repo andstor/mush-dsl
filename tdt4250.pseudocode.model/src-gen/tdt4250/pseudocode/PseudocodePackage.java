@@ -911,6 +911,34 @@ public interface PseudocodePackage extends EPackage {
 	int VARIABLE_OPERATION_COUNT = STATEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.StopImpl <em>Stop</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.StopImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getStop()
+	 * @generated
+	 */
+	int STOP = 16;
+
+	/**
+	 * The number of structural features of the '<em>Stop</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STOP_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Stop</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STOP_OPERATION_COUNT = STATEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link tdt4250.pseudocode.VisibilityKind <em>Visibility Kind</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -918,7 +946,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getVisibilityKind()
 	 * @generated
 	 */
-	int VISIBILITY_KIND = 16;
+	int VISIBILITY_KIND = 17;
 
 	/**
 	 * Returns the meta object for class '{@link tdt4250.pseudocode.PseudoType <em>Pseudo Type</em>}'.
@@ -1246,6 +1274,16 @@ public interface PseudocodePackage extends EPackage {
 	EReference getVariable_Expressions();
 
 	/**
+	 * Returns the meta object for class '{@link tdt4250.pseudocode.Stop <em>Stop</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Stop</em>'.
+	 * @see tdt4250.pseudocode.Stop
+	 * @generated
+	 */
+	EClass getStop();
+
+	/**
 	 * Returns the meta object for enum '{@link tdt4250.pseudocode.VisibilityKind <em>Visibility Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1557,6 +1595,16 @@ public interface PseudocodePackage extends EPackage {
 		 * @generated
 		 */
 		EReference VARIABLE__EXPRESSIONS = eINSTANCE.getVariable_Expressions();
+
+		/**
+		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.StopImpl <em>Stop</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see tdt4250.pseudocode.impl.StopImpl
+		 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getStop()
+		 * @generated
+		 */
+		EClass STOP = eINSTANCE.getStop();
 
 		/**
 		 * The meta object literal for the '{@link tdt4250.pseudocode.VisibilityKind <em>Visibility Kind</em>}' enum.
