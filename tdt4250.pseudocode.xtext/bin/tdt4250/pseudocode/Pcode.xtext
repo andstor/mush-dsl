@@ -10,6 +10,7 @@ PseudoClass returns PseudoClass:
 	(members+=Constructor)*
 	//('\n' + ('\n')*)
 	(members+=Method)*
+	'end_class'
 ;
 
 
@@ -30,7 +31,8 @@ Method returns Method:
 	(parameters+=Parameter ("," parameters+=Parameter)*)*		
 	')'
 	//('\n' ('\n')*)
-	body=Body	
+	body=Body
+	'end_method'	
 ;
 
 Body returns Body:
@@ -42,7 +44,7 @@ Body returns Body:
 
 Variable returns Variable:
 	{Variable}
-	EString '=' Type
+	(EString '=' Type)
 ;
 
 Expression returns Expression:
