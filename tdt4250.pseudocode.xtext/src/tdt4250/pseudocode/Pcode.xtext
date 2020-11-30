@@ -14,14 +14,13 @@ PseudoClass returns PseudoClass:
 
 
 Member returns Member:
- PseudoClass  | Field | Method | Constructor;
+ PseudoClass | Method | Constructor ;
 
 Constructor returns Constructor:
 	{Constructor}
 	name='('
 	(parameters+=Parameter ("," parameters+=Parameter)*)*	
 	')'
-	
 ;
 
 Method returns Method:
@@ -31,29 +30,38 @@ Method returns Method:
 		(parameters+=Parameter ("," parameters+=Parameter)*)*		
 	')'
 	('\n')*
-			(parameters+=MethodBody (('\n')* parameters+=MethodBody)*)*
+			body=Body
 	('return' Type )*	
 ;
 
-MethodBody returns Parameter:
-	{Parameter}
-	(Equals|If)
+Body returns Body:
+	{Body}
+	statements += (Variable|If|For|While)*
 ;
 
-Equals:
+Variable returns Variable:
+	{Variable}
 	EString '=' Type
 ;
 
-If:
+Expression returns Expression:
+	{Expression}
+;
+
+If returns If:
+	{If}
 	'if' Type ('==' |'<' |'<=' | '>' | '>=') Type
 ;
-For:
+For returns For:
+	{For}
 	'for(' ')'
 ;
 
-Field returns Field:
-	{Field}
+While returns While:
+	{While}
 ;
+
+
 Parameter returns Parameter: 
 	{Parameter}
 	name=EString

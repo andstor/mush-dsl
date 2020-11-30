@@ -104,15 +104,6 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case PseudocodePackage.FIELD: {
-			Field field = (Field) theEObject;
-			T result = caseField(field);
-			if (result == null)
-				result = caseMember(field);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
 		case PseudocodePackage.OPERATION: {
 			Operation operation = (Operation) theEObject;
 			T result = caseOperation(operation);
@@ -168,6 +159,49 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 		case PseudocodePackage.PSEUDO_PACKAGE: {
 			PseudoPackage pseudoPackage = (PseudoPackage) theEObject;
 			T result = casePseudoPackage(pseudoPackage);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PseudocodePackage.BODY: {
+			Body body = (Body) theEObject;
+			T result = caseBody(body);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PseudocodePackage.FOR: {
+			For for_ = (For) theEObject;
+			T result = caseFor(for_);
+			if (result == null)
+				result = caseStatement(for_);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PseudocodePackage.IF: {
+			If if_ = (If) theEObject;
+			T result = caseIf(if_);
+			if (result == null)
+				result = caseStatement(if_);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PseudocodePackage.WHILE: {
+			While while_ = (While) theEObject;
+			T result = caseWhile(while_);
+			if (result == null)
+				result = caseStatement(while_);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PseudocodePackage.VARIABLE: {
+			Variable variable = (Variable) theEObject;
+			T result = caseVariable(variable);
+			if (result == null)
+				result = caseStatement(variable);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -234,21 +268,6 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseMember(Member object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Field</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Field</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseField(Field object) {
 		return null;
 	}
 
@@ -354,6 +373,81 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePseudoPackage(PseudoPackage object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Body</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Body</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBody(Body object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>For</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>For</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFor(For object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>If</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>If</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIf(If object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>While</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>While</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWhile(While object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Variable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseVariable(Variable object) {
 		return null;
 	}
 

@@ -75,28 +75,24 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.Member");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cPseudoClassParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cFieldParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cMethodParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cConstructorParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cMethodParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cConstructorParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//Member:
-		//	PseudoClass | Field | Method | Constructor;
+		//	PseudoClass | Method | Constructor;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//PseudoClass | Field | Method | Constructor
+		//PseudoClass | Method | Constructor
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//PseudoClass
 		public RuleCall getPseudoClassParserRuleCall_0() { return cPseudoClassParserRuleCall_0; }
 		
-		//Field
-		public RuleCall getFieldParserRuleCall_1() { return cFieldParserRuleCall_1; }
-		
 		//Method
-		public RuleCall getMethodParserRuleCall_2() { return cMethodParserRuleCall_2; }
+		public RuleCall getMethodParserRuleCall_1() { return cMethodParserRuleCall_1; }
 		
 		//Constructor
-		public RuleCall getConstructorParserRuleCall_3() { return cConstructorParserRuleCall_3; }
+		public RuleCall getConstructorParserRuleCall_2() { return cConstructorParserRuleCall_2; }
 	}
 	public class ConstructorElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.Constructor");
@@ -170,29 +166,21 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final RuleCall cParametersParameterParserRuleCall_3_1_1_0 = (RuleCall)cParametersAssignment_3_1_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Keyword cLineFeedKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
-		private final Assignment cParametersAssignment_6_0 = (Assignment)cGroup_6.eContents().get(0);
-		private final RuleCall cParametersMethodBodyParserRuleCall_6_0_0 = (RuleCall)cParametersAssignment_6_0.eContents().get(0);
-		private final Group cGroup_6_1 = (Group)cGroup_6.eContents().get(1);
-		private final Keyword cLineFeedKeyword_6_1_0 = (Keyword)cGroup_6_1.eContents().get(0);
-		private final Assignment cParametersAssignment_6_1_1 = (Assignment)cGroup_6_1.eContents().get(1);
-		private final RuleCall cParametersMethodBodyParserRuleCall_6_1_1_0 = (RuleCall)cParametersAssignment_6_1_1.eContents().get(0);
+		private final Assignment cBodyAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cBodyBodyParserRuleCall_6_0 = (RuleCall)cBodyAssignment_6.eContents().get(0);
 		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
 		private final Keyword cReturnKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
-		private final Alternatives cAlternatives_7_1 = (Alternatives)cGroup_7.eContents().get(1);
-		private final RuleCall cEStringParserRuleCall_7_1_0 = (RuleCall)cAlternatives_7_1.eContents().get(0);
-		private final RuleCall cDOUBLETerminalRuleCall_7_1_1 = (RuleCall)cAlternatives_7_1.eContents().get(1);
-		private final RuleCall cINTTerminalRuleCall_7_1_2 = (RuleCall)cAlternatives_7_1.eContents().get(2);
+		private final RuleCall cTypeParserRuleCall_7_1 = (RuleCall)cGroup_7.eContents().get(1);
 		
 		//Method:
 		//	{Method} name=EString
 		//	'(' (parameters+=Parameter ("," parameters+=Parameter)*)*
 		//	')'
-		//	'\n'* (parameters+=MethodBody ('\n'* parameters+=MethodBody)*)* ('return' (EString | DOUBLE | INT))*;
+		//	'\n'*
+		//	body=Body ('return' Type)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Method} name=EString '(' (parameters+=Parameter ("," parameters+=Parameter)*)* ')' '\n'* (parameters+=MethodBody ('\n'*
-		//parameters+=MethodBody)*)* ('return' (EString | DOUBLE | INT))*
+		//{Method} name=EString '(' (parameters+=Parameter ("," parameters+=Parameter)*)* ')' '\n'* body=Body ('return' Type)*
 		public Group getGroup() { return cGroup; }
 		
 		//{Method}
@@ -234,183 +222,184 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//'\n'*
 		public Keyword getLineFeedKeyword_5() { return cLineFeedKeyword_5; }
 		
-		//(parameters+=MethodBody ('\n'* parameters+=MethodBody)*)*
-		public Group getGroup_6() { return cGroup_6; }
+		//body=Body
+		public Assignment getBodyAssignment_6() { return cBodyAssignment_6; }
 		
-		//parameters+=MethodBody
-		public Assignment getParametersAssignment_6_0() { return cParametersAssignment_6_0; }
+		//Body
+		public RuleCall getBodyBodyParserRuleCall_6_0() { return cBodyBodyParserRuleCall_6_0; }
 		
-		//MethodBody
-		public RuleCall getParametersMethodBodyParserRuleCall_6_0_0() { return cParametersMethodBodyParserRuleCall_6_0_0; }
-		
-		//('\n'* parameters+=MethodBody)*
-		public Group getGroup_6_1() { return cGroup_6_1; }
-		
-		//'\n'*
-		public Keyword getLineFeedKeyword_6_1_0() { return cLineFeedKeyword_6_1_0; }
-		
-		//parameters+=MethodBody
-		public Assignment getParametersAssignment_6_1_1() { return cParametersAssignment_6_1_1; }
-		
-		//MethodBody
-		public RuleCall getParametersMethodBodyParserRuleCall_6_1_1_0() { return cParametersMethodBodyParserRuleCall_6_1_1_0; }
-		
-		//('return' (EString | DOUBLE | INT))*
+		//('return' Type)*
 		public Group getGroup_7() { return cGroup_7; }
 		
 		//'return'
 		public Keyword getReturnKeyword_7_0() { return cReturnKeyword_7_0; }
 		
-		//(EString | DOUBLE | INT)
-		public Alternatives getAlternatives_7_1() { return cAlternatives_7_1; }
-		
-		//EString
-		public RuleCall getEStringParserRuleCall_7_1_0() { return cEStringParserRuleCall_7_1_0; }
-		
-		//DOUBLE
-		public RuleCall getDOUBLETerminalRuleCall_7_1_1() { return cDOUBLETerminalRuleCall_7_1_1; }
-		
-		//INT
-		public RuleCall getINTTerminalRuleCall_7_1_2() { return cINTTerminalRuleCall_7_1_2; }
+		//Type
+		public RuleCall getTypeParserRuleCall_7_1() { return cTypeParserRuleCall_7_1; }
 	}
-	public class MethodBodyElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.MethodBody");
+	public class BodyElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.Body");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cParameterAction_0 = (Action)cGroup.eContents().get(0);
-		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final RuleCall cEqualsParserRuleCall_1_0 = (RuleCall)cAlternatives_1.eContents().get(0);
-		private final RuleCall cIfParserRuleCall_1_1 = (RuleCall)cAlternatives_1.eContents().get(1);
+		private final Action cBodyAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cStatementsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Alternatives cStatementsAlternatives_1_0 = (Alternatives)cStatementsAssignment_1.eContents().get(0);
+		private final RuleCall cStatementsVariableParserRuleCall_1_0_0 = (RuleCall)cStatementsAlternatives_1_0.eContents().get(0);
+		private final RuleCall cStatementsIfParserRuleCall_1_0_1 = (RuleCall)cStatementsAlternatives_1_0.eContents().get(1);
+		private final RuleCall cStatementsForParserRuleCall_1_0_2 = (RuleCall)cStatementsAlternatives_1_0.eContents().get(2);
+		private final RuleCall cStatementsWhileParserRuleCall_1_0_3 = (RuleCall)cStatementsAlternatives_1_0.eContents().get(3);
 		
-		//MethodBody Parameter:
-		//	{Parameter} (Equals | If);
+		//Body:
+		//	{Body} statements+=(Variable | If | For | While)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Parameter} (Equals | If)
+		//{Body} statements+=(Variable | If | For | While)*
 		public Group getGroup() { return cGroup; }
 		
-		//{Parameter}
-		public Action getParameterAction_0() { return cParameterAction_0; }
+		//{Body}
+		public Action getBodyAction_0() { return cBodyAction_0; }
 		
-		//(Equals | If)
-		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		//statements+=(Variable | If | For | While)*
+		public Assignment getStatementsAssignment_1() { return cStatementsAssignment_1; }
 		
-		//Equals
-		public RuleCall getEqualsParserRuleCall_1_0() { return cEqualsParserRuleCall_1_0; }
+		//(Variable | If | For | While)
+		public Alternatives getStatementsAlternatives_1_0() { return cStatementsAlternatives_1_0; }
+		
+		//Variable
+		public RuleCall getStatementsVariableParserRuleCall_1_0_0() { return cStatementsVariableParserRuleCall_1_0_0; }
 		
 		//If
-		public RuleCall getIfParserRuleCall_1_1() { return cIfParserRuleCall_1_1; }
+		public RuleCall getStatementsIfParserRuleCall_1_0_1() { return cStatementsIfParserRuleCall_1_0_1; }
+		
+		//For
+		public RuleCall getStatementsForParserRuleCall_1_0_2() { return cStatementsForParserRuleCall_1_0_2; }
+		
+		//While
+		public RuleCall getStatementsWhileParserRuleCall_1_0_3() { return cStatementsWhileParserRuleCall_1_0_3; }
 	}
-	public class EqualsElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.Equals");
+	public class VariableElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.Variable");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cEStringParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Keyword cEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
-		private final RuleCall cEStringParserRuleCall_2_0 = (RuleCall)cAlternatives_2.eContents().get(0);
-		private final RuleCall cDOUBLETerminalRuleCall_2_1 = (RuleCall)cAlternatives_2.eContents().get(1);
-		private final RuleCall cINTTerminalRuleCall_2_2 = (RuleCall)cAlternatives_2.eContents().get(2);
-		
-		//Equals:
-		//	EString '=' (EString | DOUBLE | INT);
-		@Override public ParserRule getRule() { return rule; }
-		
-		//EString '=' (EString | DOUBLE | INT)
-		public Group getGroup() { return cGroup; }
-		
-		//EString
-		public RuleCall getEStringParserRuleCall_0() { return cEStringParserRuleCall_0; }
-		
-		//'='
-		public Keyword getEqualsSignKeyword_1() { return cEqualsSignKeyword_1; }
-		
-		//(EString | DOUBLE | INT)
-		public Alternatives getAlternatives_2() { return cAlternatives_2; }
-		
-		//EString
-		public RuleCall getEStringParserRuleCall_2_0() { return cEStringParserRuleCall_2_0; }
-		
-		//DOUBLE
-		public RuleCall getDOUBLETerminalRuleCall_2_1() { return cDOUBLETerminalRuleCall_2_1; }
-		
-		//INT
-		public RuleCall getINTTerminalRuleCall_2_2() { return cINTTerminalRuleCall_2_2; }
-	}
-	public class IfElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.If");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cIfKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final RuleCall cTypeParserRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
-		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
-		private final Keyword cEqualsSignEqualsSignKeyword_2_0 = (Keyword)cAlternatives_2.eContents().get(0);
-		private final Keyword cLessThanSignKeyword_2_1 = (Keyword)cAlternatives_2.eContents().get(1);
-		private final Keyword cLessThanSignEqualsSignKeyword_2_2 = (Keyword)cAlternatives_2.eContents().get(2);
-		private final Keyword cGreaterThanSignKeyword_2_3 = (Keyword)cAlternatives_2.eContents().get(3);
-		private final Keyword cGreaterThanSignEqualsSignKeyword_2_4 = (Keyword)cAlternatives_2.eContents().get(4);
+		private final Action cVariableAction_0 = (Action)cGroup.eContents().get(0);
+		private final RuleCall cEStringParserRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cEqualsSignKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final RuleCall cTypeParserRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
 		
-		//If:
-		//	'if' Type ('==' | '<' | '<=' | '>' | '>=') Type;
+		//Variable:
+		//	{Variable} EString '=' Type;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'if' Type ('==' | '<' | '<=' | '>' | '>=') Type
+		//{Variable} EString '=' Type
 		public Group getGroup() { return cGroup; }
 		
-		//'if'
-		public Keyword getIfKeyword_0() { return cIfKeyword_0; }
+		//{Variable}
+		public Action getVariableAction_0() { return cVariableAction_0; }
 		
-		//Type
-		public RuleCall getTypeParserRuleCall_1() { return cTypeParserRuleCall_1; }
+		//EString
+		public RuleCall getEStringParserRuleCall_1() { return cEStringParserRuleCall_1; }
 		
-		//('==' | '<' | '<=' | '>' | '>=')
-		public Alternatives getAlternatives_2() { return cAlternatives_2; }
-		
-		//'=='
-		public Keyword getEqualsSignEqualsSignKeyword_2_0() { return cEqualsSignEqualsSignKeyword_2_0; }
-		
-		//'<'
-		public Keyword getLessThanSignKeyword_2_1() { return cLessThanSignKeyword_2_1; }
-		
-		//'<='
-		public Keyword getLessThanSignEqualsSignKeyword_2_2() { return cLessThanSignEqualsSignKeyword_2_2; }
-		
-		//'>'
-		public Keyword getGreaterThanSignKeyword_2_3() { return cGreaterThanSignKeyword_2_3; }
-		
-		//'>='
-		public Keyword getGreaterThanSignEqualsSignKeyword_2_4() { return cGreaterThanSignEqualsSignKeyword_2_4; }
+		//'='
+		public Keyword getEqualsSignKeyword_2() { return cEqualsSignKeyword_2; }
 		
 		//Type
 		public RuleCall getTypeParserRuleCall_3() { return cTypeParserRuleCall_3; }
 	}
+	public class ExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.Expression");
+		private final Action cExpressionAction = (Action)rule.eContents().get(1);
+		
+		//Expression:
+		//	{Expression};
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{Expression}
+		public Action getExpressionAction() { return cExpressionAction; }
+	}
+	public class IfElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.If");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cIfAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cIfKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final RuleCall cTypeParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
+		private final Keyword cEqualsSignEqualsSignKeyword_3_0 = (Keyword)cAlternatives_3.eContents().get(0);
+		private final Keyword cLessThanSignKeyword_3_1 = (Keyword)cAlternatives_3.eContents().get(1);
+		private final Keyword cLessThanSignEqualsSignKeyword_3_2 = (Keyword)cAlternatives_3.eContents().get(2);
+		private final Keyword cGreaterThanSignKeyword_3_3 = (Keyword)cAlternatives_3.eContents().get(3);
+		private final Keyword cGreaterThanSignEqualsSignKeyword_3_4 = (Keyword)cAlternatives_3.eContents().get(4);
+		private final RuleCall cTypeParserRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
+		
+		//If:
+		//	{If}
+		//	'if' Type ('==' | '<' | '<=' | '>' | '>=') Type;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{If} 'if' Type ('==' | '<' | '<=' | '>' | '>=') Type
+		public Group getGroup() { return cGroup; }
+		
+		//{If}
+		public Action getIfAction_0() { return cIfAction_0; }
+		
+		//'if'
+		public Keyword getIfKeyword_1() { return cIfKeyword_1; }
+		
+		//Type
+		public RuleCall getTypeParserRuleCall_2() { return cTypeParserRuleCall_2; }
+		
+		//('==' | '<' | '<=' | '>' | '>=')
+		public Alternatives getAlternatives_3() { return cAlternatives_3; }
+		
+		//'=='
+		public Keyword getEqualsSignEqualsSignKeyword_3_0() { return cEqualsSignEqualsSignKeyword_3_0; }
+		
+		//'<'
+		public Keyword getLessThanSignKeyword_3_1() { return cLessThanSignKeyword_3_1; }
+		
+		//'<='
+		public Keyword getLessThanSignEqualsSignKeyword_3_2() { return cLessThanSignEqualsSignKeyword_3_2; }
+		
+		//'>'
+		public Keyword getGreaterThanSignKeyword_3_3() { return cGreaterThanSignKeyword_3_3; }
+		
+		//'>='
+		public Keyword getGreaterThanSignEqualsSignKeyword_3_4() { return cGreaterThanSignEqualsSignKeyword_3_4; }
+		
+		//Type
+		public RuleCall getTypeParserRuleCall_4() { return cTypeParserRuleCall_4; }
+	}
 	public class ForElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.For");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cForKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Action cForAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cForKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//For:
+		//	{For}
 		//	'for(' ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'for(' ')'
+		//{For} 'for(' ')'
 		public Group getGroup() { return cGroup; }
 		
+		//{For}
+		public Action getForAction_0() { return cForAction_0; }
+		
 		//'for('
-		public Keyword getForKeyword_0() { return cForKeyword_0; }
+		public Keyword getForKeyword_1() { return cForKeyword_1; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_1() { return cRightParenthesisKeyword_1; }
+		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
 	}
-	public class FieldElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.Field");
-		private final Action cFieldAction = (Action)rule.eContents().get(1);
+	public class WhileElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.While");
+		private final Action cWhileAction = (Action)rule.eContents().get(1);
 		
-		//Field:
-		//	{Field};
+		//While:
+		//	{While};
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Field}
-		public Action getFieldAction() { return cFieldAction; }
+		//{While}
+		public Action getWhileAction() { return cWhileAction; }
 	}
 	public class ParameterElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.Parameter");
@@ -526,11 +515,12 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	private final MemberElements pMember;
 	private final ConstructorElements pConstructor;
 	private final MethodElements pMethod;
-	private final MethodBodyElements pMethodBody;
-	private final EqualsElements pEquals;
+	private final BodyElements pBody;
+	private final VariableElements pVariable;
+	private final ExpressionElements pExpression;
 	private final IfElements pIf;
 	private final ForElements pFor;
-	private final FieldElements pField;
+	private final WhileElements pWhile;
 	private final ParameterElements pParameter;
 	private final TypeElements pType;
 	private final VisibilityKindElements eVisibilityKind;
@@ -550,11 +540,12 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		this.pMember = new MemberElements();
 		this.pConstructor = new ConstructorElements();
 		this.pMethod = new MethodElements();
-		this.pMethodBody = new MethodBodyElements();
-		this.pEquals = new EqualsElements();
+		this.pBody = new BodyElements();
+		this.pVariable = new VariableElements();
+		this.pExpression = new ExpressionElements();
 		this.pIf = new IfElements();
 		this.pFor = new ForElements();
-		this.pField = new FieldElements();
+		this.pWhile = new WhileElements();
 		this.pParameter = new ParameterElements();
 		this.pType = new TypeElements();
 		this.eVisibilityKind = new VisibilityKindElements();
@@ -603,7 +594,7 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	}
 	
 	//Member:
-	//	PseudoClass | Field | Method | Constructor;
+	//	PseudoClass | Method | Constructor;
 	public MemberElements getMemberAccess() {
 		return pMember;
 	}
@@ -627,7 +618,8 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	//	{Method} name=EString
 	//	'(' (parameters+=Parameter ("," parameters+=Parameter)*)*
 	//	')'
-	//	'\n'* (parameters+=MethodBody ('\n'* parameters+=MethodBody)*)* ('return' (EString | DOUBLE | INT))*;
+	//	'\n'*
+	//	body=Body ('return' Type)*;
 	public MethodElements getMethodAccess() {
 		return pMethod;
 	}
@@ -636,27 +628,38 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		return getMethodAccess().getRule();
 	}
 	
-	//MethodBody Parameter:
-	//	{Parameter} (Equals | If);
-	public MethodBodyElements getMethodBodyAccess() {
-		return pMethodBody;
+	//Body:
+	//	{Body} statements+=(Variable | If | For | While)*;
+	public BodyElements getBodyAccess() {
+		return pBody;
 	}
 	
-	public ParserRule getMethodBodyRule() {
-		return getMethodBodyAccess().getRule();
+	public ParserRule getBodyRule() {
+		return getBodyAccess().getRule();
 	}
 	
-	//Equals:
-	//	EString '=' (EString | DOUBLE | INT);
-	public EqualsElements getEqualsAccess() {
-		return pEquals;
+	//Variable:
+	//	{Variable} EString '=' Type;
+	public VariableElements getVariableAccess() {
+		return pVariable;
 	}
 	
-	public ParserRule getEqualsRule() {
-		return getEqualsAccess().getRule();
+	public ParserRule getVariableRule() {
+		return getVariableAccess().getRule();
+	}
+	
+	//Expression:
+	//	{Expression};
+	public ExpressionElements getExpressionAccess() {
+		return pExpression;
+	}
+	
+	public ParserRule getExpressionRule() {
+		return getExpressionAccess().getRule();
 	}
 	
 	//If:
+	//	{If}
 	//	'if' Type ('==' | '<' | '<=' | '>' | '>=') Type;
 	public IfElements getIfAccess() {
 		return pIf;
@@ -667,6 +670,7 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	}
 	
 	//For:
+	//	{For}
 	//	'for(' ')';
 	public ForElements getForAccess() {
 		return pFor;
@@ -676,14 +680,14 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		return getForAccess().getRule();
 	}
 	
-	//Field:
-	//	{Field};
-	public FieldElements getFieldAccess() {
-		return pField;
+	//While:
+	//	{While};
+	public WhileElements getWhileAccess() {
+		return pWhile;
 	}
 	
-	public ParserRule getFieldRule() {
-		return getFieldAccess().getRule();
+	public ParserRule getWhileRule() {
+		return getWhileAccess().getRule();
 	}
 	
 	//Parameter:

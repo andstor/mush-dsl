@@ -27,12 +27,10 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Member/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Member/name"/>
     </genClasses>
-    <genClasses ecoreClass="pseudocode.ecore#//Field">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Field/initializer"/>
-    </genClasses>
     <genClasses ecoreClass="pseudocode.ecore#//Operation">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Operation/parameters"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Operation/exceptions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Operation/body"/>
     </genClasses>
     <genClasses image="false" ecoreClass="pseudocode.ecore#//Statement"/>
     <genClasses ecoreClass="pseudocode.ecore#//Expression"/>
@@ -45,6 +43,15 @@
     <genClasses ecoreClass="pseudocode.ecore#//PseudoPackage">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//PseudoPackage/types"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//PseudoPackage/name"/>
+    </genClasses>
+    <genClasses ecoreClass="pseudocode.ecore#//Body">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Body/statements"/>
+    </genClasses>
+    <genClasses ecoreClass="pseudocode.ecore#//For"/>
+    <genClasses ecoreClass="pseudocode.ecore#//If"/>
+    <genClasses ecoreClass="pseudocode.ecore#//While"/>
+    <genClasses ecoreClass="pseudocode.ecore#//Variable">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Variable/expressions"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

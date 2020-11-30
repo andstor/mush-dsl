@@ -15,6 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link tdt4250.pseudocode.Operation#getParameters <em>Parameters</em>}</li>
  *   <li>{@link tdt4250.pseudocode.Operation#getExceptions <em>Exceptions</em>}</li>
+ *   <li>{@link tdt4250.pseudocode.Operation#getBody <em>Body</em>}</li>
  * </ul>
  *
  * @see tdt4250.pseudocode.PseudocodePackage#getOperation()
@@ -55,5 +56,27 @@ public interface Operation extends Member {
 	 * @generated
 	 */
 	void setExceptions(PseudoType value);
+
+	/**
+	 * Returns the value of the '<em><b>Body</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Body</em>' containment reference.
+	 * @see #setBody(Body)
+	 * @see tdt4250.pseudocode.PseudocodePackage#getOperation_Body()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Body getBody();
+
+	/**
+	 * Sets the value of the '{@link tdt4250.pseudocode.Operation#getBody <em>Body</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Body</em>' containment reference.
+	 * @see #getBody()
+	 * @generated
+	 */
+	void setBody(Body value);
 
 } // Operation

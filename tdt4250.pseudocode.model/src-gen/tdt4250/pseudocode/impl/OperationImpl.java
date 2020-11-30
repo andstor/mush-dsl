@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import tdt4250.pseudocode.Body;
 import tdt4250.pseudocode.Operation;
 import tdt4250.pseudocode.Parameter;
 import tdt4250.pseudocode.PseudoType;
@@ -32,6 +33,7 @@ import tdt4250.pseudocode.PseudocodePackage;
  * <ul>
  *   <li>{@link tdt4250.pseudocode.impl.OperationImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link tdt4250.pseudocode.impl.OperationImpl#getExceptions <em>Exceptions</em>}</li>
+ *   <li>{@link tdt4250.pseudocode.impl.OperationImpl#getBody <em>Body</em>}</li>
  * </ul>
  *
  * @generated
@@ -56,6 +58,16 @@ public class OperationImpl extends MemberImpl implements Operation {
 	 * @ordered
 	 */
 	protected PseudoType exceptions;
+
+	/**
+	 * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBody()
+	 * @generated
+	 * @ordered
+	 */
+	protected Body body;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -138,10 +150,63 @@ public class OperationImpl extends MemberImpl implements Operation {
 	 * @generated
 	 */
 	@Override
+	public Body getBody() {
+		return body;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetBody(Body newBody, NotificationChain msgs) {
+		Body oldBody = body;
+		body = newBody;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					PseudocodePackage.OPERATION__BODY, oldBody, newBody);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setBody(Body newBody) {
+		if (newBody != body) {
+			NotificationChain msgs = null;
+			if (body != null)
+				msgs = ((InternalEObject) body).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - PseudocodePackage.OPERATION__BODY, null, msgs);
+			if (newBody != null)
+				msgs = ((InternalEObject) newBody).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - PseudocodePackage.OPERATION__BODY, null, msgs);
+			msgs = basicSetBody(newBody, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PseudocodePackage.OPERATION__BODY, newBody, newBody));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case PseudocodePackage.OPERATION__PARAMETERS:
 			return ((InternalEList<?>) getParameters()).basicRemove(otherEnd, msgs);
+		case PseudocodePackage.OPERATION__BODY:
+			return basicSetBody(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -160,6 +225,8 @@ public class OperationImpl extends MemberImpl implements Operation {
 			if (resolve)
 				return getExceptions();
 			return basicGetExceptions();
+		case PseudocodePackage.OPERATION__BODY:
+			return getBody();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -180,6 +247,9 @@ public class OperationImpl extends MemberImpl implements Operation {
 		case PseudocodePackage.OPERATION__EXCEPTIONS:
 			setExceptions((PseudoType) newValue);
 			return;
+		case PseudocodePackage.OPERATION__BODY:
+			setBody((Body) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -198,6 +268,9 @@ public class OperationImpl extends MemberImpl implements Operation {
 		case PseudocodePackage.OPERATION__EXCEPTIONS:
 			setExceptions((PseudoType) null);
 			return;
+		case PseudocodePackage.OPERATION__BODY:
+			setBody((Body) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -214,6 +287,8 @@ public class OperationImpl extends MemberImpl implements Operation {
 			return parameters != null && !parameters.isEmpty();
 		case PseudocodePackage.OPERATION__EXCEPTIONS:
 			return exceptions != null;
+		case PseudocodePackage.OPERATION__BODY:
+			return body != null;
 		}
 		return super.eIsSet(featureID);
 	}

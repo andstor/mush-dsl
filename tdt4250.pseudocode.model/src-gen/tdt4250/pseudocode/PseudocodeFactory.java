@@ -49,15 +49,6 @@ public interface PseudocodeFactory extends EFactory {
 	Member createMember();
 
 	/**
-	 * Returns a new object of class '<em>Field</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Field</em>'.
-	 * @generated
-	 */
-	Field createField();
-
-	/**
 	 * Returns a new object of class '<em>Operation</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -110,6 +101,51 @@ public interface PseudocodeFactory extends EFactory {
 	 * @generated
 	 */
 	PseudoPackage createPseudoPackage();
+
+	/**
+	 * Returns a new object of class '<em>Body</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Body</em>'.
+	 * @generated
+	 */
+	Body createBody();
+
+	/**
+	 * Returns a new object of class '<em>For</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>For</em>'.
+	 * @generated
+	 */
+	For createFor();
+
+	/**
+	 * Returns a new object of class '<em>If</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>If</em>'.
+	 * @generated
+	 */
+	If createIf();
+
+	/**
+	 * Returns a new object of class '<em>While</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>While</em>'.
+	 * @generated
+	 */
+	While createWhile();
+
+	/**
+	 * Returns a new object of class '<em>Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Variable</em>'.
+	 * @generated
+	 */
+	Variable createVariable();
 
 	/**
 	 * Returns the package supported by this factory.

@@ -14,11 +14,16 @@ import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
+import tdt4250.pseudocode.Body;
 import tdt4250.pseudocode.Constructor;
-import tdt4250.pseudocode.Field;
+import tdt4250.pseudocode.Expression;
+import tdt4250.pseudocode.For;
+import tdt4250.pseudocode.If;
 import tdt4250.pseudocode.Method;
 import tdt4250.pseudocode.PseudoClass;
 import tdt4250.pseudocode.PseudocodePackage;
+import tdt4250.pseudocode.Variable;
+import tdt4250.pseudocode.While;
 import tdt4250.pseudocode.services.PcodeGrammarAccess;
 
 @SuppressWarnings("all")
@@ -35,32 +40,52 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == PseudocodePackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case PseudocodePackage.BODY:
+				sequence_Body(context, (Body) semanticObject); 
+				return; 
 			case PseudocodePackage.CONSTRUCTOR:
 				sequence_Constructor(context, (Constructor) semanticObject); 
 				return; 
-			case PseudocodePackage.FIELD:
-				sequence_Field(context, (Field) semanticObject); 
+			case PseudocodePackage.EXPRESSION:
+				sequence_Expression(context, (Expression) semanticObject); 
+				return; 
+			case PseudocodePackage.FOR:
+				sequence_For(context, (For) semanticObject); 
+				return; 
+			case PseudocodePackage.IF:
+				sequence_If(context, (If) semanticObject); 
 				return; 
 			case PseudocodePackage.METHOD:
 				sequence_Method(context, (Method) semanticObject); 
 				return; 
 			case PseudocodePackage.PARAMETER:
-				if (rule == grammarAccess.getMethodBodyRule()) {
-					sequence_MethodBody(context, (tdt4250.pseudocode.Parameter) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getParameterRule()) {
-					sequence_Parameter(context, (tdt4250.pseudocode.Parameter) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_Parameter(context, (tdt4250.pseudocode.Parameter) semanticObject); 
+				return; 
 			case PseudocodePackage.PSEUDO_CLASS:
 				sequence_PseudoClass(context, (PseudoClass) semanticObject); 
+				return; 
+			case PseudocodePackage.VARIABLE:
+				sequence_Variable(context, (Variable) semanticObject); 
+				return; 
+			case PseudocodePackage.WHILE:
+				sequence_While(context, (While) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
+	
+	/**
+	 * Contexts:
+	 *     Body returns Body
+	 *
+	 * Constraint:
+	 *     (statements+=Variable | statements+=If | statements+=For | statements+=While)*
+	 */
+	protected void sequence_Body(ISerializationContext context, Body semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
 	
 	/**
 	 * Contexts:
@@ -77,25 +102,36 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     Member returns Field
-	 *     Field returns Field
+	 *     Expression returns Expression
 	 *
 	 * Constraint:
-	 *     {Field}
+	 *     {Expression}
 	 */
-	protected void sequence_Field(ISerializationContext context, Field semanticObject) {
+	protected void sequence_Expression(ISerializationContext context, Expression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     MethodBody returns Parameter
+	 *     For returns For
 	 *
 	 * Constraint:
-	 *     {Parameter}
+	 *     {For}
 	 */
-	protected void sequence_MethodBody(ISerializationContext context, tdt4250.pseudocode.Parameter semanticObject) {
+	protected void sequence_For(ISerializationContext context, For semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     If returns If
+	 *
+	 * Constraint:
+	 *     {If}
+	 */
+	protected void sequence_If(ISerializationContext context, If semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -106,7 +142,7 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Method returns Method
 	 *
 	 * Constraint:
-	 *     (name=EString (parameters+=Parameter parameters+=Parameter*)* (parameters+=MethodBody parameters+=MethodBody*)*)
+	 *     (name=EString (parameters+=Parameter parameters+=Parameter*)* body=Body)
 	 */
 	protected void sequence_Method(ISerializationContext context, Method semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -140,6 +176,30 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     (name=EString members+=Constructor* members+=Method*)
 	 */
 	protected void sequence_PseudoClass(ISerializationContext context, PseudoClass semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Variable returns Variable
+	 *
+	 * Constraint:
+	 *     {Variable}
+	 */
+	protected void sequence_Variable(ISerializationContext context, Variable semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     While returns While
+	 *
+	 * Constraint:
+	 *     {While}
+	 */
+	protected void sequence_While(ISerializationContext context, While semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

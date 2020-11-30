@@ -10,9 +10,11 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import tdt4250.pseudocode.Body;
 import tdt4250.pseudocode.Constructor;
 import tdt4250.pseudocode.Expression;
-import tdt4250.pseudocode.Field;
+import tdt4250.pseudocode.For;
+import tdt4250.pseudocode.If;
 import tdt4250.pseudocode.Member;
 import tdt4250.pseudocode.Method;
 import tdt4250.pseudocode.Operation;
@@ -24,7 +26,9 @@ import tdt4250.pseudocode.PseudoType;
 import tdt4250.pseudocode.PseudocodeFactory;
 import tdt4250.pseudocode.PseudocodePackage;
 import tdt4250.pseudocode.Statement;
+import tdt4250.pseudocode.Variable;
 import tdt4250.pseudocode.VisibilityKind;
+import tdt4250.pseudocode.While;
 
 /**
  * <!-- begin-user-doc -->
@@ -60,13 +64,6 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	private EClass memberEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass fieldEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -116,6 +113,41 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	private EClass pseudoPackageEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass bodyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass forEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass ifEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass whileEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass variableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -294,26 +326,6 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
-	public EClass getField() {
-		return fieldEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getField_Initializer() {
-		return (EReference) fieldEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getOperation() {
 		return operationEClass;
 	}
@@ -336,6 +348,16 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	@Override
 	public EReference getOperation_Exceptions() {
 		return (EReference) operationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getOperation_Body() {
+		return (EReference) operationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -444,6 +466,76 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
+	public EClass getBody() {
+		return bodyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getBody_Statements() {
+		return (EReference) bodyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getFor() {
+		return forEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getIf() {
+		return ifEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getWhile() {
+		return whileEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getVariable() {
+		return variableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getVariable_Expressions() {
+		return (EReference) variableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getVisibilityKind() {
 		return visibilityKindEEnum;
 	}
@@ -492,12 +584,10 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		createEReference(memberEClass, MEMBER__TYPE);
 		createEAttribute(memberEClass, MEMBER__NAME);
 
-		fieldEClass = createEClass(FIELD);
-		createEReference(fieldEClass, FIELD__INITIALIZER);
-
 		operationEClass = createEClass(OPERATION);
 		createEReference(operationEClass, OPERATION__PARAMETERS);
 		createEReference(operationEClass, OPERATION__EXCEPTIONS);
+		createEReference(operationEClass, OPERATION__BODY);
 
 		statementEClass = createEClass(STATEMENT);
 
@@ -514,6 +604,18 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		pseudoPackageEClass = createEClass(PSEUDO_PACKAGE);
 		createEReference(pseudoPackageEClass, PSEUDO_PACKAGE__TYPES);
 		createEAttribute(pseudoPackageEClass, PSEUDO_PACKAGE__NAME);
+
+		bodyEClass = createEClass(BODY);
+		createEReference(bodyEClass, BODY__STATEMENTS);
+
+		forEClass = createEClass(FOR);
+
+		ifEClass = createEClass(IF);
+
+		whileEClass = createEClass(WHILE);
+
+		variableEClass = createEClass(VARIABLE);
+		createEReference(variableEClass, VARIABLE__EXPRESSIONS);
 
 		// Create enums
 		visibilityKindEEnum = createEEnum(VISIBILITY_KIND);
@@ -551,10 +653,13 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		pseudoTypeEClass.getESuperTypes().add(this.getMember());
 		pseudoClassEClass.getESuperTypes().add(this.getPseudoType());
 		pseudoInterfaceEClass.getESuperTypes().add(this.getPseudoType());
-		fieldEClass.getESuperTypes().add(this.getMember());
 		operationEClass.getESuperTypes().add(this.getMember());
 		methodEClass.getESuperTypes().add(this.getOperation());
 		constructorEClass.getESuperTypes().add(this.getOperation());
+		forEClass.getESuperTypes().add(this.getStatement());
+		ifEClass.getESuperTypes().add(this.getStatement());
+		whileEClass.getESuperTypes().add(this.getStatement());
+		variableEClass.getESuperTypes().add(this.getStatement());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(pseudoTypeEClass, PseudoType.class, "PseudoType", IS_ABSTRACT, !IS_INTERFACE,
@@ -584,11 +689,6 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		initEAttribute(getMember_Name(), ecorePackage.getEString(), "name", null, 0, 1, Member.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(fieldEClass, Field.class, "Field", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getField_Initializer(), this.getExpression(), null, "initializer", null, 0, 1, Field.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOperation_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, Operation.class,
@@ -597,6 +697,9 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		initEReference(getOperation_Exceptions(), this.getPseudoType(), null, "exceptions", null, 0, 1, Operation.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOperation_Body(), this.getBody(), null, "body", null, 0, 1, Operation.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
 		initEClass(statementEClass, Statement.class, "Statement", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -624,6 +727,23 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPseudoPackage_Name(), ecorePackage.getEString(), "name", null, 0, 1, PseudoPackage.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(bodyEClass, Body.class, "Body", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBody_Statements(), this.getStatement(), null, "statements", null, 0, -1, Body.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(forEClass, For.class, "For", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(ifEClass, If.class, "If", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(whileEClass, While.class, "While", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getVariable_Expressions(), this.getExpression(), null, "expressions", null, 0, -1,
+				Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(visibilityKindEEnum, VisibilityKind.class, "VisibilityKind");

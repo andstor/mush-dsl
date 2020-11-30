@@ -63,8 +63,6 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 			return createPseudoInterface();
 		case PseudocodePackage.MEMBER:
 			return createMember();
-		case PseudocodePackage.FIELD:
-			return createField();
 		case PseudocodePackage.OPERATION:
 			return createOperation();
 		case PseudocodePackage.EXPRESSION:
@@ -77,6 +75,16 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 			return createConstructor();
 		case PseudocodePackage.PSEUDO_PACKAGE:
 			return createPseudoPackage();
+		case PseudocodePackage.BODY:
+			return createBody();
+		case PseudocodePackage.FOR:
+			return createFor();
+		case PseudocodePackage.IF:
+			return createIf();
+		case PseudocodePackage.WHILE:
+			return createWhile();
+		case PseudocodePackage.VARIABLE:
+			return createVariable();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -151,17 +159,6 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	 * @generated
 	 */
 	@Override
-	public Field createField() {
-		FieldImpl field = new FieldImpl();
-		return field;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Operation createOperation() {
 		OperationImpl operation = new OperationImpl();
 		return operation;
@@ -220,6 +217,61 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	public PseudoPackage createPseudoPackage() {
 		PseudoPackageImpl pseudoPackage = new PseudoPackageImpl();
 		return pseudoPackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Body createBody() {
+		BodyImpl body = new BodyImpl();
+		return body;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public For createFor() {
+		ForImpl for_ = new ForImpl();
+		return for_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public If createIf() {
+		IfImpl if_ = new IfImpl();
+		return if_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public While createWhile() {
+		WhileImpl while_ = new WhileImpl();
+		return while_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Variable createVariable() {
+		VariableImpl variable = new VariableImpl();
+		return variable;
 	}
 
 	/**

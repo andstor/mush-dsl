@@ -359,70 +359,6 @@ public interface PseudocodePackage extends EPackage {
 	int PSEUDO_INTERFACE_OPERATION_COUNT = PSEUDO_TYPE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.FieldImpl <em>Field</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.FieldImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getField()
-	 * @generated
-	 */
-	int FIELD = 4;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FIELD__VISIBILITY = MEMBER__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FIELD__TYPE = MEMBER__TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FIELD__NAME = MEMBER__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Initializer</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FIELD__INITIALIZER = MEMBER_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Field</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FIELD_FEATURE_COUNT = MEMBER_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Field</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FIELD_OPERATION_COUNT = MEMBER_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link tdt4250.pseudocode.impl.OperationImpl <em>Operation</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -430,7 +366,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getOperation()
 	 * @generated
 	 */
-	int OPERATION = 5;
+	int OPERATION = 4;
 
 	/**
 	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
@@ -478,13 +414,22 @@ public interface PseudocodePackage extends EPackage {
 	int OPERATION__EXCEPTIONS = MEMBER_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Body</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__BODY = MEMBER_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Operation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_FEATURE_COUNT = MEMBER_FEATURE_COUNT + 2;
+	int OPERATION_FEATURE_COUNT = MEMBER_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Operation</em>' class.
@@ -503,7 +448,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getStatement()
 	 * @generated
 	 */
-	int STATEMENT = 6;
+	int STATEMENT = 5;
 
 	/**
 	 * The number of structural features of the '<em>Statement</em>' class.
@@ -531,7 +476,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getExpression()
 	 * @generated
 	 */
-	int EXPRESSION = 7;
+	int EXPRESSION = 6;
 
 	/**
 	 * The number of structural features of the '<em>Expression</em>' class.
@@ -559,7 +504,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getParameter()
 	 * @generated
 	 */
-	int PARAMETER = 8;
+	int PARAMETER = 7;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -605,7 +550,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getMethod()
 	 * @generated
 	 */
-	int METHOD = 9;
+	int METHOD = 8;
 
 	/**
 	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
@@ -653,6 +598,15 @@ public interface PseudocodePackage extends EPackage {
 	int METHOD__EXCEPTIONS = OPERATION__EXCEPTIONS;
 
 	/**
+	 * The feature id for the '<em><b>Body</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METHOD__BODY = OPERATION__BODY;
+
+	/**
 	 * The number of structural features of the '<em>Method</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -678,7 +632,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getConstructor()
 	 * @generated
 	 */
-	int CONSTRUCTOR = 10;
+	int CONSTRUCTOR = 9;
 
 	/**
 	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
@@ -726,6 +680,15 @@ public interface PseudocodePackage extends EPackage {
 	int CONSTRUCTOR__EXCEPTIONS = OPERATION__EXCEPTIONS;
 
 	/**
+	 * The feature id for the '<em><b>Body</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRUCTOR__BODY = OPERATION__BODY;
+
+	/**
 	 * The number of structural features of the '<em>Constructor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -751,7 +714,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getPseudoPackage()
 	 * @generated
 	 */
-	int PSEUDO_PACKAGE = 11;
+	int PSEUDO_PACKAGE = 10;
 
 	/**
 	 * The feature id for the '<em><b>Types</b></em>' containment reference list.
@@ -790,6 +753,164 @@ public interface PseudocodePackage extends EPackage {
 	int PSEUDO_PACKAGE_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.BodyImpl <em>Body</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.BodyImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getBody()
+	 * @generated
+	 */
+	int BODY = 11;
+
+	/**
+	 * The feature id for the '<em><b>Statements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BODY__STATEMENTS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Body</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BODY_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Body</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BODY_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.ForImpl <em>For</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.ForImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getFor()
+	 * @generated
+	 */
+	int FOR = 12;
+
+	/**
+	 * The number of structural features of the '<em>For</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOR_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>For</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOR_OPERATION_COUNT = STATEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.IfImpl <em>If</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.IfImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getIf()
+	 * @generated
+	 */
+	int IF = 13;
+
+	/**
+	 * The number of structural features of the '<em>If</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IF_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>If</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IF_OPERATION_COUNT = STATEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.WhileImpl <em>While</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.WhileImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getWhile()
+	 * @generated
+	 */
+	int WHILE = 14;
+
+	/**
+	 * The number of structural features of the '<em>While</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHILE_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>While</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHILE_OPERATION_COUNT = STATEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.VariableImpl <em>Variable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.VariableImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getVariable()
+	 * @generated
+	 */
+	int VARIABLE = 15;
+
+	/**
+	 * The feature id for the '<em><b>Expressions</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE__EXPRESSIONS = STATEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_OPERATION_COUNT = STATEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link tdt4250.pseudocode.VisibilityKind <em>Visibility Kind</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -797,7 +918,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getVisibilityKind()
 	 * @generated
 	 */
-	int VISIBILITY_KIND = 12;
+	int VISIBILITY_KIND = 16;
 
 	/**
 	 * Returns the meta object for class '{@link tdt4250.pseudocode.PseudoType <em>Pseudo Type</em>}'.
@@ -906,27 +1027,6 @@ public interface PseudocodePackage extends EPackage {
 	EAttribute getMember_Name();
 
 	/**
-	 * Returns the meta object for class '{@link tdt4250.pseudocode.Field <em>Field</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Field</em>'.
-	 * @see tdt4250.pseudocode.Field
-	 * @generated
-	 */
-	EClass getField();
-
-	/**
-	 * Returns the meta object for the reference '{@link tdt4250.pseudocode.Field#getInitializer <em>Initializer</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Initializer</em>'.
-	 * @see tdt4250.pseudocode.Field#getInitializer()
-	 * @see #getField()
-	 * @generated
-	 */
-	EReference getField_Initializer();
-
-	/**
 	 * Returns the meta object for class '{@link tdt4250.pseudocode.Operation <em>Operation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -957,6 +1057,17 @@ public interface PseudocodePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getOperation_Exceptions();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link tdt4250.pseudocode.Operation#getBody <em>Body</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Body</em>'.
+	 * @see tdt4250.pseudocode.Operation#getBody()
+	 * @see #getOperation()
+	 * @generated
+	 */
+	EReference getOperation_Body();
 
 	/**
 	 * Returns the meta object for class '{@link tdt4250.pseudocode.Statement <em>Statement</em>}'.
@@ -1061,6 +1172,78 @@ public interface PseudocodePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPseudoPackage_Name();
+
+	/**
+	 * Returns the meta object for class '{@link tdt4250.pseudocode.Body <em>Body</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Body</em>'.
+	 * @see tdt4250.pseudocode.Body
+	 * @generated
+	 */
+	EClass getBody();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link tdt4250.pseudocode.Body#getStatements <em>Statements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Statements</em>'.
+	 * @see tdt4250.pseudocode.Body#getStatements()
+	 * @see #getBody()
+	 * @generated
+	 */
+	EReference getBody_Statements();
+
+	/**
+	 * Returns the meta object for class '{@link tdt4250.pseudocode.For <em>For</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>For</em>'.
+	 * @see tdt4250.pseudocode.For
+	 * @generated
+	 */
+	EClass getFor();
+
+	/**
+	 * Returns the meta object for class '{@link tdt4250.pseudocode.If <em>If</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>If</em>'.
+	 * @see tdt4250.pseudocode.If
+	 * @generated
+	 */
+	EClass getIf();
+
+	/**
+	 * Returns the meta object for class '{@link tdt4250.pseudocode.While <em>While</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>While</em>'.
+	 * @see tdt4250.pseudocode.While
+	 * @generated
+	 */
+	EClass getWhile();
+
+	/**
+	 * Returns the meta object for class '{@link tdt4250.pseudocode.Variable <em>Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Variable</em>'.
+	 * @see tdt4250.pseudocode.Variable
+	 * @generated
+	 */
+	EClass getVariable();
+
+	/**
+	 * Returns the meta object for the reference list '{@link tdt4250.pseudocode.Variable#getExpressions <em>Expressions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Expressions</em>'.
+	 * @see tdt4250.pseudocode.Variable#getExpressions()
+	 * @see #getVariable()
+	 * @generated
+	 */
+	EReference getVariable_Expressions();
 
 	/**
 	 * Returns the meta object for enum '{@link tdt4250.pseudocode.VisibilityKind <em>Visibility Kind</em>}'.
@@ -1184,24 +1367,6 @@ public interface PseudocodePackage extends EPackage {
 		EAttribute MEMBER__NAME = eINSTANCE.getMember_Name();
 
 		/**
-		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.FieldImpl <em>Field</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see tdt4250.pseudocode.impl.FieldImpl
-		 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getField()
-		 * @generated
-		 */
-		EClass FIELD = eINSTANCE.getField();
-
-		/**
-		 * The meta object literal for the '<em><b>Initializer</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference FIELD__INITIALIZER = eINSTANCE.getField_Initializer();
-
-		/**
 		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.OperationImpl <em>Operation</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1226,6 +1391,14 @@ public interface PseudocodePackage extends EPackage {
 		 * @generated
 		 */
 		EReference OPERATION__EXCEPTIONS = eINSTANCE.getOperation_Exceptions();
+
+		/**
+		 * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATION__BODY = eINSTANCE.getOperation_Body();
 
 		/**
 		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.StatementImpl <em>Statement</em>}' class.
@@ -1318,6 +1491,72 @@ public interface PseudocodePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PSEUDO_PACKAGE__NAME = eINSTANCE.getPseudoPackage_Name();
+
+		/**
+		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.BodyImpl <em>Body</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see tdt4250.pseudocode.impl.BodyImpl
+		 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getBody()
+		 * @generated
+		 */
+		EClass BODY = eINSTANCE.getBody();
+
+		/**
+		 * The meta object literal for the '<em><b>Statements</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BODY__STATEMENTS = eINSTANCE.getBody_Statements();
+
+		/**
+		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.ForImpl <em>For</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see tdt4250.pseudocode.impl.ForImpl
+		 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getFor()
+		 * @generated
+		 */
+		EClass FOR = eINSTANCE.getFor();
+
+		/**
+		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.IfImpl <em>If</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see tdt4250.pseudocode.impl.IfImpl
+		 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getIf()
+		 * @generated
+		 */
+		EClass IF = eINSTANCE.getIf();
+
+		/**
+		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.WhileImpl <em>While</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see tdt4250.pseudocode.impl.WhileImpl
+		 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getWhile()
+		 * @generated
+		 */
+		EClass WHILE = eINSTANCE.getWhile();
+
+		/**
+		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.VariableImpl <em>Variable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see tdt4250.pseudocode.impl.VariableImpl
+		 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getVariable()
+		 * @generated
+		 */
+		EClass VARIABLE = eINSTANCE.getVariable();
+
+		/**
+		 * The meta object literal for the '<em><b>Expressions</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VARIABLE__EXPRESSIONS = eINSTANCE.getVariable_Expressions();
 
 		/**
 		 * The meta object literal for the '{@link tdt4250.pseudocode.VisibilityKind <em>Visibility Kind</em>}' enum.
