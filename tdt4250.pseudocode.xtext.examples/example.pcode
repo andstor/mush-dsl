@@ -1,5 +1,16 @@
 class Katt(navn, rase)
+method Hoyde(cm)
+	print "height: ",cm
+	noe = 1 + 1
+	return noe
+end_method
+
+
 method hfh()
-if noe exists
+	if noe exists
+		break
+end_method
+
+end_class
 
 

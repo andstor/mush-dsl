@@ -51,7 +51,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="While" eSuperTypes="#//Statement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//Statement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="expressions" upperBound="-1"
-        eType="#//Expression"/>
+        eType="#//Expression" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Stop" eSuperTypes="#//Statement"/>
 </ecore:EPackage>

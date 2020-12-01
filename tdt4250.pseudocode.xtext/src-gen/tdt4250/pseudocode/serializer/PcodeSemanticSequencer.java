@@ -201,7 +201,7 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Variable returns Variable
 	 *
 	 * Constraint:
-	 *     {Variable}
+	 *     expressions+=Expression
 	 */
 	protected void sequence_Variable(ISerializationContext context, Variable semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -22,13 +22,13 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Variable extends Statement {
 	/**
-	 * Returns the value of the '<em><b>Expressions</b></em>' reference list.
+	 * Returns the value of the '<em><b>Expressions</b></em>' containment reference list.
 	 * The list contents are of type {@link tdt4250.pseudocode.Expression}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Expressions</em>' reference list.
+	 * @return the value of the '<em>Expressions</em>' containment reference list.
 	 * @see tdt4250.pseudocode.PseudocodePackage#getVariable_Expressions()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Expression> getExpressions();

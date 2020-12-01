@@ -884,7 +884,7 @@ public interface PseudocodePackage extends EPackage {
 	int VARIABLE = 15;
 
 	/**
-	 * The feature id for the '<em><b>Expressions</b></em>' reference list.
+	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1263,10 +1263,10 @@ public interface PseudocodePackage extends EPackage {
 	EClass getVariable();
 
 	/**
-	 * Returns the meta object for the reference list '{@link tdt4250.pseudocode.Variable#getExpressions <em>Expressions</em>}'.
+	 * Returns the meta object for the containment reference list '{@link tdt4250.pseudocode.Variable#getExpressions <em>Expressions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Expressions</em>'.
+	 * @return the meta object for the containment reference list '<em>Expressions</em>'.
 	 * @see tdt4250.pseudocode.Variable#getExpressions()
 	 * @see #getVariable()
 	 * @generated
@@ -1589,7 +1589,7 @@ public interface PseudocodePackage extends EPackage {
 		EClass VARIABLE = eINSTANCE.getVariable();
 
 		/**
-		 * The meta object literal for the '<em><b>Expressions</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Expressions</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

@@ -44,22 +44,27 @@ Body returns Body:
 
 Variable returns Variable:
 	{Variable}
-	(EString '=' Type)
+	expressions+=Expression 
 ;
 
 Expression returns Expression:
 	{Expression}
+	(
+	('print' (('"'(Type)* '"')* (Type)(',' Type)*)*)
+	| (EString ('='|'+='|'-=') Type (MathSigns Type)*)
+	| (EString'_'(Type))
+	)
 ;
 
 If returns If:
 	{If}
-	'if' ('!'EString | EString| Type EqualVariable Type | EString ('not')? 'exists')*
-	('elseif' ('!'EString | EString| Type EqualVariable Type))*
+	'if' ('!'EString | EString| Type EqualVariable Type | EString ('not')? 'exists'| EString ('not')? 'knowing' EString)*
+	('else' 'if' ('!'EString | EString| Type EqualVariable Type))*
 	('else')?
 ;
 For returns For:
 	{For}
-	'for''(' (
+	(('for''(' (
 	//Original for loop
 	(EString '=' INT ';' EString EqualVariable Type';' EString ('++'|'--'|'+' INT|'-' INT)) 
 	//For Each	
@@ -68,12 +73,18 @@ For returns For:
 	|('all' EString)
 	//for a given interval in list
 	|('interval' INT 'to' INT 'in' EString)
-	)')'
+	)')')
+	//Instead of using for
+	| ('repeat' INT 'times')
+	)
+	
 ;
 
 While returns While:
 	{While}
-	'while' ('true'|('!')? EString)
+	('while' ('true'|('!')? EString)
+	| 'repeat' 'until' EString (('or'|'and') EString )* (('=='|'!=') EString)	
+	)
 ;
 
 
@@ -87,6 +98,8 @@ Stop returns Stop:
 	('return' Type |'stop'| 'break'| 'continue')
 ;
 
+
+
 Type:
 	(EString | DOUBLE | INT)
 ;
@@ -94,7 +107,9 @@ Type:
 EqualVariable:
 	('==' |'<' |'<=' | '>' | '>=' | '!=')
 ;
-
+MathSigns:
+	('+'|'-'|'*'|'/'|'%'|'total' 'division')
+;
 
 enum VisibilityKind returns VisibilityKind:
 				packagePrivate = 'packagePrivate' | private = 'private' | protected = 'protected' | public = 'public';

@@ -4,12 +4,14 @@ package tdt4250.pseudocode.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import tdt4250.pseudocode.Expression;
 import tdt4250.pseudocode.PseudocodePackage;
 import tdt4250.pseudocode.Variable;
@@ -29,7 +31,7 @@ import tdt4250.pseudocode.Variable;
  */
 public class VariableImpl extends StatementImpl implements Variable {
 	/**
-	 * The cached value of the '{@link #getExpressions() <em>Expressions</em>}' reference list.
+	 * The cached value of the '{@link #getExpressions() <em>Expressions</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getExpressions()
@@ -65,10 +67,24 @@ public class VariableImpl extends StatementImpl implements Variable {
 	@Override
 	public EList<Expression> getExpressions() {
 		if (expressions == null) {
-			expressions = new EObjectResolvingEList<Expression>(Expression.class, this,
+			expressions = new EObjectContainmentEList<Expression>(Expression.class, this,
 					PseudocodePackage.VARIABLE__EXPRESSIONS);
 		}
 		return expressions;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case PseudocodePackage.VARIABLE__EXPRESSIONS:
+			return ((InternalEList<?>) getExpressions()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
