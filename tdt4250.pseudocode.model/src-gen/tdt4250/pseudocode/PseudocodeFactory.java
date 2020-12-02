@@ -22,49 +22,13 @@ public interface PseudocodeFactory extends EFactory {
 	PseudocodeFactory eINSTANCE = tdt4250.pseudocode.impl.PseudocodeFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Pseudo Class</em>'.
+	 * Returns a new object of class '<em>Variable Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Pseudo Class</em>'.
+	 * @return a new object of class '<em>Variable Reference</em>'.
 	 * @generated
 	 */
-	PseudoClass createPseudoClass();
-
-	/**
-	 * Returns a new object of class '<em>Pseudo Interface</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Pseudo Interface</em>'.
-	 * @generated
-	 */
-	PseudoInterface createPseudoInterface();
-
-	/**
-	 * Returns a new object of class '<em>Member</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Member</em>'.
-	 * @generated
-	 */
-	Member createMember();
-
-	/**
-	 * Returns a new object of class '<em>Operation</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Operation</em>'.
-	 * @generated
-	 */
-	Operation createOperation();
-
-	/**
-	 * Returns a new object of class '<em>Expression</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Expression</em>'.
-	 * @generated
-	 */
-	Expression createExpression();
+	VariableReference createVariableReference();
 
 	/**
 	 * Returns a new object of class '<em>Parameter</em>'.
@@ -76,40 +40,13 @@ public interface PseudocodeFactory extends EFactory {
 	Parameter createParameter();
 
 	/**
-	 * Returns a new object of class '<em>Method</em>'.
+	 * Returns a new object of class '<em>Function</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Method</em>'.
+	 * @return a new object of class '<em>Function</em>'.
 	 * @generated
 	 */
-	Method createMethod();
-
-	/**
-	 * Returns a new object of class '<em>Constructor</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Constructor</em>'.
-	 * @generated
-	 */
-	Constructor createConstructor();
-
-	/**
-	 * Returns a new object of class '<em>Pseudo Package</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Pseudo Package</em>'.
-	 * @generated
-	 */
-	PseudoPackage createPseudoPackage();
-
-	/**
-	 * Returns a new object of class '<em>Body</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Body</em>'.
-	 * @generated
-	 */
-	Body createBody();
+	Function createFunction();
 
 	/**
 	 * Returns a new object of class '<em>For</em>'.
@@ -121,13 +58,13 @@ public interface PseudocodeFactory extends EFactory {
 	For createFor();
 
 	/**
-	 * Returns a new object of class '<em>If</em>'.
+	 * Returns a new object of class '<em>If Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>If</em>'.
+	 * @return a new object of class '<em>If Expression</em>'.
 	 * @generated
 	 */
-	If createIf();
+	IfExpression createIfExpression();
 
 	/**
 	 * Returns a new object of class '<em>While</em>'.
@@ -155,6 +92,150 @@ public interface PseudocodeFactory extends EFactory {
 	 * @generated
 	 */
 	Stop createStop();
+
+	/**
+	 * Returns a new object of class '<em>Primary</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Primary</em>'.
+	 * @generated
+	 */
+	Primary createPrimary();
+
+	/**
+	 * Returns a new object of class '<em>Function Call</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Function Call</em>'.
+	 * @generated
+	 */
+	FunctionCall createFunctionCall();
+
+	/**
+	 * Returns a new object of class '<em>Condition</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Condition</em>'.
+	 * @generated
+	 */
+	Condition createCondition();
+
+	/**
+	 * Returns a new object of class '<em>Boolean Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Boolean Literal</em>'.
+	 * @generated
+	 */
+	BooleanLiteral createBooleanLiteral();
+
+	/**
+	 * Returns a new object of class '<em>Boolean Test</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Boolean Test</em>'.
+	 * @generated
+	 */
+	BooleanTest createBooleanTest();
+
+	/**
+	 * Returns a new object of class '<em>And Or Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>And Or Expression</em>'.
+	 * @generated
+	 */
+	AndOrExpression createAndOrExpression();
+
+	/**
+	 * Returns a new object of class '<em>Comparison</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Comparison</em>'.
+	 * @generated
+	 */
+	Comparison createComparison();
+
+	/**
+	 * Returns a new object of class '<em>Equals</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Equals</em>'.
+	 * @generated
+	 */
+	Equals createEquals();
+
+	/**
+	 * Returns a new object of class '<em>Minus</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Minus</em>'.
+	 * @generated
+	 */
+	Minus createMinus();
+
+	/**
+	 * Returns a new object of class '<em>Multi Or Div</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Multi Or Div</em>'.
+	 * @generated
+	 */
+	MultiOrDiv createMultiOrDiv();
+
+	/**
+	 * Returns a new object of class '<em>Boolean Negation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Boolean Negation</em>'.
+	 * @generated
+	 */
+	BooleanNegation createBooleanNegation();
+
+	/**
+	 * Returns a new object of class '<em>Arithmetic Signed</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Arithmetic Signed</em>'.
+	 * @generated
+	 */
+	ArithmeticSigned createArithmeticSigned();
+
+	/**
+	 * Returns a new object of class '<em>Number Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Number Literal</em>'.
+	 * @generated
+	 */
+	NumberLiteral createNumberLiteral();
+
+	/**
+	 * Returns a new object of class '<em>String Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>String Literal</em>'.
+	 * @generated
+	 */
+	StringLiteral createStringLiteral();
+
+	/**
+	 * Returns a new object of class '<em>Plus</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Plus</em>'.
+	 * @generated
+	 */
+	Plus createPlus();
+
+	/**
+	 * Returns a new object of class '<em>Model</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Model</em>'.
+	 * @generated
+	 */
+	Model createModel();
 
 	/**
 	 * Returns the package supported by this factory.

@@ -5,13 +5,11 @@ package tdt4250.pseudocode.impl;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import tdt4250.pseudocode.Parameter;
-import tdt4250.pseudocode.PseudoType;
 import tdt4250.pseudocode.PseudocodePackage;
 
 /**
@@ -23,7 +21,6 @@ import tdt4250.pseudocode.PseudocodePackage;
  * </p>
  * <ul>
  *   <li>{@link tdt4250.pseudocode.impl.ParameterImpl#getName <em>Name</em>}</li>
- *   <li>{@link tdt4250.pseudocode.impl.ParameterImpl#getType <em>Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -48,16 +45,6 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getType()
-	 * @generated
-	 * @ordered
-	 */
-	protected PseudoType type;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -107,55 +94,10 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 	 * @generated
 	 */
 	@Override
-	public PseudoType getType() {
-		if (type != null && type.eIsProxy()) {
-			InternalEObject oldType = (InternalEObject) type;
-			type = (PseudoType) eResolveProxy(oldType);
-			if (type != oldType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PseudocodePackage.PARAMETER__TYPE,
-							oldType, type));
-			}
-		}
-		return type;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public PseudoType basicGetType() {
-		return type;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setType(PseudoType newType) {
-		PseudoType oldType = type;
-		type = newType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PseudocodePackage.PARAMETER__TYPE, oldType, type));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case PseudocodePackage.PARAMETER__NAME:
 			return getName();
-		case PseudocodePackage.PARAMETER__TYPE:
-			if (resolve)
-				return getType();
-			return basicGetType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -170,9 +112,6 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 		switch (featureID) {
 		case PseudocodePackage.PARAMETER__NAME:
 			setName((String) newValue);
-			return;
-		case PseudocodePackage.PARAMETER__TYPE:
-			setType((PseudoType) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -189,9 +128,6 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 		case PseudocodePackage.PARAMETER__NAME:
 			setName(NAME_EDEFAULT);
 			return;
-		case PseudocodePackage.PARAMETER__TYPE:
-			setType((PseudoType) null);
-			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -206,8 +142,6 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 		switch (featureID) {
 		case PseudocodePackage.PARAMETER__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-		case PseudocodePackage.PARAMETER__TYPE:
-			return type != null;
 		}
 		return super.eIsSet(featureID);
 	}

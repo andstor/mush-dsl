@@ -10,12 +10,14 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.extensions.InjectionExtension;
 import org.eclipse.xtext.testing.util.ParseHelper;
+import org.eclipse.xtext.util.EmfFormatter;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import tdt4250.pseudocode.PseudoClass;
+import tdt4250.pseudocode.Model;
 import tdt4250.pseudocode.tests.PcodeInjectorProvider;
 
 @ExtendWith(InjectionExtension.class)
@@ -23,16 +25,22 @@ import tdt4250.pseudocode.tests.PcodeInjectorProvider;
 @SuppressWarnings("all")
 public class PcodeParsingTest {
   @Inject
-  private ParseHelper<PseudoClass> parseHelper;
+  private ParseHelper<Model> parseHelper;
   
   @Test
   public void loadModel() {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("Hello Xtext!");
+      _builder.append("QUICKSORT(A,p,r)");
       _builder.newLine();
-      final PseudoClass result = this.parseHelper.parse(_builder);
-      Assertions.assertNotNull(result);
+      _builder.append("\t");
+      _builder.append("x=false");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("y=true||x");
+      _builder.newLine();
+      final Model result = this.parseHelper.parse(_builder);
+      InputOutput.<String>println(EmfFormatter.objToStr(result));
       final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
       boolean _isEmpty = errors.isEmpty();
       StringConcatenation _builder_1 = new StringConcatenation();

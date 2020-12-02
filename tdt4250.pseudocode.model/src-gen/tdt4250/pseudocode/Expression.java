@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  *
  * @see tdt4250.pseudocode.PseudocodePackage#getExpression()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface Expression extends EObject {

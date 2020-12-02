@@ -5,15 +5,11 @@ package tdt4250.pseudocode.formatting2;
 
 import com.google.inject.Inject;
 import java.util.Arrays;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.formatting2.AbstractFormatter2;
 import org.eclipse.xtext.formatting2.IFormattableDocument;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.xbase.lib.Extension;
-import tdt4250.pseudocode.Member;
-import tdt4250.pseudocode.PseudoClass;
-import tdt4250.pseudocode.PseudoInterface;
 import tdt4250.pseudocode.services.PcodeGrammarAccess;
 
 @SuppressWarnings("all")
@@ -22,35 +18,30 @@ public class PcodeFormatter extends AbstractFormatter2 {
   @Extension
   private PcodeGrammarAccess _pcodeGrammarAccess;
   
-  protected void _format(final PseudoClass pseudoClass, @Extension final IFormattableDocument document) {
-    EList<Member> _members = pseudoClass.getMembers();
-    for (final Member member : _members) {
-      document.<Member>format(member);
-    }
+  protected void _format(final /* PseudoClass */Object pseudoClass, @Extension final IFormattableDocument document) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nmembers cannot be resolved"
+      + "\nformat cannot be resolved");
   }
   
-  protected void _format(final PseudoInterface pseudoInterface, @Extension final IFormattableDocument document) {
-    EList<Member> _members = pseudoInterface.getMembers();
-    for (final Member member : _members) {
-      document.<Member>format(member);
-    }
+  protected void _format(final /* PseudoInterface */Object pseudoInterface, @Extension final IFormattableDocument document) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nmembers cannot be resolved"
+      + "\nformat cannot be resolved");
   }
   
   public void format(final Object pseudoClass, final IFormattableDocument document) {
     if (pseudoClass instanceof XtextResource) {
       _format((XtextResource)pseudoClass, document);
       return;
-    } else if (pseudoClass instanceof PseudoClass) {
-      _format((PseudoClass)pseudoClass, document);
-      return;
-    } else if (pseudoClass instanceof PseudoInterface) {
-      _format((PseudoInterface)pseudoClass, document);
-      return;
     } else if (pseudoClass instanceof EObject) {
       _format((EObject)pseudoClass, document);
       return;
     } else if (pseudoClass == null) {
       _format((Void)null, document);
+      return;
+    } else if (pseudoClass != null) {
+      _format(pseudoClass, document);
       return;
     } else if (pseudoClass != null) {
       _format(pseudoClass, document);

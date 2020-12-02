@@ -4,8 +4,6 @@ package tdt4250.pseudocode.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import tdt4250.pseudocode.PseudocodePackage;
 import tdt4250.pseudocode.Statement;
 
@@ -16,7 +14,7 @@ import tdt4250.pseudocode.Statement;
  *
  * @generated
  */
-public abstract class StatementImpl extends MinimalEObjectImpl.Container implements Statement {
+public abstract class StatementImpl extends FeatureImpl implements Statement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

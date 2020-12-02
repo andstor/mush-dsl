@@ -3,7 +3,6 @@
 package tdt4250.pseudocode.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -57,36 +56,54 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-		case PseudocodePackage.PSEUDO_CLASS:
-			return createPseudoClass();
-		case PseudocodePackage.PSEUDO_INTERFACE:
-			return createPseudoInterface();
-		case PseudocodePackage.MEMBER:
-			return createMember();
-		case PseudocodePackage.OPERATION:
-			return createOperation();
-		case PseudocodePackage.EXPRESSION:
-			return createExpression();
+		case PseudocodePackage.VARIABLE_REFERENCE:
+			return createVariableReference();
 		case PseudocodePackage.PARAMETER:
 			return createParameter();
-		case PseudocodePackage.METHOD:
-			return createMethod();
-		case PseudocodePackage.CONSTRUCTOR:
-			return createConstructor();
-		case PseudocodePackage.PSEUDO_PACKAGE:
-			return createPseudoPackage();
-		case PseudocodePackage.BODY:
-			return createBody();
+		case PseudocodePackage.FUNCTION:
+			return createFunction();
 		case PseudocodePackage.FOR:
 			return createFor();
-		case PseudocodePackage.IF:
-			return createIf();
+		case PseudocodePackage.IF_EXPRESSION:
+			return createIfExpression();
 		case PseudocodePackage.WHILE:
 			return createWhile();
 		case PseudocodePackage.VARIABLE:
 			return createVariable();
 		case PseudocodePackage.STOP:
 			return createStop();
+		case PseudocodePackage.PRIMARY:
+			return createPrimary();
+		case PseudocodePackage.FUNCTION_CALL:
+			return createFunctionCall();
+		case PseudocodePackage.CONDITION:
+			return createCondition();
+		case PseudocodePackage.BOOLEAN_LITERAL:
+			return createBooleanLiteral();
+		case PseudocodePackage.BOOLEAN_TEST:
+			return createBooleanTest();
+		case PseudocodePackage.AND_OR_EXPRESSION:
+			return createAndOrExpression();
+		case PseudocodePackage.COMPARISON:
+			return createComparison();
+		case PseudocodePackage.EQUALS:
+			return createEquals();
+		case PseudocodePackage.MINUS:
+			return createMinus();
+		case PseudocodePackage.MULTI_OR_DIV:
+			return createMultiOrDiv();
+		case PseudocodePackage.BOOLEAN_NEGATION:
+			return createBooleanNegation();
+		case PseudocodePackage.ARITHMETIC_SIGNED:
+			return createArithmeticSigned();
+		case PseudocodePackage.NUMBER_LITERAL:
+			return createNumberLiteral();
+		case PseudocodePackage.STRING_LITERAL:
+			return createStringLiteral();
+		case PseudocodePackage.PLUS:
+			return createPlus();
+		case PseudocodePackage.MODEL:
+			return createModel();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -98,83 +115,9 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	 * @generated
 	 */
 	@Override
-	public Object createFromString(EDataType eDataType, String initialValue) {
-		switch (eDataType.getClassifierID()) {
-		case PseudocodePackage.VISIBILITY_KIND:
-			return createVisibilityKindFromString(eDataType, initialValue);
-		default:
-			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String convertToString(EDataType eDataType, Object instanceValue) {
-		switch (eDataType.getClassifierID()) {
-		case PseudocodePackage.VISIBILITY_KIND:
-			return convertVisibilityKindToString(eDataType, instanceValue);
-		default:
-			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public PseudoClass createPseudoClass() {
-		PseudoClassImpl pseudoClass = new PseudoClassImpl();
-		return pseudoClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public PseudoInterface createPseudoInterface() {
-		PseudoInterfaceImpl pseudoInterface = new PseudoInterfaceImpl();
-		return pseudoInterface;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Member createMember() {
-		MemberImpl member = new MemberImpl();
-		return member;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Operation createOperation() {
-		OperationImpl operation = new OperationImpl();
-		return operation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Expression createExpression() {
-		ExpressionImpl expression = new ExpressionImpl();
-		return expression;
+	public VariableReference createVariableReference() {
+		VariableReferenceImpl variableReference = new VariableReferenceImpl();
+		return variableReference;
 	}
 
 	/**
@@ -194,42 +137,9 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	 * @generated
 	 */
 	@Override
-	public Method createMethod() {
-		MethodImpl method = new MethodImpl();
-		return method;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Constructor createConstructor() {
-		ConstructorImpl constructor = new ConstructorImpl();
-		return constructor;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public PseudoPackage createPseudoPackage() {
-		PseudoPackageImpl pseudoPackage = new PseudoPackageImpl();
-		return pseudoPackage;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Body createBody() {
-		BodyImpl body = new BodyImpl();
-		return body;
+	public Function createFunction() {
+		FunctionImpl function = new FunctionImpl();
+		return function;
 	}
 
 	/**
@@ -249,9 +159,9 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	 * @generated
 	 */
 	@Override
-	public If createIf() {
-		IfImpl if_ = new IfImpl();
-		return if_;
+	public IfExpression createIfExpression() {
+		IfExpressionImpl ifExpression = new IfExpressionImpl();
+		return ifExpression;
 	}
 
 	/**
@@ -292,12 +202,10 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public VisibilityKind createVisibilityKindFromString(EDataType eDataType, String initialValue) {
-		VisibilityKind result = VisibilityKind.get(initialValue);
-		if (result == null)
-			throw new IllegalArgumentException(
-					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
+	@Override
+	public Primary createPrimary() {
+		PrimaryImpl primary = new PrimaryImpl();
+		return primary;
 	}
 
 	/**
@@ -305,8 +213,164 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertVisibilityKindToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
+	@Override
+	public FunctionCall createFunctionCall() {
+		FunctionCallImpl functionCall = new FunctionCallImpl();
+		return functionCall;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Condition createCondition() {
+		ConditionImpl condition = new ConditionImpl();
+		return condition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public BooleanLiteral createBooleanLiteral() {
+		BooleanLiteralImpl booleanLiteral = new BooleanLiteralImpl();
+		return booleanLiteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public BooleanTest createBooleanTest() {
+		BooleanTestImpl booleanTest = new BooleanTestImpl();
+		return booleanTest;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public AndOrExpression createAndOrExpression() {
+		AndOrExpressionImpl andOrExpression = new AndOrExpressionImpl();
+		return andOrExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Comparison createComparison() {
+		ComparisonImpl comparison = new ComparisonImpl();
+		return comparison;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Equals createEquals() {
+		EqualsImpl equals = new EqualsImpl();
+		return equals;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Minus createMinus() {
+		MinusImpl minus = new MinusImpl();
+		return minus;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public MultiOrDiv createMultiOrDiv() {
+		MultiOrDivImpl multiOrDiv = new MultiOrDivImpl();
+		return multiOrDiv;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public BooleanNegation createBooleanNegation() {
+		BooleanNegationImpl booleanNegation = new BooleanNegationImpl();
+		return booleanNegation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ArithmeticSigned createArithmeticSigned() {
+		ArithmeticSignedImpl arithmeticSigned = new ArithmeticSignedImpl();
+		return arithmeticSigned;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NumberLiteral createNumberLiteral() {
+		NumberLiteralImpl numberLiteral = new NumberLiteralImpl();
+		return numberLiteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public StringLiteral createStringLiteral() {
+		StringLiteralImpl stringLiteral = new StringLiteralImpl();
+		return stringLiteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Plus createPlus() {
+		PlusImpl plus = new PlusImpl();
+		return plus;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Model createModel() {
+		ModelImpl model = new ModelImpl();
+		return model;
 	}
 
 	/**

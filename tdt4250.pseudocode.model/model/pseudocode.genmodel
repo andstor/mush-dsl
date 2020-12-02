@@ -9,50 +9,98 @@
   <foreignModel>pseudocode.ecore</foreignModel>
   <genPackages prefix="Pseudocode" basePackage="tdt4250" resource="XMI" disposableProviderFactory="true"
       ecorePackage="pseudocode.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="pseudocode.ecore#//VisibilityKind">
-      <genEnumLiterals ecoreEnumLiteral="pseudocode.ecore#//VisibilityKind/packagePrivate"/>
-      <genEnumLiterals ecoreEnumLiteral="pseudocode.ecore#//VisibilityKind/private"/>
-      <genEnumLiterals ecoreEnumLiteral="pseudocode.ecore#//VisibilityKind/protected"/>
-      <genEnumLiterals ecoreEnumLiteral="pseudocode.ecore#//VisibilityKind/public"/>
-    </genEnums>
-    <genClasses image="false" ecoreClass="pseudocode.ecore#//PseudoType">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//PseudoType/members"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pseudocode.ecore#//PseudoType/superTypes"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference pseudocode.ecore#//PseudoType/package"/>
-    </genClasses>
-    <genClasses ecoreClass="pseudocode.ecore#//PseudoClass"/>
-    <genClasses ecoreClass="pseudocode.ecore#//PseudoInterface"/>
-    <genClasses ecoreClass="pseudocode.ecore#//Member">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Member/visibility"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Member/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Member/name"/>
-    </genClasses>
-    <genClasses ecoreClass="pseudocode.ecore#//Operation">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Operation/parameters"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Operation/exceptions"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Operation/body"/>
-    </genClasses>
     <genClasses image="false" ecoreClass="pseudocode.ecore#//Statement"/>
+    <genClasses ecoreClass="pseudocode.ecore#//VariableReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pseudocode.ecore#//VariableReference/ref"/>
+    </genClasses>
     <genClasses ecoreClass="pseudocode.ecore#//Expression"/>
     <genClasses ecoreClass="pseudocode.ecore#//Parameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Parameter/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Parameter/type"/>
     </genClasses>
-    <genClasses ecoreClass="pseudocode.ecore#//Method"/>
-    <genClasses ecoreClass="pseudocode.ecore#//Constructor"/>
-    <genClasses ecoreClass="pseudocode.ecore#//PseudoPackage">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//PseudoPackage/types"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//PseudoPackage/name"/>
-    </genClasses>
-    <genClasses ecoreClass="pseudocode.ecore#//Body">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Body/statements"/>
+    <genClasses ecoreClass="pseudocode.ecore#//Function">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Function/features"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Function/parameters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Function/name"/>
     </genClasses>
     <genClasses ecoreClass="pseudocode.ecore#//For"/>
-    <genClasses ecoreClass="pseudocode.ecore#//If"/>
+    <genClasses ecoreClass="pseudocode.ecore#//IfExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//IfExpression/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//IfExpression/then"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//IfExpression/else"/>
+    </genClasses>
     <genClasses ecoreClass="pseudocode.ecore#//While"/>
     <genClasses ecoreClass="pseudocode.ecore#//Variable">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Variable/expressions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Variable/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Variable/value"/>
     </genClasses>
-    <genClasses ecoreClass="pseudocode.ecore#//Stop"/>
+    <genClasses ecoreClass="pseudocode.ecore#//Stop">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Stop/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Stop/type"/>
+    </genClasses>
+    <genClasses ecoreClass="pseudocode.ecore#//Primary"/>
+    <genClasses ecoreClass="pseudocode.ecore#//FunctionCall">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//FunctionCall/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//FunctionCall/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//FunctionCall/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//FunctionCall/right"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="pseudocode.ecore#//Feature"/>
+    <genClasses image="false" ecoreClass="pseudocode.ecore#//ArithmeticExpression"/>
+    <genClasses image="false" ecoreClass="pseudocode.ecore#//Literal"/>
+    <genClasses ecoreClass="pseudocode.ecore#//Condition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Condition/negation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Condition/booleanExpression"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="pseudocode.ecore#//BooleanExpression"/>
+    <genClasses ecoreClass="pseudocode.ecore#//BooleanLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//BooleanLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="pseudocode.ecore#//BooleanTest">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//BooleanTest/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//BooleanTest/right"/>
+    </genClasses>
+    <genClasses ecoreClass="pseudocode.ecore#//AndOrExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//AndOrExpression/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//AndOrExpression/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//AndOrExpression/right"/>
+    </genClasses>
+    <genClasses ecoreClass="pseudocode.ecore#//Comparison">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Comparison/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Comparison/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Comparison/right"/>
+    </genClasses>
+    <genClasses ecoreClass="pseudocode.ecore#//Equals">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Equals/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Equals/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Equals/right"/>
+    </genClasses>
+    <genClasses ecoreClass="pseudocode.ecore#//Minus">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Minus/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Minus/right"/>
+    </genClasses>
+    <genClasses ecoreClass="pseudocode.ecore#//MultiOrDiv">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//MultiOrDiv/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//MultiOrDiv/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//MultiOrDiv/right"/>
+    </genClasses>
+    <genClasses ecoreClass="pseudocode.ecore#//BooleanNegation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//BooleanNegation/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="pseudocode.ecore#//ArithmeticSigned">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//ArithmeticSigned/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="pseudocode.ecore#//NumberLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//NumberLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="pseudocode.ecore#//StringLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//StringLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="pseudocode.ecore#//Plus">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Plus/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Plus/right"/>
+    </genClasses>
+    <genClasses ecoreClass="pseudocode.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Model/functions"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

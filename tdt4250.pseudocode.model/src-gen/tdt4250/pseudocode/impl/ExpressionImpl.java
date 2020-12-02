@@ -16,7 +16,7 @@ import tdt4250.pseudocode.PseudocodePackage;
  *
  * @generated
  */
-public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expression {
+public abstract class ExpressionImpl extends MinimalEObjectImpl.Container implements Expression {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

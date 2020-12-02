@@ -13,4 +13,5 @@ Require-Bundle: tdt4250.pseudocode.xtext,
  org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: tdt4250.pseudocode.ide.contentassist.antlr.internal,
- tdt4250.pseudocode.ide.contentassist.antlr
+ tdt4250.pseudocode.ide.contentassist.antlr,
+ tdt4250.pseudocode.ide.contentassist.antlr.lexer

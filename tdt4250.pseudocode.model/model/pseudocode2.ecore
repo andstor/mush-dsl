@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pseudocode" nsURI="platform:/plugin/tdt4250.pseudocode.model/model/pseudocode.ecore"
+    nsPrefix="pseudocode">
+  <eClassifiers xsi:type="ecore:EClass" name="PseudoType" abstract="true" eSuperTypes="#//Member">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
+        eType="#//Member" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="superTypes" upperBound="-1"
+        eType="#//PseudoType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="package" eType="#//PseudoPackage"
+        eOpposite="#//PseudoPackage/types"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PseudoClass" eSuperTypes="#//PseudoType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PseudoInterface" eSuperTypes="#//PseudoType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Member">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="#//VisibilityKind"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//PseudoType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Operation" eSuperTypes="#//Member">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//Parameter" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exceptions" eType="#//PseudoType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="#//Body" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Statement" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Expression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Parameter">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//PseudoType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Method" eSuperTypes="#//Operation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Constructor" eSuperTypes="#//Operation"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="VisibilityKind">
+    <eLiterals name="packagePrivate"/>
+    <eLiterals name="private"/>
+    <eLiterals name="protected"/>
+    <eLiterals name="public"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PseudoPackage">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="types" upperBound="-1"
+        eType="#//PseudoType" containment="true" eOpposite="#//PseudoType/package"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Body">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"
+        eType="#//Statement" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="For" eSuperTypes="#//Statement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="If" eSuperTypes="#//Statement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="While" eSuperTypes="#//Statement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expressions" upperBound="-1"
+        eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Stop" eSuperTypes="#//Statement"/>
+</ecore:EPackage>

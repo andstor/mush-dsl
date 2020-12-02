@@ -67,33 +67,13 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 	 */
 	protected PseudocodeSwitch<Adapter> modelSwitch = new PseudocodeSwitch<Adapter>() {
 		@Override
-		public Adapter casePseudoType(PseudoType object) {
-			return createPseudoTypeAdapter();
-		}
-
-		@Override
-		public Adapter casePseudoClass(PseudoClass object) {
-			return createPseudoClassAdapter();
-		}
-
-		@Override
-		public Adapter casePseudoInterface(PseudoInterface object) {
-			return createPseudoInterfaceAdapter();
-		}
-
-		@Override
-		public Adapter caseMember(Member object) {
-			return createMemberAdapter();
-		}
-
-		@Override
-		public Adapter caseOperation(Operation object) {
-			return createOperationAdapter();
-		}
-
-		@Override
 		public Adapter caseStatement(Statement object) {
 			return createStatementAdapter();
+		}
+
+		@Override
+		public Adapter caseVariableReference(VariableReference object) {
+			return createVariableReferenceAdapter();
 		}
 
 		@Override
@@ -107,23 +87,8 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseMethod(Method object) {
-			return createMethodAdapter();
-		}
-
-		@Override
-		public Adapter caseConstructor(Constructor object) {
-			return createConstructorAdapter();
-		}
-
-		@Override
-		public Adapter casePseudoPackage(PseudoPackage object) {
-			return createPseudoPackageAdapter();
-		}
-
-		@Override
-		public Adapter caseBody(Body object) {
-			return createBodyAdapter();
+		public Adapter caseFunction(Function object) {
+			return createFunctionAdapter();
 		}
 
 		@Override
@@ -132,8 +97,8 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseIf(If object) {
-			return createIfAdapter();
+		public Adapter caseIfExpression(IfExpression object) {
+			return createIfExpressionAdapter();
 		}
 
 		@Override
@@ -149,6 +114,106 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseStop(Stop object) {
 			return createStopAdapter();
+		}
+
+		@Override
+		public Adapter casePrimary(Primary object) {
+			return createPrimaryAdapter();
+		}
+
+		@Override
+		public Adapter caseFunctionCall(FunctionCall object) {
+			return createFunctionCallAdapter();
+		}
+
+		@Override
+		public Adapter caseFeature(Feature object) {
+			return createFeatureAdapter();
+		}
+
+		@Override
+		public Adapter caseArithmeticExpression(ArithmeticExpression object) {
+			return createArithmeticExpressionAdapter();
+		}
+
+		@Override
+		public Adapter caseLiteral(Literal object) {
+			return createLiteralAdapter();
+		}
+
+		@Override
+		public Adapter caseCondition(Condition object) {
+			return createConditionAdapter();
+		}
+
+		@Override
+		public Adapter caseBooleanExpression(BooleanExpression object) {
+			return createBooleanExpressionAdapter();
+		}
+
+		@Override
+		public Adapter caseBooleanLiteral(BooleanLiteral object) {
+			return createBooleanLiteralAdapter();
+		}
+
+		@Override
+		public Adapter caseBooleanTest(BooleanTest object) {
+			return createBooleanTestAdapter();
+		}
+
+		@Override
+		public Adapter caseAndOrExpression(AndOrExpression object) {
+			return createAndOrExpressionAdapter();
+		}
+
+		@Override
+		public Adapter caseComparison(Comparison object) {
+			return createComparisonAdapter();
+		}
+
+		@Override
+		public Adapter caseEquals(Equals object) {
+			return createEqualsAdapter();
+		}
+
+		@Override
+		public Adapter caseMinus(Minus object) {
+			return createMinusAdapter();
+		}
+
+		@Override
+		public Adapter caseMultiOrDiv(MultiOrDiv object) {
+			return createMultiOrDivAdapter();
+		}
+
+		@Override
+		public Adapter caseBooleanNegation(BooleanNegation object) {
+			return createBooleanNegationAdapter();
+		}
+
+		@Override
+		public Adapter caseArithmeticSigned(ArithmeticSigned object) {
+			return createArithmeticSignedAdapter();
+		}
+
+		@Override
+		public Adapter caseNumberLiteral(NumberLiteral object) {
+			return createNumberLiteralAdapter();
+		}
+
+		@Override
+		public Adapter caseStringLiteral(StringLiteral object) {
+			return createStringLiteralAdapter();
+		}
+
+		@Override
+		public Adapter casePlus(Plus object) {
+			return createPlusAdapter();
+		}
+
+		@Override
+		public Adapter caseModel(Model object) {
+			return createModelAdapter();
 		}
 
 		@Override
@@ -171,76 +236,6 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.PseudoType <em>Pseudo Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.PseudoType
-	 * @generated
-	 */
-	public Adapter createPseudoTypeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.PseudoClass <em>Pseudo Class</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.PseudoClass
-	 * @generated
-	 */
-	public Adapter createPseudoClassAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.PseudoInterface <em>Pseudo Interface</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.PseudoInterface
-	 * @generated
-	 */
-	public Adapter createPseudoInterfaceAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Member <em>Member</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.Member
-	 * @generated
-	 */
-	public Adapter createMemberAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Operation <em>Operation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.Operation
-	 * @generated
-	 */
-	public Adapter createOperationAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Statement <em>Statement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -251,6 +246,20 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStatementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.VariableReference <em>Variable Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.VariableReference
+	 * @generated
+	 */
+	public Adapter createVariableReferenceAdapter() {
 		return null;
 	}
 
@@ -283,58 +292,16 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Method <em>Method</em>}'.
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Function <em>Function</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.Method
+	 * @see tdt4250.pseudocode.Function
 	 * @generated
 	 */
-	public Adapter createMethodAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Constructor <em>Constructor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.Constructor
-	 * @generated
-	 */
-	public Adapter createConstructorAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.PseudoPackage <em>Pseudo Package</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.PseudoPackage
-	 * @generated
-	 */
-	public Adapter createPseudoPackageAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Body <em>Body</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.Body
-	 * @generated
-	 */
-	public Adapter createBodyAdapter() {
+	public Adapter createFunctionAdapter() {
 		return null;
 	}
 
@@ -353,16 +320,16 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.If <em>If</em>}'.
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.IfExpression <em>If Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.If
+	 * @see tdt4250.pseudocode.IfExpression
 	 * @generated
 	 */
-	public Adapter createIfAdapter() {
+	public Adapter createIfExpressionAdapter() {
 		return null;
 	}
 
@@ -405,6 +372,286 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStopAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Primary <em>Primary</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.Primary
+	 * @generated
+	 */
+	public Adapter createPrimaryAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.FunctionCall <em>Function Call</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.FunctionCall
+	 * @generated
+	 */
+	public Adapter createFunctionCallAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Feature <em>Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.Feature
+	 * @generated
+	 */
+	public Adapter createFeatureAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.ArithmeticExpression <em>Arithmetic Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.ArithmeticExpression
+	 * @generated
+	 */
+	public Adapter createArithmeticExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Literal <em>Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.Literal
+	 * @generated
+	 */
+	public Adapter createLiteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Condition <em>Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.Condition
+	 * @generated
+	 */
+	public Adapter createConditionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.BooleanExpression <em>Boolean Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.BooleanExpression
+	 * @generated
+	 */
+	public Adapter createBooleanExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.BooleanLiteral <em>Boolean Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.BooleanLiteral
+	 * @generated
+	 */
+	public Adapter createBooleanLiteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.BooleanTest <em>Boolean Test</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.BooleanTest
+	 * @generated
+	 */
+	public Adapter createBooleanTestAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.AndOrExpression <em>And Or Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.AndOrExpression
+	 * @generated
+	 */
+	public Adapter createAndOrExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Comparison <em>Comparison</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.Comparison
+	 * @generated
+	 */
+	public Adapter createComparisonAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Equals <em>Equals</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.Equals
+	 * @generated
+	 */
+	public Adapter createEqualsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Minus <em>Minus</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.Minus
+	 * @generated
+	 */
+	public Adapter createMinusAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.MultiOrDiv <em>Multi Or Div</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.MultiOrDiv
+	 * @generated
+	 */
+	public Adapter createMultiOrDivAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.BooleanNegation <em>Boolean Negation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.BooleanNegation
+	 * @generated
+	 */
+	public Adapter createBooleanNegationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.ArithmeticSigned <em>Arithmetic Signed</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.ArithmeticSigned
+	 * @generated
+	 */
+	public Adapter createArithmeticSignedAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.NumberLiteral <em>Number Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.NumberLiteral
+	 * @generated
+	 */
+	public Adapter createNumberLiteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.StringLiteral <em>String Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.StringLiteral
+	 * @generated
+	 */
+	public Adapter createStringLiteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Plus <em>Plus</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.Plus
+	 * @generated
+	 */
+	public Adapter createPlusAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Model <em>Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.Model
+	 * @generated
+	 */
+	public Adapter createModelAdapter() {
 		return null;
 	}
 

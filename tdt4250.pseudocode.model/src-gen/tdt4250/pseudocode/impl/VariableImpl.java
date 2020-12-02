@@ -2,16 +2,14 @@
  */
 package tdt4250.pseudocode.impl;
 
-import java.util.Collection;
-
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import tdt4250.pseudocode.Expression;
 import tdt4250.pseudocode.PseudocodePackage;
 import tdt4250.pseudocode.Variable;
@@ -24,21 +22,42 @@ import tdt4250.pseudocode.Variable;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link tdt4250.pseudocode.impl.VariableImpl#getExpressions <em>Expressions</em>}</li>
+ *   <li>{@link tdt4250.pseudocode.impl.VariableImpl#getName <em>Name</em>}</li>
+ *   <li>{@link tdt4250.pseudocode.impl.VariableImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class VariableImpl extends StatementImpl implements Variable {
+public class VariableImpl extends FeatureImpl implements Variable {
 	/**
-	 * The cached value of the '{@link #getExpressions() <em>Expressions</em>}' containment reference list.
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExpressions()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Expression> expressions;
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected Expression value;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -65,12 +84,73 @@ public class VariableImpl extends StatementImpl implements Variable {
 	 * @generated
 	 */
 	@Override
-	public EList<Expression> getExpressions() {
-		if (expressions == null) {
-			expressions = new EObjectContainmentEList<Expression>(Expression.class, this,
-					PseudocodePackage.VARIABLE__EXPRESSIONS);
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PseudocodePackage.VARIABLE__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Expression getValue() {
+		return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetValue(Expression newValue, NotificationChain msgs) {
+		Expression oldValue = value;
+		value = newValue;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					PseudocodePackage.VARIABLE__VALUE, oldValue, newValue);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
-		return expressions;
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setValue(Expression newValue) {
+		if (newValue != value) {
+			NotificationChain msgs = null;
+			if (value != null)
+				msgs = ((InternalEObject) value).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - PseudocodePackage.VARIABLE__VALUE, null, msgs);
+			if (newValue != null)
+				msgs = ((InternalEObject) newValue).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - PseudocodePackage.VARIABLE__VALUE, null, msgs);
+			msgs = basicSetValue(newValue, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PseudocodePackage.VARIABLE__VALUE, newValue,
+					newValue));
 	}
 
 	/**
@@ -81,8 +161,8 @@ public class VariableImpl extends StatementImpl implements Variable {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case PseudocodePackage.VARIABLE__EXPRESSIONS:
-			return ((InternalEList<?>) getExpressions()).basicRemove(otherEnd, msgs);
+		case PseudocodePackage.VARIABLE__VALUE:
+			return basicSetValue(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -95,8 +175,10 @@ public class VariableImpl extends StatementImpl implements Variable {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case PseudocodePackage.VARIABLE__EXPRESSIONS:
-			return getExpressions();
+		case PseudocodePackage.VARIABLE__NAME:
+			return getName();
+		case PseudocodePackage.VARIABLE__VALUE:
+			return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -106,13 +188,14 @@ public class VariableImpl extends StatementImpl implements Variable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case PseudocodePackage.VARIABLE__EXPRESSIONS:
-			getExpressions().clear();
-			getExpressions().addAll((Collection<? extends Expression>) newValue);
+		case PseudocodePackage.VARIABLE__NAME:
+			setName((String) newValue);
+			return;
+		case PseudocodePackage.VARIABLE__VALUE:
+			setValue((Expression) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -126,8 +209,11 @@ public class VariableImpl extends StatementImpl implements Variable {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case PseudocodePackage.VARIABLE__EXPRESSIONS:
-			getExpressions().clear();
+		case PseudocodePackage.VARIABLE__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case PseudocodePackage.VARIABLE__VALUE:
+			setValue((Expression) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -141,10 +227,29 @@ public class VariableImpl extends StatementImpl implements Variable {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case PseudocodePackage.VARIABLE__EXPRESSIONS:
-			return expressions != null && !expressions.isEmpty();
+		case PseudocodePackage.VARIABLE__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case PseudocodePackage.VARIABLE__VALUE:
+			return value != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //VariableImpl

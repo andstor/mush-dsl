@@ -4,115 +4,110 @@ grammar tdt4250.pseudocode.Pcode with org.eclipse.xtext.common.Terminals
 import "platform:/plugin/tdt4250.pseudocode.model/model/pseudocode.ecore" 
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
-PseudoClass returns PseudoClass:
-	{PseudoClass}
-	'class' name=EString
-	(members+=Constructor)*
-	//('\n' + ('\n')*)
-	(members+=Method)*
-	'end_class'
+
+/* Det er fortsatt litt rot i modellen, sorry! Will fix!
+ * Tror at Expression skal være ok nå ;)
+ */
+
+
+// OK
+Model returns Model:
+	{Model}
+	functions+=Function*
 ;
 
-
-Member returns Member:
- PseudoClass | Method | Constructor ;
-
-Constructor returns Constructor:
-	{Constructor}
-	name='('
-	(parameters+=Parameter ("," parameters+=Parameter)*)*	
-	')'
-;
-
-Method returns Method:
-	{Method}
-	'method' name=EString
+// OK
+Function:
+	{Function}
+	name=EString
 	'('
 	(parameters+=Parameter ("," parameters+=Parameter)*)*		
 	')'
 	//('\n' ('\n')*)
-	body=Body
-	'end_method'	
+	BEGIN
+		features+=Feature*
+	END;
+
+Feature:
+	(Statement | Variable)
 ;
 
-Body returns Body:
-	{Body}
-	statements += (Variable | If | For | While|Stop)*
-	statements+=Stop
+Statement:
+	(IfExpression | For | While | Stop)
 ;
 
 
 Variable returns Variable:
-	{Variable}
-	expressions+=Expression 
+	{Variable}	
+	name=EString ('=' value=Expression)? // Er lov å skrive x=y=2?
 ;
 
-Expression returns Expression:
-	{Expression}
-	(
-	('print' (('"'(Type)* '"')* (Type)(',' Type)*)*)
-	| (EString ('='|'+='|'-=') Type (MathSigns Type)*)
-	| (EString'_'(Type))
-	)
+/*
+// TODO: lag ecore modell
+CollectionLitteral:
+	SetLitteral | ListLitteral
 ;
 
-If returns If:
-	{If}
-	'if' ('!'EString | EString| Type EqualVariable Type | EString ('not')? 'exists'| EString ('not')? 'knowing' EString)*
-	('else' 'if' ('!'EString | EString| Type EqualVariable Type))*
-	('else')?
+// TODO: lag ecore modell
+SetLitteral:
+	{SetLitteral}
+	'{' (elements+=Expression (',' elements+=Expression )*)? '}'
 ;
+
+// TODO: lag ecore modell
+ListLitteral:
+	{ListLitteral}
+	'[' (elements+=Expression (',' elements+=Expression )*)? ']'
+;
+*/
+
+IfExpression returns IfExpression:
+	{IfExpression}
+	'if' condition=Expression':'  // må sjekke etter newline elns for å fjerne ':'
+	then=Expression 
+    (=>'else' else=Expression)?
+;
+
 For returns For:
 	{For}
-	(('for''(' (
+	'for''(' (
 	//Original for loop
-	(EString '=' INT ';' EString EqualVariable Type';' EString ('++'|'--'|'+' INT|'-' INT)) 
+	(EString '=' INT ';' EString BooleanOperator Type';' EString ('++'|'--'|'+' INT|'-' INT)) 
 	//For Each	
 	| (EString ':' EString)	
 	//Same as for each..
 	|('all' EString)
 	//for a given interval in list
 	|('interval' INT 'to' INT 'in' EString)
-	)')')
-	//Instead of using for
-	| ('repeat' INT 'times')
-	)
-	
+	)')'
 ;
 
 While returns While:
 	{While}
-	('while' ('true'|('!')? EString)
-	| 'repeat' 'until' EString (('or'|'and') EString )* (('=='|'!=') EString)	
-	)
+	'while' ('true'|('!')? EString)
 ;
-
 
 Parameter returns Parameter: 
 	{Parameter}
-	name=EString
+	name=Type
 ;
 
 Stop returns Stop:
 	{Stop}
-	('return' Type |'stop'| 'break'| 'continue')
+	(type=('stop'| 'break'| 'continue') | (type='return' value=Type))
 ;
 
+BooleanOperator:
+	'&&' | '||' | '!' | '^'
+;
 
+BooleanTestOperator:
+	'==' |'<' |'<=' | '>' | '>=' | '!='
+;
 
 Type:
 	(EString | DOUBLE | INT)
 ;
-
-EqualVariable:
-	('==' |'<' |'<=' | '>' | '>=' | '!=')
-;
-MathSigns:
-	('+'|'-'|'*'|'/'|'%'|'total' 'division')
-;
-
-enum VisibilityKind returns VisibilityKind:
-				packagePrivate = 'packagePrivate' | private = 'private' | protected = 'protected' | public = 'public';
 
 EString returns ecore::EString:
 	STRING | ID;
@@ -121,3 +116,50 @@ terminal DOUBLE:
     INT '.' INT;
 
 
+// OK
+FunctionCall:
+	{FunctionCall}
+	name=EString '(' (parameters+=Parameter ("," parameters+=Parameter)*)? ')';
+
+
+
+// Dette stryer innrykk
+terminal BEGIN: 'synthetic:BEGIN';
+terminal END: 'synthetic:END';
+
+
+
+// Under her burde være OK.
+Expression:
+	BooleanExpression;
+
+BooleanExpression returns Expression:
+	Comparison 
+	(({AndOrExpression.left=current} op=("||"|"&&")) right=Comparison)*;
+
+Comparison returns Expression:
+       Equals
+       (({Comparison.left=current} op=('<' | '>')) right=Equals)*;
+
+Equals returns Expression:
+       Addition 
+       (({Equals.left=current} op=('==' |'<=' | '>=' | '!=')) right=Addition)*;
+ 
+Addition returns Expression:
+	Multiplication (({Plus.left=current} '+' | {Minus.left=current} '-') right=Multiplication)*; 
+
+Multiplication returns Expression:
+	Prefixed (({MultiOrDiv.left=current} op=("*"|"/")) right=Prefixed)*;
+
+Prefixed returns Expression:
+	{BooleanNegation} =>"!" expression=Atomic | /* right associativity */
+	{ArithmeticSigned} =>"-" expression=Atomic | /* right associativity */
+	Atomic;
+
+Atomic returns Expression:
+	'(' Expression ')' |
+	{NumberLiteral} value=INT |
+	{StringLiteral} value=STRING |
+	{BooleanLiteral} value=('true'|'false') |
+	{VariableReference} ref=[Variable] |
+	FunctionCall;
