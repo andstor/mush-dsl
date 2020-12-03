@@ -22,22 +22,13 @@ public interface PseudocodeFactory extends EFactory {
 	PseudocodeFactory eINSTANCE = tdt4250.pseudocode.impl.PseudocodeFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Variable Reference</em>'.
+	 * Returns a new object of class '<em>Model</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Variable Reference</em>'.
+	 * @return a new object of class '<em>Model</em>'.
 	 * @generated
 	 */
-	VariableReference createVariableReference();
-
-	/**
-	 * Returns a new object of class '<em>Parameter</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Parameter</em>'.
-	 * @generated
-	 */
-	Parameter createParameter();
+	Model createModel();
 
 	/**
 	 * Returns a new object of class '<em>Function</em>'.
@@ -49,13 +40,31 @@ public interface PseudocodeFactory extends EFactory {
 	Function createFunction();
 
 	/**
-	 * Returns a new object of class '<em>For</em>'.
+	 * Returns a new object of class '<em>Feature</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>For</em>'.
+	 * @return a new object of class '<em>Feature</em>'.
 	 * @generated
 	 */
-	For createFor();
+	Feature createFeature();
+
+	/**
+	 * Returns a new object of class '<em>Statement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Statement</em>'.
+	 * @generated
+	 */
+	Statement createStatement();
+
+	/**
+	 * Returns a new object of class '<em>Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Expression</em>'.
+	 * @generated
+	 */
+	Expression createExpression();
 
 	/**
 	 * Returns a new object of class '<em>If Expression</em>'.
@@ -67,22 +76,22 @@ public interface PseudocodeFactory extends EFactory {
 	IfExpression createIfExpression();
 
 	/**
-	 * Returns a new object of class '<em>While</em>'.
+	 * Returns a new object of class '<em>For Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>While</em>'.
+	 * @return a new object of class '<em>For Expression</em>'.
 	 * @generated
 	 */
-	While createWhile();
+	ForExpression createForExpression();
 
 	/**
-	 * Returns a new object of class '<em>Variable</em>'.
+	 * Returns a new object of class '<em>While Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Variable</em>'.
+	 * @return a new object of class '<em>While Expression</em>'.
 	 * @generated
 	 */
-	Variable createVariable();
+	WhileExpression createWhileExpression();
 
 	/**
 	 * Returns a new object of class '<em>Stop</em>'.
@@ -94,13 +103,13 @@ public interface PseudocodeFactory extends EFactory {
 	Stop createStop();
 
 	/**
-	 * Returns a new object of class '<em>Primary</em>'.
+	 * Returns a new object of class '<em>Print</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Primary</em>'.
+	 * @return a new object of class '<em>Print</em>'.
 	 * @generated
 	 */
-	Primary createPrimary();
+	Print createPrint();
 
 	/**
 	 * Returns a new object of class '<em>Function Call</em>'.
@@ -112,31 +121,67 @@ public interface PseudocodeFactory extends EFactory {
 	FunctionCall createFunctionCall();
 
 	/**
-	 * Returns a new object of class '<em>Condition</em>'.
+	 * Returns a new object of class '<em>Variable</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Condition</em>'.
+	 * @return a new object of class '<em>Variable</em>'.
 	 * @generated
 	 */
-	Condition createCondition();
+	Variable createVariable();
 
 	/**
-	 * Returns a new object of class '<em>Boolean Literal</em>'.
+	 * Returns a new object of class '<em>Collection Add</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Boolean Literal</em>'.
+	 * @return a new object of class '<em>Collection Add</em>'.
 	 * @generated
 	 */
-	BooleanLiteral createBooleanLiteral();
+	CollectionAdd createCollectionAdd();
 
 	/**
-	 * Returns a new object of class '<em>Boolean Test</em>'.
+	 * Returns a new object of class '<em>Value Exchange</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Boolean Test</em>'.
+	 * @return a new object of class '<em>Value Exchange</em>'.
 	 * @generated
 	 */
-	BooleanTest createBooleanTest();
+	ValueExchange createValueExchange();
+
+	/**
+	 * Returns a new object of class '<em>List</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>List</em>'.
+	 * @generated
+	 */
+	List createList();
+
+	/**
+	 * Returns a new object of class '<em>Set Litteral</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Set Litteral</em>'.
+	 * @generated
+	 */
+	SetLitteral createSetLitteral();
+
+	/**
+	 * Returns a new object of class '<em>List Litteral</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>List Litteral</em>'.
+	 * @generated
+	 */
+	ListLitteral createListLitteral();
+
+	/**
+	 * Returns a new object of class '<em>Collection Accessor</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Collection Accessor</em>'.
+	 * @generated
+	 */
+	CollectionAccessor createCollectionAccessor();
 
 	/**
 	 * Returns a new object of class '<em>And Or Expression</em>'.
@@ -164,6 +209,15 @@ public interface PseudocodeFactory extends EFactory {
 	 * @generated
 	 */
 	Equals createEquals();
+
+	/**
+	 * Returns a new object of class '<em>Plus</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Plus</em>'.
+	 * @generated
+	 */
+	Plus createPlus();
 
 	/**
 	 * Returns a new object of class '<em>Minus</em>'.
@@ -220,22 +274,22 @@ public interface PseudocodeFactory extends EFactory {
 	StringLiteral createStringLiteral();
 
 	/**
-	 * Returns a new object of class '<em>Plus</em>'.
+	 * Returns a new object of class '<em>Boolean Literal</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Plus</em>'.
+	 * @return a new object of class '<em>Boolean Literal</em>'.
 	 * @generated
 	 */
-	Plus createPlus();
+	BooleanLiteral createBooleanLiteral();
 
 	/**
-	 * Returns a new object of class '<em>Model</em>'.
+	 * Returns a new object of class '<em>Variable Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Model</em>'.
+	 * @return a new object of class '<em>Variable Reference</em>'.
 	 * @generated
 	 */
-	Model createModel();
+	VariableReference createVariableReference();
 
 	/**
 	 * Returns the package supported by this factory.

@@ -24,7 +24,7 @@ import tdt4250.pseudocode.PseudocodePackage;
  *
  * @generated
  */
-public class BooleanLiteralImpl extends LiteralImpl implements BooleanLiteral {
+public class BooleanLiteralImpl extends ExpressionImpl implements BooleanLiteral {
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->

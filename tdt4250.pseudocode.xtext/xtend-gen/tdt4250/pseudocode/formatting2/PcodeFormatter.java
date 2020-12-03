@@ -5,11 +5,16 @@ package tdt4250.pseudocode.formatting2;
 
 import com.google.inject.Inject;
 import java.util.Arrays;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.formatting2.AbstractFormatter2;
 import org.eclipse.xtext.formatting2.IFormattableDocument;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.xbase.lib.Extension;
+import tdt4250.pseudocode.Expression;
+import tdt4250.pseudocode.Feature;
+import tdt4250.pseudocode.Function;
+import tdt4250.pseudocode.Model;
 import tdt4250.pseudocode.services.PcodeGrammarAccess;
 
 @SuppressWarnings("all")
@@ -18,37 +23,46 @@ public class PcodeFormatter extends AbstractFormatter2 {
   @Extension
   private PcodeGrammarAccess _pcodeGrammarAccess;
   
-  protected void _format(final /* PseudoClass */Object pseudoClass, @Extension final IFormattableDocument document) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nmembers cannot be resolved"
-      + "\nformat cannot be resolved");
+  protected void _format(final Model model, @Extension final IFormattableDocument document) {
+    EList<Function> _functions = model.getFunctions();
+    for (final Function function : _functions) {
+      document.<Function>format(function);
+    }
   }
   
-  protected void _format(final /* PseudoInterface */Object pseudoInterface, @Extension final IFormattableDocument document) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nmembers cannot be resolved"
-      + "\nformat cannot be resolved");
+  protected void _format(final Function function, @Extension final IFormattableDocument document) {
+    EList<Expression> _parameters = function.getParameters();
+    for (final Expression expression : _parameters) {
+      document.<Expression>format(expression);
+    }
+    EList<Feature> _features = function.getFeatures();
+    for (final Feature feature : _features) {
+      document.<Feature>format(feature);
+    }
   }
   
-  public void format(final Object pseudoClass, final IFormattableDocument document) {
-    if (pseudoClass instanceof XtextResource) {
-      _format((XtextResource)pseudoClass, document);
+  public void format(final Object function, final IFormattableDocument document) {
+    if (function instanceof XtextResource) {
+      _format((XtextResource)function, document);
       return;
-    } else if (pseudoClass instanceof EObject) {
-      _format((EObject)pseudoClass, document);
+    } else if (function instanceof Function) {
+      _format((Function)function, document);
       return;
-    } else if (pseudoClass == null) {
+    } else if (function instanceof Model) {
+      _format((Model)function, document);
+      return;
+    } else if (function instanceof EObject) {
+      _format((EObject)function, document);
+      return;
+    } else if (function == null) {
       _format((Void)null, document);
       return;
-    } else if (pseudoClass != null) {
-      _format(pseudoClass, document);
-      return;
-    } else if (pseudoClass != null) {
-      _format(pseudoClass, document);
+    } else if (function != null) {
+      _format(function, document);
       return;
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(pseudoClass, document).toString());
+        Arrays.<Object>asList(function, document).toString());
     }
   }
 }

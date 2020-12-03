@@ -19,33 +19,13 @@ import tdt4250.pseudocode.Stop;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link tdt4250.pseudocode.impl.StopImpl#getValue <em>Value</em>}</li>
  *   <li>{@link tdt4250.pseudocode.impl.StopImpl#getType <em>Type</em>}</li>
+ *   <li>{@link tdt4250.pseudocode.impl.StopImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class StopImpl extends StatementImpl implements Stop {
-	/**
-	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String VALUE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected String value = VALUE_EDEFAULT;
-
 	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -67,6 +47,26 @@ public class StopImpl extends StatementImpl implements Stop {
 	protected String type = TYPE_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String VALUE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected String value = VALUE_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -83,29 +83,6 @@ public class StopImpl extends StatementImpl implements Stop {
 	@Override
 	protected EClass eStaticClass() {
 		return PseudocodePackage.Literals.STOP;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getValue() {
-		return value;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setValue(String newValue) {
-		String oldValue = value;
-		value = newValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PseudocodePackage.STOP__VALUE, oldValue, value));
 	}
 
 	/**
@@ -137,12 +114,35 @@ public class StopImpl extends StatementImpl implements Stop {
 	 * @generated
 	 */
 	@Override
+	public String getValue() {
+		return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setValue(String newValue) {
+		String oldValue = value;
+		value = newValue;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PseudocodePackage.STOP__VALUE, oldValue, value));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case PseudocodePackage.STOP__VALUE:
-			return getValue();
 		case PseudocodePackage.STOP__TYPE:
 			return getType();
+		case PseudocodePackage.STOP__VALUE:
+			return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -155,11 +155,11 @@ public class StopImpl extends StatementImpl implements Stop {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case PseudocodePackage.STOP__VALUE:
-			setValue((String) newValue);
-			return;
 		case PseudocodePackage.STOP__TYPE:
 			setType((String) newValue);
+			return;
+		case PseudocodePackage.STOP__VALUE:
+			setValue((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -173,11 +173,11 @@ public class StopImpl extends StatementImpl implements Stop {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case PseudocodePackage.STOP__VALUE:
-			setValue(VALUE_EDEFAULT);
-			return;
 		case PseudocodePackage.STOP__TYPE:
 			setType(TYPE_EDEFAULT);
+			return;
+		case PseudocodePackage.STOP__VALUE:
+			setValue(VALUE_EDEFAULT);
 			return;
 		}
 		super.eUnset(featureID);
@@ -191,10 +191,10 @@ public class StopImpl extends StatementImpl implements Stop {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case PseudocodePackage.STOP__VALUE:
-			return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		case PseudocodePackage.STOP__TYPE:
 			return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+		case PseudocodePackage.STOP__VALUE:
+			return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -210,10 +210,10 @@ public class StopImpl extends StatementImpl implements Stop {
 			return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (value: ");
-		result.append(value);
-		result.append(", type: ");
+		result.append(" (type: ");
 		result.append(type);
+		result.append(", value: ");
+		result.append(value);
 		result.append(')');
 		return result.toString();
 	}

@@ -24,7 +24,7 @@ import tdt4250.pseudocode.PseudocodePackage;
  *
  * @generated
  */
-public class NumberLiteralImpl extends LiteralImpl implements NumberLiteral {
+public class NumberLiteralImpl extends ExpressionImpl implements NumberLiteral {
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->

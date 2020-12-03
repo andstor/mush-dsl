@@ -18,7 +18,7 @@ package tdt4250.pseudocode;
  * @model
  * @generated
  */
-public interface NumberLiteral extends Literal, ArithmeticExpression {
+public interface NumberLiteral extends Expression {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->

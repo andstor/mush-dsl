@@ -10,8 +10,8 @@ import org.eclipse.xtext.testing.util.ParseHelper
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.^extension.ExtendWith
-import tdt4250.pseudocode.Model
 import org.eclipse.xtext.util.EmfFormatter
+import tdt4250.pseudocode.Model
 
 @ExtendWith(InjectionExtension)
 @InjectWith(PcodeInjectorProvider)
@@ -22,9 +22,12 @@ class PcodeParsingTest {
 	@Test
 	def void loadModel() {
 		val result = parseHelper.parse('''
-			QUICKSORT(A,p,r)
-				x=false
-				y=true||x
+			ANNABELLE(alder,hoyde)
+				G = [[1,1],[2,2]]
+				i = 0
+				j = 1
+				if i==0 then
+					exchange G at 1,1 with G[i][j]
 		''')
 		println(EmfFormatter.objToStr(result))
 		val errors = result.eResource.errors

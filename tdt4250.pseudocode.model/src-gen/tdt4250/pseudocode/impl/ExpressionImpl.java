@@ -4,8 +4,6 @@ package tdt4250.pseudocode.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import tdt4250.pseudocode.Expression;
 import tdt4250.pseudocode.PseudocodePackage;
 
@@ -16,7 +14,7 @@ import tdt4250.pseudocode.PseudocodePackage;
  *
  * @generated
  */
-public abstract class ExpressionImpl extends MinimalEObjectImpl.Container implements Expression {
+public class ExpressionImpl extends FeatureImpl implements Expression {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

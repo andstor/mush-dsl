@@ -19,7 +19,7 @@ package tdt4250.pseudocode;
  * @model
  * @generated
  */
-public interface Variable extends Feature {
+public interface Variable extends Expression {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

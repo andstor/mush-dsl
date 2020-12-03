@@ -18,9 +18,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import tdt4250.pseudocode.Expression;
 import tdt4250.pseudocode.Feature;
 import tdt4250.pseudocode.Function;
-import tdt4250.pseudocode.Parameter;
 import tdt4250.pseudocode.PseudocodePackage;
 
 /**
@@ -31,34 +31,14 @@ import tdt4250.pseudocode.PseudocodePackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link tdt4250.pseudocode.impl.FunctionImpl#getFeatures <em>Features</em>}</li>
- *   <li>{@link tdt4250.pseudocode.impl.FunctionImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link tdt4250.pseudocode.impl.FunctionImpl#getName <em>Name</em>}</li>
+ *   <li>{@link tdt4250.pseudocode.impl.FunctionImpl#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link tdt4250.pseudocode.impl.FunctionImpl#getFeatures <em>Features</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class FunctionImpl extends MinimalEObjectImpl.Container implements Function {
-	/**
-	 * The cached value of the '{@link #getFeatures() <em>Features</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFeatures()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Feature> features;
-
-	/**
-	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getParameters()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Parameter> parameters;
-
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -80,6 +60,26 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
 	protected String name = NAME_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParameters()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Expression> parameters;
+
+	/**
+	 * The cached value of the '{@link #getFeatures() <em>Features</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFeatures()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Feature> features;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -96,33 +96,6 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
 	@Override
 	protected EClass eStaticClass() {
 		return PseudocodePackage.Literals.FUNCTION;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<Feature> getFeatures() {
-		if (features == null) {
-			features = new EObjectContainmentEList<Feature>(Feature.class, this, PseudocodePackage.FUNCTION__FEATURES);
-		}
-		return features;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<Parameter> getParameters() {
-		if (parameters == null) {
-			parameters = new EObjectContainmentEList<Parameter>(Parameter.class, this,
-					PseudocodePackage.FUNCTION__PARAMETERS);
-		}
-		return parameters;
 	}
 
 	/**
@@ -154,12 +127,39 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
 	 * @generated
 	 */
 	@Override
+	public EList<Expression> getParameters() {
+		if (parameters == null) {
+			parameters = new EObjectContainmentEList<Expression>(Expression.class, this,
+					PseudocodePackage.FUNCTION__PARAMETERS);
+		}
+		return parameters;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<Feature> getFeatures() {
+		if (features == null) {
+			features = new EObjectContainmentEList<Feature>(Feature.class, this, PseudocodePackage.FUNCTION__FEATURES);
+		}
+		return features;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case PseudocodePackage.FUNCTION__FEATURES:
-			return ((InternalEList<?>) getFeatures()).basicRemove(otherEnd, msgs);
 		case PseudocodePackage.FUNCTION__PARAMETERS:
 			return ((InternalEList<?>) getParameters()).basicRemove(otherEnd, msgs);
+		case PseudocodePackage.FUNCTION__FEATURES:
+			return ((InternalEList<?>) getFeatures()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -172,12 +172,12 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case PseudocodePackage.FUNCTION__FEATURES:
-			return getFeatures();
-		case PseudocodePackage.FUNCTION__PARAMETERS:
-			return getParameters();
 		case PseudocodePackage.FUNCTION__NAME:
 			return getName();
+		case PseudocodePackage.FUNCTION__PARAMETERS:
+			return getParameters();
+		case PseudocodePackage.FUNCTION__FEATURES:
+			return getFeatures();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -191,16 +191,16 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case PseudocodePackage.FUNCTION__FEATURES:
-			getFeatures().clear();
-			getFeatures().addAll((Collection<? extends Feature>) newValue);
+		case PseudocodePackage.FUNCTION__NAME:
+			setName((String) newValue);
 			return;
 		case PseudocodePackage.FUNCTION__PARAMETERS:
 			getParameters().clear();
-			getParameters().addAll((Collection<? extends Parameter>) newValue);
+			getParameters().addAll((Collection<? extends Expression>) newValue);
 			return;
-		case PseudocodePackage.FUNCTION__NAME:
-			setName((String) newValue);
+		case PseudocodePackage.FUNCTION__FEATURES:
+			getFeatures().clear();
+			getFeatures().addAll((Collection<? extends Feature>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -214,14 +214,14 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case PseudocodePackage.FUNCTION__FEATURES:
-			getFeatures().clear();
+		case PseudocodePackage.FUNCTION__NAME:
+			setName(NAME_EDEFAULT);
 			return;
 		case PseudocodePackage.FUNCTION__PARAMETERS:
 			getParameters().clear();
 			return;
-		case PseudocodePackage.FUNCTION__NAME:
-			setName(NAME_EDEFAULT);
+		case PseudocodePackage.FUNCTION__FEATURES:
+			getFeatures().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -235,12 +235,12 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case PseudocodePackage.FUNCTION__FEATURES:
-			return features != null && !features.isEmpty();
-		case PseudocodePackage.FUNCTION__PARAMETERS:
-			return parameters != null && !parameters.isEmpty();
 		case PseudocodePackage.FUNCTION__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case PseudocodePackage.FUNCTION__PARAMETERS:
+			return parameters != null && !parameters.isEmpty();
+		case PseudocodePackage.FUNCTION__FEATURES:
+			return features != null && !features.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

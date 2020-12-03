@@ -4,19 +4,20 @@ grammar tdt4250.pseudocode.Pcode with org.eclipse.xtext.common.Terminals
 import "platform:/plugin/tdt4250.pseudocode.model/model/pseudocode.ecore" 
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
+//generate pseudocode "http://www.pseudocode.tdt4250/xtext/Pcode"
 
-/* Det er fortsatt litt rot i modellen, sorry! Will fix!
- * Tror at Expression skal være ok nå ;)
+
+/* Da burde det meste fungere ;) 
+ * Da er det bare å gå i gang med å generere kode ;)
+ * Dette gjøres i tdt4250.pseudocode.generator pakken!
  */
 
 
-// OK
 Model returns Model:
 	{Model}
 	functions+=Function*
 ;
 
-// OK
 Function:
 	{Function}
 	name=EString
@@ -29,73 +30,178 @@ Function:
 	END;
 
 Feature:
-	(Statement | Variable)
+	Statement | Expression
 ;
 
 Statement:
-	(IfExpression | For | While | Stop)
+	IfExpression | ForExpression | WhileExpression | Stop
 ;
 
-
-Variable returns Variable:
-	{Variable}	
-	name=EString ('=' value=Expression)? // Er lov å skrive x=y=2?
+Expression returns Expression:
+	Variable |
+	Print | 
+	CollectionAdd |
+	CollectionRemove |
+	ValueExchange
 ;
 
-/*
-// TODO: lag ecore modell
-CollectionLitteral:
-	SetLitteral | ListLitteral
-;
+Variable returns Expression:
+	{Variable} name=ID ('=' | 'equals' | 'is') value=(LiteralExpression);
 
-// TODO: lag ecore modell
-SetLitteral:
-	{SetLitteral}
-	'{' (elements+=Expression (',' elements+=Expression )*)? '}'
-;
 
-// TODO: lag ecore modell
-ListLitteral:
-	{ListLitteral}
-	'[' (elements+=Expression (',' elements+=Expression )*)? ']'
-;
-*/
+Parameter returns Expression: 
+	{Variable} name=ID;
 
 IfExpression returns IfExpression:
 	{IfExpression}
-	'if' condition=Expression':'  // må sjekke etter newline elns for å fjerne ':'
-	then=Expression 
-    (=>'else' else=Expression)?
+	name='if' condition=LiteralExpression ('then')?
+	BEGIN
+		then+=Feature*
+	END
+    (=>'else' 
+    BEGIN
+		else+=Feature*
+	END
+    )?
 ;
 
-For returns For:
-	{For}
-	'for''(' (
-	//Original for loop
-	(EString '=' INT ';' EString BooleanOperator Type';' EString ('++'|'--'|'+' INT|'-' INT)) 
-	//For Each	
-	| (EString ':' EString)	
-	//Same as for each..
-	|('all' EString)
-	//for a given interval in list
-	|('interval' INT 'to' INT 'in' EString)
-	)')'
+ForExpression returns ForExpression:
+	{ForExpression}
+	'for' ('interval')? from=ArithmeticExpression 'to' to=ArithmeticExpression
+	BEGIN
+		block+=Feature*
+	END
 ;
 
-While returns While:
-	{While}
-	'while' ('true'|('!')? EString)
+
+WhileExpression returns WhileExpression:
+	{WhileExpression}
+	'while' condition=LiteralExpression
+	BEGIN
+		block+=Feature*
+	END
 ;
 
-Parameter returns Parameter: 
-	{Parameter}
-	name=Type
-;
 
 Stop returns Stop:
 	{Stop}
 	(type=('stop'| 'break'| 'continue') | (type='return' value=Type))
 ;
+
+
+Print:
+	name='print' value=LiteralExpression
+;
+
+CollectionAdd returns Expression:
+	{CollectionAdd}
+	collection=[Variable] 'add' value=LiteralExpression
+;
+
+CollectionRemove returns Expression:
+	{CollectionAdd}
+	collection=[Variable] 'remove' value=LiteralExpression
+;
+
+ValueExchange returns Expression:
+	{ValueExchange}
+	'exchange' collection=LiteralExpression 'with' value=LiteralExpression
+;
+
+FunctionCall:
+	{FunctionCall}
+	name=EString '(' (parameters+=Parameter ("," parameters+=Parameter)*)? ')';
+
+
+// Indentation
+terminal BEGIN: 'synthetic:BEGIN';
+terminal END: 'synthetic:END';
+
+// -- Literal Expressions ---
+
+LiteralExpression returns Expression:
+	Collection |
+	CollectionAccessor |
+	BooleanExpression;
+
+
+Collection returns Expression:
+	CollectionLitteral | List
+;
+
+List returns Expression:
+	{List}
+	'a'? 'new' type=('text' | 'number' | 'decimal') ('array' | 'list' | 'table')
+	('and' 'contains' elements+=LiteralExpression (',' elements+=LiteralExpression )* )? 
+;
+
+CollectionLitteral returns Expression:
+	SetLitteral | ListLitteral
+;
+
+SetLitteral returns Expression:
+	{SetLitteral}
+	'{' (elements+=LiteralExpression (',' elements+=LiteralExpression )*)? '}'
+;
+
+ListLitteral returns Expression:
+	{ListLitteral}
+	'[' (elements+=LiteralExpression (',' elements+=LiteralExpression )*)? ']'
+;
+
+CollectionAccessor returns Expression:
+	{CollectionAccessor}
+	// TODO? "variables/scopes/CollectionAccessor etc should inherit from same class to be able to generate appropriate code?
+	 (
+	 	collection=[Variable] ('['accessor+=LiteralExpression']')+ |
+
+		// used instead of list[i]. Eks. list[i][j]  equals list at i,j 
+	 	collection=[Variable] 'at' ('index')? accessor+=LiteralExpression (',' accessor+=LiteralExpression )*
+	 );
+
+//----- Logic and Math------
+
+BooleanExpression returns Expression:
+	Comparison 
+	(({AndOrExpression.left=current} op=("||"|"&&")) right=Comparison)*;
+
+Comparison returns Expression:
+       Equals
+       (({Comparison.left=current} op=('<' | '>')) right=Equals)*;
+
+Equals returns Expression:
+       Addition 
+       (({Equals.left=current} op=('==' |'<=' | '>=' | '!=')) right=Addition)*;
+ 
+ArithmeticExpression returns Expression: 
+	Addition
+;
+
+ 
+Addition returns Expression:
+	Multiplication (({Plus.left=current} PlusOperator | {Minus.left=current} ('-' | 'minus')) right=Multiplication)*; 
+
+PlusOperator:
+	('+' | 'plus')
+;
+
+Multiplication returns Expression:
+	Prefixed (({MultiOrDiv.left=current} op=("*"|"/")) right=Prefixed)*;
+
+Prefixed returns Expression:
+	{BooleanNegation} =>"!" expression=Atomic | /* right associativity */
+	{ArithmeticSigned} =>('-' | 'minus') expression=Atomic | /* right associativity */
+	Atomic;
+
+Atomic returns Expression:
+	'(' Expression ')' |
+	{NumberLiteral} value=INT |
+	{StringLiteral} value=STRING |
+	{BooleanLiteral} value=('true'|'false') |
+	{VariableReference} ref=[Variable]  |
+	FunctionCall;
+
+// --- Diff ---
 
 BooleanOperator:
 	'&&' | '||' | '!' | '^'
@@ -114,52 +220,3 @@ EString returns ecore::EString:
 	
 terminal DOUBLE:
     INT '.' INT;
-
-
-// OK
-FunctionCall:
-	{FunctionCall}
-	name=EString '(' (parameters+=Parameter ("," parameters+=Parameter)*)? ')';
-
-
-
-// Dette stryer innrykk
-terminal BEGIN: 'synthetic:BEGIN';
-terminal END: 'synthetic:END';
-
-
-
-// Under her burde være OK.
-Expression:
-	BooleanExpression;
-
-BooleanExpression returns Expression:
-	Comparison 
-	(({AndOrExpression.left=current} op=("||"|"&&")) right=Comparison)*;
-
-Comparison returns Expression:
-       Equals
-       (({Comparison.left=current} op=('<' | '>')) right=Equals)*;
-
-Equals returns Expression:
-       Addition 
-       (({Equals.left=current} op=('==' |'<=' | '>=' | '!=')) right=Addition)*;
- 
-Addition returns Expression:
-	Multiplication (({Plus.left=current} '+' | {Minus.left=current} '-') right=Multiplication)*; 
-
-Multiplication returns Expression:
-	Prefixed (({MultiOrDiv.left=current} op=("*"|"/")) right=Prefixed)*;
-
-Prefixed returns Expression:
-	{BooleanNegation} =>"!" expression=Atomic | /* right associativity */
-	{ArithmeticSigned} =>"-" expression=Atomic | /* right associativity */
-	Atomic;
-
-Atomic returns Expression:
-	'(' Expression ')' |
-	{NumberLiteral} value=INT |
-	{StringLiteral} value=STRING |
-	{BooleanLiteral} value=('true'|'false') |
-	{VariableReference} ref=[Variable] |
-	FunctionCall;

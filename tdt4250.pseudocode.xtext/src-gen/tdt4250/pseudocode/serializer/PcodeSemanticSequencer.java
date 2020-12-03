@@ -18,23 +18,30 @@ import tdt4250.pseudocode.AndOrExpression;
 import tdt4250.pseudocode.ArithmeticSigned;
 import tdt4250.pseudocode.BooleanLiteral;
 import tdt4250.pseudocode.BooleanNegation;
+import tdt4250.pseudocode.CollectionAccessor;
+import tdt4250.pseudocode.CollectionAdd;
 import tdt4250.pseudocode.Comparison;
 import tdt4250.pseudocode.Equals;
-import tdt4250.pseudocode.For;
+import tdt4250.pseudocode.ForExpression;
 import tdt4250.pseudocode.Function;
 import tdt4250.pseudocode.FunctionCall;
 import tdt4250.pseudocode.IfExpression;
+import tdt4250.pseudocode.List;
+import tdt4250.pseudocode.ListLitteral;
 import tdt4250.pseudocode.Minus;
 import tdt4250.pseudocode.Model;
 import tdt4250.pseudocode.MultiOrDiv;
 import tdt4250.pseudocode.NumberLiteral;
 import tdt4250.pseudocode.Plus;
+import tdt4250.pseudocode.Print;
 import tdt4250.pseudocode.PseudocodePackage;
+import tdt4250.pseudocode.SetLitteral;
 import tdt4250.pseudocode.Stop;
 import tdt4250.pseudocode.StringLiteral;
+import tdt4250.pseudocode.ValueExchange;
 import tdt4250.pseudocode.Variable;
 import tdt4250.pseudocode.VariableReference;
-import tdt4250.pseudocode.While;
+import tdt4250.pseudocode.WhileExpression;
 import tdt4250.pseudocode.services.PcodeGrammarAccess;
 
 @SuppressWarnings("all")
@@ -63,14 +70,47 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case PseudocodePackage.BOOLEAN_NEGATION:
 				sequence_Prefixed(context, (BooleanNegation) semanticObject); 
 				return; 
+			case PseudocodePackage.COLLECTION_ACCESSOR:
+				sequence_CollectionAccessor(context, (CollectionAccessor) semanticObject); 
+				return; 
+			case PseudocodePackage.COLLECTION_ADD:
+				if (rule == grammarAccess.getCollectionAddRule()) {
+					sequence_CollectionAdd(context, (CollectionAdd) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getFeatureRule()
+						|| rule == grammarAccess.getExpressionRule()
+						|| rule == grammarAccess.getLiteralExpressionRule()
+						|| rule == grammarAccess.getBooleanExpressionRule()
+						|| action == grammarAccess.getBooleanExpressionAccess().getAndOrExpressionLeftAction_1_0_0()
+						|| rule == grammarAccess.getComparisonRule()
+						|| action == grammarAccess.getComparisonAccess().getComparisonLeftAction_1_0_0()
+						|| rule == grammarAccess.getEqualsRule()
+						|| action == grammarAccess.getEqualsAccess().getEqualsLeftAction_1_0_0()
+						|| rule == grammarAccess.getArithmeticExpressionRule()
+						|| rule == grammarAccess.getAdditionRule()
+						|| action == grammarAccess.getAdditionAccess().getPlusLeftAction_1_0_0_0()
+						|| action == grammarAccess.getAdditionAccess().getMinusLeftAction_1_0_1_0()
+						|| rule == grammarAccess.getMultiplicationRule()
+						|| action == grammarAccess.getMultiplicationAccess().getMultiOrDivLeftAction_1_0_0()
+						|| rule == grammarAccess.getPrefixedRule()
+						|| rule == grammarAccess.getAtomicRule()) {
+					sequence_CollectionAdd_CollectionRemove(context, (CollectionAdd) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getCollectionRemoveRule()) {
+					sequence_CollectionRemove(context, (CollectionAdd) semanticObject); 
+					return; 
+				}
+				else break;
 			case PseudocodePackage.COMPARISON:
 				sequence_Comparison(context, (Comparison) semanticObject); 
 				return; 
 			case PseudocodePackage.EQUALS:
 				sequence_Equals(context, (Equals) semanticObject); 
 				return; 
-			case PseudocodePackage.FOR:
-				sequence_For(context, (For) semanticObject); 
+			case PseudocodePackage.FOR_EXPRESSION:
+				sequence_ForExpression(context, (ForExpression) semanticObject); 
 				return; 
 			case PseudocodePackage.FUNCTION:
 				sequence_Function(context, (Function) semanticObject); 
@@ -80,6 +120,12 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 				return; 
 			case PseudocodePackage.IF_EXPRESSION:
 				sequence_IfExpression(context, (IfExpression) semanticObject); 
+				return; 
+			case PseudocodePackage.LIST:
+				sequence_List(context, (List) semanticObject); 
+				return; 
+			case PseudocodePackage.LIST_LITTERAL:
+				sequence_ListLitteral(context, (ListLitteral) semanticObject); 
 				return; 
 			case PseudocodePackage.MINUS:
 				sequence_Addition(context, (Minus) semanticObject); 
@@ -93,11 +139,14 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case PseudocodePackage.NUMBER_LITERAL:
 				sequence_Atomic(context, (NumberLiteral) semanticObject); 
 				return; 
-			case PseudocodePackage.PARAMETER:
-				sequence_Parameter(context, (tdt4250.pseudocode.Parameter) semanticObject); 
-				return; 
 			case PseudocodePackage.PLUS:
 				sequence_Addition(context, (Plus) semanticObject); 
+				return; 
+			case PseudocodePackage.PRINT:
+				sequence_Print(context, (Print) semanticObject); 
+				return; 
+			case PseudocodePackage.SET_LITTERAL:
+				sequence_SetLitteral(context, (SetLitteral) semanticObject); 
 				return; 
 			case PseudocodePackage.STOP:
 				sequence_Stop(context, (Stop) semanticObject); 
@@ -105,14 +154,41 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case PseudocodePackage.STRING_LITERAL:
 				sequence_Atomic(context, (StringLiteral) semanticObject); 
 				return; 
-			case PseudocodePackage.VARIABLE:
-				sequence_Variable(context, (Variable) semanticObject); 
+			case PseudocodePackage.VALUE_EXCHANGE:
+				sequence_ValueExchange(context, (ValueExchange) semanticObject); 
 				return; 
+			case PseudocodePackage.VARIABLE:
+				if (rule == grammarAccess.getParameterRule()) {
+					sequence_Parameter(context, (Variable) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getFeatureRule()
+						|| rule == grammarAccess.getExpressionRule()
+						|| rule == grammarAccess.getVariableRule()
+						|| rule == grammarAccess.getLiteralExpressionRule()
+						|| rule == grammarAccess.getBooleanExpressionRule()
+						|| action == grammarAccess.getBooleanExpressionAccess().getAndOrExpressionLeftAction_1_0_0()
+						|| rule == grammarAccess.getComparisonRule()
+						|| action == grammarAccess.getComparisonAccess().getComparisonLeftAction_1_0_0()
+						|| rule == grammarAccess.getEqualsRule()
+						|| action == grammarAccess.getEqualsAccess().getEqualsLeftAction_1_0_0()
+						|| rule == grammarAccess.getArithmeticExpressionRule()
+						|| rule == grammarAccess.getAdditionRule()
+						|| action == grammarAccess.getAdditionAccess().getPlusLeftAction_1_0_0_0()
+						|| action == grammarAccess.getAdditionAccess().getMinusLeftAction_1_0_1_0()
+						|| rule == grammarAccess.getMultiplicationRule()
+						|| action == grammarAccess.getMultiplicationAccess().getMultiOrDivLeftAction_1_0_0()
+						|| rule == grammarAccess.getPrefixedRule()
+						|| rule == grammarAccess.getAtomicRule()) {
+					sequence_Variable(context, (Variable) semanticObject); 
+					return; 
+				}
+				else break;
 			case PseudocodePackage.VARIABLE_REFERENCE:
 				sequence_Atomic(context, (VariableReference) semanticObject); 
 				return; 
-			case PseudocodePackage.WHILE:
-				sequence_While(context, (While) semanticObject); 
+			case PseudocodePackage.WHILE_EXPRESSION:
+				sequence_WhileExpression(context, (WhileExpression) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -121,20 +197,17 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     Expression returns Minus
+	 *     LiteralExpression returns Minus
 	 *     BooleanExpression returns Minus
 	 *     BooleanExpression.AndOrExpression_1_0_0 returns Minus
 	 *     Comparison returns Minus
 	 *     Comparison.Comparison_1_0_0 returns Minus
 	 *     Equals returns Minus
 	 *     Equals.Equals_1_0_0 returns Minus
+	 *     ArithmeticExpression returns Minus
 	 *     Addition returns Minus
 	 *     Addition.Plus_1_0_0_0 returns Minus
 	 *     Addition.Minus_1_0_1_0 returns Minus
-	 *     Multiplication returns Minus
-	 *     Multiplication.MultiOrDiv_1_0_0 returns Minus
-	 *     Prefixed returns Minus
-	 *     Atomic returns Minus
 	 *
 	 * Constraint:
 	 *     (left=Addition_Minus_1_0_1_0 right=Multiplication)
@@ -155,20 +228,17 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     Expression returns Plus
+	 *     LiteralExpression returns Plus
 	 *     BooleanExpression returns Plus
 	 *     BooleanExpression.AndOrExpression_1_0_0 returns Plus
 	 *     Comparison returns Plus
 	 *     Comparison.Comparison_1_0_0 returns Plus
 	 *     Equals returns Plus
 	 *     Equals.Equals_1_0_0 returns Plus
+	 *     ArithmeticExpression returns Plus
 	 *     Addition returns Plus
 	 *     Addition.Plus_1_0_0_0 returns Plus
 	 *     Addition.Minus_1_0_1_0 returns Plus
-	 *     Multiplication returns Plus
-	 *     Multiplication.MultiOrDiv_1_0_0 returns Plus
-	 *     Prefixed returns Plus
-	 *     Atomic returns Plus
 	 *
 	 * Constraint:
 	 *     (left=Addition_Plus_1_0_0_0 right=Multiplication)
@@ -189,13 +259,14 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     Expression returns BooleanLiteral
+	 *     LiteralExpression returns BooleanLiteral
 	 *     BooleanExpression returns BooleanLiteral
 	 *     BooleanExpression.AndOrExpression_1_0_0 returns BooleanLiteral
 	 *     Comparison returns BooleanLiteral
 	 *     Comparison.Comparison_1_0_0 returns BooleanLiteral
 	 *     Equals returns BooleanLiteral
 	 *     Equals.Equals_1_0_0 returns BooleanLiteral
+	 *     ArithmeticExpression returns BooleanLiteral
 	 *     Addition returns BooleanLiteral
 	 *     Addition.Plus_1_0_0_0 returns BooleanLiteral
 	 *     Addition.Minus_1_0_1_0 returns BooleanLiteral
@@ -214,13 +285,14 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     Expression returns NumberLiteral
+	 *     LiteralExpression returns NumberLiteral
 	 *     BooleanExpression returns NumberLiteral
 	 *     BooleanExpression.AndOrExpression_1_0_0 returns NumberLiteral
 	 *     Comparison returns NumberLiteral
 	 *     Comparison.Comparison_1_0_0 returns NumberLiteral
 	 *     Equals returns NumberLiteral
 	 *     Equals.Equals_1_0_0 returns NumberLiteral
+	 *     ArithmeticExpression returns NumberLiteral
 	 *     Addition returns NumberLiteral
 	 *     Addition.Plus_1_0_0_0 returns NumberLiteral
 	 *     Addition.Minus_1_0_1_0 returns NumberLiteral
@@ -245,13 +317,14 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     Expression returns StringLiteral
+	 *     LiteralExpression returns StringLiteral
 	 *     BooleanExpression returns StringLiteral
 	 *     BooleanExpression.AndOrExpression_1_0_0 returns StringLiteral
 	 *     Comparison returns StringLiteral
 	 *     Comparison.Comparison_1_0_0 returns StringLiteral
 	 *     Equals returns StringLiteral
 	 *     Equals.Equals_1_0_0 returns StringLiteral
+	 *     ArithmeticExpression returns StringLiteral
 	 *     Addition returns StringLiteral
 	 *     Addition.Plus_1_0_0_0 returns StringLiteral
 	 *     Addition.Minus_1_0_1_0 returns StringLiteral
@@ -276,13 +349,14 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     Expression returns VariableReference
+	 *     LiteralExpression returns VariableReference
 	 *     BooleanExpression returns VariableReference
 	 *     BooleanExpression.AndOrExpression_1_0_0 returns VariableReference
 	 *     Comparison returns VariableReference
 	 *     Comparison.Comparison_1_0_0 returns VariableReference
 	 *     Equals returns VariableReference
 	 *     Equals.Equals_1_0_0 returns VariableReference
+	 *     ArithmeticExpression returns VariableReference
 	 *     Addition returns VariableReference
 	 *     Addition.Plus_1_0_0_0 returns VariableReference
 	 *     Addition.Minus_1_0_1_0 returns VariableReference
@@ -307,20 +381,9 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     Expression returns AndOrExpression
+	 *     LiteralExpression returns AndOrExpression
 	 *     BooleanExpression returns AndOrExpression
 	 *     BooleanExpression.AndOrExpression_1_0_0 returns AndOrExpression
-	 *     Comparison returns AndOrExpression
-	 *     Comparison.Comparison_1_0_0 returns AndOrExpression
-	 *     Equals returns AndOrExpression
-	 *     Equals.Equals_1_0_0 returns AndOrExpression
-	 *     Addition returns AndOrExpression
-	 *     Addition.Plus_1_0_0_0 returns AndOrExpression
-	 *     Addition.Minus_1_0_1_0 returns AndOrExpression
-	 *     Multiplication returns AndOrExpression
-	 *     Multiplication.MultiOrDiv_1_0_0 returns AndOrExpression
-	 *     Prefixed returns AndOrExpression
-	 *     Atomic returns AndOrExpression
 	 *
 	 * Constraint:
 	 *     (left=BooleanExpression_AndOrExpression_1_0_0 (op='||' | op='&&') right=Comparison)
@@ -332,20 +395,94 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     Expression returns Comparison
+	 *     LiteralExpression returns CollectionAccessor
+	 *     CollectionAccessor returns CollectionAccessor
+	 *
+	 * Constraint:
+	 *     ((collection=[Variable|ID] accessor+=LiteralExpression+) | (collection=[Variable|ID] accessor+=LiteralExpression accessor+=LiteralExpression*))
+	 */
+	protected void sequence_CollectionAccessor(ISerializationContext context, CollectionAccessor semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     CollectionAdd returns CollectionAdd
+	 *
+	 * Constraint:
+	 *     (collection=[Variable|ID] value=LiteralExpression)
+	 */
+	protected void sequence_CollectionAdd(ISerializationContext context, CollectionAdd semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PseudocodePackage.Literals.COLLECTION_ADD__COLLECTION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PseudocodePackage.Literals.COLLECTION_ADD__COLLECTION));
+			if (transientValues.isValueTransient(semanticObject, PseudocodePackage.Literals.COLLECTION_ADD__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PseudocodePackage.Literals.COLLECTION_ADD__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getCollectionAddAccess().getCollectionVariableIDTerminalRuleCall_1_0_1(), semanticObject.eGet(PseudocodePackage.Literals.COLLECTION_ADD__COLLECTION, false));
+		feeder.accept(grammarAccess.getCollectionAddAccess().getValueLiteralExpressionParserRuleCall_3_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Feature returns CollectionAdd
+	 *     Expression returns CollectionAdd
+	 *     LiteralExpression returns CollectionAdd
+	 *     BooleanExpression returns CollectionAdd
+	 *     BooleanExpression.AndOrExpression_1_0_0 returns CollectionAdd
+	 *     Comparison returns CollectionAdd
+	 *     Comparison.Comparison_1_0_0 returns CollectionAdd
+	 *     Equals returns CollectionAdd
+	 *     Equals.Equals_1_0_0 returns CollectionAdd
+	 *     ArithmeticExpression returns CollectionAdd
+	 *     Addition returns CollectionAdd
+	 *     Addition.Plus_1_0_0_0 returns CollectionAdd
+	 *     Addition.Minus_1_0_1_0 returns CollectionAdd
+	 *     Multiplication returns CollectionAdd
+	 *     Multiplication.MultiOrDiv_1_0_0 returns CollectionAdd
+	 *     Prefixed returns CollectionAdd
+	 *     Atomic returns CollectionAdd
+	 *
+	 * Constraint:
+	 *     ((collection=[Variable|ID] value=LiteralExpression) | (collection=[Variable|ID] value=LiteralExpression))
+	 */
+	protected void sequence_CollectionAdd_CollectionRemove(ISerializationContext context, CollectionAdd semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     CollectionRemove returns CollectionAdd
+	 *
+	 * Constraint:
+	 *     (collection=[Variable|ID] value=LiteralExpression)
+	 */
+	protected void sequence_CollectionRemove(ISerializationContext context, CollectionAdd semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PseudocodePackage.Literals.COLLECTION_ADD__COLLECTION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PseudocodePackage.Literals.COLLECTION_ADD__COLLECTION));
+			if (transientValues.isValueTransient(semanticObject, PseudocodePackage.Literals.COLLECTION_ADD__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PseudocodePackage.Literals.COLLECTION_ADD__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getCollectionRemoveAccess().getCollectionVariableIDTerminalRuleCall_1_0_1(), semanticObject.eGet(PseudocodePackage.Literals.COLLECTION_ADD__COLLECTION, false));
+		feeder.accept(grammarAccess.getCollectionRemoveAccess().getValueLiteralExpressionParserRuleCall_3_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     LiteralExpression returns Comparison
 	 *     BooleanExpression returns Comparison
 	 *     BooleanExpression.AndOrExpression_1_0_0 returns Comparison
 	 *     Comparison returns Comparison
 	 *     Comparison.Comparison_1_0_0 returns Comparison
-	 *     Equals returns Comparison
-	 *     Equals.Equals_1_0_0 returns Comparison
-	 *     Addition returns Comparison
-	 *     Addition.Plus_1_0_0_0 returns Comparison
-	 *     Addition.Minus_1_0_1_0 returns Comparison
-	 *     Multiplication returns Comparison
-	 *     Multiplication.MultiOrDiv_1_0_0 returns Comparison
-	 *     Prefixed returns Comparison
-	 *     Atomic returns Comparison
 	 *
 	 * Constraint:
 	 *     (left=Comparison_Comparison_1_0_0 (op='<' | op='>') right=Equals)
@@ -357,20 +494,13 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     Expression returns Equals
+	 *     LiteralExpression returns Equals
 	 *     BooleanExpression returns Equals
 	 *     BooleanExpression.AndOrExpression_1_0_0 returns Equals
 	 *     Comparison returns Equals
 	 *     Comparison.Comparison_1_0_0 returns Equals
 	 *     Equals returns Equals
 	 *     Equals.Equals_1_0_0 returns Equals
-	 *     Addition returns Equals
-	 *     Addition.Plus_1_0_0_0 returns Equals
-	 *     Addition.Minus_1_0_1_0 returns Equals
-	 *     Multiplication returns Equals
-	 *     Multiplication.MultiOrDiv_1_0_0 returns Equals
-	 *     Prefixed returns Equals
-	 *     Atomic returns Equals
 	 *
 	 * Constraint:
 	 *     (left=Equals_Equals_1_0_0 (op='==' | op='<=' | op='>=' | op='!=') right=Addition)
@@ -382,14 +512,14 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     Feature returns For
-	 *     Statement returns For
-	 *     For returns For
+	 *     Feature returns ForExpression
+	 *     Statement returns ForExpression
+	 *     ForExpression returns ForExpression
 	 *
 	 * Constraint:
-	 *     {For}
+	 *     (from=ArithmeticExpression to=ArithmeticExpression block+=Feature*)
 	 */
-	protected void sequence_For(ISerializationContext context, For semanticObject) {
+	protected void sequence_ForExpression(ISerializationContext context, ForExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -397,13 +527,14 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	/**
 	 * Contexts:
 	 *     FunctionCall returns FunctionCall
-	 *     Expression returns FunctionCall
+	 *     LiteralExpression returns FunctionCall
 	 *     BooleanExpression returns FunctionCall
 	 *     BooleanExpression.AndOrExpression_1_0_0 returns FunctionCall
 	 *     Comparison returns FunctionCall
 	 *     Comparison.Comparison_1_0_0 returns FunctionCall
 	 *     Equals returns FunctionCall
 	 *     Equals.Equals_1_0_0 returns FunctionCall
+	 *     ArithmeticExpression returns FunctionCall
 	 *     Addition returns FunctionCall
 	 *     Addition.Plus_1_0_0_0 returns FunctionCall
 	 *     Addition.Minus_1_0_1_0 returns FunctionCall
@@ -439,9 +570,38 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     IfExpression returns IfExpression
 	 *
 	 * Constraint:
-	 *     (condition=Expression then=Expression else=Expression?)
+	 *     (name='if' condition=LiteralExpression then+=Feature* else+=Feature*)
 	 */
 	protected void sequence_IfExpression(ISerializationContext context, IfExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     LiteralExpression returns ListLitteral
+	 *     Collection returns ListLitteral
+	 *     CollectionLitteral returns ListLitteral
+	 *     ListLitteral returns ListLitteral
+	 *
+	 * Constraint:
+	 *     (elements+=LiteralExpression elements+=LiteralExpression*)?
+	 */
+	protected void sequence_ListLitteral(ISerializationContext context, ListLitteral semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     LiteralExpression returns List
+	 *     Collection returns List
+	 *     List returns List
+	 *
+	 * Constraint:
+	 *     ((type='text' | type='number' | type='decimal') (elements+=LiteralExpression elements+=LiteralExpression*)?)
+	 */
+	protected void sequence_List(ISerializationContext context, List semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -460,20 +620,19 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     Expression returns MultiOrDiv
+	 *     LiteralExpression returns MultiOrDiv
 	 *     BooleanExpression returns MultiOrDiv
 	 *     BooleanExpression.AndOrExpression_1_0_0 returns MultiOrDiv
 	 *     Comparison returns MultiOrDiv
 	 *     Comparison.Comparison_1_0_0 returns MultiOrDiv
 	 *     Equals returns MultiOrDiv
 	 *     Equals.Equals_1_0_0 returns MultiOrDiv
+	 *     ArithmeticExpression returns MultiOrDiv
 	 *     Addition returns MultiOrDiv
 	 *     Addition.Plus_1_0_0_0 returns MultiOrDiv
 	 *     Addition.Minus_1_0_1_0 returns MultiOrDiv
 	 *     Multiplication returns MultiOrDiv
 	 *     Multiplication.MultiOrDiv_1_0_0 returns MultiOrDiv
-	 *     Prefixed returns MultiOrDiv
-	 *     Atomic returns MultiOrDiv
 	 *
 	 * Constraint:
 	 *     (left=Multiplication_MultiOrDiv_1_0_0 (op='*' | op='/') right=Prefixed)
@@ -485,38 +644,38 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     Parameter returns Parameter
+	 *     Parameter returns Variable
 	 *
 	 * Constraint:
-	 *     name=Type
+	 *     name=ID
 	 */
-	protected void sequence_Parameter(ISerializationContext context, tdt4250.pseudocode.Parameter semanticObject) {
+	protected void sequence_Parameter(ISerializationContext context, Variable semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, PseudocodePackage.Literals.PARAMETER__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PseudocodePackage.Literals.PARAMETER__NAME));
+			if (transientValues.isValueTransient(semanticObject, PseudocodePackage.Literals.VARIABLE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PseudocodePackage.Literals.VARIABLE__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getParameterAccess().getNameTypeParserRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getParameterAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     Expression returns ArithmeticSigned
+	 *     LiteralExpression returns ArithmeticSigned
 	 *     BooleanExpression returns ArithmeticSigned
 	 *     BooleanExpression.AndOrExpression_1_0_0 returns ArithmeticSigned
 	 *     Comparison returns ArithmeticSigned
 	 *     Comparison.Comparison_1_0_0 returns ArithmeticSigned
 	 *     Equals returns ArithmeticSigned
 	 *     Equals.Equals_1_0_0 returns ArithmeticSigned
+	 *     ArithmeticExpression returns ArithmeticSigned
 	 *     Addition returns ArithmeticSigned
 	 *     Addition.Plus_1_0_0_0 returns ArithmeticSigned
 	 *     Addition.Minus_1_0_1_0 returns ArithmeticSigned
 	 *     Multiplication returns ArithmeticSigned
 	 *     Multiplication.MultiOrDiv_1_0_0 returns ArithmeticSigned
 	 *     Prefixed returns ArithmeticSigned
-	 *     Atomic returns ArithmeticSigned
 	 *
 	 * Constraint:
 	 *     expression=Atomic
@@ -534,20 +693,20 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     Expression returns BooleanNegation
+	 *     LiteralExpression returns BooleanNegation
 	 *     BooleanExpression returns BooleanNegation
 	 *     BooleanExpression.AndOrExpression_1_0_0 returns BooleanNegation
 	 *     Comparison returns BooleanNegation
 	 *     Comparison.Comparison_1_0_0 returns BooleanNegation
 	 *     Equals returns BooleanNegation
 	 *     Equals.Equals_1_0_0 returns BooleanNegation
+	 *     ArithmeticExpression returns BooleanNegation
 	 *     Addition returns BooleanNegation
 	 *     Addition.Plus_1_0_0_0 returns BooleanNegation
 	 *     Addition.Minus_1_0_1_0 returns BooleanNegation
 	 *     Multiplication returns BooleanNegation
 	 *     Multiplication.MultiOrDiv_1_0_0 returns BooleanNegation
 	 *     Prefixed returns BooleanNegation
-	 *     Atomic returns BooleanNegation
 	 *
 	 * Constraint:
 	 *     expression=Atomic
@@ -560,6 +719,59 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getPrefixedAccess().getExpressionAtomicParserRuleCall_0_2_0(), semanticObject.getExpression());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Feature returns Print
+	 *     Expression returns Print
+	 *     Print returns Print
+	 *     LiteralExpression returns Print
+	 *     BooleanExpression returns Print
+	 *     BooleanExpression.AndOrExpression_1_0_0 returns Print
+	 *     Comparison returns Print
+	 *     Comparison.Comparison_1_0_0 returns Print
+	 *     Equals returns Print
+	 *     Equals.Equals_1_0_0 returns Print
+	 *     ArithmeticExpression returns Print
+	 *     Addition returns Print
+	 *     Addition.Plus_1_0_0_0 returns Print
+	 *     Addition.Minus_1_0_1_0 returns Print
+	 *     Multiplication returns Print
+	 *     Multiplication.MultiOrDiv_1_0_0 returns Print
+	 *     Prefixed returns Print
+	 *     Atomic returns Print
+	 *
+	 * Constraint:
+	 *     (name='print' value=LiteralExpression)
+	 */
+	protected void sequence_Print(ISerializationContext context, Print semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PseudocodePackage.Literals.PRINT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PseudocodePackage.Literals.PRINT__NAME));
+			if (transientValues.isValueTransient(semanticObject, PseudocodePackage.Literals.PRINT__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PseudocodePackage.Literals.PRINT__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getPrintAccess().getNamePrintKeyword_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getPrintAccess().getValueLiteralExpressionParserRuleCall_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     LiteralExpression returns SetLitteral
+	 *     Collection returns SetLitteral
+	 *     CollectionLitteral returns SetLitteral
+	 *     SetLitteral returns SetLitteral
+	 *
+	 * Constraint:
+	 *     (elements+=LiteralExpression elements+=LiteralExpression*)?
+	 */
+	protected void sequence_SetLitteral(ISerializationContext context, SetLitteral semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -579,27 +791,90 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     Feature returns Variable
-	 *     Variable returns Variable
+	 *     Feature returns ValueExchange
+	 *     Expression returns ValueExchange
+	 *     ValueExchange returns ValueExchange
+	 *     LiteralExpression returns ValueExchange
+	 *     BooleanExpression returns ValueExchange
+	 *     BooleanExpression.AndOrExpression_1_0_0 returns ValueExchange
+	 *     Comparison returns ValueExchange
+	 *     Comparison.Comparison_1_0_0 returns ValueExchange
+	 *     Equals returns ValueExchange
+	 *     Equals.Equals_1_0_0 returns ValueExchange
+	 *     ArithmeticExpression returns ValueExchange
+	 *     Addition returns ValueExchange
+	 *     Addition.Plus_1_0_0_0 returns ValueExchange
+	 *     Addition.Minus_1_0_1_0 returns ValueExchange
+	 *     Multiplication returns ValueExchange
+	 *     Multiplication.MultiOrDiv_1_0_0 returns ValueExchange
+	 *     Prefixed returns ValueExchange
+	 *     Atomic returns ValueExchange
 	 *
 	 * Constraint:
-	 *     (name=EString value=Expression?)
+	 *     (collection=LiteralExpression value=LiteralExpression)
 	 */
-	protected void sequence_Variable(ISerializationContext context, Variable semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+	protected void sequence_ValueExchange(ISerializationContext context, ValueExchange semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PseudocodePackage.Literals.VALUE_EXCHANGE__COLLECTION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PseudocodePackage.Literals.VALUE_EXCHANGE__COLLECTION));
+			if (transientValues.isValueTransient(semanticObject, PseudocodePackage.Literals.VALUE_EXCHANGE__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PseudocodePackage.Literals.VALUE_EXCHANGE__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getValueExchangeAccess().getCollectionLiteralExpressionParserRuleCall_2_0(), semanticObject.getCollection());
+		feeder.accept(grammarAccess.getValueExchangeAccess().getValueLiteralExpressionParserRuleCall_4_0(), semanticObject.getValue());
+		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     Feature returns While
-	 *     Statement returns While
-	 *     While returns While
+	 *     Feature returns Variable
+	 *     Expression returns Variable
+	 *     Variable returns Variable
+	 *     LiteralExpression returns Variable
+	 *     BooleanExpression returns Variable
+	 *     BooleanExpression.AndOrExpression_1_0_0 returns Variable
+	 *     Comparison returns Variable
+	 *     Comparison.Comparison_1_0_0 returns Variable
+	 *     Equals returns Variable
+	 *     Equals.Equals_1_0_0 returns Variable
+	 *     ArithmeticExpression returns Variable
+	 *     Addition returns Variable
+	 *     Addition.Plus_1_0_0_0 returns Variable
+	 *     Addition.Minus_1_0_1_0 returns Variable
+	 *     Multiplication returns Variable
+	 *     Multiplication.MultiOrDiv_1_0_0 returns Variable
+	 *     Prefixed returns Variable
+	 *     Atomic returns Variable
 	 *
 	 * Constraint:
-	 *     {While}
+	 *     (name=ID value=LiteralExpression)
 	 */
-	protected void sequence_While(ISerializationContext context, While semanticObject) {
+	protected void sequence_Variable(ISerializationContext context, Variable semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PseudocodePackage.Literals.VARIABLE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PseudocodePackage.Literals.VARIABLE__NAME));
+			if (transientValues.isValueTransient(semanticObject, PseudocodePackage.Literals.VARIABLE__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PseudocodePackage.Literals.VARIABLE__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getVariableAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getVariableAccess().getValueLiteralExpressionParserRuleCall_3_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Feature returns WhileExpression
+	 *     Statement returns WhileExpression
+	 *     WhileExpression returns WhileExpression
+	 *
+	 * Constraint:
+	 *     (condition=LiteralExpression block+=Feature*)
+	 */
+	protected void sequence_WhileExpression(ISerializationContext context, WhileExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

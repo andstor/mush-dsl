@@ -67,23 +67,8 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 	 */
 	protected PseudocodeSwitch<Adapter> modelSwitch = new PseudocodeSwitch<Adapter>() {
 		@Override
-		public Adapter caseStatement(Statement object) {
-			return createStatementAdapter();
-		}
-
-		@Override
-		public Adapter caseVariableReference(VariableReference object) {
-			return createVariableReferenceAdapter();
-		}
-
-		@Override
-		public Adapter caseExpression(Expression object) {
-			return createExpressionAdapter();
-		}
-
-		@Override
-		public Adapter caseParameter(Parameter object) {
-			return createParameterAdapter();
+		public Adapter caseModel(Model object) {
+			return createModelAdapter();
 		}
 
 		@Override
@@ -92,8 +77,18 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseFor(For object) {
-			return createForAdapter();
+		public Adapter caseFeature(Feature object) {
+			return createFeatureAdapter();
+		}
+
+		@Override
+		public Adapter caseStatement(Statement object) {
+			return createStatementAdapter();
+		}
+
+		@Override
+		public Adapter caseExpression(Expression object) {
+			return createExpressionAdapter();
 		}
 
 		@Override
@@ -102,13 +97,13 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseWhile(While object) {
-			return createWhileAdapter();
+		public Adapter caseForExpression(ForExpression object) {
+			return createForExpressionAdapter();
 		}
 
 		@Override
-		public Adapter caseVariable(Variable object) {
-			return createVariableAdapter();
+		public Adapter caseWhileExpression(WhileExpression object) {
+			return createWhileExpressionAdapter();
 		}
 
 		@Override
@@ -117,8 +112,8 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter casePrimary(Primary object) {
-			return createPrimaryAdapter();
+		public Adapter casePrint(Print object) {
+			return createPrintAdapter();
 		}
 
 		@Override
@@ -127,38 +122,38 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseFeature(Feature object) {
-			return createFeatureAdapter();
+		public Adapter caseVariable(Variable object) {
+			return createVariableAdapter();
 		}
 
 		@Override
-		public Adapter caseArithmeticExpression(ArithmeticExpression object) {
-			return createArithmeticExpressionAdapter();
+		public Adapter caseCollectionAdd(CollectionAdd object) {
+			return createCollectionAddAdapter();
 		}
 
 		@Override
-		public Adapter caseLiteral(Literal object) {
-			return createLiteralAdapter();
+		public Adapter caseValueExchange(ValueExchange object) {
+			return createValueExchangeAdapter();
 		}
 
 		@Override
-		public Adapter caseCondition(Condition object) {
-			return createConditionAdapter();
+		public Adapter caseList(List object) {
+			return createListAdapter();
 		}
 
 		@Override
-		public Adapter caseBooleanExpression(BooleanExpression object) {
-			return createBooleanExpressionAdapter();
+		public Adapter caseSetLitteral(SetLitteral object) {
+			return createSetLitteralAdapter();
 		}
 
 		@Override
-		public Adapter caseBooleanLiteral(BooleanLiteral object) {
-			return createBooleanLiteralAdapter();
+		public Adapter caseListLitteral(ListLitteral object) {
+			return createListLitteralAdapter();
 		}
 
 		@Override
-		public Adapter caseBooleanTest(BooleanTest object) {
-			return createBooleanTestAdapter();
+		public Adapter caseCollectionAccessor(CollectionAccessor object) {
+			return createCollectionAccessorAdapter();
 		}
 
 		@Override
@@ -174,6 +169,11 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseEquals(Equals object) {
 			return createEqualsAdapter();
+		}
+
+		@Override
+		public Adapter casePlus(Plus object) {
+			return createPlusAdapter();
 		}
 
 		@Override
@@ -207,13 +207,13 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter casePlus(Plus object) {
-			return createPlusAdapter();
+		public Adapter caseBooleanLiteral(BooleanLiteral object) {
+			return createBooleanLiteralAdapter();
 		}
 
 		@Override
-		public Adapter caseModel(Model object) {
-			return createModelAdapter();
+		public Adapter caseVariableReference(VariableReference object) {
+			return createVariableReferenceAdapter();
 		}
 
 		@Override
@@ -236,58 +236,16 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Statement <em>Statement</em>}'.
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Model <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.Statement
+	 * @see tdt4250.pseudocode.Model
 	 * @generated
 	 */
-	public Adapter createStatementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.VariableReference <em>Variable Reference</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.VariableReference
-	 * @generated
-	 */
-	public Adapter createVariableReferenceAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Expression <em>Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.Expression
-	 * @generated
-	 */
-	public Adapter createExpressionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Parameter <em>Parameter</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.Parameter
-	 * @generated
-	 */
-	public Adapter createParameterAdapter() {
+	public Adapter createModelAdapter() {
 		return null;
 	}
 
@@ -306,16 +264,44 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.For <em>For</em>}'.
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Feature <em>Feature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.For
+	 * @see tdt4250.pseudocode.Feature
 	 * @generated
 	 */
-	public Adapter createForAdapter() {
+	public Adapter createFeatureAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Statement <em>Statement</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.Statement
+	 * @generated
+	 */
+	public Adapter createStatementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Expression <em>Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.Expression
+	 * @generated
+	 */
+	public Adapter createExpressionAdapter() {
 		return null;
 	}
 
@@ -334,30 +320,30 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.While <em>While</em>}'.
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.ForExpression <em>For Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.While
+	 * @see tdt4250.pseudocode.ForExpression
 	 * @generated
 	 */
-	public Adapter createWhileAdapter() {
+	public Adapter createForExpressionAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Variable <em>Variable</em>}'.
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.WhileExpression <em>While Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.Variable
+	 * @see tdt4250.pseudocode.WhileExpression
 	 * @generated
 	 */
-	public Adapter createVariableAdapter() {
+	public Adapter createWhileExpressionAdapter() {
 		return null;
 	}
 
@@ -376,16 +362,16 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Primary <em>Primary</em>}'.
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Print <em>Print</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.Primary
+	 * @see tdt4250.pseudocode.Print
 	 * @generated
 	 */
-	public Adapter createPrimaryAdapter() {
+	public Adapter createPrintAdapter() {
 		return null;
 	}
 
@@ -404,100 +390,100 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Feature <em>Feature</em>}'.
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Variable <em>Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.Feature
+	 * @see tdt4250.pseudocode.Variable
 	 * @generated
 	 */
-	public Adapter createFeatureAdapter() {
+	public Adapter createVariableAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.ArithmeticExpression <em>Arithmetic Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.CollectionAdd <em>Collection Add</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.ArithmeticExpression
+	 * @see tdt4250.pseudocode.CollectionAdd
 	 * @generated
 	 */
-	public Adapter createArithmeticExpressionAdapter() {
+	public Adapter createCollectionAddAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Literal <em>Literal</em>}'.
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.ValueExchange <em>Value Exchange</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.Literal
+	 * @see tdt4250.pseudocode.ValueExchange
 	 * @generated
 	 */
-	public Adapter createLiteralAdapter() {
+	public Adapter createValueExchangeAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Condition <em>Condition</em>}'.
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.List <em>List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.Condition
+	 * @see tdt4250.pseudocode.List
 	 * @generated
 	 */
-	public Adapter createConditionAdapter() {
+	public Adapter createListAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.BooleanExpression <em>Boolean Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.SetLitteral <em>Set Litteral</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.BooleanExpression
+	 * @see tdt4250.pseudocode.SetLitteral
 	 * @generated
 	 */
-	public Adapter createBooleanExpressionAdapter() {
+	public Adapter createSetLitteralAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.BooleanLiteral <em>Boolean Literal</em>}'.
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.ListLitteral <em>List Litteral</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.BooleanLiteral
+	 * @see tdt4250.pseudocode.ListLitteral
 	 * @generated
 	 */
-	public Adapter createBooleanLiteralAdapter() {
+	public Adapter createListLitteralAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.BooleanTest <em>Boolean Test</em>}'.
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.CollectionAccessor <em>Collection Accessor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.BooleanTest
+	 * @see tdt4250.pseudocode.CollectionAccessor
 	 * @generated
 	 */
-	public Adapter createBooleanTestAdapter() {
+	public Adapter createCollectionAccessorAdapter() {
 		return null;
 	}
 
@@ -540,6 +526,20 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEqualsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Plus <em>Plus</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.Plus
+	 * @generated
+	 */
+	public Adapter createPlusAdapter() {
 		return null;
 	}
 
@@ -628,30 +628,30 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Plus <em>Plus</em>}'.
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.BooleanLiteral <em>Boolean Literal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.Plus
+	 * @see tdt4250.pseudocode.BooleanLiteral
 	 * @generated
 	 */
-	public Adapter createPlusAdapter() {
+	public Adapter createBooleanLiteralAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Model <em>Model</em>}'.
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.VariableReference <em>Variable Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.Model
+	 * @see tdt4250.pseudocode.VariableReference
 	 * @generated
 	 */
-	public Adapter createModelAdapter() {
+	public Adapter createVariableReferenceAdapter() {
 		return null;
 	}
 

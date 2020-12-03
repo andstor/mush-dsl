@@ -56,38 +56,50 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-		case PseudocodePackage.VARIABLE_REFERENCE:
-			return createVariableReference();
-		case PseudocodePackage.PARAMETER:
-			return createParameter();
+		case PseudocodePackage.MODEL:
+			return createModel();
 		case PseudocodePackage.FUNCTION:
 			return createFunction();
-		case PseudocodePackage.FOR:
-			return createFor();
+		case PseudocodePackage.FEATURE:
+			return createFeature();
+		case PseudocodePackage.STATEMENT:
+			return createStatement();
+		case PseudocodePackage.EXPRESSION:
+			return createExpression();
 		case PseudocodePackage.IF_EXPRESSION:
 			return createIfExpression();
-		case PseudocodePackage.WHILE:
-			return createWhile();
-		case PseudocodePackage.VARIABLE:
-			return createVariable();
+		case PseudocodePackage.FOR_EXPRESSION:
+			return createForExpression();
+		case PseudocodePackage.WHILE_EXPRESSION:
+			return createWhileExpression();
 		case PseudocodePackage.STOP:
 			return createStop();
-		case PseudocodePackage.PRIMARY:
-			return createPrimary();
+		case PseudocodePackage.PRINT:
+			return createPrint();
 		case PseudocodePackage.FUNCTION_CALL:
 			return createFunctionCall();
-		case PseudocodePackage.CONDITION:
-			return createCondition();
-		case PseudocodePackage.BOOLEAN_LITERAL:
-			return createBooleanLiteral();
-		case PseudocodePackage.BOOLEAN_TEST:
-			return createBooleanTest();
+		case PseudocodePackage.VARIABLE:
+			return createVariable();
+		case PseudocodePackage.COLLECTION_ADD:
+			return createCollectionAdd();
+		case PseudocodePackage.VALUE_EXCHANGE:
+			return createValueExchange();
+		case PseudocodePackage.LIST:
+			return createList();
+		case PseudocodePackage.SET_LITTERAL:
+			return createSetLitteral();
+		case PseudocodePackage.LIST_LITTERAL:
+			return createListLitteral();
+		case PseudocodePackage.COLLECTION_ACCESSOR:
+			return createCollectionAccessor();
 		case PseudocodePackage.AND_OR_EXPRESSION:
 			return createAndOrExpression();
 		case PseudocodePackage.COMPARISON:
 			return createComparison();
 		case PseudocodePackage.EQUALS:
 			return createEquals();
+		case PseudocodePackage.PLUS:
+			return createPlus();
 		case PseudocodePackage.MINUS:
 			return createMinus();
 		case PseudocodePackage.MULTI_OR_DIV:
@@ -100,10 +112,10 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 			return createNumberLiteral();
 		case PseudocodePackage.STRING_LITERAL:
 			return createStringLiteral();
-		case PseudocodePackage.PLUS:
-			return createPlus();
-		case PseudocodePackage.MODEL:
-			return createModel();
+		case PseudocodePackage.BOOLEAN_LITERAL:
+			return createBooleanLiteral();
+		case PseudocodePackage.VARIABLE_REFERENCE:
+			return createVariableReference();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -115,20 +127,9 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	 * @generated
 	 */
 	@Override
-	public VariableReference createVariableReference() {
-		VariableReferenceImpl variableReference = new VariableReferenceImpl();
-		return variableReference;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Parameter createParameter() {
-		ParameterImpl parameter = new ParameterImpl();
-		return parameter;
+	public Model createModel() {
+		ModelImpl model = new ModelImpl();
+		return model;
 	}
 
 	/**
@@ -148,9 +149,31 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	 * @generated
 	 */
 	@Override
-	public For createFor() {
-		ForImpl for_ = new ForImpl();
-		return for_;
+	public Feature createFeature() {
+		FeatureImpl feature = new FeatureImpl();
+		return feature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Statement createStatement() {
+		StatementImpl statement = new StatementImpl();
+		return statement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Expression createExpression() {
+		ExpressionImpl expression = new ExpressionImpl();
+		return expression;
 	}
 
 	/**
@@ -170,9 +193,9 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	 * @generated
 	 */
 	@Override
-	public While createWhile() {
-		WhileImpl while_ = new WhileImpl();
-		return while_;
+	public ForExpression createForExpression() {
+		ForExpressionImpl forExpression = new ForExpressionImpl();
+		return forExpression;
 	}
 
 	/**
@@ -181,9 +204,9 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	 * @generated
 	 */
 	@Override
-	public Variable createVariable() {
-		VariableImpl variable = new VariableImpl();
-		return variable;
+	public WhileExpression createWhileExpression() {
+		WhileExpressionImpl whileExpression = new WhileExpressionImpl();
+		return whileExpression;
 	}
 
 	/**
@@ -203,9 +226,9 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	 * @generated
 	 */
 	@Override
-	public Primary createPrimary() {
-		PrimaryImpl primary = new PrimaryImpl();
-		return primary;
+	public Print createPrint() {
+		PrintImpl print = new PrintImpl();
+		return print;
 	}
 
 	/**
@@ -225,9 +248,9 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	 * @generated
 	 */
 	@Override
-	public Condition createCondition() {
-		ConditionImpl condition = new ConditionImpl();
-		return condition;
+	public Variable createVariable() {
+		VariableImpl variable = new VariableImpl();
+		return variable;
 	}
 
 	/**
@@ -236,9 +259,9 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	 * @generated
 	 */
 	@Override
-	public BooleanLiteral createBooleanLiteral() {
-		BooleanLiteralImpl booleanLiteral = new BooleanLiteralImpl();
-		return booleanLiteral;
+	public CollectionAdd createCollectionAdd() {
+		CollectionAddImpl collectionAdd = new CollectionAddImpl();
+		return collectionAdd;
 	}
 
 	/**
@@ -247,9 +270,53 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	 * @generated
 	 */
 	@Override
-	public BooleanTest createBooleanTest() {
-		BooleanTestImpl booleanTest = new BooleanTestImpl();
-		return booleanTest;
+	public ValueExchange createValueExchange() {
+		ValueExchangeImpl valueExchange = new ValueExchangeImpl();
+		return valueExchange;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public List createList() {
+		ListImpl list = new ListImpl();
+		return list;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public SetLitteral createSetLitteral() {
+		SetLitteralImpl setLitteral = new SetLitteralImpl();
+		return setLitteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ListLitteral createListLitteral() {
+		ListLitteralImpl listLitteral = new ListLitteralImpl();
+		return listLitteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public CollectionAccessor createCollectionAccessor() {
+		CollectionAccessorImpl collectionAccessor = new CollectionAccessorImpl();
+		return collectionAccessor;
 	}
 
 	/**
@@ -283,6 +350,17 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	public Equals createEquals() {
 		EqualsImpl equals = new EqualsImpl();
 		return equals;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Plus createPlus() {
+		PlusImpl plus = new PlusImpl();
+		return plus;
 	}
 
 	/**
@@ -357,9 +435,9 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	 * @generated
 	 */
 	@Override
-	public Plus createPlus() {
-		PlusImpl plus = new PlusImpl();
-		return plus;
+	public BooleanLiteral createBooleanLiteral() {
+		BooleanLiteralImpl booleanLiteral = new BooleanLiteralImpl();
+		return booleanLiteral;
 	}
 
 	/**
@@ -368,9 +446,9 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	 * @generated
 	 */
 	@Override
-	public Model createModel() {
-		ModelImpl model = new ModelImpl();
-		return model;
+	public VariableReference createVariableReference() {
+		VariableReferenceImpl variableReference = new VariableReferenceImpl();
+		return variableReference;
 	}
 
 	/**

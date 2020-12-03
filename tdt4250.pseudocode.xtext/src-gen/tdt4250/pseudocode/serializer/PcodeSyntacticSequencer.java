@@ -22,34 +22,38 @@ import tdt4250.pseudocode.services.PcodeGrammarAccess;
 public class PcodeSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected PcodeGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_Atomic_LeftParenthesisKeyword_0_0_a;
-	protected AbstractElementAlias match_Atomic_LeftParenthesisKeyword_0_0_p;
-	protected AbstractElementAlias match_For___AllKeyword_3_2_0_EStringParserRuleCall_3_2_1___or___EStringParserRuleCall_3_0_0_EqualsSignKeyword_3_0_1_INTTerminalRuleCall_3_0_2_SemicolonKeyword_3_0_3_EStringParserRuleCall_3_0_4_BooleanOperatorParserRuleCall_3_0_5_TypeParserRuleCall_3_0_6_SemicolonKeyword_3_0_7_EStringParserRuleCall_3_0_8___HyphenMinusHyphenMinusKeyword_3_0_9_1_or_PlusSignPlusSignKeyword_3_0_9_0_or___HyphenMinusKeyword_3_0_9_3_0_INTTerminalRuleCall_3_0_9_3_1___or___PlusSignKeyword_3_0_9_2_0_INTTerminalRuleCall_3_0_9_2_1_______or___EStringParserRuleCall_3_1_0_ColonKeyword_3_1_1_EStringParserRuleCall_3_1_2___or___IntervalKeyword_3_3_0_INTTerminalRuleCall_3_3_1_ToKeyword_3_3_2_INTTerminalRuleCall_3_3_3_InKeyword_3_3_4_EStringParserRuleCall_3_3_5__;
-	protected AbstractElementAlias match_While_TrueKeyword_2_0_or___ExclamationMarkKeyword_2_1_0_q_EStringParserRuleCall_2_1_1__;
+	protected AbstractElementAlias match_Addition_HyphenMinusKeyword_1_0_1_1_0_or_MinusKeyword_1_0_1_1_1;
+	protected AbstractElementAlias match_CollectionAccessor_IndexKeyword_1_1_2_q;
+	protected AbstractElementAlias match_ForExpression_IntervalKeyword_2_q;
+	protected AbstractElementAlias match_IfExpression_ThenKeyword_3_q;
+	protected AbstractElementAlias match_IfExpression___ElseKeyword_7_0_BEGINTerminalRuleCall_7_1_ENDTerminalRuleCall_7_3__q;
+	protected AbstractElementAlias match_List_AKeyword_1_q;
+	protected AbstractElementAlias match_List_ArrayKeyword_4_0_or_ListKeyword_4_1_or_TableKeyword_4_2;
+	protected AbstractElementAlias match_Prefixed_HyphenMinusKeyword_1_1_0_0_or_MinusKeyword_1_1_0_1;
+	protected AbstractElementAlias match_Variable_EqualsKeyword_2_1_or_EqualsSignKeyword_2_0_or_IsKeyword_2_2;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (PcodeGrammarAccess) access;
-		match_Atomic_LeftParenthesisKeyword_0_0_a = new TokenAlias(true, true, grammarAccess.getAtomicAccess().getLeftParenthesisKeyword_0_0());
-		match_Atomic_LeftParenthesisKeyword_0_0_p = new TokenAlias(true, false, grammarAccess.getAtomicAccess().getLeftParenthesisKeyword_0_0());
-		match_For___AllKeyword_3_2_0_EStringParserRuleCall_3_2_1___or___EStringParserRuleCall_3_0_0_EqualsSignKeyword_3_0_1_INTTerminalRuleCall_3_0_2_SemicolonKeyword_3_0_3_EStringParserRuleCall_3_0_4_BooleanOperatorParserRuleCall_3_0_5_TypeParserRuleCall_3_0_6_SemicolonKeyword_3_0_7_EStringParserRuleCall_3_0_8___HyphenMinusHyphenMinusKeyword_3_0_9_1_or_PlusSignPlusSignKeyword_3_0_9_0_or___HyphenMinusKeyword_3_0_9_3_0_INTTerminalRuleCall_3_0_9_3_1___or___PlusSignKeyword_3_0_9_2_0_INTTerminalRuleCall_3_0_9_2_1_______or___EStringParserRuleCall_3_1_0_ColonKeyword_3_1_1_EStringParserRuleCall_3_1_2___or___IntervalKeyword_3_3_0_INTTerminalRuleCall_3_3_1_ToKeyword_3_3_2_INTTerminalRuleCall_3_3_3_InKeyword_3_3_4_EStringParserRuleCall_3_3_5__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getForAccess().getAllKeyword_3_2_0()), new TokenAlias(false, false, grammarAccess.getForAccess().getEStringParserRuleCall_3_2_1())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getForAccess().getEStringParserRuleCall_3_0_0()), new TokenAlias(false, false, grammarAccess.getForAccess().getEqualsSignKeyword_3_0_1()), new TokenAlias(false, false, grammarAccess.getForAccess().getINTTerminalRuleCall_3_0_2()), new TokenAlias(false, false, grammarAccess.getForAccess().getSemicolonKeyword_3_0_3()), new TokenAlias(false, false, grammarAccess.getForAccess().getEStringParserRuleCall_3_0_4()), new TokenAlias(false, false, grammarAccess.getForAccess().getBooleanOperatorParserRuleCall_3_0_5()), new TokenAlias(false, false, grammarAccess.getForAccess().getTypeParserRuleCall_3_0_6()), new TokenAlias(false, false, grammarAccess.getForAccess().getSemicolonKeyword_3_0_7()), new TokenAlias(false, false, grammarAccess.getForAccess().getEStringParserRuleCall_3_0_8()), new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getForAccess().getHyphenMinusKeyword_3_0_9_3_0()), new TokenAlias(false, false, grammarAccess.getForAccess().getINTTerminalRuleCall_3_0_9_3_1())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getForAccess().getPlusSignKeyword_3_0_9_2_0()), new TokenAlias(false, false, grammarAccess.getForAccess().getINTTerminalRuleCall_3_0_9_2_1())), new TokenAlias(false, false, grammarAccess.getForAccess().getHyphenMinusHyphenMinusKeyword_3_0_9_1()), new TokenAlias(false, false, grammarAccess.getForAccess().getPlusSignPlusSignKeyword_3_0_9_0()))), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getForAccess().getEStringParserRuleCall_3_1_0()), new TokenAlias(false, false, grammarAccess.getForAccess().getColonKeyword_3_1_1()), new TokenAlias(false, false, grammarAccess.getForAccess().getEStringParserRuleCall_3_1_2())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getForAccess().getIntervalKeyword_3_3_0()), new TokenAlias(false, false, grammarAccess.getForAccess().getINTTerminalRuleCall_3_3_1()), new TokenAlias(false, false, grammarAccess.getForAccess().getToKeyword_3_3_2()), new TokenAlias(false, false, grammarAccess.getForAccess().getINTTerminalRuleCall_3_3_3()), new TokenAlias(false, false, grammarAccess.getForAccess().getInKeyword_3_3_4()), new TokenAlias(false, false, grammarAccess.getForAccess().getEStringParserRuleCall_3_3_5())));
-		match_While_TrueKeyword_2_0_or___ExclamationMarkKeyword_2_1_0_q_EStringParserRuleCall_2_1_1__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, true, grammarAccess.getWhileAccess().getExclamationMarkKeyword_2_1_0()), new TokenAlias(false, false, grammarAccess.getWhileAccess().getEStringParserRuleCall_2_1_1())), new TokenAlias(false, false, grammarAccess.getWhileAccess().getTrueKeyword_2_0()));
+		match_Addition_HyphenMinusKeyword_1_0_1_1_0_or_MinusKeyword_1_0_1_1_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getAdditionAccess().getHyphenMinusKeyword_1_0_1_1_0()), new TokenAlias(false, false, grammarAccess.getAdditionAccess().getMinusKeyword_1_0_1_1_1()));
+		match_CollectionAccessor_IndexKeyword_1_1_2_q = new TokenAlias(false, true, grammarAccess.getCollectionAccessorAccess().getIndexKeyword_1_1_2());
+		match_ForExpression_IntervalKeyword_2_q = new TokenAlias(false, true, grammarAccess.getForExpressionAccess().getIntervalKeyword_2());
+		match_IfExpression_ThenKeyword_3_q = new TokenAlias(false, true, grammarAccess.getIfExpressionAccess().getThenKeyword_3());
+		match_IfExpression___ElseKeyword_7_0_BEGINTerminalRuleCall_7_1_ENDTerminalRuleCall_7_3__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getIfExpressionAccess().getElseKeyword_7_0()), new TokenAlias(false, false, grammarAccess.getIfExpressionAccess().getBEGINTerminalRuleCall_7_1()), new TokenAlias(false, false, grammarAccess.getIfExpressionAccess().getENDTerminalRuleCall_7_3()));
+		match_List_AKeyword_1_q = new TokenAlias(false, true, grammarAccess.getListAccess().getAKeyword_1());
+		match_List_ArrayKeyword_4_0_or_ListKeyword_4_1_or_TableKeyword_4_2 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getListAccess().getArrayKeyword_4_0()), new TokenAlias(false, false, grammarAccess.getListAccess().getListKeyword_4_1()), new TokenAlias(false, false, grammarAccess.getListAccess().getTableKeyword_4_2()));
+		match_Prefixed_HyphenMinusKeyword_1_1_0_0_or_MinusKeyword_1_1_0_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getPrefixedAccess().getHyphenMinusKeyword_1_1_0_0()), new TokenAlias(false, false, grammarAccess.getPrefixedAccess().getMinusKeyword_1_1_0_1()));
+		match_Variable_EqualsKeyword_2_1_or_EqualsSignKeyword_2_0_or_IsKeyword_2_2 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getVariableAccess().getEqualsKeyword_2_1()), new TokenAlias(false, false, grammarAccess.getVariableAccess().getEqualsSignKeyword_2_0()), new TokenAlias(false, false, grammarAccess.getVariableAccess().getIsKeyword_2_2()));
 	}
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (ruleCall.getRule() == grammarAccess.getBEGINRule())
 			return getBEGINToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getBooleanOperatorRule())
-			return getBooleanOperatorToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getENDRule())
 			return getENDToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getEStringRule())
-			return getEStringToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getINTRule())
-			return getINTToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getTypeRule())
-			return getTypeToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getPlusOperatorRule())
+			return getPlusOperatorToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
@@ -60,50 +64,20 @@ public class PcodeSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected String getBEGINToken(EObject semanticObject, RuleCall ruleCall, INode node) { return ""; }
 	
 	/**
-	 * BooleanOperator:
-	 * 	'&&' | '||' | '!' | '^'
-	 * ;
-	 */
-	protected String getBooleanOperatorToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "&&";
-	}
-	
-	/**
 	 * Synthetic terminal rule. The concrete syntax is to be specified by clients.
 	 * Defaults to the empty string.
 	 */
 	protected String getENDToken(EObject semanticObject, RuleCall ruleCall, INode node) { return ""; }
 	
 	/**
-	 * EString returns ecore::EString:
-	 * 	STRING | ID;
-	 */
-	protected String getEStringToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "\"\"";
-	}
-	
-	/**
-	 * terminal INT returns ecore::EInt: ('0'..'9')+;
-	 */
-	protected String getINTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "";
-	}
-	
-	/**
-	 * Type:
-	 * 	(EString | DOUBLE | INT)
+	 * PlusOperator:
+	 * 	('+' | 'plus')
 	 * ;
 	 */
-	protected String getTypeToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+	protected String getPlusOperatorToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
-		return "\"\"";
+		return "+";
 	}
 	
 	@Override
@@ -112,102 +86,134 @@ public class PcodeSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_Atomic_LeftParenthesisKeyword_0_0_a.equals(syntax))
-				emit_Atomic_LeftParenthesisKeyword_0_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Atomic_LeftParenthesisKeyword_0_0_p.equals(syntax))
-				emit_Atomic_LeftParenthesisKeyword_0_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_For___AllKeyword_3_2_0_EStringParserRuleCall_3_2_1___or___EStringParserRuleCall_3_0_0_EqualsSignKeyword_3_0_1_INTTerminalRuleCall_3_0_2_SemicolonKeyword_3_0_3_EStringParserRuleCall_3_0_4_BooleanOperatorParserRuleCall_3_0_5_TypeParserRuleCall_3_0_6_SemicolonKeyword_3_0_7_EStringParserRuleCall_3_0_8___HyphenMinusHyphenMinusKeyword_3_0_9_1_or_PlusSignPlusSignKeyword_3_0_9_0_or___HyphenMinusKeyword_3_0_9_3_0_INTTerminalRuleCall_3_0_9_3_1___or___PlusSignKeyword_3_0_9_2_0_INTTerminalRuleCall_3_0_9_2_1_______or___EStringParserRuleCall_3_1_0_ColonKeyword_3_1_1_EStringParserRuleCall_3_1_2___or___IntervalKeyword_3_3_0_INTTerminalRuleCall_3_3_1_ToKeyword_3_3_2_INTTerminalRuleCall_3_3_3_InKeyword_3_3_4_EStringParserRuleCall_3_3_5__.equals(syntax))
-				emit_For___AllKeyword_3_2_0_EStringParserRuleCall_3_2_1___or___EStringParserRuleCall_3_0_0_EqualsSignKeyword_3_0_1_INTTerminalRuleCall_3_0_2_SemicolonKeyword_3_0_3_EStringParserRuleCall_3_0_4_BooleanOperatorParserRuleCall_3_0_5_TypeParserRuleCall_3_0_6_SemicolonKeyword_3_0_7_EStringParserRuleCall_3_0_8___HyphenMinusHyphenMinusKeyword_3_0_9_1_or_PlusSignPlusSignKeyword_3_0_9_0_or___HyphenMinusKeyword_3_0_9_3_0_INTTerminalRuleCall_3_0_9_3_1___or___PlusSignKeyword_3_0_9_2_0_INTTerminalRuleCall_3_0_9_2_1_______or___EStringParserRuleCall_3_1_0_ColonKeyword_3_1_1_EStringParserRuleCall_3_1_2___or___IntervalKeyword_3_3_0_INTTerminalRuleCall_3_3_1_ToKeyword_3_3_2_INTTerminalRuleCall_3_3_3_InKeyword_3_3_4_EStringParserRuleCall_3_3_5__(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_While_TrueKeyword_2_0_or___ExclamationMarkKeyword_2_1_0_q_EStringParserRuleCall_2_1_1__.equals(syntax))
-				emit_While_TrueKeyword_2_0_or___ExclamationMarkKeyword_2_1_0_q_EStringParserRuleCall_2_1_1__(semanticObject, getLastNavigableState(), syntaxNodes);
+			if (match_Addition_HyphenMinusKeyword_1_0_1_1_0_or_MinusKeyword_1_0_1_1_1.equals(syntax))
+				emit_Addition_HyphenMinusKeyword_1_0_1_1_0_or_MinusKeyword_1_0_1_1_1(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_CollectionAccessor_IndexKeyword_1_1_2_q.equals(syntax))
+				emit_CollectionAccessor_IndexKeyword_1_1_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_ForExpression_IntervalKeyword_2_q.equals(syntax))
+				emit_ForExpression_IntervalKeyword_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_IfExpression_ThenKeyword_3_q.equals(syntax))
+				emit_IfExpression_ThenKeyword_3_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_IfExpression___ElseKeyword_7_0_BEGINTerminalRuleCall_7_1_ENDTerminalRuleCall_7_3__q.equals(syntax))
+				emit_IfExpression___ElseKeyword_7_0_BEGINTerminalRuleCall_7_1_ENDTerminalRuleCall_7_3__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_List_AKeyword_1_q.equals(syntax))
+				emit_List_AKeyword_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_List_ArrayKeyword_4_0_or_ListKeyword_4_1_or_TableKeyword_4_2.equals(syntax))
+				emit_List_ArrayKeyword_4_0_or_ListKeyword_4_1_or_TableKeyword_4_2(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Prefixed_HyphenMinusKeyword_1_1_0_0_or_MinusKeyword_1_1_0_1.equals(syntax))
+				emit_Prefixed_HyphenMinusKeyword_1_1_0_0_or_MinusKeyword_1_1_0_1(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Variable_EqualsKeyword_2_1_or_EqualsSignKeyword_2_0_or_IsKeyword_2_2.equals(syntax))
+				emit_Variable_EqualsKeyword_2_1_or_EqualsSignKeyword_2_0_or_IsKeyword_2_2(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
 	/**
 	 * Ambiguous syntax:
-	 *     '('*
+	 *     '-' | 'minus'
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) '!' expression=Atomic
-	 *     (rule start) (ambiguity) '-' expression=Atomic
-	 *     (rule start) (ambiguity) name=EString
-	 *     (rule start) (ambiguity) ref=[Variable|ID]
-	 *     (rule start) (ambiguity) value='false'
-	 *     (rule start) (ambiguity) value='true'
-	 *     (rule start) (ambiguity) value=INT
-	 *     (rule start) (ambiguity) value=STRING
-	 *     (rule start) (ambiguity) {AndOrExpression.left=}
-	 *     (rule start) (ambiguity) {Comparison.left=}
-	 *     (rule start) (ambiguity) {Equals.left=}
-	 *     (rule start) (ambiguity) {Minus.left=}
-	 *     (rule start) (ambiguity) {MultiOrDiv.left=}
-	 *     (rule start) (ambiguity) {Plus.left=}
+	 *     {Minus.left=} (ambiguity) right=Multiplication
 	 */
-	protected void emit_Atomic_LeftParenthesisKeyword_0_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Addition_HyphenMinusKeyword_1_0_1_1_0_or_MinusKeyword_1_0_1_1_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
 	/**
 	 * Ambiguous syntax:
-	 *     '('+
+	 *     'index'?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) '!' expression=Atomic
-	 *     (rule start) (ambiguity) '-' expression=Atomic
-	 *     (rule start) (ambiguity) {AndOrExpression.left=}
-	 *     (rule start) (ambiguity) {Comparison.left=}
-	 *     (rule start) (ambiguity) {Equals.left=}
-	 *     (rule start) (ambiguity) {Minus.left=}
-	 *     (rule start) (ambiguity) {MultiOrDiv.left=}
-	 *     (rule start) (ambiguity) {Plus.left=}
+	 *     collection=[Variable|ID] 'at' (ambiguity) accessor+=LiteralExpression
 	 */
-	protected void emit_Atomic_LeftParenthesisKeyword_0_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_CollectionAccessor_IndexKeyword_1_1_2_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
 	/**
 	 * Ambiguous syntax:
-	 *     (
-	  *         (
-	  *             EString 
-	  *             '=' 
-	  *             INT 
-	  *             ';' 
-	  *             EString 
-	  *             BooleanOperator 
-	  *             Type 
-	  *             ';' 
-	  *             EString 
-	  *             ('++' | '--' | ('+' INT) | ('-' INT))
-	  *         ) | 
-	  *         (EString ':' EString) | 
-	  *         ('all' EString) | 
-	  *         (
-	  *             'interval' 
-	  *             INT 
-	  *             'to' 
-	  *             INT 
-	  *             'in' 
-	  *             EString
-	  *         )
-	  *     )
+	 *     'interval'?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) 'for' '(' (ambiguity) ')' (rule start)
+	 *     (rule start) 'for' (ambiguity) from=ArithmeticExpression
 	 */
-	protected void emit_For___AllKeyword_3_2_0_EStringParserRuleCall_3_2_1___or___EStringParserRuleCall_3_0_0_EqualsSignKeyword_3_0_1_INTTerminalRuleCall_3_0_2_SemicolonKeyword_3_0_3_EStringParserRuleCall_3_0_4_BooleanOperatorParserRuleCall_3_0_5_TypeParserRuleCall_3_0_6_SemicolonKeyword_3_0_7_EStringParserRuleCall_3_0_8___HyphenMinusHyphenMinusKeyword_3_0_9_1_or_PlusSignPlusSignKeyword_3_0_9_0_or___HyphenMinusKeyword_3_0_9_3_0_INTTerminalRuleCall_3_0_9_3_1___or___PlusSignKeyword_3_0_9_2_0_INTTerminalRuleCall_3_0_9_2_1_______or___EStringParserRuleCall_3_1_0_ColonKeyword_3_1_1_EStringParserRuleCall_3_1_2___or___IntervalKeyword_3_3_0_INTTerminalRuleCall_3_3_1_ToKeyword_3_3_2_INTTerminalRuleCall_3_3_3_InKeyword_3_3_4_EStringParserRuleCall_3_3_5__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_ForExpression_IntervalKeyword_2_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
 	/**
 	 * Ambiguous syntax:
-	 *     'true' | ('!'? EString)
+	 *     'then'?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) 'while' (ambiguity) (rule start)
+	 *     condition=LiteralExpression (ambiguity) BEGIN END 'else' BEGIN else+=Feature
+	 *     condition=LiteralExpression (ambiguity) BEGIN END ('else' BEGIN END)? (rule end)
+	 *     condition=LiteralExpression (ambiguity) BEGIN then+=Feature
 	 */
-	protected void emit_While_TrueKeyword_2_0_or___ExclamationMarkKeyword_2_1_0_q_EStringParserRuleCall_2_1_1__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_IfExpression_ThenKeyword_3_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('else' BEGIN END)?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     condition=LiteralExpression 'then'? BEGIN END (ambiguity) (rule end)
+	 *     then+=Feature END (ambiguity) (rule end)
+	 */
+	protected void emit_IfExpression___ElseKeyword_7_0_BEGINTerminalRuleCall_7_1_ENDTerminalRuleCall_7_3__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     'a'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) 'new' type='decimal'
+	 *     (rule start) (ambiguity) 'new' type='number'
+	 *     (rule start) (ambiguity) 'new' type='text'
+	 */
+	protected void emit_List_AKeyword_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     'array' | 'list' | 'table'
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     type='decimal' (ambiguity) 'and' 'contains' elements+=LiteralExpression
+	 *     type='decimal' (ambiguity) (rule end)
+	 *     type='number' (ambiguity) 'and' 'contains' elements+=LiteralExpression
+	 *     type='number' (ambiguity) (rule end)
+	 *     type='text' (ambiguity) 'and' 'contains' elements+=LiteralExpression
+	 *     type='text' (ambiguity) (rule end)
+	 */
+	protected void emit_List_ArrayKeyword_4_0_or_ListKeyword_4_1_or_TableKeyword_4_2(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     '-' | 'minus'
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) expression=Atomic
+	 */
+	protected void emit_Prefixed_HyphenMinusKeyword_1_1_0_0_or_MinusKeyword_1_1_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     '=' | 'equals' | 'is'
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     name=ID (ambiguity) value=LiteralExpression
+	 */
+	protected void emit_Variable_EqualsKeyword_2_1_or_EqualsSignKeyword_2_0_or_IsKeyword_2_2(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

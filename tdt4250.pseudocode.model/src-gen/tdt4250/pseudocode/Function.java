@@ -15,9 +15,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link tdt4250.pseudocode.Function#getFeatures <em>Features</em>}</li>
- *   <li>{@link tdt4250.pseudocode.Function#getParameters <em>Parameters</em>}</li>
  *   <li>{@link tdt4250.pseudocode.Function#getName <em>Name</em>}</li>
+ *   <li>{@link tdt4250.pseudocode.Function#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link tdt4250.pseudocode.Function#getFeatures <em>Features</em>}</li>
  * </ul>
  *
  * @see tdt4250.pseudocode.PseudocodePackage#getFunction()
@@ -25,30 +25,6 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Function extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Features</b></em>' containment reference list.
-	 * The list contents are of type {@link tdt4250.pseudocode.Feature}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Features</em>' containment reference list.
-	 * @see tdt4250.pseudocode.PseudocodePackage#getFunction_Features()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Feature> getFeatures();
-
-	/**
-	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
-	 * The list contents are of type {@link tdt4250.pseudocode.Parameter}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parameters</em>' containment reference list.
-	 * @see tdt4250.pseudocode.PseudocodePackage#getFunction_Parameters()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Parameter> getParameters();
-
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -70,5 +46,29 @@ public interface Function extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
+	 * The list contents are of type {@link tdt4250.pseudocode.Expression}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Parameters</em>' containment reference list.
+	 * @see tdt4250.pseudocode.PseudocodePackage#getFunction_Parameters()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Expression> getParameters();
+
+	/**
+	 * Returns the value of the '<em><b>Features</b></em>' containment reference list.
+	 * The list contents are of type {@link tdt4250.pseudocode.Feature}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Features</em>' containment reference list.
+	 * @see tdt4250.pseudocode.PseudocodePackage#getFunction_Features()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Feature> getFeatures();
 
 } // Function

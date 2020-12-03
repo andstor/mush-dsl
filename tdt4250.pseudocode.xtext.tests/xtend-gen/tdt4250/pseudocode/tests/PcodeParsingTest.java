@@ -31,13 +31,22 @@ public class PcodeParsingTest {
   public void loadModel() {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("QUICKSORT(A,p,r)");
+      _builder.append("ANNABELLE(alder,hoyde)");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("x=false");
+      _builder.append("G = [[1,1],[2,2]]");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("y=true||x");
+      _builder.append("i = 0");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("j = 1");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("if i==0 then");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("exchange G at 1,1 with G[i][j]");
       _builder.newLine();
       final Model result = this.parseHelper.parse(_builder);
       InputOutput.<String>println(EmfFormatter.objToStr(result));

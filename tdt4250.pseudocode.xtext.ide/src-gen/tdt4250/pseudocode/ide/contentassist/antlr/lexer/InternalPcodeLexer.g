@@ -11,35 +11,67 @@ package tdt4250.pseudocode.ide.contentassist.antlr.lexer;
 import org.eclipse.xtext.ide.editor.contentassist.antlr.internal.Lexer;
 }
 
+Contains : 'contains';
+
 Continue : 'continue';
+
+Exchange : 'exchange';
 
 Interval : 'interval';
 
+Decimal : 'decimal';
+
+Equals : 'equals';
+
+Number : 'number';
+
+Remove : 'remove';
+
 Return : 'return';
+
+Array : 'array';
 
 Break : 'break';
 
 False : 'false';
 
+Index : 'index';
+
+Minus : 'minus';
+
+Print : 'print';
+
+Table : 'table';
+
 While : 'while';
 
 Else : 'else';
 
+List : 'list';
+
+Plus : 'plus';
+
 Stop : 'stop';
+
+Text : 'text';
+
+Then : 'then';
 
 True : 'true';
 
-All : 'all';
+With : 'with';
+
+Add : 'add';
+
+And : 'and';
 
 For : 'for';
+
+New : 'new';
 
 ExclamationMarkEqualsSign : '!=';
 
 AmpersandAmpersand : '&&';
-
-PlusSignPlusSign : '++';
-
-HyphenMinusHyphenMinus : '--';
 
 LessThanSignEqualsSign : '<=';
 
@@ -47,9 +79,11 @@ EqualsSignEqualsSign : '==';
 
 GreaterThanSignEqualsSign : '>=';
 
+At : 'at';
+
 If : 'if';
 
-In : 'in';
+Is : 'is';
 
 To : 'to';
 
@@ -71,23 +105,29 @@ HyphenMinus : '-';
 
 Solidus : '/';
 
-Colon : ':';
-
-Semicolon : ';';
-
 LessThanSign : '<';
 
 EqualsSign : '=';
 
 GreaterThanSign : '>';
 
+LeftSquareBracket : '[';
+
+RightSquareBracket : ']';
+
 CircumflexAccent : '^';
 
-RULE_DOUBLE : RULE_INT '.' RULE_INT;
+A : 'a';
+
+LeftCurlyBracket : '{';
+
+RightCurlyBracket : '}';
 
 fragment RULE_BEGIN : ;
 
 fragment RULE_END : ;
+
+RULE_DOUBLE : RULE_INT '.' RULE_INT;
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 

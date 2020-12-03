@@ -16,7 +16,7 @@ import tdt4250.pseudocode.PseudocodePackage;
  *
  * @generated
  */
-public abstract class FeatureImpl extends MinimalEObjectImpl.Container implements Feature {
+public class FeatureImpl extends MinimalEObjectImpl.Container implements Feature {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -2,15 +2,23 @@
  */
 package tdt4250.pseudocode.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import tdt4250.pseudocode.Expression;
+import tdt4250.pseudocode.Feature;
 import tdt4250.pseudocode.IfExpression;
 import tdt4250.pseudocode.PseudocodePackage;
 
@@ -22,6 +30,7 @@ import tdt4250.pseudocode.PseudocodePackage;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link tdt4250.pseudocode.impl.IfExpressionImpl#getName <em>Name</em>}</li>
  *   <li>{@link tdt4250.pseudocode.impl.IfExpressionImpl#getCondition <em>Condition</em>}</li>
  *   <li>{@link tdt4250.pseudocode.impl.IfExpressionImpl#getThen <em>Then</em>}</li>
  *   <li>{@link tdt4250.pseudocode.impl.IfExpressionImpl#getElse <em>Else</em>}</li>
@@ -30,6 +39,26 @@ import tdt4250.pseudocode.PseudocodePackage;
  * @generated
  */
 public class IfExpressionImpl extends StatementImpl implements IfExpression {
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
 	/**
 	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -41,24 +70,24 @@ public class IfExpressionImpl extends StatementImpl implements IfExpression {
 	protected Expression condition;
 
 	/**
-	 * The cached value of the '{@link #getThen() <em>Then</em>}' containment reference.
+	 * The cached value of the '{@link #getThen() <em>Then</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getThen()
 	 * @generated
 	 * @ordered
 	 */
-	protected Expression then;
+	protected EList<Feature> then;
 
 	/**
-	 * The cached value of the '{@link #getElse() <em>Else</em>}' containment reference.
+	 * The cached value of the '{@link #getElse() <em>Else</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getElse()
 	 * @generated
 	 * @ordered
 	 */
-	protected Expression else_;
+	protected EList<Feature> else_;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -77,6 +106,30 @@ public class IfExpressionImpl extends StatementImpl implements IfExpression {
 	@Override
 	protected EClass eStaticClass() {
 		return PseudocodePackage.Literals.IF_EXPRESSION;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PseudocodePackage.IF_EXPRESSION__NAME, oldName,
+					name));
 	}
 
 	/**
@@ -137,7 +190,10 @@ public class IfExpressionImpl extends StatementImpl implements IfExpression {
 	 * @generated
 	 */
 	@Override
-	public Expression getThen() {
+	public EList<Feature> getThen() {
+		if (then == null) {
+			then = new EObjectContainmentEList<Feature>(Feature.class, this, PseudocodePackage.IF_EXPRESSION__THEN);
+		}
 		return then;
 	}
 
@@ -146,93 +202,12 @@ public class IfExpressionImpl extends StatementImpl implements IfExpression {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetThen(Expression newThen, NotificationChain msgs) {
-		Expression oldThen = then;
-		then = newThen;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					PseudocodePackage.IF_EXPRESSION__THEN, oldThen, newThen);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+	@Override
+	public EList<Feature> getElse() {
+		if (else_ == null) {
+			else_ = new EObjectContainmentEList<Feature>(Feature.class, this, PseudocodePackage.IF_EXPRESSION__ELSE);
 		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setThen(Expression newThen) {
-		if (newThen != then) {
-			NotificationChain msgs = null;
-			if (then != null)
-				msgs = ((InternalEObject) then).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - PseudocodePackage.IF_EXPRESSION__THEN, null, msgs);
-			if (newThen != null)
-				msgs = ((InternalEObject) newThen).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - PseudocodePackage.IF_EXPRESSION__THEN, null, msgs);
-			msgs = basicSetThen(newThen, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PseudocodePackage.IF_EXPRESSION__THEN, newThen,
-					newThen));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Expression getElse() {
 		return else_;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetElse(Expression newElse, NotificationChain msgs) {
-		Expression oldElse = else_;
-		else_ = newElse;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					PseudocodePackage.IF_EXPRESSION__ELSE, oldElse, newElse);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setElse(Expression newElse) {
-		if (newElse != else_) {
-			NotificationChain msgs = null;
-			if (else_ != null)
-				msgs = ((InternalEObject) else_).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - PseudocodePackage.IF_EXPRESSION__ELSE, null, msgs);
-			if (newElse != null)
-				msgs = ((InternalEObject) newElse).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - PseudocodePackage.IF_EXPRESSION__ELSE, null, msgs);
-			msgs = basicSetElse(newElse, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PseudocodePackage.IF_EXPRESSION__ELSE, newElse,
-					newElse));
 	}
 
 	/**
@@ -246,9 +221,9 @@ public class IfExpressionImpl extends StatementImpl implements IfExpression {
 		case PseudocodePackage.IF_EXPRESSION__CONDITION:
 			return basicSetCondition(null, msgs);
 		case PseudocodePackage.IF_EXPRESSION__THEN:
-			return basicSetThen(null, msgs);
+			return ((InternalEList<?>) getThen()).basicRemove(otherEnd, msgs);
 		case PseudocodePackage.IF_EXPRESSION__ELSE:
-			return basicSetElse(null, msgs);
+			return ((InternalEList<?>) getElse()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -261,6 +236,8 @@ public class IfExpressionImpl extends StatementImpl implements IfExpression {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+		case PseudocodePackage.IF_EXPRESSION__NAME:
+			return getName();
 		case PseudocodePackage.IF_EXPRESSION__CONDITION:
 			return getCondition();
 		case PseudocodePackage.IF_EXPRESSION__THEN:
@@ -276,17 +253,23 @@ public class IfExpressionImpl extends StatementImpl implements IfExpression {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+		case PseudocodePackage.IF_EXPRESSION__NAME:
+			setName((String) newValue);
+			return;
 		case PseudocodePackage.IF_EXPRESSION__CONDITION:
 			setCondition((Expression) newValue);
 			return;
 		case PseudocodePackage.IF_EXPRESSION__THEN:
-			setThen((Expression) newValue);
+			getThen().clear();
+			getThen().addAll((Collection<? extends Feature>) newValue);
 			return;
 		case PseudocodePackage.IF_EXPRESSION__ELSE:
-			setElse((Expression) newValue);
+			getElse().clear();
+			getElse().addAll((Collection<? extends Feature>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -300,14 +283,17 @@ public class IfExpressionImpl extends StatementImpl implements IfExpression {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+		case PseudocodePackage.IF_EXPRESSION__NAME:
+			setName(NAME_EDEFAULT);
+			return;
 		case PseudocodePackage.IF_EXPRESSION__CONDITION:
 			setCondition((Expression) null);
 			return;
 		case PseudocodePackage.IF_EXPRESSION__THEN:
-			setThen((Expression) null);
+			getThen().clear();
 			return;
 		case PseudocodePackage.IF_EXPRESSION__ELSE:
-			setElse((Expression) null);
+			getElse().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -321,14 +307,33 @@ public class IfExpressionImpl extends StatementImpl implements IfExpression {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case PseudocodePackage.IF_EXPRESSION__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case PseudocodePackage.IF_EXPRESSION__CONDITION:
 			return condition != null;
 		case PseudocodePackage.IF_EXPRESSION__THEN:
-			return then != null;
+			return then != null && !then.isEmpty();
 		case PseudocodePackage.IF_EXPRESSION__ELSE:
-			return else_ != null;
+			return else_ != null && !else_.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //IfExpressionImpl

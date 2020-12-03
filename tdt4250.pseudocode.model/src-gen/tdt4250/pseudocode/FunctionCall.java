@@ -15,8 +15,6 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link tdt4250.pseudocode.FunctionCall#getName <em>Name</em>}</li>
  *   <li>{@link tdt4250.pseudocode.FunctionCall#getParameters <em>Parameters</em>}</li>
- *   <li>{@link tdt4250.pseudocode.FunctionCall#getLeft <em>Left</em>}</li>
- *   <li>{@link tdt4250.pseudocode.FunctionCall#getRight <em>Right</em>}</li>
  * </ul>
  *
  * @see tdt4250.pseudocode.PseudocodePackage#getFunctionCall()
@@ -48,7 +46,7 @@ public interface FunctionCall extends Expression {
 
 	/**
 	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
-	 * The list contents are of type {@link tdt4250.pseudocode.Parameter}.
+	 * The list contents are of type {@link tdt4250.pseudocode.Expression}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parameters</em>' containment reference list.
@@ -56,50 +54,6 @@ public interface FunctionCall extends Expression {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Parameter> getParameters();
-
-	/**
-	 * Returns the value of the '<em><b>Left</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Left</em>' containment reference.
-	 * @see #setLeft(Expression)
-	 * @see tdt4250.pseudocode.PseudocodePackage#getFunctionCall_Left()
-	 * @model containment="true"
-	 * @generated
-	 */
-	Expression getLeft();
-
-	/**
-	 * Sets the value of the '{@link tdt4250.pseudocode.FunctionCall#getLeft <em>Left</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Left</em>' containment reference.
-	 * @see #getLeft()
-	 * @generated
-	 */
-	void setLeft(Expression value);
-
-	/**
-	 * Returns the value of the '<em><b>Right</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Right</em>' containment reference.
-	 * @see #setRight(Expression)
-	 * @see tdt4250.pseudocode.PseudocodePackage#getFunctionCall_Right()
-	 * @model containment="true"
-	 * @generated
-	 */
-	Expression getRight();
-
-	/**
-	 * Sets the value of the '{@link tdt4250.pseudocode.FunctionCall#getRight <em>Right</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Right</em>' containment reference.
-	 * @see #getRight()
-	 * @generated
-	 */
-	void setRight(Expression value);
+	EList<Expression> getParameters();
 
 } // FunctionCall

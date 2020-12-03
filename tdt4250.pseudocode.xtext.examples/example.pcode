@@ -1,16 +1,7 @@
-class Katt(navn, rase)
-method Hoyde(cm)
-	print "height: ",cm
-	noe = 1 + 1
-	return noe
-end_method
-
-
-method hfh()
-	if noe exists
-		break
-end_method
-
-end_class
-
-
+ANNABELLE(alder,hoyde)
+	y=2*4
+	lol is a new text list and contains "koko", "hei", "hade"
+	i=2
+	b=[1,2,3][i]
+	
+		

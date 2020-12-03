@@ -14,7 +14,7 @@ import tdt4250.pseudocode.Statement;
  *
  * @generated
  */
-public abstract class StatementImpl extends FeatureImpl implements Statement {
+public class StatementImpl extends FeatureImpl implements Statement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

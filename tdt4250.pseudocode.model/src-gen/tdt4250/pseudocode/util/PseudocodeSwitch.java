@@ -66,34 +66,9 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-		case PseudocodePackage.STATEMENT: {
-			Statement statement = (Statement) theEObject;
-			T result = caseStatement(statement);
-			if (result == null)
-				result = caseFeature(statement);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case PseudocodePackage.VARIABLE_REFERENCE: {
-			VariableReference variableReference = (VariableReference) theEObject;
-			T result = caseVariableReference(variableReference);
-			if (result == null)
-				result = caseExpression(variableReference);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case PseudocodePackage.EXPRESSION: {
-			Expression expression = (Expression) theEObject;
-			T result = caseExpression(expression);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case PseudocodePackage.PARAMETER: {
-			Parameter parameter = (Parameter) theEObject;
-			T result = caseParameter(parameter);
+		case PseudocodePackage.MODEL: {
+			Model model = (Model) theEObject;
+			T result = caseModel(model);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -105,13 +80,27 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case PseudocodePackage.FOR: {
-			For for_ = (For) theEObject;
-			T result = caseFor(for_);
+		case PseudocodePackage.FEATURE: {
+			Feature feature = (Feature) theEObject;
+			T result = caseFeature(feature);
 			if (result == null)
-				result = caseStatement(for_);
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PseudocodePackage.STATEMENT: {
+			Statement statement = (Statement) theEObject;
+			T result = caseStatement(statement);
 			if (result == null)
-				result = caseFeature(for_);
+				result = caseFeature(statement);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PseudocodePackage.EXPRESSION: {
+			Expression expression = (Expression) theEObject;
+			T result = caseExpression(expression);
+			if (result == null)
+				result = caseFeature(expression);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -127,22 +116,24 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case PseudocodePackage.WHILE: {
-			While while_ = (While) theEObject;
-			T result = caseWhile(while_);
+		case PseudocodePackage.FOR_EXPRESSION: {
+			ForExpression forExpression = (ForExpression) theEObject;
+			T result = caseForExpression(forExpression);
 			if (result == null)
-				result = caseStatement(while_);
+				result = caseStatement(forExpression);
 			if (result == null)
-				result = caseFeature(while_);
+				result = caseFeature(forExpression);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case PseudocodePackage.VARIABLE: {
-			Variable variable = (Variable) theEObject;
-			T result = caseVariable(variable);
+		case PseudocodePackage.WHILE_EXPRESSION: {
+			WhileExpression whileExpression = (WhileExpression) theEObject;
+			T result = caseWhileExpression(whileExpression);
 			if (result == null)
-				result = caseFeature(variable);
+				result = caseStatement(whileExpression);
+			if (result == null)
+				result = caseFeature(whileExpression);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -158,11 +149,13 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case PseudocodePackage.PRIMARY: {
-			Primary primary = (Primary) theEObject;
-			T result = casePrimary(primary);
+		case PseudocodePackage.PRINT: {
+			Print print = (Print) theEObject;
+			T result = casePrint(print);
 			if (result == null)
-				result = caseExpression(primary);
+				result = caseExpression(print);
+			if (result == null)
+				result = caseFeature(print);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -173,74 +166,84 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseExpression(functionCall);
 			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case PseudocodePackage.FEATURE: {
-			Feature feature = (Feature) theEObject;
-			T result = caseFeature(feature);
+				result = caseFeature(functionCall);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case PseudocodePackage.ARITHMETIC_EXPRESSION: {
-			ArithmeticExpression arithmeticExpression = (ArithmeticExpression) theEObject;
-			T result = caseArithmeticExpression(arithmeticExpression);
+		case PseudocodePackage.VARIABLE: {
+			Variable variable = (Variable) theEObject;
+			T result = caseVariable(variable);
 			if (result == null)
-				result = caseExpression(arithmeticExpression);
+				result = caseExpression(variable);
 			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case PseudocodePackage.LITERAL: {
-			Literal literal = (Literal) theEObject;
-			T result = caseLiteral(literal);
-			if (result == null)
-				result = caseExpression(literal);
+				result = caseFeature(variable);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case PseudocodePackage.CONDITION: {
-			Condition condition = (Condition) theEObject;
-			T result = caseCondition(condition);
+		case PseudocodePackage.COLLECTION_ADD: {
+			CollectionAdd collectionAdd = (CollectionAdd) theEObject;
+			T result = caseCollectionAdd(collectionAdd);
 			if (result == null)
-				result = caseBooleanExpression(condition);
+				result = caseExpression(collectionAdd);
 			if (result == null)
-				result = caseExpression(condition);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case PseudocodePackage.BOOLEAN_EXPRESSION: {
-			BooleanExpression booleanExpression = (BooleanExpression) theEObject;
-			T result = caseBooleanExpression(booleanExpression);
-			if (result == null)
-				result = caseExpression(booleanExpression);
+				result = caseFeature(collectionAdd);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case PseudocodePackage.BOOLEAN_LITERAL: {
-			BooleanLiteral booleanLiteral = (BooleanLiteral) theEObject;
-			T result = caseBooleanLiteral(booleanLiteral);
+		case PseudocodePackage.VALUE_EXCHANGE: {
+			ValueExchange valueExchange = (ValueExchange) theEObject;
+			T result = caseValueExchange(valueExchange);
 			if (result == null)
-				result = caseLiteral(booleanLiteral);
+				result = caseExpression(valueExchange);
 			if (result == null)
-				result = caseBooleanExpression(booleanLiteral);
-			if (result == null)
-				result = caseExpression(booleanLiteral);
+				result = caseFeature(valueExchange);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case PseudocodePackage.BOOLEAN_TEST: {
-			BooleanTest booleanTest = (BooleanTest) theEObject;
-			T result = caseBooleanTest(booleanTest);
+		case PseudocodePackage.LIST: {
+			List list = (List) theEObject;
+			T result = caseList(list);
 			if (result == null)
-				result = caseBooleanExpression(booleanTest);
+				result = caseExpression(list);
 			if (result == null)
-				result = caseExpression(booleanTest);
+				result = caseFeature(list);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PseudocodePackage.SET_LITTERAL: {
+			SetLitteral setLitteral = (SetLitteral) theEObject;
+			T result = caseSetLitteral(setLitteral);
+			if (result == null)
+				result = caseExpression(setLitteral);
+			if (result == null)
+				result = caseFeature(setLitteral);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PseudocodePackage.LIST_LITTERAL: {
+			ListLitteral listLitteral = (ListLitteral) theEObject;
+			T result = caseListLitteral(listLitteral);
+			if (result == null)
+				result = caseExpression(listLitteral);
+			if (result == null)
+				result = caseFeature(listLitteral);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PseudocodePackage.COLLECTION_ACCESSOR: {
+			CollectionAccessor collectionAccessor = (CollectionAccessor) theEObject;
+			T result = caseCollectionAccessor(collectionAccessor);
+			if (result == null)
+				result = caseExpression(collectionAccessor);
+			if (result == null)
+				result = caseFeature(collectionAccessor);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -251,6 +254,8 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseExpression(andOrExpression);
 			if (result == null)
+				result = caseFeature(andOrExpression);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -259,6 +264,8 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 			T result = caseComparison(comparison);
 			if (result == null)
 				result = caseExpression(comparison);
+			if (result == null)
+				result = caseFeature(comparison);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -269,63 +276,7 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseExpression(equals);
 			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case PseudocodePackage.MINUS: {
-			Minus minus = (Minus) theEObject;
-			T result = caseMinus(minus);
-			if (result == null)
-				result = caseExpression(minus);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case PseudocodePackage.MULTI_OR_DIV: {
-			MultiOrDiv multiOrDiv = (MultiOrDiv) theEObject;
-			T result = caseMultiOrDiv(multiOrDiv);
-			if (result == null)
-				result = caseExpression(multiOrDiv);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case PseudocodePackage.BOOLEAN_NEGATION: {
-			BooleanNegation booleanNegation = (BooleanNegation) theEObject;
-			T result = caseBooleanNegation(booleanNegation);
-			if (result == null)
-				result = caseExpression(booleanNegation);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case PseudocodePackage.ARITHMETIC_SIGNED: {
-			ArithmeticSigned arithmeticSigned = (ArithmeticSigned) theEObject;
-			T result = caseArithmeticSigned(arithmeticSigned);
-			if (result == null)
-				result = caseExpression(arithmeticSigned);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case PseudocodePackage.NUMBER_LITERAL: {
-			NumberLiteral numberLiteral = (NumberLiteral) theEObject;
-			T result = caseNumberLiteral(numberLiteral);
-			if (result == null)
-				result = caseLiteral(numberLiteral);
-			if (result == null)
-				result = caseArithmeticExpression(numberLiteral);
-			if (result == null)
-				result = caseExpression(numberLiteral);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case PseudocodePackage.STRING_LITERAL: {
-			StringLiteral stringLiteral = (StringLiteral) theEObject;
-			T result = caseStringLiteral(stringLiteral);
-			if (result == null)
-				result = caseExpression(stringLiteral);
+				result = caseFeature(equals);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -336,12 +287,95 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseExpression(plus);
 			if (result == null)
+				result = caseFeature(plus);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case PseudocodePackage.MODEL: {
-			Model model = (Model) theEObject;
-			T result = caseModel(model);
+		case PseudocodePackage.MINUS: {
+			Minus minus = (Minus) theEObject;
+			T result = caseMinus(minus);
+			if (result == null)
+				result = caseExpression(minus);
+			if (result == null)
+				result = caseFeature(minus);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PseudocodePackage.MULTI_OR_DIV: {
+			MultiOrDiv multiOrDiv = (MultiOrDiv) theEObject;
+			T result = caseMultiOrDiv(multiOrDiv);
+			if (result == null)
+				result = caseExpression(multiOrDiv);
+			if (result == null)
+				result = caseFeature(multiOrDiv);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PseudocodePackage.BOOLEAN_NEGATION: {
+			BooleanNegation booleanNegation = (BooleanNegation) theEObject;
+			T result = caseBooleanNegation(booleanNegation);
+			if (result == null)
+				result = caseExpression(booleanNegation);
+			if (result == null)
+				result = caseFeature(booleanNegation);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PseudocodePackage.ARITHMETIC_SIGNED: {
+			ArithmeticSigned arithmeticSigned = (ArithmeticSigned) theEObject;
+			T result = caseArithmeticSigned(arithmeticSigned);
+			if (result == null)
+				result = caseExpression(arithmeticSigned);
+			if (result == null)
+				result = caseFeature(arithmeticSigned);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PseudocodePackage.NUMBER_LITERAL: {
+			NumberLiteral numberLiteral = (NumberLiteral) theEObject;
+			T result = caseNumberLiteral(numberLiteral);
+			if (result == null)
+				result = caseExpression(numberLiteral);
+			if (result == null)
+				result = caseFeature(numberLiteral);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PseudocodePackage.STRING_LITERAL: {
+			StringLiteral stringLiteral = (StringLiteral) theEObject;
+			T result = caseStringLiteral(stringLiteral);
+			if (result == null)
+				result = caseExpression(stringLiteral);
+			if (result == null)
+				result = caseFeature(stringLiteral);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PseudocodePackage.BOOLEAN_LITERAL: {
+			BooleanLiteral booleanLiteral = (BooleanLiteral) theEObject;
+			T result = caseBooleanLiteral(booleanLiteral);
+			if (result == null)
+				result = caseExpression(booleanLiteral);
+			if (result == null)
+				result = caseFeature(booleanLiteral);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PseudocodePackage.VARIABLE_REFERENCE: {
+			VariableReference variableReference = (VariableReference) theEObject;
+			T result = caseVariableReference(variableReference);
+			if (result == null)
+				result = caseExpression(variableReference);
+			if (result == null)
+				result = caseFeature(variableReference);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -352,62 +386,17 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Statement</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Model</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Statement</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Model</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseStatement(Statement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Variable Reference</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Variable Reference</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseVariableReference(VariableReference object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Expression</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseExpression(Expression object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Parameter</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Parameter</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseParameter(Parameter object) {
+	public T caseModel(Model object) {
 		return null;
 	}
 
@@ -427,17 +416,47 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>For</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Feature</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>For</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Feature</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseFor(For object) {
+	public T caseFeature(Feature object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Statement</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Statement</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStatement(Statement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExpression(Expression object) {
 		return null;
 	}
 
@@ -457,32 +476,32 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>While</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>For Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>While</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>For Expression</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseWhile(While object) {
+	public T caseForExpression(ForExpression object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Variable</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>While Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Variable</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>While Expression</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseVariable(Variable object) {
+	public T caseWhileExpression(WhileExpression object) {
 		return null;
 	}
 
@@ -502,17 +521,17 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Primary</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Print</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Primary</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Print</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePrimary(Primary object) {
+	public T casePrint(Print object) {
 		return null;
 	}
 
@@ -532,107 +551,107 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Feature</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Variable</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Feature</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Variable</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseFeature(Feature object) {
+	public T caseVariable(Variable object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Arithmetic Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Collection Add</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Arithmetic Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Collection Add</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseArithmeticExpression(ArithmeticExpression object) {
+	public T caseCollectionAdd(CollectionAdd object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Literal</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Value Exchange</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Literal</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Value Exchange</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseLiteral(Literal object) {
+	public T caseValueExchange(ValueExchange object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Condition</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>List</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Condition</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>List</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseCondition(Condition object) {
+	public T caseList(List object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Boolean Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Set Litteral</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Boolean Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Set Litteral</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseBooleanExpression(BooleanExpression object) {
+	public T caseSetLitteral(SetLitteral object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Boolean Literal</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>List Litteral</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Boolean Literal</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>List Litteral</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseBooleanLiteral(BooleanLiteral object) {
+	public T caseListLitteral(ListLitteral object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Boolean Test</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Collection Accessor</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Boolean Test</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Collection Accessor</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseBooleanTest(BooleanTest object) {
+	public T caseCollectionAccessor(CollectionAccessor object) {
 		return null;
 	}
 
@@ -678,6 +697,21 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseEquals(Equals object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Plus</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Plus</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePlus(Plus object) {
 		return null;
 	}
 
@@ -772,32 +806,32 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Plus</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Boolean Literal</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Plus</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Boolean Literal</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePlus(Plus object) {
+	public T caseBooleanLiteral(BooleanLiteral object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Model</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Variable Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Model</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Variable Reference</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseModel(Model object) {
+	public T caseVariableReference(VariableReference object) {
 		return null;
 	}
 

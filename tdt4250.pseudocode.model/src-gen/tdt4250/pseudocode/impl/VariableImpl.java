@@ -28,7 +28,7 @@ import tdt4250.pseudocode.Variable;
  *
  * @generated
  */
-public class VariableImpl extends FeatureImpl implements Variable {
+public class VariableImpl extends ExpressionImpl implements Variable {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->

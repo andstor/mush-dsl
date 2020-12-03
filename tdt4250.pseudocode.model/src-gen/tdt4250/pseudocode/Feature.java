@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  *
  * @see tdt4250.pseudocode.PseudocodePackage#getFeature()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface Feature extends EObject {

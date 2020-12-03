@@ -2,8 +2,6 @@
  */
 package tdt4250.pseudocode;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Expression</b></em>'.
@@ -11,8 +9,8 @@ import org.eclipse.emf.ecore.EObject;
  *
  *
  * @see tdt4250.pseudocode.PseudocodePackage#getExpression()
- * @model abstract="true"
+ * @model
  * @generated
  */
-public interface Expression extends EObject {
+public interface Expression extends Feature {
 } // Expression

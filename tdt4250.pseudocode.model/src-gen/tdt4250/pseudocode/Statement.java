@@ -9,7 +9,7 @@ package tdt4250.pseudocode;
  *
  *
  * @see tdt4250.pseudocode.PseudocodePackage#getStatement()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface Statement extends Feature {

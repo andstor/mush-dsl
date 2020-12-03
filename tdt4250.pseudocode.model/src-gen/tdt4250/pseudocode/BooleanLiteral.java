@@ -18,7 +18,7 @@ package tdt4250.pseudocode;
  * @model
  * @generated
  */
-public interface BooleanLiteral extends Literal, BooleanExpression {
+public interface BooleanLiteral extends Expression {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
