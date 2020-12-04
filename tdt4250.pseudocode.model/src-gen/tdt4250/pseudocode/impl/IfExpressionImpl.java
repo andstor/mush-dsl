@@ -33,7 +33,7 @@ import tdt4250.pseudocode.PseudocodePackage;
  *   <li>{@link tdt4250.pseudocode.impl.IfExpressionImpl#getName <em>Name</em>}</li>
  *   <li>{@link tdt4250.pseudocode.impl.IfExpressionImpl#getCondition <em>Condition</em>}</li>
  *   <li>{@link tdt4250.pseudocode.impl.IfExpressionImpl#getThen <em>Then</em>}</li>
- *   <li>{@link tdt4250.pseudocode.impl.IfExpressionImpl#getElse <em>Else</em>}</li>
+ *   <li>{@link tdt4250.pseudocode.impl.IfExpressionImpl#getOtherwise <em>Otherwise</em>}</li>
  * </ul>
  *
  * @generated
@@ -80,14 +80,14 @@ public class IfExpressionImpl extends StatementImpl implements IfExpression {
 	protected EList<Feature> then;
 
 	/**
-	 * The cached value of the '{@link #getElse() <em>Else</em>}' containment reference list.
+	 * The cached value of the '{@link #getOtherwise() <em>Otherwise</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getElse()
+	 * @see #getOtherwise()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Feature> else_;
+	protected EList<Feature> otherwise;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -203,11 +203,12 @@ public class IfExpressionImpl extends StatementImpl implements IfExpression {
 	 * @generated
 	 */
 	@Override
-	public EList<Feature> getElse() {
-		if (else_ == null) {
-			else_ = new EObjectContainmentEList<Feature>(Feature.class, this, PseudocodePackage.IF_EXPRESSION__ELSE);
+	public EList<Feature> getOtherwise() {
+		if (otherwise == null) {
+			otherwise = new EObjectContainmentEList<Feature>(Feature.class, this,
+					PseudocodePackage.IF_EXPRESSION__OTHERWISE);
 		}
-		return else_;
+		return otherwise;
 	}
 
 	/**
@@ -222,8 +223,8 @@ public class IfExpressionImpl extends StatementImpl implements IfExpression {
 			return basicSetCondition(null, msgs);
 		case PseudocodePackage.IF_EXPRESSION__THEN:
 			return ((InternalEList<?>) getThen()).basicRemove(otherEnd, msgs);
-		case PseudocodePackage.IF_EXPRESSION__ELSE:
-			return ((InternalEList<?>) getElse()).basicRemove(otherEnd, msgs);
+		case PseudocodePackage.IF_EXPRESSION__OTHERWISE:
+			return ((InternalEList<?>) getOtherwise()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -242,8 +243,8 @@ public class IfExpressionImpl extends StatementImpl implements IfExpression {
 			return getCondition();
 		case PseudocodePackage.IF_EXPRESSION__THEN:
 			return getThen();
-		case PseudocodePackage.IF_EXPRESSION__ELSE:
-			return getElse();
+		case PseudocodePackage.IF_EXPRESSION__OTHERWISE:
+			return getOtherwise();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -267,9 +268,9 @@ public class IfExpressionImpl extends StatementImpl implements IfExpression {
 			getThen().clear();
 			getThen().addAll((Collection<? extends Feature>) newValue);
 			return;
-		case PseudocodePackage.IF_EXPRESSION__ELSE:
-			getElse().clear();
-			getElse().addAll((Collection<? extends Feature>) newValue);
+		case PseudocodePackage.IF_EXPRESSION__OTHERWISE:
+			getOtherwise().clear();
+			getOtherwise().addAll((Collection<? extends Feature>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -292,8 +293,8 @@ public class IfExpressionImpl extends StatementImpl implements IfExpression {
 		case PseudocodePackage.IF_EXPRESSION__THEN:
 			getThen().clear();
 			return;
-		case PseudocodePackage.IF_EXPRESSION__ELSE:
-			getElse().clear();
+		case PseudocodePackage.IF_EXPRESSION__OTHERWISE:
+			getOtherwise().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -313,8 +314,8 @@ public class IfExpressionImpl extends StatementImpl implements IfExpression {
 			return condition != null;
 		case PseudocodePackage.IF_EXPRESSION__THEN:
 			return then != null && !then.isEmpty();
-		case PseudocodePackage.IF_EXPRESSION__ELSE:
-			return else_ != null && !else_.isEmpty();
+		case PseudocodePackage.IF_EXPRESSION__OTHERWISE:
+			return otherwise != null && !otherwise.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -72,6 +72,11 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseIdentifier(Identifier object) {
+			return createIdentifierAdapter();
+		}
+
+		@Override
 		public Adapter caseFunction(Function object) {
 			return createFunctionAdapter();
 		}
@@ -122,6 +127,16 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseCollection(Collection object) {
+			return createCollectionAdapter();
+		}
+
+		@Override
+		public Adapter caseTypeLiteral(TypeLiteral object) {
+			return createTypeLiteralAdapter();
+		}
+
+		@Override
 		public Adapter caseVariable(Variable object) {
 			return createVariableAdapter();
 		}
@@ -129,6 +144,11 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseCollectionAdd(CollectionAdd object) {
 			return createCollectionAddAdapter();
+		}
+
+		@Override
+		public Adapter caseCollectionRemove(CollectionRemove object) {
+			return createCollectionRemoveAdapter();
 		}
 
 		@Override
@@ -194,6 +214,11 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseArithmeticSigned(ArithmeticSigned object) {
 			return createArithmeticSignedAdapter();
+		}
+
+		@Override
+		public Adapter caseParenthesizedExpression(ParenthesizedExpression object) {
+			return createParenthesizedExpressionAdapter();
 		}
 
 		@Override
@@ -418,6 +443,20 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.CollectionRemove <em>Collection Remove</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.CollectionRemove
+	 * @generated
+	 */
+	public Adapter createCollectionRemoveAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.ValueExchange <em>Value Exchange</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -600,6 +639,20 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.ParenthesizedExpression <em>Parenthesized Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.ParenthesizedExpression
+	 * @generated
+	 */
+	public Adapter createParenthesizedExpressionAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.NumberLiteral <em>Number Literal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -652,6 +705,48 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createVariableReferenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Identifier <em>Identifier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.Identifier
+	 * @generated
+	 */
+	public Adapter createIdentifierAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Collection <em>Collection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.Collection
+	 * @generated
+	 */
+	public Adapter createCollectionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.TypeLiteral <em>Type Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.TypeLiteral
+	 * @generated
+	 */
+	public Adapter createTypeLiteralAdapter() {
 		return null;
 	}
 

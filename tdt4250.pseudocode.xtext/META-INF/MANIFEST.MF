@@ -31,5 +31,8 @@ Export-Package: tdt4250.pseudocode.formatting2,
  tdt4250.pseudocode.algo.impl,
  tdt4250.pseudocode.algo.util,
  tdt4250.pseudocode.parser.antlr.lexer,
- tdt4250.pseudocode.jvmmodel
+ tdt4250.pseudocode.jvmmodel,
+ tdt4250.pseudocode.pseudocode.util,
+ tdt4250.pseudocode.pseudocode,
+ tdt4250.pseudocode.pseudocode.impl
 Import-Package: org.apache.log4j

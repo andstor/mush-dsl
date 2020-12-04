@@ -13,8 +13,10 @@ import tdt4250.pseudocode.AndOrExpression;
 import tdt4250.pseudocode.ArithmeticSigned;
 import tdt4250.pseudocode.BooleanLiteral;
 import tdt4250.pseudocode.BooleanNegation;
+import tdt4250.pseudocode.Collection;
 import tdt4250.pseudocode.CollectionAccessor;
 import tdt4250.pseudocode.CollectionAdd;
+import tdt4250.pseudocode.CollectionRemove;
 import tdt4250.pseudocode.Comparison;
 import tdt4250.pseudocode.Equals;
 import tdt4250.pseudocode.Expression;
@@ -22,6 +24,7 @@ import tdt4250.pseudocode.Feature;
 import tdt4250.pseudocode.ForExpression;
 import tdt4250.pseudocode.Function;
 import tdt4250.pseudocode.FunctionCall;
+import tdt4250.pseudocode.Identifier;
 import tdt4250.pseudocode.IfExpression;
 import tdt4250.pseudocode.List;
 import tdt4250.pseudocode.ListLitteral;
@@ -29,6 +32,7 @@ import tdt4250.pseudocode.Minus;
 import tdt4250.pseudocode.Model;
 import tdt4250.pseudocode.MultiOrDiv;
 import tdt4250.pseudocode.NumberLiteral;
+import tdt4250.pseudocode.ParenthesizedExpression;
 import tdt4250.pseudocode.Plus;
 import tdt4250.pseudocode.Print;
 import tdt4250.pseudocode.PseudocodeFactory;
@@ -37,6 +41,7 @@ import tdt4250.pseudocode.SetLitteral;
 import tdt4250.pseudocode.Statement;
 import tdt4250.pseudocode.Stop;
 import tdt4250.pseudocode.StringLiteral;
+import tdt4250.pseudocode.TypeLiteral;
 import tdt4250.pseudocode.ValueExchange;
 import tdt4250.pseudocode.Variable;
 import tdt4250.pseudocode.VariableReference;
@@ -145,6 +150,13 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass collectionRemoveEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass valueExchangeEClass = null;
 
 	/**
@@ -236,6 +248,13 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass parenthesizedExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass numberLiteralEClass = null;
 
 	/**
@@ -258,6 +277,27 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	private EClass variableReferenceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass identifierEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass collectionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass typeLiteralEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -359,18 +399,8 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getFunction_Name() {
-		return (EAttribute) functionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EReference getFunction_Parameters() {
-		return (EReference) functionEClass.getEStructuralFeatures().get(1);
+		return (EReference) functionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -380,7 +410,7 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 */
 	@Override
 	public EReference getFunction_Features() {
-		return (EReference) functionEClass.getEStructuralFeatures().get(2);
+		return (EReference) functionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -459,7 +489,7 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
-	public EReference getIfExpression_Else() {
+	public EReference getIfExpression_Otherwise() {
 		return (EReference) ifExpressionEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -659,6 +689,16 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
+	public EReference getVariable_Type() {
+		return (EReference) variableEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getCollectionAdd() {
 		return collectionAddEClass;
 	}
@@ -681,6 +721,36 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	@Override
 	public EReference getCollectionAdd_Value() {
 		return (EReference) collectionAddEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getCollectionRemove() {
+		return collectionRemoveEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getCollectionRemove_Collection() {
+		return (EReference) collectionRemoveEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getCollectionRemove_Value() {
+		return (EReference) collectionRemoveEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -739,16 +809,6 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
-	public EReference getList_Elements() {
-		return (EReference) listEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getSetLitteral() {
 		return setLitteralEClass;
 	}
@@ -759,28 +819,8 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
-	public EReference getSetLitteral_Elements() {
-		return (EReference) setLitteralEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getListLitteral() {
 		return listLitteralEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getListLitteral_Elements() {
-		return (EReference) listLitteralEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1079,6 +1119,26 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
+	public EClass getParenthesizedExpression() {
+		return parenthesizedExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getParenthesizedExpression_Expression() {
+		return (EReference) parenthesizedExpressionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getNumberLiteral() {
 		return numberLiteralEClass;
 	}
@@ -1159,6 +1219,56 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
+	public EClass getIdentifier() {
+		return identifierEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getIdentifier_Name() {
+		return (EAttribute) identifierEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getCollection() {
+		return collectionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getCollection_Elements() {
+		return (EReference) collectionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getTypeLiteral() {
+		return typeLiteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public PseudocodeFactory getPseudocodeFactory() {
 		return (PseudocodeFactory) getEFactoryInstance();
 	}
@@ -1186,8 +1296,10 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		modelEClass = createEClass(MODEL);
 		createEReference(modelEClass, MODEL__FUNCTIONS);
 
+		identifierEClass = createEClass(IDENTIFIER);
+		createEAttribute(identifierEClass, IDENTIFIER__NAME);
+
 		functionEClass = createEClass(FUNCTION);
-		createEAttribute(functionEClass, FUNCTION__NAME);
 		createEReference(functionEClass, FUNCTION__PARAMETERS);
 		createEReference(functionEClass, FUNCTION__FEATURES);
 
@@ -1201,7 +1313,7 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		createEAttribute(ifExpressionEClass, IF_EXPRESSION__NAME);
 		createEReference(ifExpressionEClass, IF_EXPRESSION__CONDITION);
 		createEReference(ifExpressionEClass, IF_EXPRESSION__THEN);
-		createEReference(ifExpressionEClass, IF_EXPRESSION__ELSE);
+		createEReference(ifExpressionEClass, IF_EXPRESSION__OTHERWISE);
 
 		forExpressionEClass = createEClass(FOR_EXPRESSION);
 		createEReference(forExpressionEClass, FOR_EXPRESSION__FROM);
@@ -1224,13 +1336,23 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		createEAttribute(functionCallEClass, FUNCTION_CALL__NAME);
 		createEReference(functionCallEClass, FUNCTION_CALL__PARAMETERS);
 
+		collectionEClass = createEClass(COLLECTION);
+		createEReference(collectionEClass, COLLECTION__ELEMENTS);
+
+		typeLiteralEClass = createEClass(TYPE_LITERAL);
+
 		variableEClass = createEClass(VARIABLE);
 		createEAttribute(variableEClass, VARIABLE__NAME);
 		createEReference(variableEClass, VARIABLE__VALUE);
+		createEReference(variableEClass, VARIABLE__TYPE);
 
 		collectionAddEClass = createEClass(COLLECTION_ADD);
 		createEReference(collectionAddEClass, COLLECTION_ADD__COLLECTION);
 		createEReference(collectionAddEClass, COLLECTION_ADD__VALUE);
+
+		collectionRemoveEClass = createEClass(COLLECTION_REMOVE);
+		createEReference(collectionRemoveEClass, COLLECTION_REMOVE__COLLECTION);
+		createEReference(collectionRemoveEClass, COLLECTION_REMOVE__VALUE);
 
 		valueExchangeEClass = createEClass(VALUE_EXCHANGE);
 		createEReference(valueExchangeEClass, VALUE_EXCHANGE__COLLECTION);
@@ -1238,13 +1360,10 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 
 		listEClass = createEClass(LIST);
 		createEAttribute(listEClass, LIST__TYPE);
-		createEReference(listEClass, LIST__ELEMENTS);
 
 		setLitteralEClass = createEClass(SET_LITTERAL);
-		createEReference(setLitteralEClass, SET_LITTERAL__ELEMENTS);
 
 		listLitteralEClass = createEClass(LIST_LITTERAL);
-		createEReference(listLitteralEClass, LIST_LITTERAL__ELEMENTS);
 
 		collectionAccessorEClass = createEClass(COLLECTION_ACCESSOR);
 		createEReference(collectionAccessorEClass, COLLECTION_ACCESSOR__COLLECTION);
@@ -1283,6 +1402,9 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 
 		arithmeticSignedEClass = createEClass(ARITHMETIC_SIGNED);
 		createEReference(arithmeticSignedEClass, ARITHMETIC_SIGNED__EXPRESSION);
+
+		parenthesizedExpressionEClass = createEClass(PARENTHESIZED_EXPRESSION);
+		createEReference(parenthesizedExpressionEClass, PARENTHESIZED_EXPRESSION__EXPRESSION);
 
 		numberLiteralEClass = createEClass(NUMBER_LITERAL);
 		createEAttribute(numberLiteralEClass, NUMBER_LITERAL__VALUE);
@@ -1326,6 +1448,7 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		functionEClass.getESuperTypes().add(this.getIdentifier());
 		statementEClass.getESuperTypes().add(this.getFeature());
 		expressionEClass.getESuperTypes().add(this.getFeature());
 		ifExpressionEClass.getESuperTypes().add(this.getStatement());
@@ -1334,12 +1457,15 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		stopEClass.getESuperTypes().add(this.getStatement());
 		printEClass.getESuperTypes().add(this.getExpression());
 		functionCallEClass.getESuperTypes().add(this.getExpression());
+		collectionEClass.getESuperTypes().add(this.getExpression());
+		typeLiteralEClass.getESuperTypes().add(this.getIdentifier());
 		variableEClass.getESuperTypes().add(this.getExpression());
 		collectionAddEClass.getESuperTypes().add(this.getExpression());
+		collectionRemoveEClass.getESuperTypes().add(this.getExpression());
 		valueExchangeEClass.getESuperTypes().add(this.getExpression());
-		listEClass.getESuperTypes().add(this.getExpression());
-		setLitteralEClass.getESuperTypes().add(this.getExpression());
-		listLitteralEClass.getESuperTypes().add(this.getExpression());
+		listEClass.getESuperTypes().add(this.getCollection());
+		setLitteralEClass.getESuperTypes().add(this.getCollection());
+		listLitteralEClass.getESuperTypes().add(this.getCollection());
 		collectionAccessorEClass.getESuperTypes().add(this.getExpression());
 		andOrExpressionEClass.getESuperTypes().add(this.getExpression());
 		comparisonEClass.getESuperTypes().add(this.getExpression());
@@ -1349,6 +1475,7 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		multiOrDivEClass.getESuperTypes().add(this.getExpression());
 		booleanNegationEClass.getESuperTypes().add(this.getExpression());
 		arithmeticSignedEClass.getESuperTypes().add(this.getExpression());
+		parenthesizedExpressionEClass.getESuperTypes().add(this.getExpression());
 		numberLiteralEClass.getESuperTypes().add(this.getExpression());
 		stringLiteralEClass.getESuperTypes().add(this.getExpression());
 		booleanLiteralEClass.getESuperTypes().add(this.getExpression());
@@ -1360,10 +1487,13 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(identifierEClass, Identifier.class, "Identifier", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIdentifier_Name(), ecorePackage.getEString(), "name", null, 0, 1, Identifier.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(functionEClass, Function.class, "Function", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFunction_Name(), ecorePackage.getEString(), "name", null, 0, 1, Function.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFunction_Parameters(), this.getExpression(), null, "parameters", null, 0, -1, Function.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1389,9 +1519,9 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		initEReference(getIfExpression_Then(), this.getFeature(), null, "then", null, 0, -1, IfExpression.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIfExpression_Else(), this.getFeature(), null, "else", null, 0, -1, IfExpression.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIfExpression_Otherwise(), this.getFeature(), null, "otherwise", null, 0, -1,
+				IfExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(forExpressionEClass, ForExpression.class, "ForExpression", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1435,11 +1565,23 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 				FunctionCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(collectionEClass, Collection.class, "Collection", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCollection_Elements(), this.getExpression(), null, "elements", null, 0, -1, Collection.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(typeLiteralEClass, TypeLiteral.class, "TypeLiteral", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getVariable_Name(), ecorePackage.getEString(), "name", null, 0, 1, Variable.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getVariable_Value(), this.getExpression(), null, "value", null, 0, 1, Variable.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVariable_Type(), this.getIdentifier(), null, "type", null, 0, 1, Variable.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1451,6 +1593,15 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		initEReference(getCollectionAdd_Value(), this.getExpression(), null, "value", null, 0, 1, CollectionAdd.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(collectionRemoveEClass, CollectionRemove.class, "CollectionRemove", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCollectionRemove_Collection(), this.getVariable(), null, "collection", null, 0, 1,
+				CollectionRemove.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCollectionRemove_Value(), this.getExpression(), null, "value", null, 0, 1,
+				CollectionRemove.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(valueExchangeEClass, ValueExchange.class, "ValueExchange", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1464,21 +1615,12 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		initEClass(listEClass, List.class, "List", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getList_Type(), ecorePackage.getEString(), "type", null, 0, 1, List.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getList_Elements(), this.getExpression(), null, "elements", null, 0, -1, List.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(setLitteralEClass, SetLitteral.class, "SetLitteral", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSetLitteral_Elements(), this.getExpression(), null, "elements", null, 0, -1,
-				SetLitteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(listLitteralEClass, ListLitteral.class, "ListLitteral", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getListLitteral_Elements(), this.getExpression(), null, "elements", null, 0, -1,
-				ListLitteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(collectionAccessorEClass, CollectionAccessor.class, "CollectionAccessor", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1559,6 +1701,12 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		initEReference(getArithmeticSigned_Expression(), this.getExpression(), null, "expression", null, 0, 1,
 				ArithmeticSigned.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(parenthesizedExpressionEClass, ParenthesizedExpression.class, "ParenthesizedExpression",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getParenthesizedExpression_Expression(), this.getExpression(), null, "expression", null, 0, 1,
+				ParenthesizedExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(numberLiteralEClass, NumberLiteral.class, "NumberLiteral", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);

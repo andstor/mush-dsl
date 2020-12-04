@@ -37,6 +37,12 @@ Workflow {
 			
 			fragment = ecore2xtext.Ecore2XtextValueConverterServiceFragment2 auto-inject {}
 
+			parserGenerator = {
+	            options = {
+	                ignoreCase = true //Case Insensitive Keywords
+	            }
+	        }
+	        
 			formatter = {
 				generateStub = true
 				generateXtendStub = true

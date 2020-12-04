@@ -13,6 +13,7 @@ package tdt4250.pseudocode;
  * <ul>
  *   <li>{@link tdt4250.pseudocode.Variable#getName <em>Name</em>}</li>
  *   <li>{@link tdt4250.pseudocode.Variable#getValue <em>Value</em>}</li>
+ *   <li>{@link tdt4250.pseudocode.Variable#getType <em>Type</em>}</li>
  * </ul>
  *
  * @see tdt4250.pseudocode.PseudocodePackage#getVariable()
@@ -63,5 +64,27 @@ public interface Variable extends Expression {
 	 * @generated
 	 */
 	void setValue(Expression value);
+
+	/**
+	 * Returns the value of the '<em><b>Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Type</em>' containment reference.
+	 * @see #setType(Identifier)
+	 * @see tdt4250.pseudocode.PseudocodePackage#getVariable_Type()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Identifier getType();
+
+	/**
+	 * Sets the value of the '{@link tdt4250.pseudocode.Variable#getType <em>Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Type</em>' containment reference.
+	 * @see #getType()
+	 * @generated
+	 */
+	void setType(Identifier value);
 
 } // Variable

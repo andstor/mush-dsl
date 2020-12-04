@@ -16,7 +16,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link tdt4250.pseudocode.IfExpression#getName <em>Name</em>}</li>
  *   <li>{@link tdt4250.pseudocode.IfExpression#getCondition <em>Condition</em>}</li>
  *   <li>{@link tdt4250.pseudocode.IfExpression#getThen <em>Then</em>}</li>
- *   <li>{@link tdt4250.pseudocode.IfExpression#getElse <em>Else</em>}</li>
+ *   <li>{@link tdt4250.pseudocode.IfExpression#getOtherwise <em>Otherwise</em>}</li>
  * </ul>
  *
  * @see tdt4250.pseudocode.PseudocodePackage#getIfExpression()
@@ -81,15 +81,15 @@ public interface IfExpression extends Statement {
 	EList<Feature> getThen();
 
 	/**
-	 * Returns the value of the '<em><b>Else</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Otherwise</b></em>' containment reference list.
 	 * The list contents are of type {@link tdt4250.pseudocode.Feature}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Else</em>' containment reference list.
-	 * @see tdt4250.pseudocode.PseudocodePackage#getIfExpression_Else()
+	 * @return the value of the '<em>Otherwise</em>' containment reference list.
+	 * @see tdt4250.pseudocode.PseudocodePackage#getIfExpression_Otherwise()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Feature> getElse();
+	EList<Feature> getOtherwise();
 
 } // IfExpression

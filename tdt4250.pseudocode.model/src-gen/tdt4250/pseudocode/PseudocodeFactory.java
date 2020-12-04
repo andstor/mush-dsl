@@ -139,6 +139,15 @@ public interface PseudocodeFactory extends EFactory {
 	CollectionAdd createCollectionAdd();
 
 	/**
+	 * Returns a new object of class '<em>Collection Remove</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Collection Remove</em>'.
+	 * @generated
+	 */
+	CollectionRemove createCollectionRemove();
+
+	/**
 	 * Returns a new object of class '<em>Value Exchange</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -256,6 +265,15 @@ public interface PseudocodeFactory extends EFactory {
 	ArithmeticSigned createArithmeticSigned();
 
 	/**
+	 * Returns a new object of class '<em>Parenthesized Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Parenthesized Expression</em>'.
+	 * @generated
+	 */
+	ParenthesizedExpression createParenthesizedExpression();
+
+	/**
 	 * Returns a new object of class '<em>Number Literal</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -290,6 +308,33 @@ public interface PseudocodeFactory extends EFactory {
 	 * @generated
 	 */
 	VariableReference createVariableReference();
+
+	/**
+	 * Returns a new object of class '<em>Identifier</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Identifier</em>'.
+	 * @generated
+	 */
+	Identifier createIdentifier();
+
+	/**
+	 * Returns a new object of class '<em>Collection</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Collection</em>'.
+	 * @generated
+	 */
+	Collection createCollection();
+
+	/**
+	 * Returns a new object of class '<em>Type Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Type Literal</em>'.
+	 * @generated
+	 */
+	TypeLiteral createTypeLiteral();
 
 	/**
 	 * Returns the package supported by this factory.

@@ -12,8 +12,11 @@ import org.eclipse.xtext.testing.extensions.InjectionExtension;
 import org.eclipse.xtext.testing.util.ParseHelper;
 import org.eclipse.xtext.util.EmfFormatter;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.testing.CompilationTestHelper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -27,36 +30,135 @@ public class PcodeParsingTest {
   @Inject
   private ParseHelper<Model> parseHelper;
   
-  @Test
-  public void loadModel() {
-    try {
+  @Inject
+  @Extension
+  private CompilationTestHelper _compilationTestHelper;
+  
+  private final String code = new Function0<String>() {
+    @Override
+    public String apply() {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("ANNABELLE(alder,hoyde)");
+      _builder.append("ANNABELLE(nUMBeR alder, Number hoyde)");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("G = [[1,1],[2,2]]");
+      _builder.append("e=2*(1+2)");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("i = 0");
+      _builder.append("G = [1,2,3,4]");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("j = 1");
+      _builder.append("G1 = [[1,1],[2,2]]");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("if i==0 then");
+      _builder.append("G2 = [[3,3],[3,3]]");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("G add [1,1]");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("i = 1//11+3*2+-3");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("j = alder");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("k equals a new number list and contains 1,2,3,4");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("if i<=10 then");
       _builder.newLine();
       _builder.append("\t\t");
-      _builder.append("exchange G at 1,1 with G[i][j]");
+      _builder.append("print \"If works!\"");
       _builder.newLine();
-      final Model result = this.parseHelper.parse(_builder);
+      _builder.append("\t\t");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("exchange G1 with G2");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("exchange G1 at 1,1 with G2[i][j]");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("for interval 2 to 4");
+      _builder.newLine();
+      _builder.append("\t\t\t");
+      _builder.append("print \"For works!\"");
+      _builder.newLine();
+      _builder.append("\t\t\t");
+      _builder.append("break");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("while i <= 5");
+      _builder.newLine();
+      _builder.append("\t\t\t");
+      _builder.append("print \"While works!\"");
+      _builder.newLine();
+      _builder.append("\t\t\t");
+      _builder.newLine();
+      _builder.append("\t\t\t");
+      _builder.append("//i=2 ... må fikse reassignments.... hmm");
+      _builder.newLine();
+      _builder.append("\t\t\t");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("else");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("u=9");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("return i");
+      _builder.newLine();
+      return _builder.toString();
+    }
+  }.apply();
+  
+  @Test
+  public void parseModel() {
+    try {
+      final Model result = this.parseHelper.parse(this.code);
       InputOutput.<String>println(EmfFormatter.objToStr(result));
       final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
       boolean _isEmpty = errors.isEmpty();
-      StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append("Unexpected errors: ");
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Unexpected errors: ");
       String _join = IterableExtensions.join(errors, ", ");
-      _builder_1.append(_join);
-      Assertions.assertTrue(_isEmpty, _builder_1.toString());
+      _builder.append(_join);
+      Assertions.assertTrue(_isEmpty, _builder.toString());
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void compileModel() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("public class ANNABELLE {");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("private String title;");
+      _builder.newLine();
+      _builder.append("\t\t\t\t");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("public String implementation(asd) {");
+      _builder.newLine();
+      _builder.append("        ");
+      _builder.newLine();
+      _builder.append("        ");
+      _builder.append("return title;");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      this._compilationTestHelper.assertCompilesTo(this.code, _builder);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

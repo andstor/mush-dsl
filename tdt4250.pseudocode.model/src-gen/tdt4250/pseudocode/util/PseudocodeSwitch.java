@@ -73,9 +73,18 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case PseudocodePackage.IDENTIFIER: {
+			Identifier identifier = (Identifier) theEObject;
+			T result = caseIdentifier(identifier);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case PseudocodePackage.FUNCTION: {
 			Function function = (Function) theEObject;
 			T result = caseFunction(function);
+			if (result == null)
+				result = caseIdentifier(function);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -171,6 +180,26 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case PseudocodePackage.COLLECTION: {
+			Collection collection = (Collection) theEObject;
+			T result = caseCollection(collection);
+			if (result == null)
+				result = caseExpression(collection);
+			if (result == null)
+				result = caseFeature(collection);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PseudocodePackage.TYPE_LITERAL: {
+			TypeLiteral typeLiteral = (TypeLiteral) theEObject;
+			T result = caseTypeLiteral(typeLiteral);
+			if (result == null)
+				result = caseIdentifier(typeLiteral);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case PseudocodePackage.VARIABLE: {
 			Variable variable = (Variable) theEObject;
 			T result = caseVariable(variable);
@@ -193,6 +222,17 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case PseudocodePackage.COLLECTION_REMOVE: {
+			CollectionRemove collectionRemove = (CollectionRemove) theEObject;
+			T result = caseCollectionRemove(collectionRemove);
+			if (result == null)
+				result = caseExpression(collectionRemove);
+			if (result == null)
+				result = caseFeature(collectionRemove);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case PseudocodePackage.VALUE_EXCHANGE: {
 			ValueExchange valueExchange = (ValueExchange) theEObject;
 			T result = caseValueExchange(valueExchange);
@@ -208,6 +248,8 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 			List list = (List) theEObject;
 			T result = caseList(list);
 			if (result == null)
+				result = caseCollection(list);
+			if (result == null)
 				result = caseExpression(list);
 			if (result == null)
 				result = caseFeature(list);
@@ -219,6 +261,8 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 			SetLitteral setLitteral = (SetLitteral) theEObject;
 			T result = caseSetLitteral(setLitteral);
 			if (result == null)
+				result = caseCollection(setLitteral);
+			if (result == null)
 				result = caseExpression(setLitteral);
 			if (result == null)
 				result = caseFeature(setLitteral);
@@ -229,6 +273,8 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 		case PseudocodePackage.LIST_LITTERAL: {
 			ListLitteral listLitteral = (ListLitteral) theEObject;
 			T result = caseListLitteral(listLitteral);
+			if (result == null)
+				result = caseCollection(listLitteral);
 			if (result == null)
 				result = caseExpression(listLitteral);
 			if (result == null)
@@ -332,6 +378,17 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 				result = caseExpression(arithmeticSigned);
 			if (result == null)
 				result = caseFeature(arithmeticSigned);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PseudocodePackage.PARENTHESIZED_EXPRESSION: {
+			ParenthesizedExpression parenthesizedExpression = (ParenthesizedExpression) theEObject;
+			T result = caseParenthesizedExpression(parenthesizedExpression);
+			if (result == null)
+				result = caseExpression(parenthesizedExpression);
+			if (result == null)
+				result = caseFeature(parenthesizedExpression);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -581,6 +638,21 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Collection Remove</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Collection Remove</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCollectionRemove(CollectionRemove object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Value Exchange</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -776,6 +848,21 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Parenthesized Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Parenthesized Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseParenthesizedExpression(ParenthesizedExpression object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Number Literal</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -832,6 +919,51 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseVariableReference(VariableReference object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Identifier</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Identifier</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIdentifier(Identifier object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Collection</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Collection</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCollection(Collection object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Type Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Type Literal</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTypeLiteral(TypeLiteral object) {
 		return null;
 	}
 

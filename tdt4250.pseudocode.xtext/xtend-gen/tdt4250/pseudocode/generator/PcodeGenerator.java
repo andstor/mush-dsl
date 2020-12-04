@@ -3,10 +3,49 @@
  */
 package tdt4250.pseudocode.generator;
 
+import com.google.common.collect.Iterables;
+import java.util.Arrays;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import tdt4250.pseudocode.AndOrExpression;
+import tdt4250.pseudocode.ArithmeticSigned;
+import tdt4250.pseudocode.BooleanNegation;
+import tdt4250.pseudocode.CollectionAccessor;
+import tdt4250.pseudocode.CollectionAdd;
+import tdt4250.pseudocode.CollectionRemove;
+import tdt4250.pseudocode.Comparison;
+import tdt4250.pseudocode.Equals;
+import tdt4250.pseudocode.Expression;
+import tdt4250.pseudocode.Feature;
+import tdt4250.pseudocode.ForExpression;
+import tdt4250.pseudocode.Function;
+import tdt4250.pseudocode.Identifier;
+import tdt4250.pseudocode.IfExpression;
+import tdt4250.pseudocode.List;
+import tdt4250.pseudocode.ListLitteral;
+import tdt4250.pseudocode.MultiOrDiv;
+import tdt4250.pseudocode.NumberLiteral;
+import tdt4250.pseudocode.ParenthesizedExpression;
+import tdt4250.pseudocode.Plus;
+import tdt4250.pseudocode.Print;
+import tdt4250.pseudocode.SetLitteral;
+import tdt4250.pseudocode.Statement;
+import tdt4250.pseudocode.Stop;
+import tdt4250.pseudocode.StringLiteral;
+import tdt4250.pseudocode.TypeLiteral;
+import tdt4250.pseudocode.ValueExchange;
+import tdt4250.pseudocode.Variable;
+import tdt4250.pseudocode.VariableReference;
+import tdt4250.pseudocode.WhileExpression;
+import tdt4250.pseudocode.generator.PcodeGeneratorUtils;
+import tdt4250.pseudocode.generator.PcodeTypeInferencer;
 
 /**
  * Generates code from your model files on save.
@@ -15,7 +54,574 @@ import org.eclipse.xtext.generator.IGeneratorContext;
  */
 @SuppressWarnings("all")
 public class PcodeGenerator extends AbstractGenerator {
+  private PcodeTypeInferencer typeInferencer = new PcodeTypeInferencer();
+  
+  private int varCounter = 0;
+  
+  /**
+   * Da burde det meste funke ;)
+   * Vi genererer korrekt java kode!!!
+   * 
+   * Eneste som mangler er:
+   * +=, -=, ++, --
+   * reassignments of variables. altså i = 2, også senere i=1... Her må vi ikke ha med type 2 gangen..
+   * i=i rekursjerer evig... Den prøver å finne en type for i... Her må vi kjøre en sjekk om det neste rekursjonskallet er den samme variabelen elns..
+   * list og listLiteral og setLitteral lager ett ekstra komma!
+   * 
+   * 
+   * Formateringen av Java koden er litt rar.. dette er pga. ''' ''' templates greierne... de legger til newlines
+   * (men koden kan testes ;) bare  trykk shift + command + f så formaterer  eclipse automatisk ! men koden må være riktig da!
+   * Foreslår at vi generere vanlige strenger? Evt. string builder?
+   */
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    String res = "";
+    Iterable<Function> _filter = Iterables.<Function>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Function.class);
+    for (final Function e : _filter) {
+      {
+        String _res = res;
+        CharSequence _generate = this.generate(e);
+        res = (_res + _generate);
+        String _name = e.getName();
+        String _plus = (_name + ".java");
+        fsa.generateFile(_plus, res);
+      }
+    }
+    InputOutput.<String>println(res);
+  }
+  
+  public CharSequence generate(final Function e) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import java.util.Arrays;");
+    _builder.newLine();
+    _builder.append("import java.util.ArrayList;");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("class ");
+    String _name = e.getName();
+    _builder.append(_name);
+    _builder.append(" {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("    ");
+    _builder.append("public void implementation( ");
+    String _generateParameters = this.generateParameters(e.getParameters());
+    _builder.append(_generateParameters, "    ");
+    _builder.append(" ) {");
+    _builder.newLineIfNotEmpty();
+    {
+      EList<Feature> _features = e.getFeatures();
+      for(final Feature f : _features) {
+        _builder.append("    \t");
+        CharSequence _generateFeature = this.generateFeature(f);
+        _builder.append(_generateFeature, "    \t");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    return _builder;
+  }
+  
+  public String generateParameters(final EList<Expression> variables) {
+    String parameters = "";
+    for (final Expression v : variables) {
+      {
+        final Variable variable = ((Variable) v);
+        Identifier _type = variable.getType();
+        final TypeLiteral type = ((TypeLiteral) _type);
+        String _parameters = parameters;
+        String _jvmType = this.typeInferencer.toJvmType(type.getName());
+        String _plus = (_jvmType + " ");
+        String _name = variable.getName();
+        String _plus_1 = (_plus + _name);
+        String _plus_2 = (_plus_1 + ", ");
+        parameters = (_parameters + _plus_2);
+      }
+    }
+    int _length = parameters.length();
+    int _minus = (_length - 2);
+    parameters = parameters.substring(0, _minus);
+    return parameters;
+  }
+  
+  protected CharSequence _generateFeature(final Statement e) {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _generateStatement = this.generateStatement(e);
+    _builder.append(_generateStatement);
+    return _builder;
+  }
+  
+  protected CharSequence _generateFeature(final Expression e) {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _generateExpression = this.generateExpression(e);
+    _builder.append(_generateExpression);
+    return _builder;
+  }
+  
+  protected CharSequence _generateStatement(final IfExpression e) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("if ( ");
+    Object _LiteralExpression = this.LiteralExpression(e.getCondition());
+    _builder.append(_LiteralExpression);
+    _builder.append(" ) {");
+    _builder.newLineIfNotEmpty();
+    {
+      EList<Feature> _then = e.getThen();
+      for(final Feature f : _then) {
+        _builder.append("\t");
+        Object _generateFeature = this.generateFeature(f);
+        _builder.append(_generateFeature, "\t");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("}");
+    {
+      boolean _isEmpty = e.getOtherwise().isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        _builder.append(" else {");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t\t\t\t\t\t\t\t\t\t\t");
+        {
+          EList<Feature> _otherwise = e.getOtherwise();
+          for(final Feature f_1 : _otherwise) {
+            Object _generateFeature_1 = this.generateFeature(f_1);
+            _builder.append(_generateFeature_1, "\t\t\t\t\t\t\t\t\t\t\t\t");
+          }
+        }
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t\t\t\t\t\t\t\t\t\t\t");
+        _builder.append("}");
+        _builder.newLine();
+      }
+    }
+    return _builder;
+  }
+  
+  protected CharSequence _generateStatement(final ForExpression e) {
+    String variable = this.uniqueVariable();
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("for ( int ");
+    _builder.append(variable);
+    _builder.append(" = ");
+    Object _LiteralExpression = this.LiteralExpression(e.getFrom());
+    _builder.append(_LiteralExpression);
+    _builder.append("; ");
+    _builder.append(variable);
+    _builder.append(" <= ");
+    Object _LiteralExpression_1 = this.LiteralExpression(e.getTo());
+    _builder.append(_LiteralExpression_1);
+    _builder.append("; ");
+    _builder.append(variable);
+    _builder.append("++) {");
+    _builder.newLineIfNotEmpty();
+    {
+      EList<Feature> _block = e.getBlock();
+      for(final Feature b : _block) {
+        _builder.append("\t");
+        Object _generateFeature = this.generateFeature(b);
+        _builder.append(_generateFeature, "\t");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("}");
+    return _builder.toString();
+  }
+  
+  public String uniqueVariable() {
+    int _plusPlus = this.varCounter++;
+    return ("VAR" + Integer.valueOf(_plusPlus));
+  }
+  
+  protected CharSequence _generateStatement(final WhileExpression e) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("while ( ");
+    Object _LiteralExpression = this.LiteralExpression(e.getCondition());
+    _builder.append(_LiteralExpression);
+    _builder.append(") {");
+    _builder.newLineIfNotEmpty();
+    {
+      EList<Feature> _block = e.getBlock();
+      for(final Feature b : _block) {
+        _builder.append("\t");
+        Object _generateFeature = this.generateFeature(b);
+        _builder.append(_generateFeature, "\t");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("}");
+    return _builder;
+  }
+  
+  protected CharSequence _generateStatement(final Stop e) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _type = e.getType();
+    _builder.append(_type);
+    {
+      String _value = e.getValue();
+      boolean _tripleNotEquals = (_value != null);
+      if (_tripleNotEquals) {
+        _builder.append(" ");
+        String _value_1 = e.getValue();
+        _builder.append(_value_1);
+      }
+    }
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  protected CharSequence _generateExpression(final Variable e) {
+    StringConcatenation _builder = new StringConcatenation();
+    Object _infer = this.typeInferencer.infer(e.getValue());
+    _builder.append(_infer);
+    _builder.append(" ");
+    String _name = e.getName();
+    _builder.append(_name);
+    _builder.append(" = ");
+    Object _LiteralExpression = this.LiteralExpression(e.getValue());
+    _builder.append(_LiteralExpression);
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  protected CharSequence _generateExpression(final Print e) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("System.out.println(");
+    Object _LiteralExpression = this.LiteralExpression(e.getValue());
+    _builder.append(_LiteralExpression);
+    _builder.append(");");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  protected CharSequence _generateExpression(final CollectionAdd e) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _name = e.getCollection().getName();
+    _builder.append(_name);
+    _builder.append(".add(");
+    Object _LiteralExpression = this.LiteralExpression(e.getValue());
+    _builder.append(_LiteralExpression);
+    _builder.append(");");
+    return _builder;
+  }
+  
+  protected CharSequence _generateExpression(final CollectionRemove e) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _name = e.getCollection().getName();
+    _builder.append(_name);
+    _builder.append(".remove(");
+    Object _LiteralExpression = this.LiteralExpression(e.getValue());
+    _builder.append(_LiteralExpression);
+    _builder.append(");");
+    return _builder;
+  }
+  
+  protected CharSequence _generateExpression(final ValueExchange e) {
+    String variable1 = this.uniqueVariable();
+    String variable2 = this.uniqueVariable();
+    String exp1 = this.LiteralExpression(e.getCollection()).toString();
+    String exp2 = this.LiteralExpression(e.getValue()).toString();
+    Expression _collection = e.getCollection();
+    if ((_collection instanceof CollectionAccessor)) {
+      exp1 = PcodeGeneratorUtils.replaceLast("get", "set", exp1);
+      exp1 = PcodeGeneratorUtils.replaceLast(")", (("," + variable2) + ")"), exp1);
+    } else {
+      exp1 = ((exp1 + "=") + variable2);
+    }
+    Expression _value = e.getValue();
+    if ((_value instanceof CollectionAccessor)) {
+      exp2 = PcodeGeneratorUtils.replaceLast("get", "set", exp2);
+      exp2 = PcodeGeneratorUtils.replaceLast(")", (("," + variable1) + ")"), exp2);
+    } else {
+      exp2 = ((exp2 + "=") + variable1);
+    }
+    StringConcatenation _builder = new StringConcatenation();
+    Object _infer = this.typeInferencer.infer(e.getCollection());
+    _builder.append(_infer);
+    _builder.append(" ");
+    _builder.append(variable1);
+    _builder.append(" = ");
+    Object _LiteralExpression = this.LiteralExpression(e.getCollection());
+    _builder.append(_LiteralExpression);
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
+    Object _infer_1 = this.typeInferencer.infer(e.getValue());
+    _builder.append(_infer_1);
+    _builder.append(" ");
+    _builder.append(variable2);
+    _builder.append(" = ");
+    Object _LiteralExpression_1 = this.LiteralExpression(e.getValue());
+    _builder.append(_LiteralExpression_1);
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
+    _builder.append(exp1);
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
+    _builder.append(exp2);
+    _builder.append(";");
+    return _builder.toString();
+  }
+  
+  protected Object _LiteralExpression(final List e) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("new ArrayList<");
+    String _autobox = this.typeInferencer.autobox(this.typeInferencer.toJvmType(e.getType()));
+    _builder.append(_autobox);
+    _builder.append(">");
+    {
+      boolean _isEmpty = e.getElements().isEmpty();
+      if (_isEmpty) {
+        _builder.append("()");
+        _builder.newLineIfNotEmpty();
+      } else {
+        _builder.append("(Arrays.asList(");
+        {
+          EList<Expression> _elements = e.getElements();
+          for(final Expression element : _elements) {
+            Object _LiteralExpression = this.LiteralExpression(element);
+            _builder.append(_LiteralExpression);
+            _builder.append(", ");
+          }
+        }
+        _builder.append("))");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+      }
+    }
+    String list = _builder.toString();
+    return list.trim();
+  }
+  
+  protected Object _LiteralExpression(final SetLitteral e) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append(e);
+    return _builder;
+  }
+  
+  protected Object _LiteralExpression(final ListLitteral e) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("new ArrayList<");
+    String _autobox = this.typeInferencer.autobox(this.typeInferencer.infer(e.getElements().get(0)).toString());
+    _builder.append(_autobox);
+    _builder.append(">");
+    {
+      boolean _isEmpty = e.getElements().isEmpty();
+      if (_isEmpty) {
+        _builder.append("()");
+        _builder.newLineIfNotEmpty();
+      } else {
+        _builder.append("(Arrays.asList(");
+        {
+          EList<Expression> _elements = e.getElements();
+          for(final Expression element : _elements) {
+            Object _LiteralExpression = this.LiteralExpression(element);
+            _builder.append(_LiteralExpression);
+            _builder.append(",");
+          }
+        }
+        _builder.append("))");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+      }
+    }
+    String listLitteral = _builder.toString();
+    return listLitteral.trim();
+  }
+  
+  protected Object _LiteralExpression(final CollectionAccessor e) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _name = e.getCollection().getName();
+    _builder.append(_name);
+    {
+      EList<Expression> _accessor = e.getAccessor();
+      for(final Expression accessor : _accessor) {
+        _builder.append(".get(");
+        Object _LiteralExpression = this.LiteralExpression(accessor);
+        _builder.append(_LiteralExpression);
+        _builder.append(")");
+      }
+    }
+    return _builder;
+  }
+  
+  protected Object _LiteralExpression(final AndOrExpression e) {
+    StringConcatenation _builder = new StringConcatenation();
+    Object _LiteralExpression = this.LiteralExpression(e.getLeft());
+    _builder.append(_LiteralExpression);
+    String _op = e.getOp();
+    _builder.append(_op);
+    Object _LiteralExpression_1 = this.LiteralExpression(e.getRight());
+    _builder.append(_LiteralExpression_1);
+    return _builder;
+  }
+  
+  protected Object _LiteralExpression(final Comparison e) {
+    StringConcatenation _builder = new StringConcatenation();
+    Object _LiteralExpression = this.LiteralExpression(e.getLeft());
+    _builder.append(_LiteralExpression);
+    String _op = e.getOp();
+    _builder.append(_op);
+    Object _LiteralExpression_1 = this.LiteralExpression(e.getRight());
+    _builder.append(_LiteralExpression_1);
+    return _builder;
+  }
+  
+  protected Object _LiteralExpression(final Equals e) {
+    StringConcatenation _builder = new StringConcatenation();
+    Object _LiteralExpression = this.LiteralExpression(e.getLeft());
+    _builder.append(_LiteralExpression);
+    String _op = e.getOp();
+    _builder.append(_op);
+    Object _LiteralExpression_1 = this.LiteralExpression(e.getRight());
+    _builder.append(_LiteralExpression_1);
+    return _builder;
+  }
+  
+  protected Object _LiteralExpression(final ParenthesizedExpression e) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("(");
+    Object _LiteralExpression = this.LiteralExpression(e.getExpression());
+    _builder.append(_LiteralExpression);
+    _builder.append(")");
+    return _builder;
+  }
+  
+  protected Object _LiteralExpression(final Plus e) {
+    StringConcatenation _builder = new StringConcatenation();
+    Object _LiteralExpression = this.LiteralExpression(e.getLeft());
+    _builder.append(_LiteralExpression);
+    _builder.append("+");
+    Object _LiteralExpression_1 = this.LiteralExpression(e.getRight());
+    _builder.append(_LiteralExpression_1);
+    return _builder;
+  }
+  
+  protected Object _LiteralExpression(final MultiOrDiv e) {
+    StringConcatenation _builder = new StringConcatenation();
+    Object _LiteralExpression = this.LiteralExpression(e.getLeft());
+    _builder.append(_LiteralExpression);
+    String _op = e.getOp();
+    _builder.append(_op);
+    Object _LiteralExpression_1 = this.LiteralExpression(e.getRight());
+    _builder.append(_LiteralExpression_1);
+    return _builder;
+  }
+  
+  protected Object _LiteralExpression(final BooleanNegation e) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("!");
+    Object _LiteralExpression = this.LiteralExpression(e.getExpression());
+    _builder.append(_LiteralExpression);
+    return _builder;
+  }
+  
+  protected Object _LiteralExpression(final ArithmeticSigned e) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("-");
+    Object _LiteralExpression = this.LiteralExpression(e.getExpression());
+    _builder.append(_LiteralExpression);
+    return _builder;
+  }
+  
+  protected Object _LiteralExpression(final NumberLiteral e) {
+    return Integer.valueOf(e.getValue());
+  }
+  
+  protected Object _LiteralExpression(final StringLiteral e) {
+    String _value = e.getValue();
+    String _plus = ("\"" + _value);
+    return (_plus + "\"");
+  }
+  
+  protected Object _LiteralExpression(final VariableReference e) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _name = e.getRef().getName();
+    _builder.append(_name);
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  public CharSequence generateFeature(final Feature e) {
+    if (e instanceof Expression) {
+      return _generateFeature((Expression)e);
+    } else if (e instanceof Statement) {
+      return _generateFeature((Statement)e);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(e).toString());
+    }
+  }
+  
+  public CharSequence generateStatement(final Statement e) {
+    if (e instanceof ForExpression) {
+      return _generateStatement((ForExpression)e);
+    } else if (e instanceof IfExpression) {
+      return _generateStatement((IfExpression)e);
+    } else if (e instanceof Stop) {
+      return _generateStatement((Stop)e);
+    } else if (e instanceof WhileExpression) {
+      return _generateStatement((WhileExpression)e);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(e).toString());
+    }
+  }
+  
+  public CharSequence generateExpression(final Expression e) {
+    if (e instanceof CollectionAdd) {
+      return _generateExpression((CollectionAdd)e);
+    } else if (e instanceof CollectionRemove) {
+      return _generateExpression((CollectionRemove)e);
+    } else if (e instanceof Print) {
+      return _generateExpression((Print)e);
+    } else if (e instanceof ValueExchange) {
+      return _generateExpression((ValueExchange)e);
+    } else if (e instanceof Variable) {
+      return _generateExpression((Variable)e);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(e).toString());
+    }
+  }
+  
+  public Object LiteralExpression(final Expression e) {
+    if (e instanceof List) {
+      return _LiteralExpression((List)e);
+    } else if (e instanceof ListLitteral) {
+      return _LiteralExpression((ListLitteral)e);
+    } else if (e instanceof SetLitteral) {
+      return _LiteralExpression((SetLitteral)e);
+    } else if (e instanceof AndOrExpression) {
+      return _LiteralExpression((AndOrExpression)e);
+    } else if (e instanceof ArithmeticSigned) {
+      return _LiteralExpression((ArithmeticSigned)e);
+    } else if (e instanceof BooleanNegation) {
+      return _LiteralExpression((BooleanNegation)e);
+    } else if (e instanceof CollectionAccessor) {
+      return _LiteralExpression((CollectionAccessor)e);
+    } else if (e instanceof Comparison) {
+      return _LiteralExpression((Comparison)e);
+    } else if (e instanceof Equals) {
+      return _LiteralExpression((Equals)e);
+    } else if (e instanceof MultiOrDiv) {
+      return _LiteralExpression((MultiOrDiv)e);
+    } else if (e instanceof NumberLiteral) {
+      return _LiteralExpression((NumberLiteral)e);
+    } else if (e instanceof ParenthesizedExpression) {
+      return _LiteralExpression((ParenthesizedExpression)e);
+    } else if (e instanceof Plus) {
+      return _LiteralExpression((Plus)e);
+    } else if (e instanceof StringLiteral) {
+      return _LiteralExpression((StringLiteral)e);
+    } else if (e instanceof VariableReference) {
+      return _LiteralExpression((VariableReference)e);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(e).toString());
+    }
   }
 }

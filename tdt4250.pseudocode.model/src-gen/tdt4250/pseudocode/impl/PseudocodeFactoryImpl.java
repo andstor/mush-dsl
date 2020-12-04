@@ -58,6 +58,8 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 		switch (eClass.getClassifierID()) {
 		case PseudocodePackage.MODEL:
 			return createModel();
+		case PseudocodePackage.IDENTIFIER:
+			return createIdentifier();
 		case PseudocodePackage.FUNCTION:
 			return createFunction();
 		case PseudocodePackage.FEATURE:
@@ -78,10 +80,16 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 			return createPrint();
 		case PseudocodePackage.FUNCTION_CALL:
 			return createFunctionCall();
+		case PseudocodePackage.COLLECTION:
+			return createCollection();
+		case PseudocodePackage.TYPE_LITERAL:
+			return createTypeLiteral();
 		case PseudocodePackage.VARIABLE:
 			return createVariable();
 		case PseudocodePackage.COLLECTION_ADD:
 			return createCollectionAdd();
+		case PseudocodePackage.COLLECTION_REMOVE:
+			return createCollectionRemove();
 		case PseudocodePackage.VALUE_EXCHANGE:
 			return createValueExchange();
 		case PseudocodePackage.LIST:
@@ -108,6 +116,8 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 			return createBooleanNegation();
 		case PseudocodePackage.ARITHMETIC_SIGNED:
 			return createArithmeticSigned();
+		case PseudocodePackage.PARENTHESIZED_EXPRESSION:
+			return createParenthesizedExpression();
 		case PseudocodePackage.NUMBER_LITERAL:
 			return createNumberLiteral();
 		case PseudocodePackage.STRING_LITERAL:
@@ -270,6 +280,17 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	 * @generated
 	 */
 	@Override
+	public CollectionRemove createCollectionRemove() {
+		CollectionRemoveImpl collectionRemove = new CollectionRemoveImpl();
+		return collectionRemove;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public ValueExchange createValueExchange() {
 		ValueExchangeImpl valueExchange = new ValueExchangeImpl();
 		return valueExchange;
@@ -413,6 +434,17 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	 * @generated
 	 */
 	@Override
+	public ParenthesizedExpression createParenthesizedExpression() {
+		ParenthesizedExpressionImpl parenthesizedExpression = new ParenthesizedExpressionImpl();
+		return parenthesizedExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NumberLiteral createNumberLiteral() {
 		NumberLiteralImpl numberLiteral = new NumberLiteralImpl();
 		return numberLiteral;
@@ -449,6 +481,39 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	public VariableReference createVariableReference() {
 		VariableReferenceImpl variableReference = new VariableReferenceImpl();
 		return variableReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Identifier createIdentifier() {
+		IdentifierImpl identifier = new IdentifierImpl();
+		return identifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Collection createCollection() {
+		CollectionImpl collection = new CollectionImpl();
+		return collection;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public TypeLiteral createTypeLiteral() {
+		TypeLiteralImpl typeLiteral = new TypeLiteralImpl();
+		return typeLiteral;
 	}
 
 	/**

@@ -33,6 +33,7 @@ public class PcodeParser extends AbstractContentAssistParser {
 		}
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, PcodeGrammarAccess grammarAccess) {
+			builder.put(grammarAccess.getIdentifierAccess().getAlternatives(), "rule__Identifier__Alternatives");
 			builder.put(grammarAccess.getFeatureAccess().getAlternatives(), "rule__Feature__Alternatives");
 			builder.put(grammarAccess.getStatementAccess().getAlternatives(), "rule__Statement__Alternatives");
 			builder.put(grammarAccess.getExpressionAccess().getAlternatives(), "rule__Expression__Alternatives");
@@ -59,6 +60,7 @@ public class PcodeParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getBooleanOperatorAccess().getAlternatives(), "rule__BooleanOperator__Alternatives");
 			builder.put(grammarAccess.getBooleanTestOperatorAccess().getAlternatives(), "rule__BooleanTestOperator__Alternatives");
 			builder.put(grammarAccess.getTypeAccess().getAlternatives(), "rule__Type__Alternatives");
+			builder.put(grammarAccess.getTypeLiteralAccess().getNameAlternatives_1_0(), "rule__TypeLiteral__NameAlternatives_1_0");
 			builder.put(grammarAccess.getEStringAccess().getAlternatives(), "rule__EString__Alternatives");
 			builder.put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
 			builder.put(grammarAccess.getFunctionAccess().getGroup(), "rule__Function__Group__0");
@@ -117,6 +119,7 @@ public class PcodeParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getAtomicAccess().getGroup_2(), "rule__Atomic__Group_2__0");
 			builder.put(grammarAccess.getAtomicAccess().getGroup_3(), "rule__Atomic__Group_3__0");
 			builder.put(grammarAccess.getAtomicAccess().getGroup_4(), "rule__Atomic__Group_4__0");
+			builder.put(grammarAccess.getTypeLiteralAccess().getGroup(), "rule__TypeLiteral__Group__0");
 			builder.put(grammarAccess.getModelAccess().getFunctionsAssignment_1(), "rule__Model__FunctionsAssignment_1");
 			builder.put(grammarAccess.getFunctionAccess().getNameAssignment_1(), "rule__Function__NameAssignment_1");
 			builder.put(grammarAccess.getFunctionAccess().getParametersAssignment_3_0(), "rule__Function__ParametersAssignment_3_0");
@@ -124,11 +127,12 @@ public class PcodeParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getFunctionAccess().getFeaturesAssignment_6(), "rule__Function__FeaturesAssignment_6");
 			builder.put(grammarAccess.getVariableAccess().getNameAssignment_1(), "rule__Variable__NameAssignment_1");
 			builder.put(grammarAccess.getVariableAccess().getValueAssignment_3(), "rule__Variable__ValueAssignment_3");
-			builder.put(grammarAccess.getParameterAccess().getNameAssignment_1(), "rule__Parameter__NameAssignment_1");
+			builder.put(grammarAccess.getParameterAccess().getTypeAssignment_1(), "rule__Parameter__TypeAssignment_1");
+			builder.put(grammarAccess.getParameterAccess().getNameAssignment_2(), "rule__Parameter__NameAssignment_2");
 			builder.put(grammarAccess.getIfExpressionAccess().getNameAssignment_1(), "rule__IfExpression__NameAssignment_1");
 			builder.put(grammarAccess.getIfExpressionAccess().getConditionAssignment_2(), "rule__IfExpression__ConditionAssignment_2");
 			builder.put(grammarAccess.getIfExpressionAccess().getThenAssignment_5(), "rule__IfExpression__ThenAssignment_5");
-			builder.put(grammarAccess.getIfExpressionAccess().getElseAssignment_7_2(), "rule__IfExpression__ElseAssignment_7_2");
+			builder.put(grammarAccess.getIfExpressionAccess().getOtherwiseAssignment_7_2(), "rule__IfExpression__OtherwiseAssignment_7_2");
 			builder.put(grammarAccess.getForExpressionAccess().getFromAssignment_3(), "rule__ForExpression__FromAssignment_3");
 			builder.put(grammarAccess.getForExpressionAccess().getToAssignment_5(), "rule__ForExpression__ToAssignment_5");
 			builder.put(grammarAccess.getForExpressionAccess().getBlockAssignment_7(), "rule__ForExpression__BlockAssignment_7");
@@ -171,10 +175,12 @@ public class PcodeParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getMultiplicationAccess().getRightAssignment_1_1(), "rule__Multiplication__RightAssignment_1_1");
 			builder.put(grammarAccess.getPrefixedAccess().getExpressionAssignment_0_2(), "rule__Prefixed__ExpressionAssignment_0_2");
 			builder.put(grammarAccess.getPrefixedAccess().getExpressionAssignment_1_2(), "rule__Prefixed__ExpressionAssignment_1_2");
+			builder.put(grammarAccess.getAtomicAccess().getExpressionAssignment_0_2(), "rule__Atomic__ExpressionAssignment_0_2");
 			builder.put(grammarAccess.getAtomicAccess().getValueAssignment_1_1(), "rule__Atomic__ValueAssignment_1_1");
 			builder.put(grammarAccess.getAtomicAccess().getValueAssignment_2_1(), "rule__Atomic__ValueAssignment_2_1");
 			builder.put(grammarAccess.getAtomicAccess().getValueAssignment_3_1(), "rule__Atomic__ValueAssignment_3_1");
 			builder.put(grammarAccess.getAtomicAccess().getRefAssignment_4_1(), "rule__Atomic__RefAssignment_4_1");
+			builder.put(grammarAccess.getTypeLiteralAccess().getNameAssignment_1(), "rule__TypeLiteral__NameAssignment_1");
 		}
 	}
 	

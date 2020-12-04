@@ -18,6 +18,10 @@ Model returns Model:
 	functions+=Function*
 ;
 
+Identifier:
+	Function | TypeLiteral
+;
+
 Function:
 	{Function}
 	name=EString
@@ -48,9 +52,8 @@ Expression returns Expression:
 Variable returns Expression:
 	{Variable} name=ID ('=' | 'equals' | 'is') value=(LiteralExpression);
 
-
 Parameter returns Expression: 
-	{Variable} name=ID;
+	{Variable} type=Identifier name=ID;
 
 IfExpression returns IfExpression:
 	{IfExpression}
@@ -60,7 +63,7 @@ IfExpression returns IfExpression:
 	END
     (=>'else' 
     BEGIN
-		else+=Feature*
+		otherwise+=Feature*
 	END
     )?
 ;
@@ -99,10 +102,11 @@ CollectionAdd returns Expression:
 ;
 
 CollectionRemove returns Expression:
-	{CollectionAdd}
+	{CollectionRemove}
 	collection=[Variable] 'remove' value=LiteralExpression
 ;
 
+//TODO: change name to collection1 and collection 2
 ValueExchange returns Expression:
 	{ValueExchange}
 	'exchange' collection=LiteralExpression 'with' value=LiteralExpression
@@ -129,22 +133,22 @@ Collection returns Expression:
 	CollectionLitteral | List
 ;
 
-List returns Expression:
+List returns Collection:
 	{List}
 	'a'? 'new' type=('text' | 'number' | 'decimal') ('array' | 'list' | 'table')
 	('and' 'contains' elements+=LiteralExpression (',' elements+=LiteralExpression )* )? 
 ;
 
-CollectionLitteral returns Expression:
+CollectionLitteral returns Collection:
 	SetLitteral | ListLitteral
 ;
 
-SetLitteral returns Expression:
+SetLitteral returns Collection:
 	{SetLitteral}
 	'{' (elements+=LiteralExpression (',' elements+=LiteralExpression )*)? '}'
 ;
 
-ListLitteral returns Expression:
+ListLitteral returns Collection:
 	{ListLitteral}
 	'[' (elements+=LiteralExpression (',' elements+=LiteralExpression )*)? ']'
 ;
@@ -177,7 +181,7 @@ ArithmeticExpression returns Expression:
 	Addition
 ;
 
- 
+
 Addition returns Expression:
 	Multiplication (({Plus.left=current} PlusOperator | {Minus.left=current} ('-' | 'minus')) right=Multiplication)*; 
 
@@ -194,7 +198,7 @@ Prefixed returns Expression:
 	Atomic;
 
 Atomic returns Expression:
-	'(' Expression ')' |
+	{ParenthesizedExpression} '(' expression=LiteralExpression ')' |
 	{NumberLiteral} value=INT |
 	{StringLiteral} value=STRING |
 	{BooleanLiteral} value=('true'|'false') |
@@ -213,6 +217,14 @@ BooleanTestOperator:
 
 Type:
 	(EString | DOUBLE | INT)
+;
+
+
+
+TypeLiteral:
+	{TypeLiteral}
+	name=('Text' | 'Number' | 'Decimal' |
+	'Array' | 'List' | 'Table')
 ;
 
 EString returns ecore::EString:

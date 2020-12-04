@@ -12,8 +12,10 @@
     <genClasses ecoreClass="pseudocode.ecore#//Model">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Model/functions"/>
     </genClasses>
+    <genClasses ecoreClass="pseudocode.ecore#//Identifier">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Identifier/name"/>
+    </genClasses>
     <genClasses ecoreClass="pseudocode.ecore#//Function">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Function/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Function/parameters"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Function/features"/>
     </genClasses>
@@ -24,7 +26,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//IfExpression/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//IfExpression/condition"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//IfExpression/then"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//IfExpression/else"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//IfExpression/otherwise"/>
     </genClasses>
     <genClasses ecoreClass="pseudocode.ecore#//ForExpression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//ForExpression/from"/>
@@ -47,13 +49,22 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//FunctionCall/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//FunctionCall/parameters"/>
     </genClasses>
+    <genClasses ecoreClass="pseudocode.ecore#//Collection">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Collection/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="pseudocode.ecore#//TypeLiteral"/>
     <genClasses ecoreClass="pseudocode.ecore#//Variable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Variable/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Variable/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Variable/type"/>
     </genClasses>
     <genClasses ecoreClass="pseudocode.ecore#//CollectionAdd">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pseudocode.ecore#//CollectionAdd/collection"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//CollectionAdd/value"/>
+    </genClasses>
+    <genClasses ecoreClass="pseudocode.ecore#//CollectionRemove">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pseudocode.ecore#//CollectionRemove/collection"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//CollectionRemove/value"/>
     </genClasses>
     <genClasses ecoreClass="pseudocode.ecore#//ValueExchange">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//ValueExchange/collection"/>
@@ -61,14 +72,9 @@
     </genClasses>
     <genClasses ecoreClass="pseudocode.ecore#//List">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//List/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//List/elements"/>
     </genClasses>
-    <genClasses ecoreClass="pseudocode.ecore#//SetLitteral">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//SetLitteral/elements"/>
-    </genClasses>
-    <genClasses ecoreClass="pseudocode.ecore#//ListLitteral">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//ListLitteral/elements"/>
-    </genClasses>
+    <genClasses ecoreClass="pseudocode.ecore#//SetLitteral"/>
+    <genClasses ecoreClass="pseudocode.ecore#//ListLitteral"/>
     <genClasses ecoreClass="pseudocode.ecore#//CollectionAccessor">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pseudocode.ecore#//CollectionAccessor/collection"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//CollectionAccessor/accessor"/>
@@ -106,6 +112,9 @@
     </genClasses>
     <genClasses ecoreClass="pseudocode.ecore#//ArithmeticSigned">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//ArithmeticSigned/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="pseudocode.ecore#//ParenthesizedExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//ParenthesizedExpression/expression"/>
     </genClasses>
     <genClasses ecoreClass="pseudocode.ecore#//NumberLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//NumberLiteral/value"/>

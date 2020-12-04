@@ -11,83 +11,83 @@ package tdt4250.pseudocode.parser.antlr.lexer;
 import org.eclipse.xtext.parser.antlr.Lexer;
 }
 
-Contains : 'contains';
+Contains : ('C'|'c')('O'|'o')('N'|'n')('T'|'t')('A'|'a')('I'|'i')('N'|'n')('S'|'s');
 
-Continue : 'continue';
+Continue : ('C'|'c')('O'|'o')('N'|'n')('T'|'t')('I'|'i')('N'|'n')('U'|'u')('E'|'e');
 
-Exchange : 'exchange';
+Exchange : ('E'|'e')('X'|'x')('C'|'c')('H'|'h')('A'|'a')('N'|'n')('G'|'g')('E'|'e');
 
-Interval : 'interval';
+Interval : ('I'|'i')('N'|'n')('T'|'t')('E'|'e')('R'|'r')('V'|'v')('A'|'a')('L'|'l');
 
-Decimal : 'decimal';
+Decimal_1 : ('D'|'d')('E'|'e')('C'|'c')('I'|'i')('M'|'m')('A'|'a')('L'|'l');
 
-Equals : 'equals';
+Equals : ('E'|'e')('Q'|'q')('U'|'u')('A'|'a')('L'|'l')('S'|'s');
 
-Number : 'number';
+Number_1 : ('N'|'n')('U'|'u')('M'|'m')('B'|'b')('E'|'e')('R'|'r');
 
-Remove : 'remove';
+Remove : ('R'|'r')('E'|'e')('M'|'m')('O'|'o')('V'|'v')('E'|'e');
 
-Return : 'return';
+Return : ('R'|'r')('E'|'e')('T'|'t')('U'|'u')('R'|'r')('N'|'n');
 
-Array : 'array';
+Array_1 : ('A'|'a')('R'|'r')('R'|'r')('A'|'a')('Y'|'y');
 
-Break : 'break';
+Break : ('B'|'b')('R'|'r')('E'|'e')('A'|'a')('K'|'k');
 
-False : 'false';
+False : ('F'|'f')('A'|'a')('L'|'l')('S'|'s')('E'|'e');
 
-Index : 'index';
+Index : ('I'|'i')('N'|'n')('D'|'d')('E'|'e')('X'|'x');
 
-Minus : 'minus';
+Minus : ('M'|'m')('I'|'i')('N'|'n')('U'|'u')('S'|'s');
 
-Print : 'print';
+Print : ('P'|'p')('R'|'r')('I'|'i')('N'|'n')('T'|'t');
 
-Table : 'table';
+Table_1 : ('T'|'t')('A'|'a')('B'|'b')('L'|'l')('E'|'e');
 
-While : 'while';
+While : ('W'|'w')('H'|'h')('I'|'i')('L'|'l')('E'|'e');
 
-Else : 'else';
+Else : ('E'|'e')('L'|'l')('S'|'s')('E'|'e');
 
-List : 'list';
+List_1 : ('L'|'l')('I'|'i')('S'|'s')('T'|'t');
 
-Plus : 'plus';
+Plus : ('P'|'p')('L'|'l')('U'|'u')('S'|'s');
 
-Stop : 'stop';
+Stop : ('S'|'s')('T'|'t')('O'|'o')('P'|'p');
 
-Text : 'text';
+Text_1 : ('T'|'t')('E'|'e')('X'|'x')('T'|'t');
 
-Then : 'then';
+Then : ('T'|'t')('H'|'h')('E'|'e')('N'|'n');
 
-True : 'true';
+True : ('T'|'t')('R'|'r')('U'|'u')('E'|'e');
 
-With : 'with';
+With : ('W'|'w')('I'|'i')('T'|'t')('H'|'h');
 
-Add : 'add';
+Add : ('A'|'a')('D'|'d')('D'|'d');
 
-And : 'and';
+And : ('A'|'a')('N'|'n')('D'|'d');
 
-For : 'for';
+For : ('F'|'f')('O'|'o')('R'|'r');
 
-New : 'new';
+New : ('N'|'n')('E'|'e')('W'|'w');
 
-ExclamationMarkEqualsSign : '!=';
+ExclamationMarkEqualsSign : '!''=';
 
-AmpersandAmpersand : '&&';
+AmpersandAmpersand : '&''&';
 
-LessThanSignEqualsSign : '<=';
+LessThanSignEqualsSign : '<''=';
 
-EqualsSignEqualsSign : '==';
+EqualsSignEqualsSign : '=''=';
 
-GreaterThanSignEqualsSign : '>=';
+GreaterThanSignEqualsSign : '>''=';
 
-At : 'at';
+At : ('A'|'a')('T'|'t');
 
-If : 'if';
+If : ('I'|'i')('F'|'f');
 
-Is : 'is';
+Is : ('I'|'i')('S'|'s');
 
-To : 'to';
+To : ('T'|'t')('O'|'o');
 
-VerticalLineVerticalLine : '||';
+VerticalLineVerticalLine : '|''|';
 
 ExclamationMark : '!';
 
@@ -117,7 +117,7 @@ RightSquareBracket : ']';
 
 CircumflexAccent : '^';
 
-A : 'a';
+A : ('A'|'a');
 
 LeftCurlyBracket : '{';
 

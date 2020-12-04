@@ -146,7 +146,7 @@ public class PcodeSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     'then'?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     condition=LiteralExpression (ambiguity) BEGIN END 'else' BEGIN else+=Feature
+	 *     condition=LiteralExpression (ambiguity) BEGIN END 'else' BEGIN otherwise+=Feature
 	 *     condition=LiteralExpression (ambiguity) BEGIN END ('else' BEGIN END)? (rule end)
 	 *     condition=LiteralExpression (ambiguity) BEGIN then+=Feature
 	 */

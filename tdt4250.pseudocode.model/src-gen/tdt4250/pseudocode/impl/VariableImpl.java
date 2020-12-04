@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import tdt4250.pseudocode.Expression;
+import tdt4250.pseudocode.Identifier;
 import tdt4250.pseudocode.PseudocodePackage;
 import tdt4250.pseudocode.Variable;
 
@@ -24,6 +25,7 @@ import tdt4250.pseudocode.Variable;
  * <ul>
  *   <li>{@link tdt4250.pseudocode.impl.VariableImpl#getName <em>Name</em>}</li>
  *   <li>{@link tdt4250.pseudocode.impl.VariableImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link tdt4250.pseudocode.impl.VariableImpl#getType <em>Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -58,6 +60,16 @@ public class VariableImpl extends ExpressionImpl implements Variable {
 	 * @ordered
 	 */
 	protected Expression value;
+
+	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected Identifier type;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -159,10 +171,63 @@ public class VariableImpl extends ExpressionImpl implements Variable {
 	 * @generated
 	 */
 	@Override
+	public Identifier getType() {
+		return type;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetType(Identifier newType, NotificationChain msgs) {
+		Identifier oldType = type;
+		type = newType;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					PseudocodePackage.VARIABLE__TYPE, oldType, newType);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setType(Identifier newType) {
+		if (newType != type) {
+			NotificationChain msgs = null;
+			if (type != null)
+				msgs = ((InternalEObject) type).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - PseudocodePackage.VARIABLE__TYPE, null, msgs);
+			if (newType != null)
+				msgs = ((InternalEObject) newType).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - PseudocodePackage.VARIABLE__TYPE, null, msgs);
+			msgs = basicSetType(newType, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PseudocodePackage.VARIABLE__TYPE, newType, newType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case PseudocodePackage.VARIABLE__VALUE:
 			return basicSetValue(null, msgs);
+		case PseudocodePackage.VARIABLE__TYPE:
+			return basicSetType(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -179,6 +244,8 @@ public class VariableImpl extends ExpressionImpl implements Variable {
 			return getName();
 		case PseudocodePackage.VARIABLE__VALUE:
 			return getValue();
+		case PseudocodePackage.VARIABLE__TYPE:
+			return getType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -196,6 +263,9 @@ public class VariableImpl extends ExpressionImpl implements Variable {
 			return;
 		case PseudocodePackage.VARIABLE__VALUE:
 			setValue((Expression) newValue);
+			return;
+		case PseudocodePackage.VARIABLE__TYPE:
+			setType((Identifier) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -215,6 +285,9 @@ public class VariableImpl extends ExpressionImpl implements Variable {
 		case PseudocodePackage.VARIABLE__VALUE:
 			setValue((Expression) null);
 			return;
+		case PseudocodePackage.VARIABLE__TYPE:
+			setType((Identifier) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -231,6 +304,8 @@ public class VariableImpl extends ExpressionImpl implements Variable {
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case PseudocodePackage.VARIABLE__VALUE:
 			return value != null;
+		case PseudocodePackage.VARIABLE__TYPE:
+			return type != null;
 		}
 		return super.eIsSet(featureID);
 	}
