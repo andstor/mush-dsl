@@ -26,6 +26,7 @@ import tdt4250.pseudocode.Variable;
  *   <li>{@link tdt4250.pseudocode.impl.VariableImpl#getName <em>Name</em>}</li>
  *   <li>{@link tdt4250.pseudocode.impl.VariableImpl#getValue <em>Value</em>}</li>
  *   <li>{@link tdt4250.pseudocode.impl.VariableImpl#getType <em>Type</em>}</li>
+ *   <li>{@link tdt4250.pseudocode.impl.VariableImpl#getOp <em>Op</em>}</li>
  * </ul>
  *
  * @generated
@@ -70,6 +71,26 @@ public class VariableImpl extends ExpressionImpl implements Variable {
 	 * @ordered
 	 */
 	protected Identifier type;
+
+	/**
+	 * The default value of the '{@link #getOp() <em>Op</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOp()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String OP_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getOp() <em>Op</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOp()
+	 * @generated
+	 * @ordered
+	 */
+	protected String op = OP_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -222,6 +243,29 @@ public class VariableImpl extends ExpressionImpl implements Variable {
 	 * @generated
 	 */
 	@Override
+	public String getOp() {
+		return op;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setOp(String newOp) {
+		String oldOp = op;
+		op = newOp;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PseudocodePackage.VARIABLE__OP, oldOp, op));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case PseudocodePackage.VARIABLE__VALUE:
@@ -246,6 +290,8 @@ public class VariableImpl extends ExpressionImpl implements Variable {
 			return getValue();
 		case PseudocodePackage.VARIABLE__TYPE:
 			return getType();
+		case PseudocodePackage.VARIABLE__OP:
+			return getOp();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -266,6 +312,9 @@ public class VariableImpl extends ExpressionImpl implements Variable {
 			return;
 		case PseudocodePackage.VARIABLE__TYPE:
 			setType((Identifier) newValue);
+			return;
+		case PseudocodePackage.VARIABLE__OP:
+			setOp((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -288,6 +337,9 @@ public class VariableImpl extends ExpressionImpl implements Variable {
 		case PseudocodePackage.VARIABLE__TYPE:
 			setType((Identifier) null);
 			return;
+		case PseudocodePackage.VARIABLE__OP:
+			setOp(OP_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -306,6 +358,8 @@ public class VariableImpl extends ExpressionImpl implements Variable {
 			return value != null;
 		case PseudocodePackage.VARIABLE__TYPE:
 			return type != null;
+		case PseudocodePackage.VARIABLE__OP:
+			return OP_EDEFAULT == null ? op != null : !OP_EDEFAULT.equals(op);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -323,6 +377,8 @@ public class VariableImpl extends ExpressionImpl implements Variable {
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", op: ");
+		result.append(op);
 		result.append(')');
 		return result.toString();
 	}

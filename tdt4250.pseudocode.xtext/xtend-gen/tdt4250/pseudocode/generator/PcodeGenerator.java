@@ -4,6 +4,7 @@
 package tdt4250.pseudocode.generator;
 
 import com.google.common.collect.Iterables;
+import java.util.ArrayList;
 import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -58,20 +59,16 @@ public class PcodeGenerator extends AbstractGenerator {
   
   private int varCounter = 0;
   
+  private ArrayList<String> varList = new ArrayList<String>();
+  
   /**
-   * Da burde det meste funke ;)
-   * Vi genererer korrekt java kode!!!
+   * Da tror jeg  reassignments av variabler skal fungere fint!
+   * Lagret navnene på variablene i en tabel varList, og når en variabel lages sjekker den typen variabel
+   * Jeg la også til en op type i variabel modellen, da får vi lett satt hvordan forskjellige typer kan brukes
+   * så lov til i = 9 og i += 2 og i++, men ikke i ++ 9
+   * Det er bare å gjøre det på en annen måte hvis du ikke liker denne :)
    * 
-   * Eneste som mangler er:
-   * +=, -=, ++, --
-   * reassignments of variables. altså i = 2, også senere i=1... Her må vi ikke ha med type 2 gangen..
-   * i=i rekursjerer evig... Den prøver å finne en type for i... Her må vi kjøre en sjekk om det neste rekursjonskallet er den samme variabelen elns..
-   * list og listLiteral og setLitteral lager ett ekstra komma!
-   * 
-   * 
-   * Formateringen av Java koden er litt rar.. dette er pga. ''' ''' templates greierne... de legger til newlines
-   * (men koden kan testes ;) bare  trykk shift + command + f så formaterer  eclipse automatisk ! men koden må være riktig da!
-   * Foreslår at vi generere vanlige strenger? Evt. string builder?
+   * Må også fikse print da den kun tar et element
    */
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
@@ -117,6 +114,8 @@ public class PcodeGenerator extends AbstractGenerator {
         _builder.newLineIfNotEmpty();
       }
     }
+    _builder.append("    \t");
+    _builder.newLine();
     _builder.append("    ");
     _builder.append("}");
     _builder.newLine();
@@ -138,6 +137,7 @@ public class PcodeGenerator extends AbstractGenerator {
         String _plus_1 = (_plus + _name);
         String _plus_2 = (_plus_1 + ", ");
         parameters = (_parameters + _plus_2);
+        this.varList.add(variable.getName());
       }
     }
     int _length = parameters.length();
@@ -273,18 +273,56 @@ public class PcodeGenerator extends AbstractGenerator {
     return _builder;
   }
   
+  public String printvarList() {
+    int v = this.varList.size();
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append(v);
+    return _builder.toString();
+  }
+  
   protected CharSequence _generateExpression(final Variable e) {
     StringConcatenation _builder = new StringConcatenation();
-    Object _infer = this.typeInferencer.infer(e.getValue());
-    _builder.append(_infer);
-    _builder.append(" ");
-    String _name = e.getName();
-    _builder.append(_name);
-    _builder.append(" = ");
-    Object _LiteralExpression = this.LiteralExpression(e.getValue());
-    _builder.append(_LiteralExpression);
-    _builder.append(";");
-    _builder.newLineIfNotEmpty();
+    {
+      boolean _contains = this.varList.contains(e.getName());
+      boolean _not = (!_contains);
+      if (_not) {
+        Object _infer = this.typeInferencer.infer(e.getValue());
+        _builder.append(_infer);
+        _builder.append(" ");
+        String _name = e.getName();
+        _builder.append(_name);
+        _builder.append(" = ");
+        Object _LiteralExpression = this.LiteralExpression(e.getValue());
+        _builder.append(_LiteralExpression);
+        _builder.append(";");
+        _builder.newLineIfNotEmpty();
+        boolean _add = this.varList.add(e.getName());
+        _builder.append(_add);
+        _builder.newLineIfNotEmpty();
+      } else {
+        {
+          if ((e.getOp().equals("++") || e.getOp().equals("--"))) {
+            String _name_1 = e.getName();
+            _builder.append(_name_1);
+            String _op = e.getOp();
+            _builder.append(_op);
+            _builder.newLineIfNotEmpty();
+          } else {
+            String _name_2 = e.getName();
+            _builder.append(_name_2);
+            _builder.append(" ");
+            String _op_1 = e.getOp();
+            _builder.append(_op_1);
+            _builder.append(" ");
+            Object _LiteralExpression_1 = this.LiteralExpression(e.getValue());
+            _builder.append(_LiteralExpression_1);
+            _builder.append(";");
+          }
+        }
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.newLine();
     return _builder;
   }
   

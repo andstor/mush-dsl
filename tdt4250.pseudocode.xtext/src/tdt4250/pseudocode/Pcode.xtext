@@ -50,7 +50,10 @@ Expression returns Expression:
 ;
 
 Variable returns Expression:
-	{Variable} name=ID ('=' | 'equals' | 'is') value=(LiteralExpression);
+	{Variable} 
+	(name=ID op=('=' | 'equals' | 'is'|'+='|'-=') value=(LiteralExpression)
+	|	name =ID op= ('++'|'--')
+	);
 
 Parameter returns Expression: 
 	{Variable} type=Identifier name=ID;

@@ -36,6 +36,7 @@ import tdt4250.pseudocode.ValueExchange
 import tdt4250.pseudocode.Variable
 import tdt4250.pseudocode.VariableReference
 import tdt4250.pseudocode.WhileExpression
+import java.util.ArrayList
 
 /**
  * Generates code from your model files on save.
@@ -46,8 +47,8 @@ class PcodeGenerator extends AbstractGenerator {
 
 	var typeInferencer = new PcodeTypeInferencer()
 	var varCounter = 0
-
-
+	var varList =  new ArrayList<String>
+	
 
 
 
@@ -72,7 +73,14 @@ class PcodeGenerator extends AbstractGenerator {
 
 
 
-
+	/*Da tror jeg  reassignments av variabler skal fungere fint!
+	 *Lagret navnene på variablene i en tabel varList, og når en variabel lages sjekker den typen variabel
+	 * Jeg la også til en op type i variabel modellen, da får vi lett satt hvordan forskjellige typer kan brukes
+	 * så lov til i = 9 og i += 2 og i++, men ikke i ++ 9 
+	 * Det er bare å gjøre det på en annen måte hvis du ikke liker denne :)
+	 * 
+	 * Må også fikse print da den kun tar et element
+	 * */
 
 
 
@@ -82,9 +90,11 @@ class PcodeGenerator extends AbstractGenerator {
 		for (e : resource.allContents.toIterable.filter(Function)) {
 			res += e.generate
 			fsa.generateFile(e.name + '.java', res)
-		}
-		println(res)
 
+		}
+	
+		println(res)
+		
 	}
 
 	def generate(Function e) '''
@@ -96,20 +106,24 @@ class PcodeGenerator extends AbstractGenerator {
 	    	«FOR f : e.features»
 	    		«f.generateFeature»
 	    	«ENDFOR»
+	    	
 	    }
 	}'''
-
+	
 	def generateParameters(EList<Expression> variables) {
 		var parameters = ""
 		for (v : variables) {
 			val variable = v as Variable
 			val type = variable.type as TypeLiteral
+			//if( !varList.contains(variable.name)){ parameters += typeInferencer.toJvmType(type.name) + " " + variable.name + ", "}
 			parameters += typeInferencer.toJvmType(type.name) + " " + variable.name + ", "
+			varList.add(variable.name)
 		}
 		parameters = parameters.substring(0, parameters.length - 2)
 		return parameters
 	}
-
+	
+	
 	def dispatch generateFeature(Statement e) '''
 	«e.generateStatement»'''
 
@@ -152,9 +166,19 @@ class PcodeGenerator extends AbstractGenerator {
 	def dispatch generateStatement(Stop e) '''
 		«e.type»«IF e.value !== null» «e.value»«ENDIF»;
 	'''
-
+	def printvarList(){
+		var v =  varList.size() 
+		return '''«v»'''
+		
+	}
 	def dispatch generateExpression(Variable e) '''
-		«typeInferencer.infer(e.value)» «e.name» = «e.value.LiteralExpression»;
+		«IF !varList.contains(e.name)»«typeInferencer.infer(e.value)» «e.name» = «e.value.LiteralExpression»;
+		«varList.add(e.name)»
+		«ELSE»
+			«IF e.op.equals('++') || e.op.equals('--')»«e.name»«e.op»
+			«ELSE»«e.name» «e.op» «e.value.LiteralExpression»;«ENDIF»
+		«ENDIF»
+		
 	'''
 
 	def dispatch generateExpression(Print e) '''

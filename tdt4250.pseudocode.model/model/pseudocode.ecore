@@ -66,6 +66,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//Identifier"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="op" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CollectionAdd" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="collection" eType="#//Variable"/>

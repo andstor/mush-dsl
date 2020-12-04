@@ -38,7 +38,7 @@ public class PcodeParsingTest {
     @Override
     public String apply() {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("ANNABELLE(nUMBeR alder, Number hoyde)");
+      _builder.append("ANNABELLE(nUMBeR alder, Number hoyde,text hoyde)");
       _builder.newLine();
       _builder.append("\t");
       _builder.append("e=2*(1+2)");
@@ -59,6 +59,9 @@ public class PcodeParsingTest {
       _builder.newLine();
       _builder.append("\t");
       _builder.append("i = 1//11+3*2+-3");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("i = \"hei\"");
       _builder.newLine();
       _builder.append("\t");
       _builder.append("j = alder");
@@ -86,7 +89,7 @@ public class PcodeParsingTest {
       _builder.append("for interval 2 to 4");
       _builder.newLine();
       _builder.append("\t\t\t");
-      _builder.append("print \"For works!\"");
+      _builder.append("print \"For works!\" + 7");
       _builder.newLine();
       _builder.append("\t\t\t");
       _builder.append("break");
@@ -117,6 +120,18 @@ public class PcodeParsingTest {
     }
   }.apply();
   
+  /**
+   * val code = '''
+   * ANNABELLE(nUMBeR alder, Number hoyde)
+   * i = 2
+   * i += 8
+   * i++
+   * s=9
+   * if 9==2 then
+   * s= 0
+   * 
+   * '''
+   */
   @Test
   public void parseModel() {
     try {

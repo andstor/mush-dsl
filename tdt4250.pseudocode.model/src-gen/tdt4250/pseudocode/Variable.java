@@ -14,6 +14,7 @@ package tdt4250.pseudocode;
  *   <li>{@link tdt4250.pseudocode.Variable#getName <em>Name</em>}</li>
  *   <li>{@link tdt4250.pseudocode.Variable#getValue <em>Value</em>}</li>
  *   <li>{@link tdt4250.pseudocode.Variable#getType <em>Type</em>}</li>
+ *   <li>{@link tdt4250.pseudocode.Variable#getOp <em>Op</em>}</li>
  * </ul>
  *
  * @see tdt4250.pseudocode.PseudocodePackage#getVariable()
@@ -86,5 +87,27 @@ public interface Variable extends Expression {
 	 * @generated
 	 */
 	void setType(Identifier value);
+
+	/**
+	 * Returns the value of the '<em><b>Op</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Op</em>' attribute.
+	 * @see #setOp(String)
+	 * @see tdt4250.pseudocode.PseudocodePackage#getVariable_Op()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getOp();
+
+	/**
+	 * Sets the value of the '{@link tdt4250.pseudocode.Variable#getOp <em>Op</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Op</em>' attribute.
+	 * @see #getOp()
+	 * @generated
+	 */
+	void setOp(String value);
 
 } // Variable

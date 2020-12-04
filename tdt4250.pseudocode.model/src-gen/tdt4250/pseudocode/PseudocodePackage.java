@@ -714,13 +714,22 @@ public interface PseudocodePackage extends EPackage {
 	int VARIABLE__TYPE = EXPRESSION_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Op</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE__OP = EXPRESSION_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Variable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+	int VARIABLE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Variable</em>' class.
@@ -1928,6 +1937,17 @@ public interface PseudocodePackage extends EPackage {
 	EReference getVariable_Type();
 
 	/**
+	 * Returns the meta object for the attribute '{@link tdt4250.pseudocode.Variable#getOp <em>Op</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Op</em>'.
+	 * @see tdt4250.pseudocode.Variable#getOp()
+	 * @see #getVariable()
+	 * @generated
+	 */
+	EAttribute getVariable_Op();
+
+	/**
 	 * Returns the meta object for class '{@link tdt4250.pseudocode.CollectionAdd <em>Collection Add</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2841,6 +2861,14 @@ public interface PseudocodePackage extends EPackage {
 		 * @generated
 		 */
 		EReference VARIABLE__TYPE = eINSTANCE.getVariable_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VARIABLE__OP = eINSTANCE.getVariable_Op();
 
 		/**
 		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.CollectionAddImpl <em>Collection Add</em>}' class.

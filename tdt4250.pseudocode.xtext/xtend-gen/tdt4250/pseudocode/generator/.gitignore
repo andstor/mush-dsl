@@ -1,3 +1,9 @@
 /.PcodeGenerator.java._trace
 /.PcodeGenerator.xtendbin
 /PcodeGenerator.java
+/.PcodeGeneratorUtils.java._trace
+/.PcodeGeneratorUtils.xtendbin
+/.PcodeTypeInferencer.java._trace
+/.PcodeTypeInferencer.xtendbin
+/PcodeGeneratorUtils.java
+/PcodeTypeInferencer.java

@@ -23,7 +23,7 @@ class PcodeParsingTest {
 	@Inject extension CompilationTestHelper
 	
 	val code = '''
-			ANNABELLE(nUMBeR alder, Number hoyde)
+			ANNABELLE(nUMBeR alder, Number hoyde,text hoyde)
 				e=2*(1+2)
 				G = [1,2,3,4]
 				G1 = [[1,1],[2,2]]
@@ -31,6 +31,7 @@ class PcodeParsingTest {
 				
 				G add [1,1]
 				i = 1//11+3*2+-3
+				i = "hei"
 				j = alder
 				k equals a new number list and contains 1,2,3,4
 				if i<=10 then
@@ -40,7 +41,7 @@ class PcodeParsingTest {
 					
 					exchange G1 at 1,1 with G2[i][j]
 					for interval 2 to 4
-						print "For works!"
+						print "For works!" + 7
 						break
 					while i <= 5
 						print "While works!"
@@ -51,6 +52,17 @@ class PcodeParsingTest {
 					u=9
 				return i
 		'''
+		
+	/*val code = '''
+		ANNABELLE(nUMBeR alder, Number hoyde)
+		i = 2
+		i += 8
+		i++
+		s=9
+		if 9==2 then
+			s= 0
+		
+		'''*/
 	
 	@Test def void parseModel() {
 		val result = parseHelper.parse(code)

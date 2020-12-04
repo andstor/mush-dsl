@@ -699,6 +699,16 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
+	public EAttribute getVariable_Op() {
+		return (EAttribute) variableEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getCollectionAdd() {
 		return collectionAddEClass;
 	}
@@ -1345,6 +1355,7 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		createEAttribute(variableEClass, VARIABLE__NAME);
 		createEReference(variableEClass, VARIABLE__VALUE);
 		createEReference(variableEClass, VARIABLE__TYPE);
+		createEAttribute(variableEClass, VARIABLE__OP);
 
 		collectionAddEClass = createEClass(COLLECTION_ADD);
 		createEReference(collectionAddEClass, COLLECTION_ADD__COLLECTION);
@@ -1584,6 +1595,8 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		initEReference(getVariable_Type(), this.getIdentifier(), null, "type", null, 0, 1, Variable.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVariable_Op(), ecorePackage.getEString(), "op", null, 1, 1, Variable.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(collectionAddEClass, CollectionAdd.class, "CollectionAdd", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
