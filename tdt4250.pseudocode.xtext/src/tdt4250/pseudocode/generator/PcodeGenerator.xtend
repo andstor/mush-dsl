@@ -37,6 +37,10 @@ import tdt4250.pseudocode.Variable
 import tdt4250.pseudocode.VariableReference
 import tdt4250.pseudocode.WhileExpression
 import java.util.ArrayList
+import java.util.StringJoiner
+import java.util.HashSet
+import tdt4250.pseudocode.FunctionCall
+import tdt4250.pseudocode.Minus
 
 /**
  * Generates code from your model files on save.
@@ -45,240 +49,340 @@ import java.util.ArrayList
  */
 class PcodeGenerator extends AbstractGenerator {
 
-	var typeInferencer = new PcodeTypeInferencer()
-	var varCounter = 0
-	var varList =  new ArrayList<String>
-	
+    var typeInferencer = new PcodeTypeInferencer()
+    var varCounter = 0
+    var varList = new ArrayList<String>
+    var importTypes = new HashSet<String>
 
+    /**
+     * Da burde det meste funke ;)
+     * Vi genererer korrekt java kode!!!
+     * 
+     * Eneste som mangler er:
+     * +=, -=, ++, --
+     * reassignments of variables. altså i = 2, også senere i=1... Her må vi ikke ha med type 2 gangen..
+     * i=i rekursjerer evig... Den prøver å finne en type for i... Her må vi kjøre en sjekk om det neste rekursjonskallet er den samme variabelen elns..
+     * list og listLiteral og setLitteral lager ett ekstra komma!
+     * 
+     * 
+     * Formateringen av Java koden er litt rar.. dette er pga. ''' ''' templates greierne... de legger til newlines
+     * (men koden kan testes ;) bare  trykk shift + command + f så formaterer  eclipse automatisk ! men koden må være riktig da! 
+     * Foreslår at vi generere vanlige strenger? Evt. string builder?
+     * 
+     */
+     
+     
+    /*Da tror jeg  reassignments av variabler skal fungere fint!
+     * Lagret navnene på variablene i en tabel varList, og når en variabel lages sjekker den typen variabel
+     * Jeg la også til en op type i variabel modellen, da får vi lett satt hvordan forskjellige typer kan brukes
+     * så lov til i = 9 og i += 2 og i++, men ikke i ++ 9 
+     * Det er bare å gjøre det på en annen måte hvis du ikke liker denne :)
+     * 
+     * Må også fikse print da den kun tar et element
+     * */
+     
+     
+    /**
+     * Da er vi vel mer eller mindre good!
+     * 
+     * Har fikset opp litt av hvert. Blant annet så er vel mer eller mindre all 
+     * automatisk type gjenfinning ok :) Sets funker også. Diverse java typer blir 
+     * automatisk importert om man bruker set eller list.
+     * Formatering bør også nå se bra ut !
+     * Fikset lister med ekstra komma.
+     * 
+     * 
+     * Det som står igjen er:
+     * 
+     * - print tar kun et element
+     * - auto importering av genererte klasse filer hvis de refereres til
+     * - kunne skrive mer avanserte typer i parametere (i FUNCTION(her!!! lol) )
+     *      vi trenger f.eks list of list of number
+     * 
+     * - + gjøre eCore modellen finere? med andre ord, legge til abstrakte klasser og liknende? 
+     *      kanskje vi kan flytte logikken i typeInferencer til operasjoner på selve ecore objektene?
+     *      eks. getType? idk...
+     * 
+     * - ellers så er det generell koderydding også validering da... Dette gjøres i tdt4250.pseudocode.validation
+     *      formatering også er kanskje nyttig?  : i tdt4250.pseudocode.formatting2
+     * 
+     * - også må vi selvfølgelig lage en (eller flere :) ) readme filer som beskriver prosjektene...
+     *      ta en titt på denne ;) https://github.com/andstor/tdt4250
+     */
+    override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 
+        var resPrint = ""
+        for (e : resource.allContents.toIterable.filter(Function)) {
+            varCounter = 0 // Reset counter
+            varList.clear() // Empty variable list
+            importTypes.clear() // Empty import list
+            var res = e.generate
+            resPrint += res
+            fsa.generateFile(e.name + '.java', res)
+        }
+        println(resPrint)
+        println("--------------------------------------------------")
+        println('Variable counter: ' + varCounter)
+        println('Variables: ' + varList)
+        println('Import types: ' + importTypes)
+    }
 
+    def generate(Function e) {
+        var params = e.parameters.generateParameters
+        var type = typeInferencer.infer(e)
+        var body = ''
+        for (f : e.features) {
+            body += f.generateFeature
+        }
+        return '''
+        «FOR importType : importTypes»
+            import «importType»;
+        «ENDFOR»
+        
+        class «e.name» {
+            public static «type» implementation( «e.parameters.generateParameters» ) {
+                «body»
+            }
+        }'''
+    }
 
-	/**
-	 * Da burde det meste funke ;)
-	 * Vi genererer korrekt java kode!!!
-	 * 
-	 * Eneste som mangler er:
-	 * +=, -=, ++, --
-	 * reassignments of variables. altså i = 2, også senere i=1... Her må vi ikke ha med type 2 gangen..
-	 * i=i rekursjerer evig... Den prøver å finne en type for i... Her må vi kjøre en sjekk om det neste rekursjonskallet er den samme variabelen elns..
-	 * list og listLiteral og setLitteral lager ett ekstra komma!
-	 * 
-	 * 
-	 * Formateringen av Java koden er litt rar.. dette er pga. ''' ''' templates greierne... de legger til newlines
-	 * (men koden kan testes ;) bare  trykk shift + command + f så formaterer  eclipse automatisk ! men koden må være riktig da! 
-	 * Foreslår at vi generere vanlige strenger? Evt. string builder?
-	 * 
-	 */
+    def generateParameters(EList<Expression> variables) {
+        var parameters = ""
+        for (v : variables) {
+            val variable = v as Variable
+            val type = variable.type as TypeLiteral
+            // if( !varList.contains(variable.name)){ parameters += typeInferencer.toJvmType(type.name) + " " + variable.name + ", "}
+            parameters += typeInferencer.toJvmType(type.name) + " " + variable.name + ", "
+            varList.add(variable.name)
+        }
+        parameters = parameters.substring(0, parameters.length - 2)
+        return parameters
+    }
 
+    def dispatch generateFeature(Statement e) '''
+    «e.generateStatement»'''
 
+    def dispatch generateFeature(Expression e) '''
+    «e.generateExpression»'''
 
+    def dispatch generateStatement(IfExpression e) '''
+        if («e.condition.LiteralExpression») {
+            «FOR f : e.then»
+                «f.generateFeature»
+            «ENDFOR»
+        }«IF !e.otherwise.isEmpty» else {
+                        «FOR f : e.otherwise»«f.generateFeature»«ENDFOR»
+        }«ENDIF»
+    '''
 
-	/*Da tror jeg  reassignments av variabler skal fungere fint!
-	 *Lagret navnene på variablene i en tabel varList, og når en variabel lages sjekker den typen variabel
-	 * Jeg la også til en op type i variabel modellen, da får vi lett satt hvordan forskjellige typer kan brukes
-	 * så lov til i = 9 og i += 2 og i++, men ikke i ++ 9 
-	 * Det er bare å gjøre det på en annen måte hvis du ikke liker denne :)
-	 * 
-	 * Må også fikse print da den kun tar et element
-	 * */
+    def dispatch generateStatement(ForExpression e) {
+        var variable = uniqueVariable();
+        return '''
+            for (int «variable» = «e.from.LiteralExpression»; «variable» <= «e.to.LiteralExpression»; «variable»++) {
+                «FOR b : e.block»
+                    «b.generateFeature»
+                «ENDFOR»
+            }
+        '''
+    }
 
+    def uniqueVariable() {
+        return 'VAR' + varCounter++
+    }
 
+    def dispatch generateStatement(WhileExpression e) '''
+        while («e.condition.LiteralExpression») {
+        	«FOR b : e.block»
+        	    «b.generateFeature»
+        	«ENDFOR»
+        }
+    '''
 
+    def dispatch generateStatement(Stop e) {
+        var string = ''
+        string += e.type
+        if (e.value !== null) {
+            string += ' ' + e.value.LiteralExpression + ';'
+        }
+        return string
 
-	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		var res = ""
-		for (e : resource.allContents.toIterable.filter(Function)) {
-			res += e.generate
-			fsa.generateFile(e.name + '.java', res)
+    }
 
-		}
-	
-		println(res)
-		
-	}
+    def printvarList() {
+        var v = varList.size()
+        return '''«v»'''
+    }
 
-	def generate(Function e) '''
-	import java.util.Arrays;
-	import java.util.ArrayList;
-	
-	class «e.name» {
-	    public void implementation( «e.parameters.generateParameters» ) {
-	    	«FOR f : e.features»
-	    		«f.generateFeature»
-	    	«ENDFOR»
-	    	
-	    }
-	}'''
-	
-	def generateParameters(EList<Expression> variables) {
-		var parameters = ""
-		for (v : variables) {
-			val variable = v as Variable
-			val type = variable.type as TypeLiteral
-			//if( !varList.contains(variable.name)){ parameters += typeInferencer.toJvmType(type.name) + " " + variable.name + ", "}
-			parameters += typeInferencer.toJvmType(type.name) + " " + variable.name + ", "
-			varList.add(variable.name)
-		}
-		parameters = parameters.substring(0, parameters.length - 2)
-		return parameters
-	}
-	
-	
-	def dispatch generateFeature(Statement e) '''
-	«e.generateStatement»'''
+    def dispatch generateExpression(Variable e) {
+        var string = ''
+        if (!varList.contains(e.name)) {
+            string += typeInferencer.infer(e.value) + ' ' + e.name + ' = ' + e.value.LiteralExpression + ';'
+            varList.add(e.name)
+        } else {
+            if (e.op.equals('++') || e.op.equals('--')) {
+                string += e.op
+            } else {
+                string += e.name + ' ' + e.op + ' ' + e.value.LiteralExpression + ';'
+            }
+        }
+        return string + '\n'
+    }
 
-	def dispatch generateFeature(Expression e) '''
-	«e.generateExpression»'''
+    def dispatch generateExpression(Print e) '''
+        System.out.println(«e.value.LiteralExpression»);
+    '''
 
-	def dispatch generateStatement(IfExpression e) '''
-	if ( «e.condition.LiteralExpression» ) {
-		«FOR f : e.then»
-			«f.generateFeature»
-		«ENDFOR»
-	}«IF !e.otherwise.isEmpty» else {
-													«FOR f : e.otherwise»«f.generateFeature»«ENDFOR»
-													}
-	«ENDIF»'''
+    def dispatch generateExpression(CollectionAdd e) '''
+    «e.collection.name».add(«e.value.LiteralExpression»);'''
 
-	def dispatch generateStatement(ForExpression e) {
-		var variable = uniqueVariable();
-		return '''
-		for ( int «variable» = «e.from.LiteralExpression»; «variable» <= «e.to.LiteralExpression»; «variable»++) {
-			«FOR b : e.block»
-				«b.generateFeature»
-			«ENDFOR»
-		}'''
+    def dispatch generateExpression(CollectionRemove e) '''
+    «e.collection.name».remove(«e.value.LiteralExpression»);'''
 
-	}
+    def dispatch generateExpression(ValueExchange e) {
+        var variable1 = uniqueVariable();
+        var variable2 = uniqueVariable();
+        var exp1 = e.collection.LiteralExpression.toString
+        var exp2 = e.value.LiteralExpression.toString
 
-	def uniqueVariable() {
+        if (e.collection instanceof CollectionAccessor) {
+            exp1 = PcodeGeneratorUtils.replaceLast('get', 'set', exp1)
+            exp1 = PcodeGeneratorUtils.replaceLast(')', ',' + variable2 + ')', exp1)
+        } else {
+            exp1 = exp1 + '=' + variable2
+        }
 
-		return 'VAR' + varCounter++
-	}
+        if (e.value instanceof CollectionAccessor) {
+            exp2 = PcodeGeneratorUtils.replaceLast('get', 'set', exp2)
+            exp2 = PcodeGeneratorUtils.replaceLast(')', ',' + variable1 + ')', exp2)
 
-	def dispatch generateStatement(WhileExpression e) '''
-	while ( «e.condition.LiteralExpression») {
-		«FOR b : e.block»
-			«b.generateFeature»
-		«ENDFOR»
-	}'''
+        } else {
+            exp2 = exp2 + '=' + variable1
+        }
 
-	def dispatch generateStatement(Stop e) '''
-		«e.type»«IF e.value !== null» «e.value»«ENDIF»;
-	'''
-	def printvarList(){
-		var v =  varList.size() 
-		return '''«v»'''
-		
-	}
-	def dispatch generateExpression(Variable e) '''
-		«IF !varList.contains(e.name)»«typeInferencer.infer(e.value)» «e.name» = «e.value.LiteralExpression»;
-		«varList.add(e.name)»
-		«ELSE»
-			«IF e.op.equals('++') || e.op.equals('--')»«e.name»«e.op»
-			«ELSE»«e.name» «e.op» «e.value.LiteralExpression»;«ENDIF»
-		«ENDIF»
-		
-	'''
+        return '''
+            «typeInferencer.infer(e.collection)» «variable1» = «e.collection.LiteralExpression»;
+            «typeInferencer.infer(e.value)» «variable2» = «e.value.LiteralExpression»;
+            «exp1»;
+            «exp2»;
+        '''
+    }
 
-	def dispatch generateExpression(Print e) '''
-		System.out.println(«e.value.LiteralExpression»);
-	'''
+    // LiteralExpression
+    // TODO: trim last comma ","
+    def dispatch String LiteralExpression(List e) {
+        var string = ''
+        var listType = typeInferencer.autobox(typeInferencer.toJvmType(e.type))
+        string += 'new ArrayList<' + listType + '>'
+        importTypes.add('java.util.ArrayList')
+        importTypes.add('java.util.List')
+        if (e.elements.isEmpty) {
+            string += '()'
+        } else {
+            string += '(Arrays.asList('
+            importTypes.add('java.util.Arrays')
+            var joiner = new StringJoiner(",");
+            for (element : e.elements) {
+                joiner.add(element.LiteralExpression.toString)
+            }
+            string += joiner.toString + '))'
+        }
 
-	def dispatch generateExpression(CollectionAdd e) '''
-	«e.collection.name».add(«e.value.LiteralExpression»);'''
+        return string
+    }
 
-	def dispatch generateExpression(CollectionRemove e) '''
-	«e.collection.name».remove(«e.value.LiteralExpression»);'''
+    def dispatch LiteralExpression(SetLitteral e) {
+        var string = ''
+        var listType = typeInferencer.autobox(typeInferencer.infer(e.elements.get(0)).toString)
+        string += 'new HashSet<' + listType + '>'
+        importTypes.add('java.util.HashSet')
+        importTypes.add('java.util.Set')
+        if (e.elements.isEmpty) {
+            string += '()'
+        } else {
+            string += '(Arrays.asList('
+            importTypes.add('java.util.Arrays')
+            var joiner = new StringJoiner(",");
+            for (element : e.elements) {
+                joiner.add(element.LiteralExpression.toString)
+            }
+            string += joiner.toString + '))'
+        }
+        return string
+    }
 
-	def dispatch generateExpression(ValueExchange e) {
-		var variable1 = uniqueVariable();
-		var variable2 = uniqueVariable();
-		var exp1 = e.collection.LiteralExpression.toString
-		var exp2 = e.value.LiteralExpression.toString
+    // TODO: trim last comma ","
+    def dispatch LiteralExpression(ListLitteral e) {
+        var string = ''
+        var listType = typeInferencer.autobox(typeInferencer.infer(e.elements.get(0)).toString)
+        string += 'new ArrayList<' + listType + '>'
+        if (e.elements.isEmpty) {
+            string += '()'
+        } else {
+            string += '(Arrays.asList('
+            var joiner = new StringJoiner(",");
+            for (element : e.elements) {
+                joiner.add(element.LiteralExpression.toString)
+            }
+            string += joiner.toString + '))'
+        }
+        return string
+    }
 
-		if (e.collection instanceof CollectionAccessor) {
-			exp1 = PcodeGeneratorUtils.replaceLast('get', 'set', exp1)
-			exp1 = PcodeGeneratorUtils.replaceLast(')', ',' + variable2 + ')', exp1)
-		} else {
-			exp1 = exp1 + '=' + variable2
-		}
+    def dispatch LiteralExpression(CollectionAccessor e) {
+        var string = ''
+        string += e.collection.name
+        for (accessor : e.accessor) {
+            string += '.get(' + accessor.LiteralExpression + ')'
+        }
+        return string
+    }
 
-		if (e.value instanceof CollectionAccessor) {
-			exp2 = PcodeGeneratorUtils.replaceLast('get', 'set', exp2)
-			exp2 = PcodeGeneratorUtils.replaceLast(')', ',' + variable1 + ')', exp2)
+    def dispatch LiteralExpression(AndOrExpression e) '''
+    «e.left.LiteralExpression»«e.op»«e.right.LiteralExpression»'''
 
-		} else {
-			exp2 = exp2 + '=' + variable1
-		}
+    def dispatch LiteralExpression(Comparison e) '''
+    «e.left.LiteralExpression»«e.op»«e.right.LiteralExpression»'''
 
-		return '''
-		«typeInferencer.infer(e.collection)» «variable1» = «e.collection.LiteralExpression»;
-		«typeInferencer.infer(e.value)» «variable2» = «e.value.LiteralExpression»;
-		«exp1»;
-		«exp2»;'''
-	}
+    def dispatch LiteralExpression(Equals e) '''
+    «e.left.LiteralExpression»«e.op»«e.right.LiteralExpression»'''
 
-	// LiteralExpression
-	//TODO: trim last comma ","
-	def dispatch LiteralExpression(List e) {
-		var list = '''
-		new ArrayList<«typeInferencer.autobox(typeInferencer.toJvmType(e.type))»>«IF e.elements.isEmpty»()
-		«ELSE»
-			(Arrays.asList(«FOR element : e.elements»«element.LiteralExpression», «ENDFOR»))
-		«ENDIF»'''
-		
-		return list.trim // .trim strips newlines..
-	}
+    // ArithmeticExpression
+    def dispatch LiteralExpression(ParenthesizedExpression e) '''
+    («e.expression.LiteralExpression»)'''
 
-	def dispatch LiteralExpression(SetLitteral e) '''
-	«e»'''
+    def dispatch LiteralExpression(Plus e) '''
+    «e.left.LiteralExpression»+«e.right.LiteralExpression»'''
 
-	//TODO: trim last comma ","
-	def dispatch LiteralExpression(ListLitteral e) {
-		var listLitteral = '''
-		new ArrayList<«typeInferencer.autobox(typeInferencer.infer(e.elements.get(0)).toString)»>«IF e.elements.isEmpty»()
-		«ELSE»
-			(Arrays.asList(«FOR element : e.elements»«element.LiteralExpression»,«ENDFOR»))
-		«ENDIF»'''
-		
-		return listLitteral.trim // .trim strips newlines..
-	}
+    def dispatch LiteralExpression(Minus e) '''
+    «e.left.LiteralExpression»-«e.right.LiteralExpression»'''
 
-	def dispatch LiteralExpression(CollectionAccessor e) '''
-	«e.collection.name»«FOR accessor : e.accessor».get(«accessor.LiteralExpression»)«ENDFOR»'''
+    def dispatch LiteralExpression(MultiOrDiv e) '''
+    «e.left.LiteralExpression»«e.op»«e.right.LiteralExpression»'''
 
-	def dispatch LiteralExpression(AndOrExpression e) '''
-	«e.left.LiteralExpression»«e.op»«e.right.LiteralExpression»'''
+    def dispatch LiteralExpression(BooleanNegation e) '''
+    !«e.expression.LiteralExpression»'''
 
-	def dispatch LiteralExpression(Comparison e) '''
-	«e.left.LiteralExpression»«e.op»«e.right.LiteralExpression»'''
+    def dispatch LiteralExpression(ArithmeticSigned e) '''
+    -«e.expression.LiteralExpression»'''
 
-	def dispatch LiteralExpression(Equals e) '''
-	«e.left.LiteralExpression»«e.op»«e.right.LiteralExpression»'''
+    def dispatch LiteralExpression(NumberLiteral e) { return e.value }
 
-	// ArithmeticExpression
-	def dispatch LiteralExpression(ParenthesizedExpression e) '''
-	(«e.expression.LiteralExpression»)'''
+    def dispatch LiteralExpression(StringLiteral e) { return '"' + e.value + '"' }
 
-	def dispatch LiteralExpression(Plus e) '''
-	«e.left.LiteralExpression»+«e.right.LiteralExpression»'''
+    def dispatch LiteralExpression(VariableReference e) '''
+    «e.ref.name»'''
 
-	def dispatch LiteralExpression(MultiOrDiv e) '''
-	«e.left.LiteralExpression»«e.op»«e.right.LiteralExpression»'''
-
-	def dispatch LiteralExpression(BooleanNegation e) '''
-	!«e.expression.LiteralExpression»'''
-
-	def dispatch LiteralExpression(ArithmeticSigned e) '''
-	-«e.expression.LiteralExpression»'''
-
-	def dispatch LiteralExpression(NumberLiteral e) { return e.value }
-
-	def dispatch LiteralExpression(StringLiteral e) { return '"' + e.value + '"' }
-
-	def dispatch LiteralExpression(VariableReference e) '''
-		«e.ref.name»
-	'''
-
+    def dispatch LiteralExpression(FunctionCall e) {
+        var string = ''
+        string += e.ref.name + '.implementation('
+        if (e.parameters.isEmpty) {
+            var joiner = new StringJoiner(",");
+            for (param : e.parameters) {
+                joiner.add(param.LiteralExpression.toString)
+            }
+            string += joiner.toString
+        }
+        string += ')'
+        return string
+    }
 }

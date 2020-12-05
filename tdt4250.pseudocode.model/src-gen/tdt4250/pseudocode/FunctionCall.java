@@ -13,7 +13,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link tdt4250.pseudocode.FunctionCall#getName <em>Name</em>}</li>
+ *   <li>{@link tdt4250.pseudocode.FunctionCall#getRef <em>Ref</em>}</li>
  *   <li>{@link tdt4250.pseudocode.FunctionCall#getParameters <em>Parameters</em>}</li>
  * </ul>
  *
@@ -22,28 +22,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface FunctionCall extends Expression {
-	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see tdt4250.pseudocode.PseudocodePackage#getFunctionCall_Name()
-	 * @model
-	 * @generated
-	 */
-	String getName();
-
-	/**
-	 * Sets the value of the '{@link tdt4250.pseudocode.FunctionCall#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 * @generated
-	 */
-	void setName(String value);
-
 	/**
 	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
 	 * The list contents are of type {@link tdt4250.pseudocode.Expression}.
@@ -55,5 +33,27 @@ public interface FunctionCall extends Expression {
 	 * @generated
 	 */
 	EList<Expression> getParameters();
+
+	/**
+	 * Returns the value of the '<em><b>Ref</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ref</em>' reference.
+	 * @see #setRef(Function)
+	 * @see tdt4250.pseudocode.PseudocodePackage#getFunctionCall_Ref()
+	 * @model
+	 * @generated
+	 */
+	Function getRef();
+
+	/**
+	 * Sets the value of the '{@link tdt4250.pseudocode.FunctionCall#getRef <em>Ref</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ref</em>' reference.
+	 * @see #getRef()
+	 * @generated
+	 */
+	void setRef(Function value);
 
 } // FunctionCall

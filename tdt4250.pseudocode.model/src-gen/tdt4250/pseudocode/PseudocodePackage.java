@@ -454,7 +454,7 @@ public interface PseudocodePackage extends EPackage {
 	int STOP__TYPE = STATEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -537,13 +537,13 @@ public interface PseudocodePackage extends EPackage {
 	int FUNCTION_CALL = 11;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Ref</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTION_CALL__NAME = EXPRESSION_FEATURE_COUNT + 0;
+	int FUNCTION_CALL__REF = EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -1819,15 +1819,15 @@ public interface PseudocodePackage extends EPackage {
 	EAttribute getStop_Type();
 
 	/**
-	 * Returns the meta object for the attribute '{@link tdt4250.pseudocode.Stop#getValue <em>Value</em>}'.
+	 * Returns the meta object for the containment reference '{@link tdt4250.pseudocode.Stop#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @return the meta object for the containment reference '<em>Value</em>'.
 	 * @see tdt4250.pseudocode.Stop#getValue()
 	 * @see #getStop()
 	 * @generated
 	 */
-	EAttribute getStop_Value();
+	EReference getStop_Value();
 
 	/**
 	 * Returns the meta object for class '{@link tdt4250.pseudocode.Print <em>Print</em>}'.
@@ -1872,17 +1872,6 @@ public interface PseudocodePackage extends EPackage {
 	EClass getFunctionCall();
 
 	/**
-	 * Returns the meta object for the attribute '{@link tdt4250.pseudocode.FunctionCall#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see tdt4250.pseudocode.FunctionCall#getName()
-	 * @see #getFunctionCall()
-	 * @generated
-	 */
-	EAttribute getFunctionCall_Name();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link tdt4250.pseudocode.FunctionCall#getParameters <em>Parameters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1892,6 +1881,17 @@ public interface PseudocodePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getFunctionCall_Parameters();
+
+	/**
+	 * Returns the meta object for the reference '{@link tdt4250.pseudocode.FunctionCall#getRef <em>Ref</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Ref</em>'.
+	 * @see tdt4250.pseudocode.FunctionCall#getRef()
+	 * @see #getFunctionCall()
+	 * @generated
+	 */
+	EReference getFunctionCall_Ref();
 
 	/**
 	 * Returns the meta object for class '{@link tdt4250.pseudocode.Variable <em>Variable</em>}'.
@@ -2769,12 +2769,12 @@ public interface PseudocodePackage extends EPackage {
 		EAttribute STOP__TYPE = eINSTANCE.getStop_Type();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute STOP__VALUE = eINSTANCE.getStop_Value();
+		EReference STOP__VALUE = eINSTANCE.getStop_Value();
 
 		/**
 		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.PrintImpl <em>Print</em>}' class.
@@ -2813,20 +2813,20 @@ public interface PseudocodePackage extends EPackage {
 		EClass FUNCTION_CALL = eINSTANCE.getFunctionCall();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute FUNCTION_CALL__NAME = eINSTANCE.getFunctionCall_Name();
-
-		/**
 		 * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference FUNCTION_CALL__PARAMETERS = eINSTANCE.getFunctionCall_Parameters();
+
+		/**
+		 * The meta object literal for the '<em><b>Ref</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FUNCTION_CALL__REF = eINSTANCE.getFunctionCall_Ref();
 
 		/**
 		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.VariableImpl <em>Variable</em>}' class.

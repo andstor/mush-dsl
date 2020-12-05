@@ -95,7 +95,7 @@ public interface Variable extends Expression {
 	 * @return the value of the '<em>Op</em>' attribute.
 	 * @see #setOp(String)
 	 * @see tdt4250.pseudocode.PseudocodePackage#getVariable_Op()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	String getOp();

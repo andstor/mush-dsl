@@ -7,13 +7,12 @@ import com.google.inject.Inject
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.extensions.InjectionExtension
 import org.eclipse.xtext.testing.util.ParseHelper
+import org.eclipse.xtext.util.EmfFormatter
+import org.eclipse.xtext.xbase.testing.CompilationTestHelper
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.^extension.ExtendWith
-import org.eclipse.xtext.util.EmfFormatter
 import tdt4250.pseudocode.Model
-import tdt4250.pseudocode.generator.PcodeGenerator
-import org.eclipse.xtext.xbase.testing.CompilationTestHelper
 
 @ExtendWith(InjectionExtension)
 @InjectWith(PcodeInjectorProvider)
@@ -21,36 +20,32 @@ class PcodeParsingTest {
 	@Inject ParseHelper<Model> parseHelper
 	
 	@Inject extension CompilationTestHelper
-	
 	val code = '''
-			ANNABELLE(nUMBeR alder, Number hoyde,text hoyde)
-				e=2*(1+2)
-				G = [1,2,3,4]
-				G1 = [[1,1],[2,2]]
-				G2 = [[3,3],[3,3]]
-				
-				G add [1,1]
-				i = 1//11+3*2+-3
-				i = "hei"
-				j = alder
-				k equals a new number list and contains 1,2,3,4
-				if i<=10 then
-					print "If works!"
-					
-					exchange G1 with G2
-					
-					exchange G1 at 1,1 with G2[i][j]
-					for interval 2 to 4
-						print "For works!" + 7
-						break
-					while i <= 5
-						print "While works!"
-						
-						//i=2 ... må fikse reassignments.... hmm
-						
-				else
-					u=9
-				return i
+        	PARTITION2(number p, number r)
+        	   a=0
+        	   return a
+
+			PARTITION(number p, number r)
+				ff=[[[1,2]]]
+				B=[1,2]
+				B1 = new number list and contains 1,2,3,4
+				B2 = new number list and contains 1,1,1,1
+				//error B2 = new number list and contains [1],[1],[1],[1]
+				y={{1,1}, {1,1}, {3,3}}
+				x = B[r]
+				i = p 
+				i=i
+				j = p
+				f=0
+				ww=PARTITION2()
+				for interval 1 to r
+					temp = B[j]
+					if 2 <= x+1
+						iasd = PARTITION2() + "lol"
+						exchange B[i] with B[j]
+				exchange B at index i+1 with B[r]
+				print ff
+				return ff
 		'''
 		
 	/*val code = '''

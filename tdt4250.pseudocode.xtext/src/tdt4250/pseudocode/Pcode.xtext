@@ -24,7 +24,7 @@ Identifier:
 
 Function:
 	{Function}
-	name=EString
+	name=ID
 	'('
 	(parameters+=Parameter ("," parameters+=Parameter)*)*		
 	')'
@@ -52,7 +52,7 @@ Expression returns Expression:
 Variable returns Expression:
 	{Variable} 
 	(name=ID op=('=' | 'equals' | 'is'|'+='|'-=') value=(LiteralExpression)
-	|	name =ID op= ('++'|'--')
+	|	name=ID op= ('++'|'--')
 	);
 
 Parameter returns Expression: 
@@ -91,7 +91,7 @@ WhileExpression returns WhileExpression:
 
 Stop returns Stop:
 	{Stop}
-	(type=('stop'| 'break'| 'continue') | (type='return' value=Type))
+	(type=('stop'| 'break'| 'continue') | (type='return' value=LiteralExpression))
 ;
 
 
@@ -115,10 +115,6 @@ ValueExchange returns Expression:
 	'exchange' collection=LiteralExpression 'with' value=LiteralExpression
 ;
 
-FunctionCall:
-	{FunctionCall}
-	name=EString '(' (parameters+=Parameter ("," parameters+=Parameter)*)? ')';
-
 
 // Indentation
 terminal BEGIN: 'synthetic:BEGIN';
@@ -138,9 +134,11 @@ Collection returns Expression:
 
 List returns Collection:
 	{List}
-	'a'? 'new' type=('text' | 'number' | 'decimal') ('array' | 'list' | 'table')
+	'new' type=('text' | 'number' | 'decimal') ('array' | 'list' | 'table')
 	('and' 'contains' elements+=LiteralExpression (',' elements+=LiteralExpression )* )? 
 ;
+
+//TODO: implement Set
 
 CollectionLitteral returns Collection:
 	SetLitteral | ListLitteral
@@ -207,6 +205,13 @@ Atomic returns Expression:
 	{BooleanLiteral} value=('true'|'false') |
 	{VariableReference} ref=[Variable]  |
 	FunctionCall;
+
+
+
+FunctionCall:
+    {FunctionCall}
+    ref=[Function] '(' (parameters+=Parameter ("," parameters+=Parameter)*)? ')';
+
 
 // --- Diff ---
 

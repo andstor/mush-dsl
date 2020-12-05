@@ -589,8 +589,8 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getStop_Value() {
-		return (EAttribute) stopEClass.getEStructuralFeatures().get(1);
+	public EReference getStop_Value() {
+		return (EReference) stopEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -639,8 +639,8 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getFunctionCall_Name() {
-		return (EAttribute) functionCallEClass.getEStructuralFeatures().get(0);
+	public EReference getFunctionCall_Parameters() {
+		return (EReference) functionCallEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -649,8 +649,8 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
-	public EReference getFunctionCall_Parameters() {
-		return (EReference) functionCallEClass.getEStructuralFeatures().get(1);
+	public EReference getFunctionCall_Ref() {
+		return (EReference) functionCallEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1336,14 +1336,14 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 
 		stopEClass = createEClass(STOP);
 		createEAttribute(stopEClass, STOP__TYPE);
-		createEAttribute(stopEClass, STOP__VALUE);
+		createEReference(stopEClass, STOP__VALUE);
 
 		printEClass = createEClass(PRINT);
 		createEAttribute(printEClass, PRINT__NAME);
 		createEReference(printEClass, PRINT__VALUE);
 
 		functionCallEClass = createEClass(FUNCTION_CALL);
-		createEAttribute(functionCallEClass, FUNCTION_CALL__NAME);
+		createEReference(functionCallEClass, FUNCTION_CALL__REF);
 		createEReference(functionCallEClass, FUNCTION_CALL__PARAMETERS);
 
 		collectionEClass = createEClass(COLLECTION);
@@ -1558,8 +1558,9 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		initEClass(stopEClass, Stop.class, "Stop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStop_Type(), ecorePackage.getEString(), "type", null, 0, 1, Stop.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStop_Value(), ecorePackage.getEString(), "value", null, 0, 1, Stop.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStop_Value(), this.getExpression(), null, "value", null, 0, 1, Stop.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
 		initEClass(printEClass, Print.class, "Print", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPrint_Name(), ecorePackage.getEString(), "name", null, 0, 1, Print.class, !IS_TRANSIENT,
@@ -1570,8 +1571,9 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 
 		initEClass(functionCallEClass, FunctionCall.class, "FunctionCall", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFunctionCall_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunctionCall.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFunctionCall_Ref(), this.getFunction(), null, "ref", null, 0, 1, FunctionCall.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFunctionCall_Parameters(), this.getExpression(), null, "parameters", null, 0, -1,
 				FunctionCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1595,7 +1597,7 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		initEReference(getVariable_Type(), this.getIdentifier(), null, "type", null, 0, 1, Variable.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getVariable_Op(), ecorePackage.getEString(), "op", null, 1, 1, Variable.class, !IS_TRANSIENT,
+		initEAttribute(getVariable_Op(), ecorePackage.getEString(), "op", null, 0, 1, Variable.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(collectionAddEClass, CollectionAdd.class, "CollectionAdd", !IS_ABSTRACT, !IS_INTERFACE,

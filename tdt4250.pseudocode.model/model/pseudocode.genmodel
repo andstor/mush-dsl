@@ -39,14 +39,14 @@
     </genClasses>
     <genClasses ecoreClass="pseudocode.ecore#//Stop">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Stop/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Stop/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference pseudocode.ecore#//Stop/value"/>
     </genClasses>
     <genClasses ecoreClass="pseudocode.ecore#//Print">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Print/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Print/value"/>
     </genClasses>
     <genClasses ecoreClass="pseudocode.ecore#//FunctionCall">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//FunctionCall/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pseudocode.ecore#//FunctionCall/ref"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//FunctionCall/parameters"/>
     </genClasses>
     <genClasses ecoreClass="pseudocode.ecore#//Collection">

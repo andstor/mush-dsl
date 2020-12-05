@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import tdt4250.pseudocode.Expression;
+import tdt4250.pseudocode.Function;
 import tdt4250.pseudocode.FunctionCall;
 import tdt4250.pseudocode.PseudocodePackage;
 
@@ -29,7 +30,7 @@ import tdt4250.pseudocode.PseudocodePackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link tdt4250.pseudocode.impl.FunctionCallImpl#getName <em>Name</em>}</li>
+ *   <li>{@link tdt4250.pseudocode.impl.FunctionCallImpl#getRef <em>Ref</em>}</li>
  *   <li>{@link tdt4250.pseudocode.impl.FunctionCallImpl#getParameters <em>Parameters</em>}</li>
  * </ul>
  *
@@ -37,24 +38,14 @@ import tdt4250.pseudocode.PseudocodePackage;
  */
 public class FunctionCallImpl extends ExpressionImpl implements FunctionCall {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getRef()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
+	protected Function ref;
 
 	/**
 	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
@@ -91,36 +82,53 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall {
 	 * @generated
 	 */
 	@Override
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PseudocodePackage.FUNCTION_CALL__NAME, oldName,
-					name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EList<Expression> getParameters() {
 		if (parameters == null) {
 			parameters = new EObjectContainmentEList<Expression>(Expression.class, this,
 					PseudocodePackage.FUNCTION_CALL__PARAMETERS);
 		}
 		return parameters;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Function getRef() {
+		if (ref != null && ref.eIsProxy()) {
+			InternalEObject oldRef = (InternalEObject) ref;
+			ref = (Function) eResolveProxy(oldRef);
+			if (ref != oldRef) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PseudocodePackage.FUNCTION_CALL__REF,
+							oldRef, ref));
+			}
+		}
+		return ref;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Function basicGetRef() {
+		return ref;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setRef(Function newRef) {
+		Function oldRef = ref;
+		ref = newRef;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PseudocodePackage.FUNCTION_CALL__REF, oldRef, ref));
 	}
 
 	/**
@@ -145,8 +153,10 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case PseudocodePackage.FUNCTION_CALL__NAME:
-			return getName();
+		case PseudocodePackage.FUNCTION_CALL__REF:
+			if (resolve)
+				return getRef();
+			return basicGetRef();
 		case PseudocodePackage.FUNCTION_CALL__PARAMETERS:
 			return getParameters();
 		}
@@ -162,8 +172,8 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case PseudocodePackage.FUNCTION_CALL__NAME:
-			setName((String) newValue);
+		case PseudocodePackage.FUNCTION_CALL__REF:
+			setRef((Function) newValue);
 			return;
 		case PseudocodePackage.FUNCTION_CALL__PARAMETERS:
 			getParameters().clear();
@@ -181,8 +191,8 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case PseudocodePackage.FUNCTION_CALL__NAME:
-			setName(NAME_EDEFAULT);
+		case PseudocodePackage.FUNCTION_CALL__REF:
+			setRef((Function) null);
 			return;
 		case PseudocodePackage.FUNCTION_CALL__PARAMETERS:
 			getParameters().clear();
@@ -199,29 +209,12 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case PseudocodePackage.FUNCTION_CALL__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case PseudocodePackage.FUNCTION_CALL__REF:
+			return ref != null;
 		case PseudocodePackage.FUNCTION_CALL__PARAMETERS:
 			return parameters != null && !parameters.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy())
-			return super.toString();
-
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(')');
-		return result.toString();
 	}
 
 } //FunctionCallImpl

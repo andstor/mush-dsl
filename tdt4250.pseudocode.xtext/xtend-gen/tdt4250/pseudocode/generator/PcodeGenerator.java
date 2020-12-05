@@ -6,6 +6,8 @@ package tdt4250.pseudocode.generator;
 import com.google.common.collect.Iterables;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.StringJoiner;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -27,10 +29,12 @@ import tdt4250.pseudocode.Expression;
 import tdt4250.pseudocode.Feature;
 import tdt4250.pseudocode.ForExpression;
 import tdt4250.pseudocode.Function;
+import tdt4250.pseudocode.FunctionCall;
 import tdt4250.pseudocode.Identifier;
 import tdt4250.pseudocode.IfExpression;
 import tdt4250.pseudocode.List;
 import tdt4250.pseudocode.ListLitteral;
+import tdt4250.pseudocode.Minus;
 import tdt4250.pseudocode.MultiOrDiv;
 import tdt4250.pseudocode.NumberLiteral;
 import tdt4250.pseudocode.ParenthesizedExpression;
@@ -61,38 +65,78 @@ public class PcodeGenerator extends AbstractGenerator {
   
   private ArrayList<String> varList = new ArrayList<String>();
   
+  private HashSet<String> importTypes = new HashSet<String>();
+  
   /**
-   * Da tror jeg  reassignments av variabler skal fungere fint!
-   * Lagret navnene på variablene i en tabel varList, og når en variabel lages sjekker den typen variabel
-   * Jeg la også til en op type i variabel modellen, da får vi lett satt hvordan forskjellige typer kan brukes
-   * så lov til i = 9 og i += 2 og i++, men ikke i ++ 9
-   * Det er bare å gjøre det på en annen måte hvis du ikke liker denne :)
+   * Da er vi vel mer eller mindre good!
    * 
-   * Må også fikse print da den kun tar et element
+   * Har fikset opp litt av hvert. Blant annet så er vel mer eller mindre all
+   * automatisk type gjenfinning ok :) Sets funker også. Diverse java typer blir
+   * automatisk importert om man bruker set eller list.
+   * Formatering bør også nå se bra ut !
+   * Fikset lister med ekstra komma.
+   * 
+   * 
+   * Det som står igjen er:
+   * 
+   * - print tar kun et element
+   * - auto importering av genererte klasse filer hvis de refereres til
+   * - kunne skrive mer avanserte typer i parametere (i FUNCTION(her!!! lol) )
+   *      vi trenger f.eks list of list of number
+   * 
+   * - + gjøre eCore modellen finere? med andre ord, legge til abstrakte klasser og liknende?
+   *      kanskje vi kan flytte logikken i typeInferencer til operasjoner på selve ecore objektene?
+   *      eks. getType? idk...
+   * 
+   * - ellers så er det generell koderydding også validering da... Dette gjøres i tdt4250.pseudocode.validation
+   *      formatering også er kanskje nyttig?  : i tdt4250.pseudocode.formatting2
+   * 
+   * - også må vi selvfølgelig lage en (eller flere :) ) readme filer som beskriver prosjektene...
+   *      ta en titt på denne ;) https://github.com/andstor/tdt4250
    */
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-    String res = "";
+    String resPrint = "";
     Iterable<Function> _filter = Iterables.<Function>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Function.class);
     for (final Function e : _filter) {
       {
-        String _res = res;
-        CharSequence _generate = this.generate(e);
-        res = (_res + _generate);
+        this.varCounter = 0;
+        this.varList.clear();
+        this.importTypes.clear();
+        String res = this.generate(e);
+        String _resPrint = resPrint;
+        resPrint = (_resPrint + res);
         String _name = e.getName();
         String _plus = (_name + ".java");
         fsa.generateFile(_plus, res);
       }
     }
-    InputOutput.<String>println(res);
+    InputOutput.<String>println(resPrint);
+    InputOutput.<String>println("--------------------------------------------------");
+    InputOutput.<String>println(("Variable counter: " + Integer.valueOf(this.varCounter)));
+    InputOutput.<String>println(("Variables: " + this.varList));
+    InputOutput.<String>println(("Import types: " + this.importTypes));
   }
   
-  public CharSequence generate(final Function e) {
+  public String generate(final Function e) {
+    String params = this.generateParameters(e.getParameters());
+    String type = this.typeInferencer.infer(e);
+    String body = "";
+    EList<Feature> _features = e.getFeatures();
+    for (final Feature f : _features) {
+      String _body = body;
+      CharSequence _generateFeature = this.generateFeature(f);
+      body = (_body + _generateFeature);
+    }
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("import java.util.Arrays;");
-    _builder.newLine();
-    _builder.append("import java.util.ArrayList;");
-    _builder.newLine();
+    {
+      for(final String importType : this.importTypes) {
+        _builder.append("import ");
+        _builder.append(importType);
+        _builder.append(";");
+        _builder.newLineIfNotEmpty();
+      }
+    }
     _builder.newLine();
     _builder.append("class ");
     String _name = e.getName();
@@ -100,27 +144,21 @@ public class PcodeGenerator extends AbstractGenerator {
     _builder.append(" {");
     _builder.newLineIfNotEmpty();
     _builder.append("    ");
-    _builder.append("public void implementation( ");
+    _builder.append("public static ");
+    _builder.append(type, "    ");
+    _builder.append(" implementation( ");
     String _generateParameters = this.generateParameters(e.getParameters());
     _builder.append(_generateParameters, "    ");
     _builder.append(" ) {");
     _builder.newLineIfNotEmpty();
-    {
-      EList<Feature> _features = e.getFeatures();
-      for(final Feature f : _features) {
-        _builder.append("    \t");
-        CharSequence _generateFeature = this.generateFeature(f);
-        _builder.append(_generateFeature, "    \t");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    _builder.append("    \t");
-    _builder.newLine();
+    _builder.append("        ");
+    _builder.append(body, "        ");
+    _builder.newLineIfNotEmpty();
     _builder.append("    ");
     _builder.append("}");
     _builder.newLine();
     _builder.append("}");
-    return _builder;
+    return _builder.toString();
   }
   
   public String generateParameters(final EList<Expression> variables) {
@@ -162,17 +200,17 @@ public class PcodeGenerator extends AbstractGenerator {
   
   protected CharSequence _generateStatement(final IfExpression e) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("if ( ");
+    _builder.append("if (");
     Object _LiteralExpression = this.LiteralExpression(e.getCondition());
     _builder.append(_LiteralExpression);
-    _builder.append(" ) {");
+    _builder.append(") {");
     _builder.newLineIfNotEmpty();
     {
       EList<Feature> _then = e.getThen();
       for(final Feature f : _then) {
-        _builder.append("\t");
+        _builder.append("    ");
         Object _generateFeature = this.generateFeature(f);
-        _builder.append(_generateFeature, "\t");
+        _builder.append(_generateFeature, "    ");
         _builder.newLineIfNotEmpty();
       }
     }
@@ -183,27 +221,26 @@ public class PcodeGenerator extends AbstractGenerator {
       if (_not) {
         _builder.append(" else {");
         _builder.newLineIfNotEmpty();
-        _builder.append("\t\t\t\t\t\t\t\t\t\t\t\t");
+        _builder.append("                ");
         {
           EList<Feature> _otherwise = e.getOtherwise();
           for(final Feature f_1 : _otherwise) {
             Object _generateFeature_1 = this.generateFeature(f_1);
-            _builder.append(_generateFeature_1, "\t\t\t\t\t\t\t\t\t\t\t\t");
+            _builder.append(_generateFeature_1, "                ");
           }
         }
         _builder.newLineIfNotEmpty();
-        _builder.append("\t\t\t\t\t\t\t\t\t\t\t\t");
         _builder.append("}");
-        _builder.newLine();
       }
     }
+    _builder.newLineIfNotEmpty();
     return _builder;
   }
   
   protected CharSequence _generateStatement(final ForExpression e) {
     String variable = this.uniqueVariable();
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("for ( int ");
+    _builder.append("for (int ");
     _builder.append(variable);
     _builder.append(" = ");
     Object _LiteralExpression = this.LiteralExpression(e.getFrom());
@@ -220,13 +257,14 @@ public class PcodeGenerator extends AbstractGenerator {
     {
       EList<Feature> _block = e.getBlock();
       for(final Feature b : _block) {
-        _builder.append("\t");
+        _builder.append("    ");
         Object _generateFeature = this.generateFeature(b);
-        _builder.append(_generateFeature, "\t");
+        _builder.append(_generateFeature, "    ");
         _builder.newLineIfNotEmpty();
       }
     }
     _builder.append("}");
+    _builder.newLine();
     return _builder.toString();
   }
   
@@ -237,7 +275,7 @@ public class PcodeGenerator extends AbstractGenerator {
   
   protected CharSequence _generateStatement(final WhileExpression e) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("while ( ");
+    _builder.append("while (");
     Object _LiteralExpression = this.LiteralExpression(e.getCondition());
     _builder.append(_LiteralExpression);
     _builder.append(") {");
@@ -252,25 +290,25 @@ public class PcodeGenerator extends AbstractGenerator {
       }
     }
     _builder.append("}");
+    _builder.newLine();
     return _builder;
   }
   
   protected CharSequence _generateStatement(final Stop e) {
-    StringConcatenation _builder = new StringConcatenation();
+    String string = "";
+    String _string = string;
     String _type = e.getType();
-    _builder.append(_type);
-    {
-      String _value = e.getValue();
-      boolean _tripleNotEquals = (_value != null);
-      if (_tripleNotEquals) {
-        _builder.append(" ");
-        String _value_1 = e.getValue();
-        _builder.append(_value_1);
-      }
+    string = (_string + _type);
+    Expression _value = e.getValue();
+    boolean _tripleNotEquals = (_value != null);
+    if (_tripleNotEquals) {
+      String _string_1 = string;
+      Object _LiteralExpression = this.LiteralExpression(e.getValue());
+      String _plus = (" " + _LiteralExpression);
+      String _plus_1 = (_plus + ";");
+      string = (_string_1 + _plus_1);
     }
-    _builder.append(";");
-    _builder.newLineIfNotEmpty();
-    return _builder;
+    return string;
   }
   
   public String printvarList() {
@@ -281,49 +319,40 @@ public class PcodeGenerator extends AbstractGenerator {
   }
   
   protected CharSequence _generateExpression(final Variable e) {
-    StringConcatenation _builder = new StringConcatenation();
-    {
-      boolean _contains = this.varList.contains(e.getName());
-      boolean _not = (!_contains);
-      if (_not) {
-        Object _infer = this.typeInferencer.infer(e.getValue());
-        _builder.append(_infer);
-        _builder.append(" ");
-        String _name = e.getName();
-        _builder.append(_name);
-        _builder.append(" = ");
-        Object _LiteralExpression = this.LiteralExpression(e.getValue());
-        _builder.append(_LiteralExpression);
-        _builder.append(";");
-        _builder.newLineIfNotEmpty();
-        boolean _add = this.varList.add(e.getName());
-        _builder.append(_add);
-        _builder.newLineIfNotEmpty();
+    String string = "";
+    boolean _contains = this.varList.contains(e.getName());
+    boolean _not = (!_contains);
+    if (_not) {
+      String _string = string;
+      String _infer = this.typeInferencer.infer(e.getValue());
+      String _plus = (_infer + " ");
+      String _name = e.getName();
+      String _plus_1 = (_plus + _name);
+      String _plus_2 = (_plus_1 + " = ");
+      Object _LiteralExpression = this.LiteralExpression(e.getValue());
+      String _plus_3 = (_plus_2 + _LiteralExpression);
+      String _plus_4 = (_plus_3 + ";");
+      string = (_string + _plus_4);
+      this.varList.add(e.getName());
+    } else {
+      if ((e.getOp().equals("++") || e.getOp().equals("--"))) {
+        String _string_1 = string;
+        String _op = e.getOp();
+        string = (_string_1 + _op);
       } else {
-        {
-          if ((e.getOp().equals("++") || e.getOp().equals("--"))) {
-            String _name_1 = e.getName();
-            _builder.append(_name_1);
-            String _op = e.getOp();
-            _builder.append(_op);
-            _builder.newLineIfNotEmpty();
-          } else {
-            String _name_2 = e.getName();
-            _builder.append(_name_2);
-            _builder.append(" ");
-            String _op_1 = e.getOp();
-            _builder.append(_op_1);
-            _builder.append(" ");
-            Object _LiteralExpression_1 = this.LiteralExpression(e.getValue());
-            _builder.append(_LiteralExpression_1);
-            _builder.append(";");
-          }
-        }
-        _builder.newLineIfNotEmpty();
+        String _string_2 = string;
+        String _name_1 = e.getName();
+        String _plus_5 = (_name_1 + " ");
+        String _op_1 = e.getOp();
+        String _plus_6 = (_plus_5 + _op_1);
+        String _plus_7 = (_plus_6 + " ");
+        Object _LiteralExpression_1 = this.LiteralExpression(e.getValue());
+        String _plus_8 = (_plus_7 + _LiteralExpression_1);
+        String _plus_9 = (_plus_8 + ";");
+        string = (_string_2 + _plus_9);
       }
     }
-    _builder.newLine();
-    return _builder;
+    return (string + "\n");
   }
   
   protected CharSequence _generateExpression(final Print e) {
@@ -378,7 +407,7 @@ public class PcodeGenerator extends AbstractGenerator {
       exp2 = ((exp2 + "=") + variable1);
     }
     StringConcatenation _builder = new StringConcatenation();
-    Object _infer = this.typeInferencer.infer(e.getCollection());
+    String _infer = this.typeInferencer.infer(e.getCollection());
     _builder.append(_infer);
     _builder.append(" ");
     _builder.append(variable1);
@@ -387,7 +416,7 @@ public class PcodeGenerator extends AbstractGenerator {
     _builder.append(_LiteralExpression);
     _builder.append(";");
     _builder.newLineIfNotEmpty();
-    Object _infer_1 = this.typeInferencer.infer(e.getValue());
+    String _infer_1 = this.typeInferencer.infer(e.getValue());
     _builder.append(_infer_1);
     _builder.append(" ");
     _builder.append(variable2);
@@ -401,89 +430,105 @@ public class PcodeGenerator extends AbstractGenerator {
     _builder.newLineIfNotEmpty();
     _builder.append(exp2);
     _builder.append(";");
+    _builder.newLineIfNotEmpty();
     return _builder.toString();
   }
   
-  protected Object _LiteralExpression(final List e) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("new ArrayList<");
-    String _autobox = this.typeInferencer.autobox(this.typeInferencer.toJvmType(e.getType()));
-    _builder.append(_autobox);
-    _builder.append(">");
-    {
-      boolean _isEmpty = e.getElements().isEmpty();
-      if (_isEmpty) {
-        _builder.append("()");
-        _builder.newLineIfNotEmpty();
-      } else {
-        _builder.append("(Arrays.asList(");
-        {
-          EList<Expression> _elements = e.getElements();
-          for(final Expression element : _elements) {
-            Object _LiteralExpression = this.LiteralExpression(element);
-            _builder.append(_LiteralExpression);
-            _builder.append(", ");
-          }
-        }
-        _builder.append("))");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t\t");
+  protected String _LiteralExpression(final List e) {
+    String string = "";
+    String listType = this.typeInferencer.autobox(this.typeInferencer.toJvmType(e.getType()));
+    String _string = string;
+    string = (_string + (("new ArrayList<" + listType) + ">"));
+    this.importTypes.add("java.util.ArrayList");
+    this.importTypes.add("java.util.List");
+    boolean _isEmpty = e.getElements().isEmpty();
+    if (_isEmpty) {
+      String _string_1 = string;
+      string = (_string_1 + "()");
+    } else {
+      String _string_2 = string;
+      string = (_string_2 + "(Arrays.asList(");
+      this.importTypes.add("java.util.Arrays");
+      StringJoiner joiner = new StringJoiner(",");
+      EList<Expression> _elements = e.getElements();
+      for (final Expression element : _elements) {
+        joiner.add(this.LiteralExpression(element).toString());
       }
+      String _string_3 = string;
+      String _string_4 = joiner.toString();
+      String _plus = (_string_4 + "))");
+      string = (_string_3 + _plus);
     }
-    String list = _builder.toString();
-    return list.trim();
+    return string;
   }
   
   protected Object _LiteralExpression(final SetLitteral e) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append(e);
-    return _builder;
+    String string = "";
+    String listType = this.typeInferencer.autobox(this.typeInferencer.infer(e.getElements().get(0)).toString());
+    String _string = string;
+    string = (_string + (("new HashSet<" + listType) + ">"));
+    this.importTypes.add("java.util.HashSet");
+    this.importTypes.add("java.util.Set");
+    boolean _isEmpty = e.getElements().isEmpty();
+    if (_isEmpty) {
+      String _string_1 = string;
+      string = (_string_1 + "()");
+    } else {
+      String _string_2 = string;
+      string = (_string_2 + "(Arrays.asList(");
+      this.importTypes.add("java.util.Arrays");
+      StringJoiner joiner = new StringJoiner(",");
+      EList<Expression> _elements = e.getElements();
+      for (final Expression element : _elements) {
+        joiner.add(this.LiteralExpression(element).toString());
+      }
+      String _string_3 = string;
+      String _string_4 = joiner.toString();
+      String _plus = (_string_4 + "))");
+      string = (_string_3 + _plus);
+    }
+    return string;
   }
   
   protected Object _LiteralExpression(final ListLitteral e) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("new ArrayList<");
-    String _autobox = this.typeInferencer.autobox(this.typeInferencer.infer(e.getElements().get(0)).toString());
-    _builder.append(_autobox);
-    _builder.append(">");
-    {
-      boolean _isEmpty = e.getElements().isEmpty();
-      if (_isEmpty) {
-        _builder.append("()");
-        _builder.newLineIfNotEmpty();
-      } else {
-        _builder.append("(Arrays.asList(");
-        {
-          EList<Expression> _elements = e.getElements();
-          for(final Expression element : _elements) {
-            Object _LiteralExpression = this.LiteralExpression(element);
-            _builder.append(_LiteralExpression);
-            _builder.append(",");
-          }
-        }
-        _builder.append("))");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t\t");
+    String string = "";
+    String listType = this.typeInferencer.autobox(this.typeInferencer.infer(e.getElements().get(0)).toString());
+    String _string = string;
+    string = (_string + (("new ArrayList<" + listType) + ">"));
+    boolean _isEmpty = e.getElements().isEmpty();
+    if (_isEmpty) {
+      String _string_1 = string;
+      string = (_string_1 + "()");
+    } else {
+      String _string_2 = string;
+      string = (_string_2 + "(Arrays.asList(");
+      StringJoiner joiner = new StringJoiner(",");
+      EList<Expression> _elements = e.getElements();
+      for (final Expression element : _elements) {
+        joiner.add(this.LiteralExpression(element).toString());
       }
+      String _string_3 = string;
+      String _string_4 = joiner.toString();
+      String _plus = (_string_4 + "))");
+      string = (_string_3 + _plus);
     }
-    String listLitteral = _builder.toString();
-    return listLitteral.trim();
+    return string;
   }
   
   protected Object _LiteralExpression(final CollectionAccessor e) {
-    StringConcatenation _builder = new StringConcatenation();
+    String string = "";
+    String _string = string;
     String _name = e.getCollection().getName();
-    _builder.append(_name);
-    {
-      EList<Expression> _accessor = e.getAccessor();
-      for(final Expression accessor : _accessor) {
-        _builder.append(".get(");
-        Object _LiteralExpression = this.LiteralExpression(accessor);
-        _builder.append(_LiteralExpression);
-        _builder.append(")");
-      }
+    string = (_string + _name);
+    EList<Expression> _accessor = e.getAccessor();
+    for (final Expression accessor : _accessor) {
+      String _string_1 = string;
+      Object _LiteralExpression = this.LiteralExpression(accessor);
+      String _plus = (".get(" + _LiteralExpression);
+      String _plus_1 = (_plus + ")");
+      string = (_string_1 + _plus_1);
     }
-    return _builder;
+    return string;
   }
   
   protected Object _LiteralExpression(final AndOrExpression e) {
@@ -538,6 +583,16 @@ public class PcodeGenerator extends AbstractGenerator {
     return _builder;
   }
   
+  protected Object _LiteralExpression(final Minus e) {
+    StringConcatenation _builder = new StringConcatenation();
+    Object _LiteralExpression = this.LiteralExpression(e.getLeft());
+    _builder.append(_LiteralExpression);
+    _builder.append("-");
+    Object _LiteralExpression_1 = this.LiteralExpression(e.getRight());
+    _builder.append(_LiteralExpression_1);
+    return _builder;
+  }
+  
   protected Object _LiteralExpression(final MultiOrDiv e) {
     StringConcatenation _builder = new StringConcatenation();
     Object _LiteralExpression = this.LiteralExpression(e.getLeft());
@@ -579,8 +634,29 @@ public class PcodeGenerator extends AbstractGenerator {
     StringConcatenation _builder = new StringConcatenation();
     String _name = e.getRef().getName();
     _builder.append(_name);
-    _builder.newLineIfNotEmpty();
     return _builder;
+  }
+  
+  protected Object _LiteralExpression(final FunctionCall e) {
+    String string = "";
+    String _string = string;
+    String _name = e.getRef().getName();
+    String _plus = (_name + ".implementation(");
+    string = (_string + _plus);
+    boolean _isEmpty = e.getParameters().isEmpty();
+    if (_isEmpty) {
+      StringJoiner joiner = new StringJoiner(",");
+      EList<Expression> _parameters = e.getParameters();
+      for (final Expression param : _parameters) {
+        joiner.add(this.LiteralExpression(param).toString());
+      }
+      String _string_1 = string;
+      String _string_2 = joiner.toString();
+      string = (_string_1 + _string_2);
+    }
+    String _string_3 = string;
+    string = (_string_3 + ")");
+    return string;
   }
   
   public CharSequence generateFeature(final Feature e) {
@@ -645,6 +721,10 @@ public class PcodeGenerator extends AbstractGenerator {
       return _LiteralExpression((Comparison)e);
     } else if (e instanceof Equals) {
       return _LiteralExpression((Equals)e);
+    } else if (e instanceof FunctionCall) {
+      return _LiteralExpression((FunctionCall)e);
+    } else if (e instanceof Minus) {
+      return _LiteralExpression((Minus)e);
     } else if (e instanceof MultiOrDiv) {
       return _LiteralExpression((MultiOrDiv)e);
     } else if (e instanceof NumberLiteral) {
