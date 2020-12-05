@@ -21,21 +21,32 @@ class PcodeParsingTest {
 
     @Inject extension CompilationTestHelper
     val code = '''
-        package no.test.pseudo2
-        
+        package no.test.pseudo
         PARTITION2(number p, number r)
             a=0
-            asf=2
-            print 2 + "lol"
             return a
         
-        
-        PARTITION(number p, number r)
-            ff=3
+        PARTITION(list with list with text p, number r)
+            ff=[[[1,2]]]
+            B=[1,2]
+            B1 = new list with number that contains 1,2,3,4
+            B2 = new list with number that contains 1,1,1,1
+            B3 = new list with list with number that contains [1],[1],[1],[1]
+            y={{1,1}, {1,1}, {3,3}}
+            x = B[r]
+            i = p 
+            i=i
+            j = p
+            f=0
+            ww=PARTITION2()
+            for interval 1 to r
+                temp = B[j]
+                if 2 <= x+1
+                    iasd = PARTITION2() + "lol"
+                    exchange B[i] with B[j]
+            exchange B at index i+1 with B[r]
+            print ff
             return ff
-            
-        LOL()
-            asd=0
     '''
 
     /*val code = '''

@@ -4,6 +4,8 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.StringJoiner;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -18,7 +20,6 @@ import tdt4250.pseudocode.Equals;
 import tdt4250.pseudocode.Expression;
 import tdt4250.pseudocode.Function;
 import tdt4250.pseudocode.FunctionCall;
-import tdt4250.pseudocode.Identifier;
 import tdt4250.pseudocode.List;
 import tdt4250.pseudocode.ListLitteral;
 import tdt4250.pseudocode.Minus;
@@ -28,7 +29,7 @@ import tdt4250.pseudocode.Plus;
 import tdt4250.pseudocode.SetLitteral;
 import tdt4250.pseudocode.Stop;
 import tdt4250.pseudocode.StringLiteral;
-import tdt4250.pseudocode.TypeLiteral;
+import tdt4250.pseudocode.Type;
 import tdt4250.pseudocode.Variable;
 import tdt4250.pseudocode.VariableReference;
 
@@ -57,7 +58,7 @@ public class PcodeTypeInferencer {
   }
   
   protected String _infer(final Variable e) {
-    Identifier _type = e.getType();
+    Type _type = e.getType();
     boolean _tripleNotEquals = (_type != null);
     if (_tripleNotEquals) {
       return this.infer(e.getType());
@@ -67,8 +68,8 @@ public class PcodeTypeInferencer {
   }
   
   protected String _infer(final List e) {
-    String _autobox = this.autobox(this.toJvmType(e.getType()));
-    String _plus = ("ArrayList<" + _autobox);
+    String _autobox = this.autobox(this.infer(e.getType()));
+    String _plus = ("List<" + _autobox);
     return (_plus + ">");
   }
   
@@ -85,7 +86,9 @@ public class PcodeTypeInferencer {
         case "array":
         case "list":
         case "table":
-          return "ArrayList";
+          return "List";
+        case "set":
+          return "Set";
         default:
           return type;
       }
@@ -193,8 +196,31 @@ public class PcodeTypeInferencer {
     return this.infer(e.getRef());
   }
   
-  protected String _infer(final TypeLiteral e) {
-    return this.toJvmType(e.getName());
+  protected String _infer(final Type e) {
+    String string = "";
+    int _length = ((Object[])Conversions.unwrapArray(e.getTypes(), Object.class)).length;
+    boolean _greaterThan = (_length > 1);
+    if (_greaterThan) {
+      StringJoiner joiner = new StringJoiner("<");
+      EList<String> _types = e.getTypes();
+      for (final String type : _types) {
+        joiner.add(this.autobox(this.toJvmType(type)));
+      }
+      String endString = "";
+      for (int i = 0; (i < (e.getTypes().size() - 1)); i++) {
+        String _endString = endString;
+        endString = (_endString + ">");
+      }
+      String _string = string;
+      String _string_1 = joiner.toString();
+      String _plus = (_string_1 + endString);
+      string = (_string + _plus);
+    } else {
+      String _string_2 = string;
+      String _jvmType = this.toJvmType(e.getTypes().get(0));
+      string = (_string_2 + _jvmType);
+    }
+    return string;
   }
   
   public String infer(final EObject e) {
@@ -236,8 +262,8 @@ public class PcodeTypeInferencer {
       return _infer((Expression)e);
     } else if (e instanceof Function) {
       return _infer((Function)e);
-    } else if (e instanceof TypeLiteral) {
-      return _infer((TypeLiteral)e);
+    } else if (e instanceof Type) {
+      return _infer((Type)e);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(e).toString());

@@ -40,7 +40,7 @@ import tdt4250.pseudocode.PseudocodePackage;
 import tdt4250.pseudocode.SetLitteral;
 import tdt4250.pseudocode.Stop;
 import tdt4250.pseudocode.StringLiteral;
-import tdt4250.pseudocode.TypeLiteral;
+import tdt4250.pseudocode.Type;
 import tdt4250.pseudocode.ValueExchange;
 import tdt4250.pseudocode.Variable;
 import tdt4250.pseudocode.VariableReference;
@@ -136,8 +136,8 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case PseudocodePackage.STRING_LITERAL:
 				sequence_Atomic(context, (StringLiteral) semanticObject); 
 				return; 
-			case PseudocodePackage.TYPE_LITERAL:
-				sequence_TypeLiteral(context, (TypeLiteral) semanticObject); 
+			case PseudocodePackage.TYPE:
+				sequence_Type(context, (Type) semanticObject); 
 				return; 
 			case PseudocodePackage.VALUE_EXCHANGE:
 				sequence_ValueExchange(context, (ValueExchange) semanticObject); 
@@ -578,7 +578,7 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     List returns List
 	 *
 	 * Constraint:
-	 *     ((type='text' | type='number' | type='decimal') (elements+=LiteralExpression elements+=LiteralExpression*)?)
+	 *     (type=Type (elements+=LiteralExpression elements+=LiteralExpression*)?)
 	 */
 	protected void sequence_List(ISerializationContext context, List semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -626,7 +626,7 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Parameter returns Variable
 	 *
 	 * Constraint:
-	 *     (type=Identifier name=ID)
+	 *     (type=Type name=ID)
 	 */
 	protected void sequence_Parameter(ISerializationContext context, Variable semanticObject) {
 		if (errorAcceptor != null) {
@@ -636,7 +636,7 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PseudocodePackage.Literals.VARIABLE__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getParameterAccess().getTypeIdentifierParserRuleCall_1_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getParameterAccess().getTypeTypeParserRuleCall_1_0(), semanticObject.getType());
 		feeder.accept(grammarAccess.getParameterAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
 		feeder.finish();
 	}
@@ -758,20 +758,12 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     Identifier returns TypeLiteral
-	 *     TypeLiteral returns TypeLiteral
+	 *     Type returns Type
 	 *
 	 * Constraint:
-	 *     (
-	 *         name='Text' | 
-	 *         name='Number' | 
-	 *         name='Decimal' | 
-	 *         name='Array' | 
-	 *         name='List' | 
-	 *         name='Table'
-	 *     )
+	 *     (types+=TypeLiteral types+=TypeLiteral*)
 	 */
-	protected void sequence_TypeLiteral(ISerializationContext context, TypeLiteral semanticObject) {
+	protected void sequence_Type(ISerializationContext context, Type semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

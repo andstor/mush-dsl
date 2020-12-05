@@ -44,8 +44,7 @@ public class PcodeParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getStopAccess().getTypeAlternatives_1_0_0(), "rule__Stop__TypeAlternatives_1_0_0");
 			builder.put(grammarAccess.getLiteralExpressionAccess().getAlternatives(), "rule__LiteralExpression__Alternatives");
 			builder.put(grammarAccess.getCollectionAccess().getAlternatives(), "rule__Collection__Alternatives");
-			builder.put(grammarAccess.getListAccess().getTypeAlternatives_2_0(), "rule__List__TypeAlternatives_2_0");
-			builder.put(grammarAccess.getListAccess().getAlternatives_3(), "rule__List__Alternatives_3");
+			builder.put(grammarAccess.getListAccess().getAlternatives_2(), "rule__List__Alternatives_2");
 			builder.put(grammarAccess.getCollectionLitteralAccess().getAlternatives(), "rule__CollectionLitteral__Alternatives");
 			builder.put(grammarAccess.getCollectionAccessorAccess().getAlternatives_1(), "rule__CollectionAccessor__Alternatives_1");
 			builder.put(grammarAccess.getBooleanExpressionAccess().getOpAlternatives_1_0_1_0(), "rule__BooleanExpression__OpAlternatives_1_0_1_0");
@@ -61,8 +60,7 @@ public class PcodeParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getAtomicAccess().getValueAlternatives_3_1_0(), "rule__Atomic__ValueAlternatives_3_1_0");
 			builder.put(grammarAccess.getBooleanOperatorAccess().getAlternatives(), "rule__BooleanOperator__Alternatives");
 			builder.put(grammarAccess.getBooleanTestOperatorAccess().getAlternatives(), "rule__BooleanTestOperator__Alternatives");
-			builder.put(grammarAccess.getTypeAccess().getAlternatives(), "rule__Type__Alternatives");
-			builder.put(grammarAccess.getTypeLiteralAccess().getNameAlternatives_1_0(), "rule__TypeLiteral__NameAlternatives_1_0");
+			builder.put(grammarAccess.getTypeLiteralAccess().getAlternatives(), "rule__TypeLiteral__Alternatives");
 			builder.put(grammarAccess.getEStringAccess().getAlternatives(), "rule__EString__Alternatives");
 			builder.put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
 			builder.put(grammarAccess.getModelAccess().getGroup_1(), "rule__Model__Group_1__0");
@@ -86,8 +84,8 @@ public class PcodeParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getCollectionRemoveAccess().getGroup(), "rule__CollectionRemove__Group__0");
 			builder.put(grammarAccess.getValueExchangeAccess().getGroup(), "rule__ValueExchange__Group__0");
 			builder.put(grammarAccess.getListAccess().getGroup(), "rule__List__Group__0");
-			builder.put(grammarAccess.getListAccess().getGroup_4(), "rule__List__Group_4__0");
-			builder.put(grammarAccess.getListAccess().getGroup_4_3(), "rule__List__Group_4_3__0");
+			builder.put(grammarAccess.getListAccess().getGroup_5(), "rule__List__Group_5__0");
+			builder.put(grammarAccess.getListAccess().getGroup_5_3(), "rule__List__Group_5_3__0");
 			builder.put(grammarAccess.getSetLitteralAccess().getGroup(), "rule__SetLitteral__Group__0");
 			builder.put(grammarAccess.getSetLitteralAccess().getGroup_2(), "rule__SetLitteral__Group_2__0");
 			builder.put(grammarAccess.getSetLitteralAccess().getGroup_2_1(), "rule__SetLitteral__Group_2_1__0");
@@ -126,7 +124,9 @@ public class PcodeParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getFunctionCallAccess().getGroup(), "rule__FunctionCall__Group__0");
 			builder.put(grammarAccess.getFunctionCallAccess().getGroup_3(), "rule__FunctionCall__Group_3__0");
 			builder.put(grammarAccess.getFunctionCallAccess().getGroup_3_1(), "rule__FunctionCall__Group_3_1__0");
-			builder.put(grammarAccess.getTypeLiteralAccess().getGroup(), "rule__TypeLiteral__Group__0");
+			builder.put(grammarAccess.getTypeAccess().getGroup(), "rule__Type__Group__0");
+			builder.put(grammarAccess.getTypeAccess().getGroup_1(), "rule__Type__Group_1__0");
+			builder.put(grammarAccess.getTypeAccess().getGroup_1_1(), "rule__Type__Group_1_1__0");
 			builder.put(grammarAccess.getModelAccess().getPackageAssignment_1_1(), "rule__Model__PackageAssignment_1_1");
 			builder.put(grammarAccess.getModelAccess().getFunctionsAssignment_2(), "rule__Model__FunctionsAssignment_2");
 			builder.put(grammarAccess.getFunctionAccess().getNameAssignment_1(), "rule__Function__NameAssignment_1");
@@ -160,9 +160,9 @@ public class PcodeParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getCollectionRemoveAccess().getValueAssignment_3(), "rule__CollectionRemove__ValueAssignment_3");
 			builder.put(grammarAccess.getValueExchangeAccess().getCollectionAssignment_2(), "rule__ValueExchange__CollectionAssignment_2");
 			builder.put(grammarAccess.getValueExchangeAccess().getValueAssignment_4(), "rule__ValueExchange__ValueAssignment_4");
-			builder.put(grammarAccess.getListAccess().getTypeAssignment_2(), "rule__List__TypeAssignment_2");
-			builder.put(grammarAccess.getListAccess().getElementsAssignment_4_2(), "rule__List__ElementsAssignment_4_2");
-			builder.put(grammarAccess.getListAccess().getElementsAssignment_4_3_1(), "rule__List__ElementsAssignment_4_3_1");
+			builder.put(grammarAccess.getListAccess().getTypeAssignment_4(), "rule__List__TypeAssignment_4");
+			builder.put(grammarAccess.getListAccess().getElementsAssignment_5_2(), "rule__List__ElementsAssignment_5_2");
+			builder.put(grammarAccess.getListAccess().getElementsAssignment_5_3_1(), "rule__List__ElementsAssignment_5_3_1");
 			builder.put(grammarAccess.getSetLitteralAccess().getElementsAssignment_2_0(), "rule__SetLitteral__ElementsAssignment_2_0");
 			builder.put(grammarAccess.getSetLitteralAccess().getElementsAssignment_2_1_1(), "rule__SetLitteral__ElementsAssignment_2_1_1");
 			builder.put(grammarAccess.getListLitteralAccess().getElementsAssignment_2_0(), "rule__ListLitteral__ElementsAssignment_2_0");
@@ -191,7 +191,8 @@ public class PcodeParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getFunctionCallAccess().getRefAssignment_1(), "rule__FunctionCall__RefAssignment_1");
 			builder.put(grammarAccess.getFunctionCallAccess().getParametersAssignment_3_0(), "rule__FunctionCall__ParametersAssignment_3_0");
 			builder.put(grammarAccess.getFunctionCallAccess().getParametersAssignment_3_1_1(), "rule__FunctionCall__ParametersAssignment_3_1_1");
-			builder.put(grammarAccess.getTypeLiteralAccess().getNameAssignment_1(), "rule__TypeLiteral__NameAssignment_1");
+			builder.put(grammarAccess.getTypeAccess().getTypesAssignment_1_0(), "rule__Type__TypesAssignment_1_0");
+			builder.put(grammarAccess.getTypeAccess().getTypesAssignment_1_1_1(), "rule__Type__TypesAssignment_1_1_1");
 		}
 	}
 	

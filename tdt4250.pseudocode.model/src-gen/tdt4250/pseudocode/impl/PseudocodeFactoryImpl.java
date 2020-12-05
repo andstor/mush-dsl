@@ -9,43 +9,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import tdt4250.pseudocode.AndOrExpression;
-import tdt4250.pseudocode.ArithmeticSigned;
-import tdt4250.pseudocode.BooleanLiteral;
-import tdt4250.pseudocode.BooleanNegation;
-import tdt4250.pseudocode.Collection;
-import tdt4250.pseudocode.CollectionAccessor;
-import tdt4250.pseudocode.CollectionAdd;
-import tdt4250.pseudocode.CollectionRemove;
-import tdt4250.pseudocode.Comparison;
-import tdt4250.pseudocode.Equals;
-import tdt4250.pseudocode.Expression;
-import tdt4250.pseudocode.Feature;
-import tdt4250.pseudocode.ForExpression;
-import tdt4250.pseudocode.Function;
-import tdt4250.pseudocode.FunctionCall;
-import tdt4250.pseudocode.Identifier;
-import tdt4250.pseudocode.IfExpression;
-import tdt4250.pseudocode.List;
-import tdt4250.pseudocode.ListLitteral;
-import tdt4250.pseudocode.Minus;
-import tdt4250.pseudocode.Model;
-import tdt4250.pseudocode.MultiOrDiv;
-import tdt4250.pseudocode.NumberLiteral;
-import tdt4250.pseudocode.ParenthesizedExpression;
-import tdt4250.pseudocode.Plus;
-import tdt4250.pseudocode.Print;
-import tdt4250.pseudocode.PseudocodeFactory;
-import tdt4250.pseudocode.PseudocodePackage;
-import tdt4250.pseudocode.SetLitteral;
-import tdt4250.pseudocode.Statement;
-import tdt4250.pseudocode.Stop;
-import tdt4250.pseudocode.StringLiteral;
-import tdt4250.pseudocode.TypeLiteral;
-import tdt4250.pseudocode.ValueExchange;
-import tdt4250.pseudocode.Variable;
-import tdt4250.pseudocode.VariableReference;
-import tdt4250.pseudocode.WhileExpression;
+import tdt4250.pseudocode.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -117,8 +81,6 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 			return createFunctionCall();
 		case PseudocodePackage.COLLECTION:
 			return createCollection();
-		case PseudocodePackage.TYPE_LITERAL:
-			return createTypeLiteral();
 		case PseudocodePackage.VARIABLE:
 			return createVariable();
 		case PseudocodePackage.COLLECTION_ADD:
@@ -161,6 +123,8 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 			return createBooleanLiteral();
 		case PseudocodePackage.VARIABLE_REFERENCE:
 			return createVariableReference();
+		case PseudocodePackage.TYPE:
+			return createType();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -524,6 +488,17 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	 * @generated
 	 */
 	@Override
+	public Type createType() {
+		TypeImpl type = new TypeImpl();
+		return type;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Identifier createIdentifier() {
 		IdentifierImpl identifier = new IdentifierImpl();
 		return identifier;
@@ -538,17 +513,6 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	public Collection createCollection() {
 		CollectionImpl collection = new CollectionImpl();
 		return collection;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public TypeLiteral createTypeLiteral() {
-		TypeLiteralImpl typeLiteral = new TypeLiteralImpl();
-		return typeLiteral;
 	}
 
 	/**

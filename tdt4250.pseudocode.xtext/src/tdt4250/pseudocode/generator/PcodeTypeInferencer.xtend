@@ -23,6 +23,8 @@ import tdt4250.pseudocode.Function
 import tdt4250.pseudocode.Stop
 import java.util.HashSet
 import tdt4250.pseudocode.Minus
+import tdt4250.pseudocode.Type
+import java.util.StringJoiner
 
 class PcodeTypeInferencer {
 
@@ -56,7 +58,7 @@ class PcodeTypeInferencer {
 
     // LiteralExpression
     def dispatch String infer(List e) {
-        return 'ArrayList<' + autobox(toJvmType(e.type)) + '>'
+        return 'List<' + autobox(infer(e.type)) + '>'
     }
 
     // TODO: only use TypeLiteral rule in grammar and take in that rule instead of string
@@ -67,7 +69,8 @@ class PcodeTypeInferencer {
             case 'decimal': return 'float'
             case 'array',
             case 'list',
-            case 'table': return 'ArrayList'
+            case 'table': return 'List'
+            case 'set': return 'Set'
             default: return type
         }
     }
@@ -153,8 +156,22 @@ class PcodeTypeInferencer {
         return infer(e.ref) // TODO
     }
 
-    def dispatch String infer(TypeLiteral e) {
-        return toJvmType(e.name)
+    def dispatch String infer(Type e) {
+        var string = ''
+        if (e.types.length > 1) {
+            var joiner = new StringJoiner('<');
+            for (type : e.types) {
+                joiner.add(autobox(toJvmType(type)))
+            }
+            var endString = ''
+            for (var i = 0; i < e.types.size - 1; i++) {
+                endString += ('>')
+            }
+            string += joiner.toString + endString
+        } else {
+            string += toJvmType(e.types.get(0))
+        }
+        return string
     }
 
 }

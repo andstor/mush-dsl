@@ -374,25 +374,25 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cVariableAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cTypeIdentifierParserRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
+		private final RuleCall cTypeTypeParserRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		
 		//Parameter Expression:
-		//	{Variable} type=Identifier name=ID;
+		//	{Variable} type=Type name=ID;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Variable} type=Identifier name=ID
+		//{Variable} type=Type name=ID
 		public Group getGroup() { return cGroup; }
 		
 		//{Variable}
 		public Action getVariableAction_0() { return cVariableAction_0; }
 		
-		//type=Identifier
+		//type=Type
 		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
 		
-		//Identifier
-		public RuleCall getTypeIdentifierParserRuleCall_1_0() { return cTypeIdentifierParserRuleCall_1_0; }
+		//Type
+		public RuleCall getTypeTypeParserRuleCall_1_0() { return cTypeTypeParserRuleCall_1_0; }
 		
 		//name=ID
 		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
@@ -845,33 +845,31 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cListAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cNewKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final Alternatives cTypeAlternatives_2_0 = (Alternatives)cTypeAssignment_2.eContents().get(0);
-		private final Keyword cTypeTextKeyword_2_0_0 = (Keyword)cTypeAlternatives_2_0.eContents().get(0);
-		private final Keyword cTypeNumberKeyword_2_0_1 = (Keyword)cTypeAlternatives_2_0.eContents().get(1);
-		private final Keyword cTypeDecimalKeyword_2_0_2 = (Keyword)cTypeAlternatives_2_0.eContents().get(2);
-		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
-		private final Keyword cArrayKeyword_3_0 = (Keyword)cAlternatives_3.eContents().get(0);
-		private final Keyword cListKeyword_3_1 = (Keyword)cAlternatives_3.eContents().get(1);
-		private final Keyword cTableKeyword_3_2 = (Keyword)cAlternatives_3.eContents().get(2);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cAndKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Keyword cContainsKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
-		private final Assignment cElementsAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
-		private final RuleCall cElementsLiteralExpressionParserRuleCall_4_2_0 = (RuleCall)cElementsAssignment_4_2.eContents().get(0);
-		private final Group cGroup_4_3 = (Group)cGroup_4.eContents().get(3);
-		private final Keyword cCommaKeyword_4_3_0 = (Keyword)cGroup_4_3.eContents().get(0);
-		private final Assignment cElementsAssignment_4_3_1 = (Assignment)cGroup_4_3.eContents().get(1);
-		private final RuleCall cElementsLiteralExpressionParserRuleCall_4_3_1_0 = (RuleCall)cElementsAssignment_4_3_1.eContents().get(0);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Keyword cArrayKeyword_2_0 = (Keyword)cAlternatives_2.eContents().get(0);
+		private final Keyword cListKeyword_2_1 = (Keyword)cAlternatives_2.eContents().get(1);
+		private final Keyword cTableKeyword_2_2 = (Keyword)cAlternatives_2.eContents().get(2);
+		private final Keyword cWithKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cTypeAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cTypeTypeParserRuleCall_4_0 = (RuleCall)cTypeAssignment_4.eContents().get(0);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final Keyword cThatKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Keyword cContainsKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
+		private final Assignment cElementsAssignment_5_2 = (Assignment)cGroup_5.eContents().get(2);
+		private final RuleCall cElementsLiteralExpressionParserRuleCall_5_2_0 = (RuleCall)cElementsAssignment_5_2.eContents().get(0);
+		private final Group cGroup_5_3 = (Group)cGroup_5.eContents().get(3);
+		private final Keyword cCommaKeyword_5_3_0 = (Keyword)cGroup_5_3.eContents().get(0);
+		private final Assignment cElementsAssignment_5_3_1 = (Assignment)cGroup_5_3.eContents().get(1);
+		private final RuleCall cElementsLiteralExpressionParserRuleCall_5_3_1_0 = (RuleCall)cElementsAssignment_5_3_1.eContents().get(0);
 		
 		//List Collection:
 		//	{List}
-		//	'new' type=('text' | 'number' | 'decimal') ('array' | 'list' | 'table') ('and' 'contains' elements+=LiteralExpression
-		//	(',' elements+=LiteralExpression)*)?;
+		//	'new' ('array' | 'list' | 'table') 'with' type=Type ('that' 'contains' elements+=LiteralExpression (','
+		//	elements+=LiteralExpression)*)?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{List} 'new' type=('text' | 'number' | 'decimal') ('array' | 'list' | 'table') ('and' 'contains'
-		//elements+=LiteralExpression (',' elements+=LiteralExpression)*)?
+		//{List} 'new' ('array' | 'list' | 'table') 'with' type=Type ('that' 'contains' elements+=LiteralExpression (','
+		//elements+=LiteralExpression)*)?
 		public Group getGroup() { return cGroup; }
 		
 		//{List}
@@ -880,59 +878,53 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//'new'
 		public Keyword getNewKeyword_1() { return cNewKeyword_1; }
 		
-		//type=('text' | 'number' | 'decimal')
-		public Assignment getTypeAssignment_2() { return cTypeAssignment_2; }
-		
-		//('text' | 'number' | 'decimal')
-		public Alternatives getTypeAlternatives_2_0() { return cTypeAlternatives_2_0; }
-		
-		//'text'
-		public Keyword getTypeTextKeyword_2_0_0() { return cTypeTextKeyword_2_0_0; }
-		
-		//'number'
-		public Keyword getTypeNumberKeyword_2_0_1() { return cTypeNumberKeyword_2_0_1; }
-		
-		//'decimal'
-		public Keyword getTypeDecimalKeyword_2_0_2() { return cTypeDecimalKeyword_2_0_2; }
-		
 		//('array' | 'list' | 'table')
-		public Alternatives getAlternatives_3() { return cAlternatives_3; }
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 		
 		//'array'
-		public Keyword getArrayKeyword_3_0() { return cArrayKeyword_3_0; }
+		public Keyword getArrayKeyword_2_0() { return cArrayKeyword_2_0; }
 		
 		//'list'
-		public Keyword getListKeyword_3_1() { return cListKeyword_3_1; }
+		public Keyword getListKeyword_2_1() { return cListKeyword_2_1; }
 		
 		//'table'
-		public Keyword getTableKeyword_3_2() { return cTableKeyword_3_2; }
+		public Keyword getTableKeyword_2_2() { return cTableKeyword_2_2; }
 		
-		//('and' 'contains' elements+=LiteralExpression (',' elements+=LiteralExpression)*)?
-		public Group getGroup_4() { return cGroup_4; }
+		//'with'
+		public Keyword getWithKeyword_3() { return cWithKeyword_3; }
 		
-		//'and'
-		public Keyword getAndKeyword_4_0() { return cAndKeyword_4_0; }
+		//type=Type
+		public Assignment getTypeAssignment_4() { return cTypeAssignment_4; }
+		
+		//Type
+		public RuleCall getTypeTypeParserRuleCall_4_0() { return cTypeTypeParserRuleCall_4_0; }
+		
+		//('that' 'contains' elements+=LiteralExpression (',' elements+=LiteralExpression)*)?
+		public Group getGroup_5() { return cGroup_5; }
+		
+		//'that'
+		public Keyword getThatKeyword_5_0() { return cThatKeyword_5_0; }
 		
 		//'contains'
-		public Keyword getContainsKeyword_4_1() { return cContainsKeyword_4_1; }
+		public Keyword getContainsKeyword_5_1() { return cContainsKeyword_5_1; }
 		
 		//elements+=LiteralExpression
-		public Assignment getElementsAssignment_4_2() { return cElementsAssignment_4_2; }
+		public Assignment getElementsAssignment_5_2() { return cElementsAssignment_5_2; }
 		
 		//LiteralExpression
-		public RuleCall getElementsLiteralExpressionParserRuleCall_4_2_0() { return cElementsLiteralExpressionParserRuleCall_4_2_0; }
+		public RuleCall getElementsLiteralExpressionParserRuleCall_5_2_0() { return cElementsLiteralExpressionParserRuleCall_5_2_0; }
 		
 		//(',' elements+=LiteralExpression)*
-		public Group getGroup_4_3() { return cGroup_4_3; }
+		public Group getGroup_5_3() { return cGroup_5_3; }
 		
 		//','
-		public Keyword getCommaKeyword_4_3_0() { return cCommaKeyword_4_3_0; }
+		public Keyword getCommaKeyword_5_3_0() { return cCommaKeyword_5_3_0; }
 		
 		//elements+=LiteralExpression
-		public Assignment getElementsAssignment_4_3_1() { return cElementsAssignment_4_3_1; }
+		public Assignment getElementsAssignment_5_3_1() { return cElementsAssignment_5_3_1; }
 		
 		//LiteralExpression
-		public RuleCall getElementsLiteralExpressionParserRuleCall_4_3_1_0() { return cElementsLiteralExpressionParserRuleCall_4_3_1_0; }
+		public RuleCall getElementsLiteralExpressionParserRuleCall_5_3_1_0() { return cElementsLiteralExpressionParserRuleCall_5_3_1_0; }
 	}
 	public class CollectionLitteralElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.CollectionLitteral");
@@ -1784,74 +1776,82 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	}
 	public class TypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.Type");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cEStringParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cDOUBLETerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cINTTerminalRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cTypeAction_0 = (Action)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Assignment cTypesAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
+		private final RuleCall cTypesTypeLiteralParserRuleCall_1_0_0 = (RuleCall)cTypesAssignment_1_0.eContents().get(0);
+		private final Group cGroup_1_1 = (Group)cGroup_1.eContents().get(1);
+		private final Keyword cWithKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
+		private final Assignment cTypesAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
+		private final RuleCall cTypesTypeLiteralParserRuleCall_1_1_1_0 = (RuleCall)cTypesAssignment_1_1_1.eContents().get(0);
 		
 		//Type:
-		//	EString | DOUBLE | INT;
+		//	{Type} (types+=TypeLiteral ('with' types+=TypeLiteral)*);
 		@Override public ParserRule getRule() { return rule; }
 		
-		//EString | DOUBLE | INT
-		public Alternatives getAlternatives() { return cAlternatives; }
+		//{Type} (types+=TypeLiteral ('with' types+=TypeLiteral)*)
+		public Group getGroup() { return cGroup; }
 		
-		//EString
-		public RuleCall getEStringParserRuleCall_0() { return cEStringParserRuleCall_0; }
+		//{Type}
+		public Action getTypeAction_0() { return cTypeAction_0; }
 		
-		//DOUBLE
-		public RuleCall getDOUBLETerminalRuleCall_1() { return cDOUBLETerminalRuleCall_1; }
+		//(types+=TypeLiteral ('with' types+=TypeLiteral)*)
+		public Group getGroup_1() { return cGroup_1; }
 		
-		//INT
-		public RuleCall getINTTerminalRuleCall_2() { return cINTTerminalRuleCall_2; }
+		//types+=TypeLiteral
+		public Assignment getTypesAssignment_1_0() { return cTypesAssignment_1_0; }
+		
+		//TypeLiteral
+		public RuleCall getTypesTypeLiteralParserRuleCall_1_0_0() { return cTypesTypeLiteralParserRuleCall_1_0_0; }
+		
+		//('with' types+=TypeLiteral)*
+		public Group getGroup_1_1() { return cGroup_1_1; }
+		
+		//'with'
+		public Keyword getWithKeyword_1_1_0() { return cWithKeyword_1_1_0; }
+		
+		//types+=TypeLiteral
+		public Assignment getTypesAssignment_1_1_1() { return cTypesAssignment_1_1_1; }
+		
+		//TypeLiteral
+		public RuleCall getTypesTypeLiteralParserRuleCall_1_1_1_0() { return cTypesTypeLiteralParserRuleCall_1_1_1_0; }
 	}
 	public class TypeLiteralElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.TypeLiteral");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cTypeLiteralAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Alternatives cNameAlternatives_1_0 = (Alternatives)cNameAssignment_1.eContents().get(0);
-		private final Keyword cNameTextKeyword_1_0_0 = (Keyword)cNameAlternatives_1_0.eContents().get(0);
-		private final Keyword cNameNumberKeyword_1_0_1 = (Keyword)cNameAlternatives_1_0.eContents().get(1);
-		private final Keyword cNameDecimalKeyword_1_0_2 = (Keyword)cNameAlternatives_1_0.eContents().get(2);
-		private final Keyword cNameArrayKeyword_1_0_3 = (Keyword)cNameAlternatives_1_0.eContents().get(3);
-		private final Keyword cNameListKeyword_1_0_4 = (Keyword)cNameAlternatives_1_0.eContents().get(4);
-		private final Keyword cNameTableKeyword_1_0_5 = (Keyword)cNameAlternatives_1_0.eContents().get(5);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Keyword cTextKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cNumberKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cDecimalKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
+		private final Keyword cArrayKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
+		private final Keyword cListKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
+		private final Keyword cTableKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
 		
 		//TypeLiteral:
-		//	{TypeLiteral} name=('Text' | 'Number' | 'Decimal' |
-		//	'Array' | 'List' | 'Table');
+		//	'Text' | 'Number' | 'Decimal' |
+		//	'Array' | 'List' | 'Table';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{TypeLiteral} name=('Text' | 'Number' | 'Decimal' | 'Array' | 'List' | 'Table')
-		public Group getGroup() { return cGroup; }
-		
-		//{TypeLiteral}
-		public Action getTypeLiteralAction_0() { return cTypeLiteralAction_0; }
-		
-		//name=('Text' | 'Number' | 'Decimal' | 'Array' | 'List' | 'Table')
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-		
-		//('Text' | 'Number' | 'Decimal' | 'Array' | 'List' | 'Table')
-		public Alternatives getNameAlternatives_1_0() { return cNameAlternatives_1_0; }
+		//'Text' | 'Number' | 'Decimal' | 'Array' | 'List' | 'Table'
+		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//'Text'
-		public Keyword getNameTextKeyword_1_0_0() { return cNameTextKeyword_1_0_0; }
+		public Keyword getTextKeyword_0() { return cTextKeyword_0; }
 		
 		//'Number'
-		public Keyword getNameNumberKeyword_1_0_1() { return cNameNumberKeyword_1_0_1; }
+		public Keyword getNumberKeyword_1() { return cNumberKeyword_1; }
 		
 		//'Decimal'
-		public Keyword getNameDecimalKeyword_1_0_2() { return cNameDecimalKeyword_1_0_2; }
+		public Keyword getDecimalKeyword_2() { return cDecimalKeyword_2; }
 		
 		//'Array'
-		public Keyword getNameArrayKeyword_1_0_3() { return cNameArrayKeyword_1_0_3; }
+		public Keyword getArrayKeyword_3() { return cArrayKeyword_3; }
 		
 		//'List'
-		public Keyword getNameListKeyword_1_0_4() { return cNameListKeyword_1_0_4; }
+		public Keyword getListKeyword_4() { return cListKeyword_4; }
 		
 		//'Table'
-		public Keyword getNameTableKeyword_1_0_5() { return cNameTableKeyword_1_0_5; }
+		public Keyword getTableKeyword_5() { return cTableKeyword_5; }
 	}
 	public class EStringElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.EString");
@@ -2089,7 +2089,7 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	}
 	
 	//Parameter Expression:
-	//	{Variable} type=Identifier name=ID;
+	//	{Variable} type=Type name=ID;
 	public ParameterElements getParameterAccess() {
 		return pParameter;
 	}
@@ -2229,8 +2229,8 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	
 	//List Collection:
 	//	{List}
-	//	'new' type=('text' | 'number' | 'decimal') ('array' | 'list' | 'table') ('and' 'contains' elements+=LiteralExpression
-	//	(',' elements+=LiteralExpression)*)?;
+	//	'new' ('array' | 'list' | 'table') 'with' type=Type ('that' 'contains' elements+=LiteralExpression (','
+	//	elements+=LiteralExpression)*)?;
 	public ListElements getListAccess() {
 		return pList;
 	}
@@ -2407,7 +2407,7 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	}
 	
 	//Type:
-	//	EString | DOUBLE | INT;
+	//	{Type} (types+=TypeLiteral ('with' types+=TypeLiteral)*);
 	public TypeElements getTypeAccess() {
 		return pType;
 	}
@@ -2417,8 +2417,8 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	}
 	
 	//TypeLiteral:
-	//	{TypeLiteral} name=('Text' | 'Number' | 'Decimal' |
-	//	'Array' | 'List' | 'Table');
+	//	'Text' | 'Number' | 'Decimal' |
+	//	'Array' | 'List' | 'Table';
 	public TypeLiteralElements getTypeLiteralAccess() {
 		return pTypeLiteral;
 	}

@@ -27,7 +27,7 @@ public class PcodeSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected AbstractElementAlias match_ForExpression_IntervalKeyword_2_q;
 	protected AbstractElementAlias match_IfExpression_ThenKeyword_3_q;
 	protected AbstractElementAlias match_IfExpression___ElseKeyword_7_0_BEGINTerminalRuleCall_7_1_ENDTerminalRuleCall_7_3__q;
-	protected AbstractElementAlias match_List_ArrayKeyword_3_0_or_ListKeyword_3_1_or_TableKeyword_3_2;
+	protected AbstractElementAlias match_List_ArrayKeyword_2_0_or_ListKeyword_2_1_or_TableKeyword_2_2;
 	protected AbstractElementAlias match_Prefixed_HyphenMinusKeyword_1_1_0_0_or_MinusKeyword_1_1_0_1;
 	
 	@Inject
@@ -38,7 +38,7 @@ public class PcodeSyntacticSequencer extends AbstractSyntacticSequencer {
 		match_ForExpression_IntervalKeyword_2_q = new TokenAlias(false, true, grammarAccess.getForExpressionAccess().getIntervalKeyword_2());
 		match_IfExpression_ThenKeyword_3_q = new TokenAlias(false, true, grammarAccess.getIfExpressionAccess().getThenKeyword_3());
 		match_IfExpression___ElseKeyword_7_0_BEGINTerminalRuleCall_7_1_ENDTerminalRuleCall_7_3__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getIfExpressionAccess().getElseKeyword_7_0()), new TokenAlias(false, false, grammarAccess.getIfExpressionAccess().getBEGINTerminalRuleCall_7_1()), new TokenAlias(false, false, grammarAccess.getIfExpressionAccess().getENDTerminalRuleCall_7_3()));
-		match_List_ArrayKeyword_3_0_or_ListKeyword_3_1_or_TableKeyword_3_2 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getListAccess().getArrayKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getListAccess().getListKeyword_3_1()), new TokenAlias(false, false, grammarAccess.getListAccess().getTableKeyword_3_2()));
+		match_List_ArrayKeyword_2_0_or_ListKeyword_2_1_or_TableKeyword_2_2 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getListAccess().getArrayKeyword_2_0()), new TokenAlias(false, false, grammarAccess.getListAccess().getListKeyword_2_1()), new TokenAlias(false, false, grammarAccess.getListAccess().getTableKeyword_2_2()));
 		match_Prefixed_HyphenMinusKeyword_1_1_0_0_or_MinusKeyword_1_1_0_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getPrefixedAccess().getHyphenMinusKeyword_1_1_0_0()), new TokenAlias(false, false, grammarAccess.getPrefixedAccess().getMinusKeyword_1_1_0_1()));
 	}
 	
@@ -50,6 +50,8 @@ public class PcodeSyntacticSequencer extends AbstractSyntacticSequencer {
 			return getENDToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getPlusOperatorRule())
 			return getPlusOperatorToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getTypeLiteralRule())
+			return getTypeLiteralToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
@@ -76,6 +78,18 @@ public class PcodeSyntacticSequencer extends AbstractSyntacticSequencer {
 		return "+";
 	}
 	
+	/**
+	 * TypeLiteral:
+	 * 	('Text' | 'Number' | 'Decimal' |
+	 * 	'Array' | 'List' | 'Table')
+	 * ;
+	 */
+	protected String getTypeLiteralToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "Text";
+	}
+	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {
 		if (transition.getAmbiguousSyntaxes().isEmpty()) return;
@@ -92,8 +106,8 @@ public class PcodeSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_IfExpression_ThenKeyword_3_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_IfExpression___ElseKeyword_7_0_BEGINTerminalRuleCall_7_1_ENDTerminalRuleCall_7_3__q.equals(syntax))
 				emit_IfExpression___ElseKeyword_7_0_BEGINTerminalRuleCall_7_1_ENDTerminalRuleCall_7_3__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_List_ArrayKeyword_3_0_or_ListKeyword_3_1_or_TableKeyword_3_2.equals(syntax))
-				emit_List_ArrayKeyword_3_0_or_ListKeyword_3_1_or_TableKeyword_3_2(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_List_ArrayKeyword_2_0_or_ListKeyword_2_1_or_TableKeyword_2_2.equals(syntax))
+				emit_List_ArrayKeyword_2_0_or_ListKeyword_2_1_or_TableKeyword_2_2(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Prefixed_HyphenMinusKeyword_1_1_0_0_or_MinusKeyword_1_1_0_1.equals(syntax))
 				emit_Prefixed_HyphenMinusKeyword_1_1_0_0_or_MinusKeyword_1_1_0_1(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
@@ -163,14 +177,9 @@ public class PcodeSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     'array' | 'list' | 'table'
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     type='decimal' (ambiguity) 'and' 'contains' elements+=LiteralExpression
-	 *     type='decimal' (ambiguity) (rule end)
-	 *     type='number' (ambiguity) 'and' 'contains' elements+=LiteralExpression
-	 *     type='number' (ambiguity) (rule end)
-	 *     type='text' (ambiguity) 'and' 'contains' elements+=LiteralExpression
-	 *     type='text' (ambiguity) (rule end)
+	 *     (rule start) 'new' (ambiguity) 'with' type=Type
 	 */
-	protected void emit_List_ArrayKeyword_3_0_or_ListKeyword_3_1_or_TableKeyword_3_2(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_List_ArrayKeyword_2_0_or_ListKeyword_2_1_or_TableKeyword_2_2(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

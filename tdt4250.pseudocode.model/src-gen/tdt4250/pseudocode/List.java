@@ -20,25 +20,25 @@ package tdt4250.pseudocode;
  */
 public interface List extends Collection {
 	/**
-	 * Returns the value of the '<em><b>Type</b></em>' attribute.
+	 * Returns the value of the '<em><b>Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Type</em>' attribute.
-	 * @see #setType(String)
+	 * @return the value of the '<em>Type</em>' containment reference.
+	 * @see #setType(Type)
 	 * @see tdt4250.pseudocode.PseudocodePackage#getList_Type()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
-	String getType();
+	Type getType();
 
 	/**
-	 * Sets the value of the '{@link tdt4250.pseudocode.List#getType <em>Type</em>}' attribute.
+	 * Sets the value of the '{@link tdt4250.pseudocode.List#getType <em>Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' attribute.
+	 * @param value the new value of the '<em>Type</em>' containment reference.
 	 * @see #getType()
 	 * @generated
 	 */
-	void setType(String value);
+	void setType(Type value);
 
 } // List

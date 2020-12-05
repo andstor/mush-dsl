@@ -41,7 +41,7 @@ import tdt4250.pseudocode.SetLitteral;
 import tdt4250.pseudocode.Statement;
 import tdt4250.pseudocode.Stop;
 import tdt4250.pseudocode.StringLiteral;
-import tdt4250.pseudocode.TypeLiteral;
+import tdt4250.pseudocode.Type;
 import tdt4250.pseudocode.ValueExchange;
 import tdt4250.pseudocode.Variable;
 import tdt4250.pseudocode.VariableReference;
@@ -283,6 +283,13 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass typeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass identifierEClass = null;
 
 	/**
@@ -291,13 +298,6 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	private EClass collectionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass typeLiteralEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -819,8 +819,8 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getList_Type() {
-		return (EAttribute) listEClass.getEStructuralFeatures().get(0);
+	public EReference getList_Type() {
+		return (EReference) listEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1239,6 +1239,26 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
+	public EClass getType() {
+		return typeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getType_Types() {
+		return (EAttribute) typeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getIdentifier() {
 		return identifierEClass;
 	}
@@ -1271,16 +1291,6 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	@Override
 	public EReference getCollection_Elements() {
 		return (EReference) collectionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getTypeLiteral() {
-		return typeLiteralEClass;
 	}
 
 	/**
@@ -1360,8 +1370,6 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		collectionEClass = createEClass(COLLECTION);
 		createEReference(collectionEClass, COLLECTION__ELEMENTS);
 
-		typeLiteralEClass = createEClass(TYPE_LITERAL);
-
 		variableEClass = createEClass(VARIABLE);
 		createEAttribute(variableEClass, VARIABLE__NAME);
 		createEReference(variableEClass, VARIABLE__VALUE);
@@ -1381,7 +1389,7 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		createEReference(valueExchangeEClass, VALUE_EXCHANGE__VALUE);
 
 		listEClass = createEClass(LIST);
-		createEAttribute(listEClass, LIST__TYPE);
+		createEReference(listEClass, LIST__TYPE);
 
 		setLitteralEClass = createEClass(SET_LITTERAL);
 
@@ -1439,6 +1447,9 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 
 		variableReferenceEClass = createEClass(VARIABLE_REFERENCE);
 		createEReference(variableReferenceEClass, VARIABLE_REFERENCE__REF);
+
+		typeEClass = createEClass(TYPE);
+		createEAttribute(typeEClass, TYPE__TYPES);
 	}
 
 	/**
@@ -1480,7 +1491,6 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		printEClass.getESuperTypes().add(this.getExpression());
 		functionCallEClass.getESuperTypes().add(this.getExpression());
 		collectionEClass.getESuperTypes().add(this.getExpression());
-		typeLiteralEClass.getESuperTypes().add(this.getIdentifier());
 		variableEClass.getESuperTypes().add(this.getExpression());
 		collectionAddEClass.getESuperTypes().add(this.getExpression());
 		collectionRemoveEClass.getESuperTypes().add(this.getExpression());
@@ -1597,9 +1607,6 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(typeLiteralEClass, TypeLiteral.class, "TypeLiteral", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-
 		initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getVariable_Name(), ecorePackage.getEString(), "name", null, 0, 1, Variable.class, !IS_TRANSIENT,
@@ -1607,9 +1614,9 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		initEReference(getVariable_Value(), this.getExpression(), null, "value", null, 0, 1, Variable.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getVariable_Type(), this.getIdentifier(), null, "type", null, 0, 1, Variable.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVariable_Type(), this.getType(), null, "type", null, 0, 1, Variable.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 		initEAttribute(getVariable_Op(), ecorePackage.getEString(), "op", null, 0, 1, Variable.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1641,8 +1648,9 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(listEClass, List.class, "List", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getList_Type(), ecorePackage.getEString(), "type", null, 0, 1, List.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getList_Type(), this.getType(), null, "type", null, 0, 1, List.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
 		initEClass(setLitteralEClass, SetLitteral.class, "SetLitteral", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1756,6 +1764,10 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		initEReference(getVariableReference_Ref(), this.getVariable(), null, "ref", null, 0, 1, VariableReference.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getType_Types(), ecorePackage.getEString(), "types", null, 0, -1, Type.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

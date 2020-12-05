@@ -7,19 +7,19 @@ import java.util.Set;
 import java.util.ArrayList;
 
 public class PARTITION {
-    public static String run(int p, int r) {
+    public static String run(List<List<Integer>> p, int r) {
         List<List<List<Integer>>> ff = new ArrayList<List<List<Integer>>>(Arrays.asList(new ArrayList<List<Integer>>(Arrays.asList(new ArrayList<Integer>(Arrays.asList(1,2,4))))));
         List<Integer> B = new ArrayList<Integer>(Arrays.asList(1,2,3));
         ArrayList<Integer> B1 = new ArrayList<Integer>(Arrays.asList(1,2,3,4));
         ArrayList<Integer> B2 = new ArrayList<Integer>(Arrays.asList(1,1,1,1));
         Set<Set<Integer>> y = new HashSet<Set<Integer>>(Arrays.asList(new HashSet<Integer>(Arrays.asList(1,1)),new HashSet<Integer>(Arrays.asList(1,1)),new HashSet<Integer>(Arrays.asList(3,3))));
         int x = B.get(r);
-        int i = p;
+        List<List<Integer>> i = p;
         i = i;
-        int j = p;
+        List<List<Integer>> j = p;
         int f = 2;
         String ww = PARTITION.run();
-        for (int VAR0 = 1; VAR0 <= r+1; VAR0++) {
+        for (int VAR0 = 1; VAR0 <= r+1+3; VAR0++) {
             int temp = B.get(j);
             if (2<=x+1) {
                 i = f+22-1+(2*22);
@@ -33,7 +33,7 @@ public class PARTITION {
         int VAR4 = B.get(r);
         B.set(i+1,VAR4);
         B.set(r,VAR3);
-        System.out.println(ff);
+        System.out.print(ff);
         String testing = LOL.run()+"asdasdasdasd";
         return testing;
     }

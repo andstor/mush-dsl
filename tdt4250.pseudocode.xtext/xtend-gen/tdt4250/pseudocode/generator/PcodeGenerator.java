@@ -30,7 +30,6 @@ import tdt4250.pseudocode.Feature;
 import tdt4250.pseudocode.ForExpression;
 import tdt4250.pseudocode.Function;
 import tdt4250.pseudocode.FunctionCall;
-import tdt4250.pseudocode.Identifier;
 import tdt4250.pseudocode.IfExpression;
 import tdt4250.pseudocode.List;
 import tdt4250.pseudocode.ListLitteral;
@@ -45,7 +44,6 @@ import tdt4250.pseudocode.SetLitteral;
 import tdt4250.pseudocode.Statement;
 import tdt4250.pseudocode.Stop;
 import tdt4250.pseudocode.StringLiteral;
-import tdt4250.pseudocode.TypeLiteral;
 import tdt4250.pseudocode.ValueExchange;
 import tdt4250.pseudocode.Variable;
 import tdt4250.pseudocode.VariableReference;
@@ -190,10 +188,9 @@ public class PcodeGenerator extends AbstractGenerator {
     for (final Expression v : variables) {
       {
         final Variable variable = ((Variable) v);
-        Identifier _type = variable.getType();
-        final TypeLiteral type = ((TypeLiteral) _type);
+        final String type = this.typeInferencer.infer(variable.getType());
         String _parameters = parameters;
-        String _jvmType = this.typeInferencer.toJvmType(type.getName());
+        String _jvmType = this.typeInferencer.toJvmType(type);
         String _plus = (_jvmType + " ");
         String _name = variable.getName();
         String _plus_1 = (_plus + _name);
@@ -381,7 +378,7 @@ public class PcodeGenerator extends AbstractGenerator {
   
   protected CharSequence _generateExpression(final Print e) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("System.out.println(");
+    _builder.append("System.out.print(");
     Object _LiteralExpression = this.LiteralExpression(e.getValue());
     _builder.append(_LiteralExpression);
     _builder.append(");");
@@ -460,7 +457,7 @@ public class PcodeGenerator extends AbstractGenerator {
   
   protected String _LiteralExpression(final List e) {
     String string = "";
-    String listType = this.typeInferencer.autobox(this.typeInferencer.toJvmType(e.getType()));
+    String listType = this.typeInferencer.autobox(this.typeInferencer.infer(e.getType()));
     String _string = string;
     string = (_string + (("new ArrayList<" + listType) + ">"));
     this.importTypes.add("java.util.ArrayList");

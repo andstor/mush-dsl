@@ -3,10 +3,13 @@
 package tdt4250.pseudocode.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import tdt4250.pseudocode.List;
 import tdt4250.pseudocode.PseudocodePackage;
+import tdt4250.pseudocode.Type;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,24 +26,14 @@ import tdt4250.pseudocode.PseudocodePackage;
  */
 public class ListImpl extends CollectionImpl implements List {
 	/**
-	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getType()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TYPE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getType()
-	 * @generated
-	 * @ordered
-	 */
-	protected String type = TYPE_EDEFAULT;
+	protected Type type;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -67,7 +60,7 @@ public class ListImpl extends CollectionImpl implements List {
 	 * @generated
 	 */
 	@Override
-	public String getType() {
+	public Type getType() {
 		return type;
 	}
 
@@ -76,12 +69,54 @@ public class ListImpl extends CollectionImpl implements List {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void setType(String newType) {
-		String oldType = type;
+	public NotificationChain basicSetType(Type newType, NotificationChain msgs) {
+		Type oldType = type;
 		type = newType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PseudocodePackage.LIST__TYPE, oldType, type));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PseudocodePackage.LIST__TYPE,
+					oldType, newType);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setType(Type newType) {
+		if (newType != type) {
+			NotificationChain msgs = null;
+			if (type != null)
+				msgs = ((InternalEObject) type).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - PseudocodePackage.LIST__TYPE, null, msgs);
+			if (newType != null)
+				msgs = ((InternalEObject) newType).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - PseudocodePackage.LIST__TYPE, null, msgs);
+			msgs = basicSetType(newType, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PseudocodePackage.LIST__TYPE, newType, newType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case PseudocodePackage.LIST__TYPE:
+			return basicSetType(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -108,7 +143,7 @@ public class ListImpl extends CollectionImpl implements List {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case PseudocodePackage.LIST__TYPE:
-			setType((String) newValue);
+			setType((Type) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -123,7 +158,7 @@ public class ListImpl extends CollectionImpl implements List {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case PseudocodePackage.LIST__TYPE:
-			setType(TYPE_EDEFAULT);
+			setType((Type) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -138,26 +173,9 @@ public class ListImpl extends CollectionImpl implements List {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case PseudocodePackage.LIST__TYPE:
-			return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+			return type != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy())
-			return super.toString();
-
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (type: ");
-		result.append(type);
-		result.append(')');
-		return result.toString();
 	}
 
 } //ListImpl

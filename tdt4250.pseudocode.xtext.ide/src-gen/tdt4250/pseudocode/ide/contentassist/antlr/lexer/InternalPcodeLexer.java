@@ -12,25 +12,25 @@ import java.util.ArrayList;
 
 @SuppressWarnings("all")
 public class InternalPcodeLexer extends Lexer {
-    public static final int Add=30;
+    public static final int Add=31;
     public static final int HyphenMinusHyphenMinus=38;
     public static final int New=33;
     public static final int RULE_BEGIN=65;
-    public static final int Stop=25;
+    public static final int Stop=26;
     public static final int Break=15;
-    public static final int True=28;
+    public static final int True=29;
     public static final int Index=17;
     public static final int Remove=12;
     public static final int False=16;
     public static final int LessThanSign=57;
     public static final int Print=19;
     public static final int LeftParenthesis=49;
-    public static final int Then=27;
+    public static final int Decimal=8;
+    public static final int Then=28;
     public static final int To=46;
-    public static final int Plus=24;
+    public static final int Plus=25;
     public static final int RightSquareBracket=61;
     public static final int ExclamationMark=48;
-    public static final int Text_1=26;
     public static final int GreaterThanSign=59;
     public static final int RULE_ID=69;
     public static final int For=32;
@@ -38,8 +38,6 @@ public class InternalPcodeLexer extends Lexer {
     public static final int GreaterThanSignEqualsSign=42;
     public static final int Exchange=6;
     public static final int EqualsSignEqualsSign=41;
-    public static final int Number_1=11;
-    public static final int And=31;
     public static final int PlusSign=52;
     public static final int RULE_INT=67;
     public static final int Contains=4;
@@ -50,18 +48,18 @@ public class InternalPcodeLexer extends Lexer {
     public static final int Minus=18;
     public static final int Interval=7;
     public static final int RULE_END=66;
-    public static final int Decimal_1=8;
     public static final int VerticalLineVerticalLine=47;
     public static final int Table_1=20;
     public static final int Is=45;
     public static final int RULE_STRING=70;
     public static final int Continue=5;
-    public static final int With=29;
+    public static final int With=30;
     public static final int RULE_SL_COMMENT=72;
     public static final int Comma=53;
     public static final int EqualsSign=58;
     public static final int HyphenMinus=54;
     public static final int At=43;
+    public static final int Number=10;
     public static final int AmpersandAmpersand=35;
     public static final int RULE_DOUBLE=68;
     public static final int Array_1=14;
@@ -70,19 +68,21 @@ public class InternalPcodeLexer extends Lexer {
     public static final int Solidus=56;
     public static final int RightCurlyBracket=64;
     public static final int EOF=-1;
-    public static final int List_1=23;
+    public static final int List_1=24;
     public static final int Asterisk=51;
     public static final int PlusSignEqualsSign=37;
+    public static final int That=27;
     public static final int FullStop=55;
     public static final int Return=13;
     public static final int RULE_WS=73;
     public static final int LeftCurlyBracket=63;
+    public static final int Text=22;
     public static final int While=21;
     public static final int RULE_ANY_OTHER=74;
     public static final int CircumflexAccent=62;
-    public static final int Equals=10;
+    public static final int Equals=11;
     public static final int PlusSignPlusSign=36;
-    public static final int Else=22;
+    public static final int Else=23;
     public static final int ExclamationMarkEqualsSign=34;
 
     // delegates
@@ -462,13 +462,13 @@ public class InternalPcodeLexer extends Lexer {
     }
     // $ANTLR end "Interval"
 
-    // $ANTLR start "Decimal_1"
-    public final void mDecimal_1() throws RecognitionException {
+    // $ANTLR start "Decimal"
+    public final void mDecimal() throws RecognitionException {
         try {
-            int _type = Decimal_1;
+            int _type = Decimal;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPcodeLexer.g:22:11: ( ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'I' | 'i' ) ( 'M' | 'm' ) ( 'A' | 'a' ) ( 'L' | 'l' ) )
-            // InternalPcodeLexer.g:22:13: ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'I' | 'i' ) ( 'M' | 'm' ) ( 'A' | 'a' ) ( 'L' | 'l' )
+            // InternalPcodeLexer.g:22:9: ( ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'I' | 'i' ) ( 'M' | 'm' ) ( 'A' | 'a' ) ( 'L' | 'l' ) )
+            // InternalPcodeLexer.g:22:11: ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'I' | 'i' ) ( 'M' | 'm' ) ( 'A' | 'a' ) ( 'L' | 'l' )
             {
             if ( input.LA(1)=='D'||input.LA(1)=='d' ) {
                 input.consume();
@@ -542,7 +542,7 @@ public class InternalPcodeLexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "Decimal_1"
+    // $ANTLR end "Decimal"
 
     // $ANTLR start "Package"
     public final void mPackage() throws RecognitionException {
@@ -626,13 +626,86 @@ public class InternalPcodeLexer extends Lexer {
     }
     // $ANTLR end "Package"
 
+    // $ANTLR start "Number"
+    public final void mNumber() throws RecognitionException {
+        try {
+            int _type = Number;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // InternalPcodeLexer.g:26:8: ( ( 'N' | 'n' ) ( 'U' | 'u' ) ( 'M' | 'm' ) ( 'B' | 'b' ) ( 'E' | 'e' ) ( 'R' | 'r' ) )
+            // InternalPcodeLexer.g:26:10: ( 'N' | 'n' ) ( 'U' | 'u' ) ( 'M' | 'm' ) ( 'B' | 'b' ) ( 'E' | 'e' ) ( 'R' | 'r' )
+            {
+            if ( input.LA(1)=='N'||input.LA(1)=='n' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            if ( input.LA(1)=='U'||input.LA(1)=='u' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            if ( input.LA(1)=='M'||input.LA(1)=='m' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            if ( input.LA(1)=='R'||input.LA(1)=='r' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "Number"
+
     // $ANTLR start "Equals"
     public final void mEquals() throws RecognitionException {
         try {
             int _type = Equals;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPcodeLexer.g:26:8: ( ( 'E' | 'e' ) ( 'Q' | 'q' ) ( 'U' | 'u' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) )
-            // InternalPcodeLexer.g:26:10: ( 'E' | 'e' ) ( 'Q' | 'q' ) ( 'U' | 'u' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' )
+            // InternalPcodeLexer.g:28:8: ( ( 'E' | 'e' ) ( 'Q' | 'q' ) ( 'U' | 'u' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) )
+            // InternalPcodeLexer.g:28:10: ( 'E' | 'e' ) ( 'Q' | 'q' ) ( 'U' | 'u' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -698,79 +771,6 @@ public class InternalPcodeLexer extends Lexer {
         }
     }
     // $ANTLR end "Equals"
-
-    // $ANTLR start "Number_1"
-    public final void mNumber_1() throws RecognitionException {
-        try {
-            int _type = Number_1;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPcodeLexer.g:28:10: ( ( 'N' | 'n' ) ( 'U' | 'u' ) ( 'M' | 'm' ) ( 'B' | 'b' ) ( 'E' | 'e' ) ( 'R' | 'r' ) )
-            // InternalPcodeLexer.g:28:12: ( 'N' | 'n' ) ( 'U' | 'u' ) ( 'M' | 'm' ) ( 'B' | 'b' ) ( 'E' | 'e' ) ( 'R' | 'r' )
-            {
-            if ( input.LA(1)=='N'||input.LA(1)=='n' ) {
-                input.consume();
-
-            }
-            else {
-                MismatchedSetException mse = new MismatchedSetException(null,input);
-                recover(mse);
-                throw mse;}
-
-            if ( input.LA(1)=='U'||input.LA(1)=='u' ) {
-                input.consume();
-
-            }
-            else {
-                MismatchedSetException mse = new MismatchedSetException(null,input);
-                recover(mse);
-                throw mse;}
-
-            if ( input.LA(1)=='M'||input.LA(1)=='m' ) {
-                input.consume();
-
-            }
-            else {
-                MismatchedSetException mse = new MismatchedSetException(null,input);
-                recover(mse);
-                throw mse;}
-
-            if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
-                input.consume();
-
-            }
-            else {
-                MismatchedSetException mse = new MismatchedSetException(null,input);
-                recover(mse);
-                throw mse;}
-
-            if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
-                input.consume();
-
-            }
-            else {
-                MismatchedSetException mse = new MismatchedSetException(null,input);
-                recover(mse);
-                throw mse;}
-
-            if ( input.LA(1)=='R'||input.LA(1)=='r' ) {
-                input.consume();
-
-            }
-            else {
-                MismatchedSetException mse = new MismatchedSetException(null,input);
-                recover(mse);
-                throw mse;}
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "Number_1"
 
     // $ANTLR start "Remove"
     public final void mRemove() throws RecognitionException {
@@ -1430,13 +1430,68 @@ public class InternalPcodeLexer extends Lexer {
     }
     // $ANTLR end "While"
 
+    // $ANTLR start "Text"
+    public final void mText() throws RecognitionException {
+        try {
+            int _type = Text;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // InternalPcodeLexer.g:50:6: ( ( 'T' | 't' ) ( 'E' | 'e' ) ( 'X' | 'x' ) ( 'T' | 't' ) )
+            // InternalPcodeLexer.g:50:8: ( 'T' | 't' ) ( 'E' | 'e' ) ( 'X' | 'x' ) ( 'T' | 't' )
+            {
+            if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            if ( input.LA(1)=='X'||input.LA(1)=='x' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "Text"
+
     // $ANTLR start "Else"
     public final void mElse() throws RecognitionException {
         try {
             int _type = Else;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPcodeLexer.g:50:6: ( ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
-            // InternalPcodeLexer.g:50:8: ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' )
+            // InternalPcodeLexer.g:52:6: ( ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
+            // InternalPcodeLexer.g:52:8: ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -1490,8 +1545,8 @@ public class InternalPcodeLexer extends Lexer {
         try {
             int _type = List_1;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPcodeLexer.g:52:8: ( ( 'L' | 'l' ) ( 'I' | 'i' ) ( 'S' | 's' ) ( 'T' | 't' ) )
-            // InternalPcodeLexer.g:52:10: ( 'L' | 'l' ) ( 'I' | 'i' ) ( 'S' | 's' ) ( 'T' | 't' )
+            // InternalPcodeLexer.g:54:8: ( ( 'L' | 'l' ) ( 'I' | 'i' ) ( 'S' | 's' ) ( 'T' | 't' ) )
+            // InternalPcodeLexer.g:54:10: ( 'L' | 'l' ) ( 'I' | 'i' ) ( 'S' | 's' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
                 input.consume();
@@ -1545,8 +1600,8 @@ public class InternalPcodeLexer extends Lexer {
         try {
             int _type = Plus;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPcodeLexer.g:54:6: ( ( 'P' | 'p' ) ( 'L' | 'l' ) ( 'U' | 'u' ) ( 'S' | 's' ) )
-            // InternalPcodeLexer.g:54:8: ( 'P' | 'p' ) ( 'L' | 'l' ) ( 'U' | 'u' ) ( 'S' | 's' )
+            // InternalPcodeLexer.g:56:6: ( ( 'P' | 'p' ) ( 'L' | 'l' ) ( 'U' | 'u' ) ( 'S' | 's' ) )
+            // InternalPcodeLexer.g:56:8: ( 'P' | 'p' ) ( 'L' | 'l' ) ( 'U' | 'u' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='P'||input.LA(1)=='p' ) {
                 input.consume();
@@ -1600,8 +1655,8 @@ public class InternalPcodeLexer extends Lexer {
         try {
             int _type = Stop;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPcodeLexer.g:56:6: ( ( 'S' | 's' ) ( 'T' | 't' ) ( 'O' | 'o' ) ( 'P' | 'p' ) )
-            // InternalPcodeLexer.g:56:8: ( 'S' | 's' ) ( 'T' | 't' ) ( 'O' | 'o' ) ( 'P' | 'p' )
+            // InternalPcodeLexer.g:58:6: ( ( 'S' | 's' ) ( 'T' | 't' ) ( 'O' | 'o' ) ( 'P' | 'p' ) )
+            // InternalPcodeLexer.g:58:8: ( 'S' | 's' ) ( 'T' | 't' ) ( 'O' | 'o' ) ( 'P' | 'p' )
             {
             if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
                 input.consume();
@@ -1650,13 +1705,13 @@ public class InternalPcodeLexer extends Lexer {
     }
     // $ANTLR end "Stop"
 
-    // $ANTLR start "Text_1"
-    public final void mText_1() throws RecognitionException {
+    // $ANTLR start "That"
+    public final void mThat() throws RecognitionException {
         try {
-            int _type = Text_1;
+            int _type = That;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPcodeLexer.g:58:8: ( ( 'T' | 't' ) ( 'E' | 'e' ) ( 'X' | 'x' ) ( 'T' | 't' ) )
-            // InternalPcodeLexer.g:58:10: ( 'T' | 't' ) ( 'E' | 'e' ) ( 'X' | 'x' ) ( 'T' | 't' )
+            // InternalPcodeLexer.g:60:6: ( ( 'T' | 't' ) ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'T' | 't' ) )
+            // InternalPcodeLexer.g:60:8: ( 'T' | 't' ) ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
                 input.consume();
@@ -1667,7 +1722,7 @@ public class InternalPcodeLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
+            if ( input.LA(1)=='H'||input.LA(1)=='h' ) {
                 input.consume();
 
             }
@@ -1676,7 +1731,7 @@ public class InternalPcodeLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            if ( input.LA(1)=='X'||input.LA(1)=='x' ) {
+            if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
                 input.consume();
 
             }
@@ -1703,15 +1758,15 @@ public class InternalPcodeLexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "Text_1"
+    // $ANTLR end "That"
 
     // $ANTLR start "Then"
     public final void mThen() throws RecognitionException {
         try {
             int _type = Then;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPcodeLexer.g:60:6: ( ( 'T' | 't' ) ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'N' | 'n' ) )
-            // InternalPcodeLexer.g:60:8: ( 'T' | 't' ) ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'N' | 'n' )
+            // InternalPcodeLexer.g:62:6: ( ( 'T' | 't' ) ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'N' | 'n' ) )
+            // InternalPcodeLexer.g:62:8: ( 'T' | 't' ) ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'N' | 'n' )
             {
             if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
                 input.consume();
@@ -1765,8 +1820,8 @@ public class InternalPcodeLexer extends Lexer {
         try {
             int _type = True;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPcodeLexer.g:62:6: ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
-            // InternalPcodeLexer.g:62:8: ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' )
+            // InternalPcodeLexer.g:64:6: ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
+            // InternalPcodeLexer.g:64:8: ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
                 input.consume();
@@ -1820,8 +1875,8 @@ public class InternalPcodeLexer extends Lexer {
         try {
             int _type = With;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPcodeLexer.g:64:6: ( ( 'W' | 'w' ) ( 'I' | 'i' ) ( 'T' | 't' ) ( 'H' | 'h' ) )
-            // InternalPcodeLexer.g:64:8: ( 'W' | 'w' ) ( 'I' | 'i' ) ( 'T' | 't' ) ( 'H' | 'h' )
+            // InternalPcodeLexer.g:66:6: ( ( 'W' | 'w' ) ( 'I' | 'i' ) ( 'T' | 't' ) ( 'H' | 'h' ) )
+            // InternalPcodeLexer.g:66:8: ( 'W' | 'w' ) ( 'I' | 'i' ) ( 'T' | 't' ) ( 'H' | 'h' )
             {
             if ( input.LA(1)=='W'||input.LA(1)=='w' ) {
                 input.consume();
@@ -1875,8 +1930,8 @@ public class InternalPcodeLexer extends Lexer {
         try {
             int _type = Add;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPcodeLexer.g:66:5: ( ( 'A' | 'a' ) ( 'D' | 'd' ) ( 'D' | 'd' ) )
-            // InternalPcodeLexer.g:66:7: ( 'A' | 'a' ) ( 'D' | 'd' ) ( 'D' | 'd' )
+            // InternalPcodeLexer.g:68:5: ( ( 'A' | 'a' ) ( 'D' | 'd' ) ( 'D' | 'd' ) )
+            // InternalPcodeLexer.g:68:7: ( 'A' | 'a' ) ( 'D' | 'd' ) ( 'D' | 'd' )
             {
             if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
                 input.consume();
@@ -1915,52 +1970,6 @@ public class InternalPcodeLexer extends Lexer {
         }
     }
     // $ANTLR end "Add"
-
-    // $ANTLR start "And"
-    public final void mAnd() throws RecognitionException {
-        try {
-            int _type = And;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPcodeLexer.g:68:5: ( ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'D' | 'd' ) )
-            // InternalPcodeLexer.g:68:7: ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'D' | 'd' )
-            {
-            if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
-                input.consume();
-
-            }
-            else {
-                MismatchedSetException mse = new MismatchedSetException(null,input);
-                recover(mse);
-                throw mse;}
-
-            if ( input.LA(1)=='N'||input.LA(1)=='n' ) {
-                input.consume();
-
-            }
-            else {
-                MismatchedSetException mse = new MismatchedSetException(null,input);
-                recover(mse);
-                throw mse;}
-
-            if ( input.LA(1)=='D'||input.LA(1)=='d' ) {
-                input.consume();
-
-            }
-            else {
-                MismatchedSetException mse = new MismatchedSetException(null,input);
-                recover(mse);
-                throw mse;}
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "And"
 
     // $ANTLR start "For"
     public final void mFor() throws RecognitionException {
@@ -3301,7 +3310,7 @@ public class InternalPcodeLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // InternalPcodeLexer.g:1:8: ( Contains | Continue | Exchange | Interval | Decimal_1 | Package | Equals | Number_1 | Remove | Return | Array_1 | Break | False | Index | Minus | Print | Table_1 | While | Else | List_1 | Plus | Stop | Text_1 | Then | True | With | Add | And | For | New | ExclamationMarkEqualsSign | AmpersandAmpersand | PlusSignPlusSign | PlusSignEqualsSign | HyphenMinusHyphenMinus | HyphenMinusEqualsSign | LessThanSignEqualsSign | EqualsSignEqualsSign | GreaterThanSignEqualsSign | At | If | Is | To | VerticalLineVerticalLine | ExclamationMark | LeftParenthesis | RightParenthesis | Asterisk | PlusSign | Comma | HyphenMinus | FullStop | Solidus | LessThanSign | EqualsSign | GreaterThanSign | LeftSquareBracket | RightSquareBracket | CircumflexAccent | LeftCurlyBracket | RightCurlyBracket | RULE_DOUBLE | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        // InternalPcodeLexer.g:1:8: ( Contains | Continue | Exchange | Interval | Decimal | Package | Number | Equals | Remove | Return | Array_1 | Break | False | Index | Minus | Print | Table_1 | While | Text | Else | List_1 | Plus | Stop | That | Then | True | With | Add | For | New | ExclamationMarkEqualsSign | AmpersandAmpersand | PlusSignPlusSign | PlusSignEqualsSign | HyphenMinusHyphenMinus | HyphenMinusEqualsSign | LessThanSignEqualsSign | EqualsSignEqualsSign | GreaterThanSignEqualsSign | At | If | Is | To | VerticalLineVerticalLine | ExclamationMark | LeftParenthesis | RightParenthesis | Asterisk | PlusSign | Comma | HyphenMinus | FullStop | Solidus | LessThanSign | EqualsSign | GreaterThanSign | LeftSquareBracket | RightSquareBracket | CircumflexAccent | LeftCurlyBracket | RightCurlyBracket | RULE_DOUBLE | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
         int alt12=69;
         alt12 = dfa12.predict(input);
         switch (alt12) {
@@ -3334,455 +3343,455 @@ public class InternalPcodeLexer extends Lexer {
                 }
                 break;
             case 5 :
-                // InternalPcodeLexer.g:1:46: Decimal_1
+                // InternalPcodeLexer.g:1:46: Decimal
                 {
-                mDecimal_1(); 
+                mDecimal(); 
 
                 }
                 break;
             case 6 :
-                // InternalPcodeLexer.g:1:56: Package
+                // InternalPcodeLexer.g:1:54: Package
                 {
                 mPackage(); 
 
                 }
                 break;
             case 7 :
-                // InternalPcodeLexer.g:1:64: Equals
+                // InternalPcodeLexer.g:1:62: Number
+                {
+                mNumber(); 
+
+                }
+                break;
+            case 8 :
+                // InternalPcodeLexer.g:1:69: Equals
                 {
                 mEquals(); 
 
                 }
                 break;
-            case 8 :
-                // InternalPcodeLexer.g:1:71: Number_1
-                {
-                mNumber_1(); 
-
-                }
-                break;
             case 9 :
-                // InternalPcodeLexer.g:1:80: Remove
+                // InternalPcodeLexer.g:1:76: Remove
                 {
                 mRemove(); 
 
                 }
                 break;
             case 10 :
-                // InternalPcodeLexer.g:1:87: Return
+                // InternalPcodeLexer.g:1:83: Return
                 {
                 mReturn(); 
 
                 }
                 break;
             case 11 :
-                // InternalPcodeLexer.g:1:94: Array_1
+                // InternalPcodeLexer.g:1:90: Array_1
                 {
                 mArray_1(); 
 
                 }
                 break;
             case 12 :
-                // InternalPcodeLexer.g:1:102: Break
+                // InternalPcodeLexer.g:1:98: Break
                 {
                 mBreak(); 
 
                 }
                 break;
             case 13 :
-                // InternalPcodeLexer.g:1:108: False
+                // InternalPcodeLexer.g:1:104: False
                 {
                 mFalse(); 
 
                 }
                 break;
             case 14 :
-                // InternalPcodeLexer.g:1:114: Index
+                // InternalPcodeLexer.g:1:110: Index
                 {
                 mIndex(); 
 
                 }
                 break;
             case 15 :
-                // InternalPcodeLexer.g:1:120: Minus
+                // InternalPcodeLexer.g:1:116: Minus
                 {
                 mMinus(); 
 
                 }
                 break;
             case 16 :
-                // InternalPcodeLexer.g:1:126: Print
+                // InternalPcodeLexer.g:1:122: Print
                 {
                 mPrint(); 
 
                 }
                 break;
             case 17 :
-                // InternalPcodeLexer.g:1:132: Table_1
+                // InternalPcodeLexer.g:1:128: Table_1
                 {
                 mTable_1(); 
 
                 }
                 break;
             case 18 :
-                // InternalPcodeLexer.g:1:140: While
+                // InternalPcodeLexer.g:1:136: While
                 {
                 mWhile(); 
 
                 }
                 break;
             case 19 :
-                // InternalPcodeLexer.g:1:146: Else
+                // InternalPcodeLexer.g:1:142: Text
+                {
+                mText(); 
+
+                }
+                break;
+            case 20 :
+                // InternalPcodeLexer.g:1:147: Else
                 {
                 mElse(); 
 
                 }
                 break;
-            case 20 :
-                // InternalPcodeLexer.g:1:151: List_1
+            case 21 :
+                // InternalPcodeLexer.g:1:152: List_1
                 {
                 mList_1(); 
 
                 }
                 break;
-            case 21 :
-                // InternalPcodeLexer.g:1:158: Plus
+            case 22 :
+                // InternalPcodeLexer.g:1:159: Plus
                 {
                 mPlus(); 
 
                 }
                 break;
-            case 22 :
-                // InternalPcodeLexer.g:1:163: Stop
+            case 23 :
+                // InternalPcodeLexer.g:1:164: Stop
                 {
                 mStop(); 
 
                 }
                 break;
-            case 23 :
-                // InternalPcodeLexer.g:1:168: Text_1
+            case 24 :
+                // InternalPcodeLexer.g:1:169: That
                 {
-                mText_1(); 
+                mThat(); 
 
                 }
                 break;
-            case 24 :
-                // InternalPcodeLexer.g:1:175: Then
+            case 25 :
+                // InternalPcodeLexer.g:1:174: Then
                 {
                 mThen(); 
 
                 }
                 break;
-            case 25 :
-                // InternalPcodeLexer.g:1:180: True
+            case 26 :
+                // InternalPcodeLexer.g:1:179: True
                 {
                 mTrue(); 
 
                 }
                 break;
-            case 26 :
-                // InternalPcodeLexer.g:1:185: With
+            case 27 :
+                // InternalPcodeLexer.g:1:184: With
                 {
                 mWith(); 
 
                 }
                 break;
-            case 27 :
-                // InternalPcodeLexer.g:1:190: Add
+            case 28 :
+                // InternalPcodeLexer.g:1:189: Add
                 {
                 mAdd(); 
 
                 }
                 break;
-            case 28 :
-                // InternalPcodeLexer.g:1:194: And
-                {
-                mAnd(); 
-
-                }
-                break;
             case 29 :
-                // InternalPcodeLexer.g:1:198: For
+                // InternalPcodeLexer.g:1:193: For
                 {
                 mFor(); 
 
                 }
                 break;
             case 30 :
-                // InternalPcodeLexer.g:1:202: New
+                // InternalPcodeLexer.g:1:197: New
                 {
                 mNew(); 
 
                 }
                 break;
             case 31 :
-                // InternalPcodeLexer.g:1:206: ExclamationMarkEqualsSign
+                // InternalPcodeLexer.g:1:201: ExclamationMarkEqualsSign
                 {
                 mExclamationMarkEqualsSign(); 
 
                 }
                 break;
             case 32 :
-                // InternalPcodeLexer.g:1:232: AmpersandAmpersand
+                // InternalPcodeLexer.g:1:227: AmpersandAmpersand
                 {
                 mAmpersandAmpersand(); 
 
                 }
                 break;
             case 33 :
-                // InternalPcodeLexer.g:1:251: PlusSignPlusSign
+                // InternalPcodeLexer.g:1:246: PlusSignPlusSign
                 {
                 mPlusSignPlusSign(); 
 
                 }
                 break;
             case 34 :
-                // InternalPcodeLexer.g:1:268: PlusSignEqualsSign
+                // InternalPcodeLexer.g:1:263: PlusSignEqualsSign
                 {
                 mPlusSignEqualsSign(); 
 
                 }
                 break;
             case 35 :
-                // InternalPcodeLexer.g:1:287: HyphenMinusHyphenMinus
+                // InternalPcodeLexer.g:1:282: HyphenMinusHyphenMinus
                 {
                 mHyphenMinusHyphenMinus(); 
 
                 }
                 break;
             case 36 :
-                // InternalPcodeLexer.g:1:310: HyphenMinusEqualsSign
+                // InternalPcodeLexer.g:1:305: HyphenMinusEqualsSign
                 {
                 mHyphenMinusEqualsSign(); 
 
                 }
                 break;
             case 37 :
-                // InternalPcodeLexer.g:1:332: LessThanSignEqualsSign
+                // InternalPcodeLexer.g:1:327: LessThanSignEqualsSign
                 {
                 mLessThanSignEqualsSign(); 
 
                 }
                 break;
             case 38 :
-                // InternalPcodeLexer.g:1:355: EqualsSignEqualsSign
+                // InternalPcodeLexer.g:1:350: EqualsSignEqualsSign
                 {
                 mEqualsSignEqualsSign(); 
 
                 }
                 break;
             case 39 :
-                // InternalPcodeLexer.g:1:376: GreaterThanSignEqualsSign
+                // InternalPcodeLexer.g:1:371: GreaterThanSignEqualsSign
                 {
                 mGreaterThanSignEqualsSign(); 
 
                 }
                 break;
             case 40 :
-                // InternalPcodeLexer.g:1:402: At
+                // InternalPcodeLexer.g:1:397: At
                 {
                 mAt(); 
 
                 }
                 break;
             case 41 :
-                // InternalPcodeLexer.g:1:405: If
+                // InternalPcodeLexer.g:1:400: If
                 {
                 mIf(); 
 
                 }
                 break;
             case 42 :
-                // InternalPcodeLexer.g:1:408: Is
+                // InternalPcodeLexer.g:1:403: Is
                 {
                 mIs(); 
 
                 }
                 break;
             case 43 :
-                // InternalPcodeLexer.g:1:411: To
+                // InternalPcodeLexer.g:1:406: To
                 {
                 mTo(); 
 
                 }
                 break;
             case 44 :
-                // InternalPcodeLexer.g:1:414: VerticalLineVerticalLine
+                // InternalPcodeLexer.g:1:409: VerticalLineVerticalLine
                 {
                 mVerticalLineVerticalLine(); 
 
                 }
                 break;
             case 45 :
-                // InternalPcodeLexer.g:1:439: ExclamationMark
+                // InternalPcodeLexer.g:1:434: ExclamationMark
                 {
                 mExclamationMark(); 
 
                 }
                 break;
             case 46 :
-                // InternalPcodeLexer.g:1:455: LeftParenthesis
+                // InternalPcodeLexer.g:1:450: LeftParenthesis
                 {
                 mLeftParenthesis(); 
 
                 }
                 break;
             case 47 :
-                // InternalPcodeLexer.g:1:471: RightParenthesis
+                // InternalPcodeLexer.g:1:466: RightParenthesis
                 {
                 mRightParenthesis(); 
 
                 }
                 break;
             case 48 :
-                // InternalPcodeLexer.g:1:488: Asterisk
+                // InternalPcodeLexer.g:1:483: Asterisk
                 {
                 mAsterisk(); 
 
                 }
                 break;
             case 49 :
-                // InternalPcodeLexer.g:1:497: PlusSign
+                // InternalPcodeLexer.g:1:492: PlusSign
                 {
                 mPlusSign(); 
 
                 }
                 break;
             case 50 :
-                // InternalPcodeLexer.g:1:506: Comma
+                // InternalPcodeLexer.g:1:501: Comma
                 {
                 mComma(); 
 
                 }
                 break;
             case 51 :
-                // InternalPcodeLexer.g:1:512: HyphenMinus
+                // InternalPcodeLexer.g:1:507: HyphenMinus
                 {
                 mHyphenMinus(); 
 
                 }
                 break;
             case 52 :
-                // InternalPcodeLexer.g:1:524: FullStop
+                // InternalPcodeLexer.g:1:519: FullStop
                 {
                 mFullStop(); 
 
                 }
                 break;
             case 53 :
-                // InternalPcodeLexer.g:1:533: Solidus
+                // InternalPcodeLexer.g:1:528: Solidus
                 {
                 mSolidus(); 
 
                 }
                 break;
             case 54 :
-                // InternalPcodeLexer.g:1:541: LessThanSign
+                // InternalPcodeLexer.g:1:536: LessThanSign
                 {
                 mLessThanSign(); 
 
                 }
                 break;
             case 55 :
-                // InternalPcodeLexer.g:1:554: EqualsSign
+                // InternalPcodeLexer.g:1:549: EqualsSign
                 {
                 mEqualsSign(); 
 
                 }
                 break;
             case 56 :
-                // InternalPcodeLexer.g:1:565: GreaterThanSign
+                // InternalPcodeLexer.g:1:560: GreaterThanSign
                 {
                 mGreaterThanSign(); 
 
                 }
                 break;
             case 57 :
-                // InternalPcodeLexer.g:1:581: LeftSquareBracket
+                // InternalPcodeLexer.g:1:576: LeftSquareBracket
                 {
                 mLeftSquareBracket(); 
 
                 }
                 break;
             case 58 :
-                // InternalPcodeLexer.g:1:599: RightSquareBracket
+                // InternalPcodeLexer.g:1:594: RightSquareBracket
                 {
                 mRightSquareBracket(); 
 
                 }
                 break;
             case 59 :
-                // InternalPcodeLexer.g:1:618: CircumflexAccent
+                // InternalPcodeLexer.g:1:613: CircumflexAccent
                 {
                 mCircumflexAccent(); 
 
                 }
                 break;
             case 60 :
-                // InternalPcodeLexer.g:1:635: LeftCurlyBracket
+                // InternalPcodeLexer.g:1:630: LeftCurlyBracket
                 {
                 mLeftCurlyBracket(); 
 
                 }
                 break;
             case 61 :
-                // InternalPcodeLexer.g:1:652: RightCurlyBracket
+                // InternalPcodeLexer.g:1:647: RightCurlyBracket
                 {
                 mRightCurlyBracket(); 
 
                 }
                 break;
             case 62 :
-                // InternalPcodeLexer.g:1:670: RULE_DOUBLE
+                // InternalPcodeLexer.g:1:665: RULE_DOUBLE
                 {
                 mRULE_DOUBLE(); 
 
                 }
                 break;
             case 63 :
-                // InternalPcodeLexer.g:1:682: RULE_ID
+                // InternalPcodeLexer.g:1:677: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
             case 64 :
-                // InternalPcodeLexer.g:1:690: RULE_INT
+                // InternalPcodeLexer.g:1:685: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
             case 65 :
-                // InternalPcodeLexer.g:1:699: RULE_STRING
+                // InternalPcodeLexer.g:1:694: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
             case 66 :
-                // InternalPcodeLexer.g:1:711: RULE_ML_COMMENT
+                // InternalPcodeLexer.g:1:706: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
             case 67 :
-                // InternalPcodeLexer.g:1:727: RULE_SL_COMMENT
+                // InternalPcodeLexer.g:1:722: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
             case 68 :
-                // InternalPcodeLexer.g:1:743: RULE_WS
+                // InternalPcodeLexer.g:1:738: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
             case 69 :
-                // InternalPcodeLexer.g:1:751: RULE_ANY_OTHER
+                // InternalPcodeLexer.g:1:746: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -3796,17 +3805,17 @@ public class InternalPcodeLexer extends Lexer {
 
     protected DFA12 dfa12 = new DFA12(this);
     static final String DFA12_eotS =
-        "\1\uffff\17\52\1\112\1\50\1\116\1\121\1\123\1\125\1\127\1\50\5\uffff\1\140\2\uffff\1\143\2\uffff\1\146\1\uffff\2\50\2\uffff\1\52\1\uffff\4\52\1\161\1\162\12\52\1\176\10\52\1\u0087\4\52\37\uffff\1\146\2\uffff\6\52\2\uffff\5\52\1\u0097\3\52\1\u009b\1\u009c\1\uffff\2\52\1\u009f\5\52\1\uffff\7\52\1\u00ad\5\52\1\u00b3\1\52\1\uffff\3\52\2\uffff\2\52\1\uffff\2\52\1\u00bc\1\u00bd\1\u00be\1\52\1\u00c0\1\u00c1\1\u00c2\4\52\1\uffff\1\52\1\u00c8\2\52\1\u00cb\1\uffff\3\52\1\u00cf\1\u00d0\1\u00d1\1\u00d2\1\u00d3\3\uffff\1\u00d4\3\uffff\3\52\1\u00d8\1\52\1\uffff\2\52\1\uffff\1\u00dc\1\u00dd\1\u00de\6\uffff\3\52\1\uffff\1\52\1\u00e3\1\u00e4\3\uffff\1\u00e5\1\u00e6\1\u00e7\1\u00e8\6\uffff";
+        "\1\uffff\17\52\1\111\1\50\1\115\1\120\1\122\1\124\1\126\1\50\5\uffff\1\137\2\uffff\1\142\2\uffff\1\145\1\uffff\2\50\2\uffff\1\52\1\uffff\4\52\1\160\1\161\11\52\1\174\10\52\1\u0086\4\52\37\uffff\1\145\2\uffff\6\52\2\uffff\5\52\1\u0096\3\52\1\u009a\1\uffff\2\52\1\u009d\6\52\1\uffff\7\52\1\u00ac\5\52\1\u00b2\1\52\1\uffff\3\52\1\uffff\2\52\1\uffff\2\52\1\u00bb\1\u00bc\1\u00bd\1\u00be\1\52\1\u00c0\1\u00c1\1\u00c2\4\52\1\uffff\1\52\1\u00c8\2\52\1\u00cb\1\uffff\3\52\1\u00cf\1\u00d0\1\u00d1\1\u00d2\1\u00d3\4\uffff\1\u00d4\3\uffff\3\52\1\u00d8\1\52\1\uffff\2\52\1\uffff\1\u00dc\1\u00dd\1\u00de\6\uffff\3\52\1\uffff\1\52\1\u00e3\1\u00e4\3\uffff\1\u00e5\1\u00e6\1\u00e7\1\u00e8\6\uffff";
     static final String DFA12_eofS =
         "\u00e9\uffff";
     static final String DFA12_minS =
-        "\1\0\1\117\1\114\1\106\1\105\1\101\2\105\1\104\1\122\1\101\1\111\1\101\1\110\1\111\1\124\1\75\1\46\1\53\1\55\3\75\1\174\5\uffff\1\52\2\uffff\1\101\2\uffff\1\56\1\uffff\2\0\2\uffff\1\116\1\uffff\1\103\1\125\1\123\1\104\2\60\2\103\1\111\1\125\1\115\1\127\1\115\1\122\2\104\1\60\1\105\1\114\1\122\1\116\1\102\1\130\1\105\1\125\1\60\1\111\1\124\1\123\1\117\37\uffff\1\56\2\uffff\1\124\1\110\1\101\3\105\2\uffff\1\111\1\113\1\116\1\123\1\102\1\60\1\117\1\125\1\101\2\60\1\uffff\1\101\1\123\1\60\1\125\1\114\1\124\1\116\1\105\1\uffff\1\114\1\110\1\124\1\120\2\101\1\114\1\60\1\122\1\130\1\115\1\101\1\124\1\60\1\105\1\uffff\1\126\1\122\1\131\2\uffff\1\113\1\105\1\uffff\1\123\1\105\3\60\1\105\3\60\1\111\2\116\1\123\1\uffff\1\126\1\60\1\101\1\107\1\60\1\uffff\1\122\1\105\1\116\5\60\3\uffff\1\60\3\uffff\1\116\1\125\1\107\1\60\1\101\1\uffff\1\114\1\105\1\uffff\3\60\6\uffff\1\123\2\105\1\uffff\1\114\2\60\3\uffff\4\60\6\uffff";
+        "\1\0\1\117\1\114\1\106\1\105\1\101\2\105\1\104\1\122\1\101\1\111\1\101\1\110\1\111\1\124\1\75\1\46\1\53\1\55\3\75\1\174\5\uffff\1\52\2\uffff\1\101\2\uffff\1\56\1\uffff\2\0\2\uffff\1\116\1\uffff\1\103\1\125\1\123\1\104\2\60\2\103\1\111\1\125\1\115\1\127\1\115\1\122\1\104\1\60\1\105\1\114\1\122\1\116\1\102\1\130\1\101\1\125\1\60\1\111\1\124\1\123\1\117\37\uffff\1\56\2\uffff\1\124\1\110\1\101\3\105\2\uffff\1\111\1\113\1\116\1\123\1\102\1\60\1\117\1\125\1\101\1\60\1\uffff\1\101\1\123\1\60\1\125\1\114\2\124\1\116\1\105\1\uffff\1\114\1\110\1\124\1\120\2\101\1\114\1\60\1\122\1\130\1\115\1\101\1\124\1\60\1\105\1\uffff\1\126\1\122\1\131\1\uffff\1\113\1\105\1\uffff\1\123\1\105\4\60\1\105\3\60\1\111\2\116\1\123\1\uffff\1\126\1\60\1\101\1\107\1\60\1\uffff\1\122\1\105\1\116\5\60\4\uffff\1\60\3\uffff\1\116\1\125\1\107\1\60\1\101\1\uffff\1\114\1\105\1\uffff\3\60\6\uffff\1\123\2\105\1\uffff\1\114\2\60\3\uffff\4\60\6\uffff";
     static final String DFA12_maxS =
-        "\1\uffff\1\157\1\170\1\163\1\145\1\162\1\165\1\145\1\164\1\162\1\157\1\151\1\162\2\151\1\164\1\75\1\46\5\75\1\174\5\uffff\1\57\2\uffff\1\172\2\uffff\1\71\1\uffff\2\uffff\2\uffff\1\156\1\uffff\1\143\1\165\1\163\1\164\2\172\2\143\1\151\1\165\1\155\1\167\1\164\1\162\2\144\1\172\1\145\1\154\1\162\1\156\1\142\1\170\1\145\1\165\1\172\1\151\1\164\1\163\1\157\37\uffff\1\71\2\uffff\1\164\1\150\1\141\3\145\2\uffff\1\151\1\153\1\156\1\163\1\142\1\172\1\157\1\165\1\141\2\172\1\uffff\1\141\1\163\1\172\1\165\1\154\1\164\1\156\1\145\1\uffff\1\154\1\150\1\164\1\160\1\151\1\141\1\154\1\172\1\162\1\170\1\155\1\141\1\164\1\172\1\145\1\uffff\1\166\1\162\1\171\2\uffff\1\153\1\145\1\uffff\1\163\1\145\3\172\1\145\3\172\1\151\2\156\1\163\1\uffff\1\166\1\172\1\141\1\147\1\172\1\uffff\1\162\1\145\1\156\5\172\3\uffff\1\172\3\uffff\1\156\1\165\1\147\1\172\1\141\1\uffff\1\154\1\145\1\uffff\3\172\6\uffff\1\163\2\145\1\uffff\1\154\2\172\3\uffff\4\172\6\uffff";
+        "\1\uffff\1\157\1\170\1\163\1\145\1\162\1\165\1\145\1\164\1\162\1\157\1\151\1\162\2\151\1\164\1\75\1\46\5\75\1\174\5\uffff\1\57\2\uffff\1\172\2\uffff\1\71\1\uffff\2\uffff\2\uffff\1\156\1\uffff\1\143\1\165\1\163\1\164\2\172\2\143\1\151\1\165\1\155\1\167\1\164\1\162\1\144\1\172\1\145\1\154\1\162\1\156\1\142\1\170\1\145\1\165\1\172\1\151\1\164\1\163\1\157\37\uffff\1\71\2\uffff\1\164\1\150\1\141\3\145\2\uffff\1\151\1\153\1\156\1\163\1\142\1\172\1\157\1\165\1\141\1\172\1\uffff\1\141\1\163\1\172\1\165\1\154\2\164\1\156\1\145\1\uffff\1\154\1\150\1\164\1\160\1\151\1\141\1\154\1\172\1\162\1\170\1\155\1\141\1\164\1\172\1\145\1\uffff\1\166\1\162\1\171\1\uffff\1\153\1\145\1\uffff\1\163\1\145\4\172\1\145\3\172\1\151\2\156\1\163\1\uffff\1\166\1\172\1\141\1\147\1\172\1\uffff\1\162\1\145\1\156\5\172\4\uffff\1\172\3\uffff\1\156\1\165\1\147\1\172\1\141\1\uffff\1\154\1\145\1\uffff\3\172\6\uffff\1\163\2\145\1\uffff\1\154\2\172\3\uffff\4\172\6\uffff";
     static final String DFA12_acceptS =
-        "\30\uffff\1\56\1\57\1\60\1\62\1\64\1\uffff\1\71\1\72\1\uffff\1\74\1\75\1\uffff\1\77\2\uffff\1\104\1\105\1\uffff\1\77\36\uffff\1\37\1\55\1\40\1\41\1\42\1\61\1\43\1\44\1\63\1\45\1\66\1\46\1\67\1\47\1\70\1\54\1\56\1\57\1\60\1\62\1\64\1\102\1\103\1\65\1\71\1\72\1\73\1\74\1\75\1\100\1\76\1\uffff\1\101\1\104\6\uffff\1\51\1\52\13\uffff\1\50\10\uffff\1\53\17\uffff\1\36\3\uffff\1\33\1\34\2\uffff\1\35\15\uffff\1\23\5\uffff\1\25\10\uffff\1\27\1\30\1\31\1\uffff\1\32\1\24\1\26\5\uffff\1\16\2\uffff\1\20\3\uffff\1\13\1\14\1\15\1\17\1\21\1\22\3\uffff\1\7\3\uffff\1\10\1\11\1\12\4\uffff\1\5\1\6\1\1\1\2\1\3\1\4";
+        "\30\uffff\1\56\1\57\1\60\1\62\1\64\1\uffff\1\71\1\72\1\uffff\1\74\1\75\1\uffff\1\77\2\uffff\1\104\1\105\1\uffff\1\77\35\uffff\1\37\1\55\1\40\1\41\1\42\1\61\1\43\1\44\1\63\1\45\1\66\1\46\1\67\1\47\1\70\1\54\1\56\1\57\1\60\1\62\1\64\1\102\1\103\1\65\1\71\1\72\1\73\1\74\1\75\1\100\1\76\1\uffff\1\101\1\104\6\uffff\1\51\1\52\12\uffff\1\50\11\uffff\1\53\17\uffff\1\36\3\uffff\1\34\2\uffff\1\35\16\uffff\1\24\5\uffff\1\26\10\uffff\1\23\1\30\1\31\1\32\1\uffff\1\33\1\25\1\27\5\uffff\1\16\2\uffff\1\20\3\uffff\1\13\1\14\1\15\1\17\1\21\1\22\3\uffff\1\10\3\uffff\1\7\1\11\1\12\4\uffff\1\5\1\6\1\1\1\2\1\3\1\4";
     static final String DFA12_specialS =
-        "\1\0\44\uffff\1\1\1\2\u00c2\uffff}>";
+        "\1\2\44\uffff\1\0\1\1\u00c2\uffff}>";
     static final String[] DFA12_transitionS = {
             "\11\50\2\47\2\50\1\47\22\50\1\47\1\20\1\45\3\50\1\21\1\46\1\30\1\31\1\32\1\22\1\33\1\23\1\34\1\35\12\43\2\50\1\24\1\25\1\26\2\50\1\10\1\11\1\1\1\4\1\2\1\12\2\44\1\3\2\44\1\16\1\13\1\6\1\44\1\5\1\44\1\7\1\17\1\14\2\44\1\15\3\44\1\36\1\50\1\37\1\40\1\44\1\50\1\10\1\11\1\1\1\4\1\2\1\12\2\44\1\3\2\44\1\16\1\13\1\6\1\44\1\5\1\44\1\7\1\17\1\14\2\44\1\15\3\44\1\41\1\27\1\42\uff82\50",
             "\1\51\37\uffff\1\51",
@@ -3816,160 +3825,159 @@ public class InternalPcodeLexer extends Lexer {
             "\1\62\12\uffff\1\64\5\uffff\1\63\16\uffff\1\62\12\uffff\1\64\5\uffff\1\63",
             "\1\66\17\uffff\1\65\17\uffff\1\66\17\uffff\1\65",
             "\1\67\37\uffff\1\67",
-            "\1\71\11\uffff\1\72\3\uffff\1\70\1\uffff\1\73\17\uffff\1\71\11\uffff\1\72\3\uffff\1\70\1\uffff\1\73",
-            "\1\74\37\uffff\1\74",
-            "\1\75\15\uffff\1\76\21\uffff\1\75\15\uffff\1\76",
-            "\1\77\37\uffff\1\77",
-            "\1\100\3\uffff\1\101\2\uffff\1\102\6\uffff\1\104\2\uffff\1\103\16\uffff\1\100\3\uffff\1\101\2\uffff\1\102\6\uffff\1\104\2\uffff\1\103",
-            "\1\105\1\106\36\uffff\1\105\1\106",
+            "\1\71\15\uffff\1\70\1\uffff\1\72\17\uffff\1\71\15\uffff\1\70\1\uffff\1\72",
+            "\1\73\37\uffff\1\73",
+            "\1\74\15\uffff\1\75\21\uffff\1\74\15\uffff\1\75",
+            "\1\76\37\uffff\1\76",
+            "\1\77\3\uffff\1\100\2\uffff\1\101\6\uffff\1\103\2\uffff\1\102\16\uffff\1\77\3\uffff\1\100\2\uffff\1\101\6\uffff\1\103\2\uffff\1\102",
+            "\1\104\1\105\36\uffff\1\104\1\105",
+            "\1\106\37\uffff\1\106",
             "\1\107\37\uffff\1\107",
-            "\1\110\37\uffff\1\110",
-            "\1\111",
-            "\1\113",
-            "\1\114\21\uffff\1\115",
-            "\1\117\17\uffff\1\120",
-            "\1\122",
-            "\1\124",
-            "\1\126",
-            "\1\130",
+            "\1\110",
+            "\1\112",
+            "\1\113\21\uffff\1\114",
+            "\1\116\17\uffff\1\117",
+            "\1\121",
+            "\1\123",
+            "\1\125",
+            "\1\127",
             "",
             "",
             "",
             "",
             "",
-            "\1\136\4\uffff\1\137",
+            "\1\135\4\uffff\1\136",
             "",
             "",
             "\32\52\4\uffff\1\52\1\uffff\32\52",
             "",
             "",
-            "\1\147\1\uffff\12\150",
+            "\1\146\1\uffff\12\147",
             "",
-            "\0\151",
-            "\0\151",
+            "\0\150",
+            "\0\150",
             "",
+            "",
+            "\1\152\37\uffff\1\152",
             "",
             "\1\153\37\uffff\1\153",
-            "",
             "\1\154\37\uffff\1\154",
             "\1\155\37\uffff\1\155",
-            "\1\156\37\uffff\1\156",
-            "\1\160\17\uffff\1\157\17\uffff\1\160\17\uffff\1\157",
+            "\1\157\17\uffff\1\156\17\uffff\1\157\17\uffff\1\156",
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\1\162\37\uffff\1\162",
             "\1\163\37\uffff\1\163",
             "\1\164\37\uffff\1\164",
             "\1\165\37\uffff\1\165",
             "\1\166\37\uffff\1\166",
             "\1\167\37\uffff\1\167",
-            "\1\170\37\uffff\1\170",
-            "\1\171\6\uffff\1\172\30\uffff\1\171\6\uffff\1\172",
+            "\1\170\6\uffff\1\171\30\uffff\1\170\6\uffff\1\171",
+            "\1\172\37\uffff\1\172",
             "\1\173\37\uffff\1\173",
-            "\1\174\37\uffff\1\174",
-            "\1\175\37\uffff\1\175",
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\1\175\37\uffff\1\175",
+            "\1\176\37\uffff\1\176",
             "\1\177\37\uffff\1\177",
             "\1\u0080\37\uffff\1\u0080",
             "\1\u0081\37\uffff\1\u0081",
             "\1\u0082\37\uffff\1\u0082",
-            "\1\u0083\37\uffff\1\u0083",
-            "\1\u0084\37\uffff\1\u0084",
+            "\1\u0083\3\uffff\1\u0084\33\uffff\1\u0083\3\uffff\1\u0084",
             "\1\u0085\37\uffff\1\u0085",
-            "\1\u0086\37\uffff\1\u0086",
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\1\u0087\37\uffff\1\u0087",
             "\1\u0088\37\uffff\1\u0088",
             "\1\u0089\37\uffff\1\u0089",
             "\1\u008a\37\uffff\1\u008a",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "\1\146\1\uffff\12\147",
+            "",
+            "",
             "\1\u008b\37\uffff\1\u008b",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "\1\147\1\uffff\12\150",
-            "",
-            "",
             "\1\u008c\37\uffff\1\u008c",
             "\1\u008d\37\uffff\1\u008d",
             "\1\u008e\37\uffff\1\u008e",
             "\1\u008f\37\uffff\1\u008f",
             "\1\u0090\37\uffff\1\u0090",
+            "",
+            "",
             "\1\u0091\37\uffff\1\u0091",
-            "",
-            "",
             "\1\u0092\37\uffff\1\u0092",
             "\1\u0093\37\uffff\1\u0093",
             "\1\u0094\37\uffff\1\u0094",
             "\1\u0095\37\uffff\1\u0095",
-            "\1\u0096\37\uffff\1\u0096",
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\1\u0097\37\uffff\1\u0097",
             "\1\u0098\37\uffff\1\u0098",
             "\1\u0099\37\uffff\1\u0099",
-            "\1\u009a\37\uffff\1\u009a",
-            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
             "",
-            "\1\u009d\37\uffff\1\u009d",
-            "\1\u009e\37\uffff\1\u009e",
+            "\1\u009b\37\uffff\1\u009b",
+            "\1\u009c\37\uffff\1\u009c",
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\1\u009e\37\uffff\1\u009e",
+            "\1\u009f\37\uffff\1\u009f",
             "\1\u00a0\37\uffff\1\u00a0",
             "\1\u00a1\37\uffff\1\u00a1",
             "\1\u00a2\37\uffff\1\u00a2",
             "\1\u00a3\37\uffff\1\u00a3",
-            "\1\u00a4\37\uffff\1\u00a4",
             "",
+            "\1\u00a4\37\uffff\1\u00a4",
             "\1\u00a5\37\uffff\1\u00a5",
             "\1\u00a6\37\uffff\1\u00a6",
             "\1\u00a7\37\uffff\1\u00a7",
-            "\1\u00a8\37\uffff\1\u00a8",
-            "\1\u00a9\7\uffff\1\u00aa\27\uffff\1\u00a9\7\uffff\1\u00aa",
+            "\1\u00a8\7\uffff\1\u00a9\27\uffff\1\u00a8\7\uffff\1\u00a9",
+            "\1\u00aa\37\uffff\1\u00aa",
             "\1\u00ab\37\uffff\1\u00ab",
-            "\1\u00ac\37\uffff\1\u00ac",
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\1\u00ad\37\uffff\1\u00ad",
             "\1\u00ae\37\uffff\1\u00ae",
             "\1\u00af\37\uffff\1\u00af",
             "\1\u00b0\37\uffff\1\u00b0",
             "\1\u00b1\37\uffff\1\u00b1",
-            "\1\u00b2\37\uffff\1\u00b2",
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
-            "\1\u00b4\37\uffff\1\u00b4",
+            "\1\u00b3\37\uffff\1\u00b3",
             "",
+            "\1\u00b4\37\uffff\1\u00b4",
             "\1\u00b5\37\uffff\1\u00b5",
             "\1\u00b6\37\uffff\1\u00b6",
+            "",
             "\1\u00b7\37\uffff\1\u00b7",
-            "",
-            "",
             "\1\u00b8\37\uffff\1\u00b8",
-            "\1\u00b9\37\uffff\1\u00b9",
             "",
+            "\1\u00b9\37\uffff\1\u00b9",
             "\1\u00ba\37\uffff\1\u00ba",
-            "\1\u00bb\37\uffff\1\u00bb",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
@@ -3996,6 +4004,7 @@ public class InternalPcodeLexer extends Lexer {
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "",
             "",
             "",
             "",
@@ -4073,13 +4082,33 @@ public class InternalPcodeLexer extends Lexer {
             this.transition = DFA12_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( Contains | Continue | Exchange | Interval | Decimal_1 | Package | Equals | Number_1 | Remove | Return | Array_1 | Break | False | Index | Minus | Print | Table_1 | While | Else | List_1 | Plus | Stop | Text_1 | Then | True | With | Add | And | For | New | ExclamationMarkEqualsSign | AmpersandAmpersand | PlusSignPlusSign | PlusSignEqualsSign | HyphenMinusHyphenMinus | HyphenMinusEqualsSign | LessThanSignEqualsSign | EqualsSignEqualsSign | GreaterThanSignEqualsSign | At | If | Is | To | VerticalLineVerticalLine | ExclamationMark | LeftParenthesis | RightParenthesis | Asterisk | PlusSign | Comma | HyphenMinus | FullStop | Solidus | LessThanSign | EqualsSign | GreaterThanSign | LeftSquareBracket | RightSquareBracket | CircumflexAccent | LeftCurlyBracket | RightCurlyBracket | RULE_DOUBLE | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( Contains | Continue | Exchange | Interval | Decimal | Package | Number | Equals | Remove | Return | Array_1 | Break | False | Index | Minus | Print | Table_1 | While | Text | Else | List_1 | Plus | Stop | That | Then | True | With | Add | For | New | ExclamationMarkEqualsSign | AmpersandAmpersand | PlusSignPlusSign | PlusSignEqualsSign | HyphenMinusHyphenMinus | HyphenMinusEqualsSign | LessThanSignEqualsSign | EqualsSignEqualsSign | GreaterThanSignEqualsSign | At | If | Is | To | VerticalLineVerticalLine | ExclamationMark | LeftParenthesis | RightParenthesis | Asterisk | PlusSign | Comma | HyphenMinus | FullStop | Solidus | LessThanSign | EqualsSign | GreaterThanSign | LeftSquareBracket | RightSquareBracket | CircumflexAccent | LeftCurlyBracket | RightCurlyBracket | RULE_DOUBLE | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
+                        int LA12_37 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA12_37>='\u0000' && LA12_37<='\uFFFF')) ) {s = 104;}
+
+                        else s = 40;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
+                        int LA12_38 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA12_38>='\u0000' && LA12_38<='\uFFFF')) ) {s = 104;}
+
+                        else s = 40;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
                         int LA12_0 = input.LA(1);
 
                         s = -1;
@@ -4162,26 +4191,6 @@ public class InternalPcodeLexer extends Lexer {
                         else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r'||LA12_0==' ') ) {s = 39;}
 
                         else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||(LA12_0>='#' && LA12_0<='%')||(LA12_0>=':' && LA12_0<=';')||(LA12_0>='?' && LA12_0<='@')||LA12_0=='\\'||LA12_0=='`'||(LA12_0>='~' && LA12_0<='\uFFFF')) ) {s = 40;}
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
-                        int LA12_37 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA12_37>='\u0000' && LA12_37<='\uFFFF')) ) {s = 105;}
-
-                        else s = 40;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
-                        int LA12_38 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA12_38>='\u0000' && LA12_38<='\uFFFF')) ) {s = 105;}
-
-                        else s = 40;
 
                         if ( s>=0 ) return s;
                         break;

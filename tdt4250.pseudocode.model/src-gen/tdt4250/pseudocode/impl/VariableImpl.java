@@ -11,8 +11,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import tdt4250.pseudocode.Expression;
-import tdt4250.pseudocode.Identifier;
 import tdt4250.pseudocode.PseudocodePackage;
+import tdt4250.pseudocode.Type;
 import tdt4250.pseudocode.Variable;
 
 /**
@@ -70,7 +70,7 @@ public class VariableImpl extends ExpressionImpl implements Variable {
 	 * @generated
 	 * @ordered
 	 */
-	protected Identifier type;
+	protected Type type;
 
 	/**
 	 * The default value of the '{@link #getOp() <em>Op</em>}' attribute.
@@ -192,7 +192,7 @@ public class VariableImpl extends ExpressionImpl implements Variable {
 	 * @generated
 	 */
 	@Override
-	public Identifier getType() {
+	public Type getType() {
 		return type;
 	}
 
@@ -201,8 +201,8 @@ public class VariableImpl extends ExpressionImpl implements Variable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetType(Identifier newType, NotificationChain msgs) {
-		Identifier oldType = type;
+	public NotificationChain basicSetType(Type newType, NotificationChain msgs) {
+		Type oldType = type;
 		type = newType;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
@@ -221,7 +221,7 @@ public class VariableImpl extends ExpressionImpl implements Variable {
 	 * @generated
 	 */
 	@Override
-	public void setType(Identifier newType) {
+	public void setType(Type newType) {
 		if (newType != type) {
 			NotificationChain msgs = null;
 			if (type != null)
@@ -311,7 +311,7 @@ public class VariableImpl extends ExpressionImpl implements Variable {
 			setValue((Expression) newValue);
 			return;
 		case PseudocodePackage.VARIABLE__TYPE:
-			setType((Identifier) newValue);
+			setType((Type) newValue);
 			return;
 		case PseudocodePackage.VARIABLE__OP:
 			setOp((String) newValue);
@@ -335,7 +335,7 @@ public class VariableImpl extends ExpressionImpl implements Variable {
 			setValue((Expression) null);
 			return;
 		case PseudocodePackage.VARIABLE__TYPE:
-			setType((Identifier) null);
+			setType((Type) null);
 			return;
 		case PseudocodePackage.VARIABLE__OP:
 			setOp(OP_EDEFAULT);

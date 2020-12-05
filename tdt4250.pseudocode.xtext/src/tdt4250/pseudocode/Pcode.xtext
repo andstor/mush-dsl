@@ -62,7 +62,7 @@ Variable returns Expression:
 	);
 
 Parameter returns Expression: 
-	{Variable} type=Identifier name=ID;
+	{Variable} type=Type name=ID;
 
 IfExpression returns IfExpression:
 	{IfExpression}
@@ -140,8 +140,8 @@ Collection returns Expression:
 
 List returns Collection:
 	{List}
-	'new' type=('text' | 'number' | 'decimal') ('array' | 'list' | 'table')
-	('and' 'contains' elements+=LiteralExpression (',' elements+=LiteralExpression )* )? 
+	'new' ('array' | 'list' | 'table') 'with' type=Type 
+	('that' 'contains' elements+=LiteralExpression (',' elements+=LiteralExpression )* )? 
 ;
 
 //TODO: implement Set
@@ -230,14 +230,12 @@ BooleanTestOperator:
 ;
 
 Type:
-	(EString | DOUBLE | INT)
+    {Type}
+    (types+=TypeLiteral ('with' types+=TypeLiteral)*)
 ;
 
-
-
 TypeLiteral:
-	{TypeLiteral}
-	name=('Text' | 'Number' | 'Decimal' |
+	('Text' | 'Number' | 'Decimal' |
 	'Array' | 'List' | 'Table')
 ;
 

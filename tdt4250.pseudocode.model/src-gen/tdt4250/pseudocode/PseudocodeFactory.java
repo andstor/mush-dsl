@@ -310,6 +310,15 @@ public interface PseudocodeFactory extends EFactory {
 	VariableReference createVariableReference();
 
 	/**
+	 * Returns a new object of class '<em>Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Type</em>'.
+	 * @generated
+	 */
+	Type createType();
+
+	/**
 	 * Returns a new object of class '<em>Identifier</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -326,15 +335,6 @@ public interface PseudocodeFactory extends EFactory {
 	 * @generated
 	 */
 	Collection createCollection();
-
-	/**
-	 * Returns a new object of class '<em>Type Literal</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Type Literal</em>'.
-	 * @generated
-	 */
-	TypeLiteral createTypeLiteral();
 
 	/**
 	 * Returns the package supported by this factory.

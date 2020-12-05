@@ -163,42 +163,6 @@ ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleT
 	)
 ;
 
-// Entry rule entryRuleIdentifier
-entryRuleIdentifier returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getIdentifierRule()); }
-	iv_ruleIdentifier=ruleIdentifier
-	{ $current=$iv_ruleIdentifier.current; }
-	EOF;
-
-// Rule Identifier
-ruleIdentifier returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		{
-			newCompositeNode(grammarAccess.getIdentifierAccess().getFunctionParserRuleCall_0());
-		}
-		this_Function_0=ruleFunction
-		{
-			$current = $this_Function_0.current;
-			afterParserOrEnumRuleCall();
-		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getIdentifierAccess().getTypeLiteralParserRuleCall_1());
-		}
-		this_TypeLiteral_1=ruleTypeLiteral
-		{
-			$current = $this_TypeLiteral_1.current;
-			afterParserOrEnumRuleCall();
-		}
-	)
-;
-
 // Entry rule entryRuleFunction
 entryRuleFunction returns [EObject current=null]:
 	{ newCompositeNode(grammarAccess.getFunctionRule()); }
@@ -678,9 +642,9 @@ ruleParameter returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getParameterAccess().getTypeIdentifierParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getParameterAccess().getTypeTypeParserRuleCall_1_0());
 				}
-				lv_type_1_0=ruleIdentifier
+				lv_type_1_0=ruleType
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getParameterRule());
@@ -689,7 +653,7 @@ ruleParameter returns [EObject current=null]
 						$current,
 						"type",
 						lv_type_1_0,
-						"tdt4250.pseudocode.Pcode.Identifier");
+						"tdt4250.pseudocode.Pcode.Type");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -1483,74 +1447,59 @@ ruleList returns [EObject current=null]
 			newLeafNode(otherlv_1, grammarAccess.getListAccess().getNewKeyword_1());
 		}
 		(
+			otherlv_2=Array_1
+			{
+				newLeafNode(otherlv_2, grammarAccess.getListAccess().getArrayKeyword_2_0());
+			}
+			    |
+			otherlv_3=List_1
+			{
+				newLeafNode(otherlv_3, grammarAccess.getListAccess().getListKeyword_2_1());
+			}
+			    |
+			otherlv_4=Table_1
+			{
+				newLeafNode(otherlv_4, grammarAccess.getListAccess().getTableKeyword_2_2());
+			}
+		)
+		otherlv_5=With
+		{
+			newLeafNode(otherlv_5, grammarAccess.getListAccess().getWithKeyword_3());
+		}
+		(
 			(
-				(
-					lv_type_2_1=Text_1
-					{
-						newLeafNode(lv_type_2_1, grammarAccess.getListAccess().getTypeTextKeyword_2_0_0());
+				{
+					newCompositeNode(grammarAccess.getListAccess().getTypeTypeParserRuleCall_4_0());
+				}
+				lv_type_6_0=ruleType
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getListRule());
 					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getListRule());
-						}
-						setWithLastConsumed($current, "type", lv_type_2_1, null);
-					}
-					    |
-					lv_type_2_2=Number_1
-					{
-						newLeafNode(lv_type_2_2, grammarAccess.getListAccess().getTypeNumberKeyword_2_0_1());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getListRule());
-						}
-						setWithLastConsumed($current, "type", lv_type_2_2, null);
-					}
-					    |
-					lv_type_2_3=Decimal_1
-					{
-						newLeafNode(lv_type_2_3, grammarAccess.getListAccess().getTypeDecimalKeyword_2_0_2());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getListRule());
-						}
-						setWithLastConsumed($current, "type", lv_type_2_3, null);
-					}
-				)
+					set(
+						$current,
+						"type",
+						lv_type_6_0,
+						"tdt4250.pseudocode.Pcode.Type");
+					afterParserOrEnumRuleCall();
+				}
 			)
 		)
 		(
-			otherlv_3=Array_1
+			otherlv_7=That
 			{
-				newLeafNode(otherlv_3, grammarAccess.getListAccess().getArrayKeyword_3_0());
+				newLeafNode(otherlv_7, grammarAccess.getListAccess().getThatKeyword_5_0());
 			}
-			    |
-			otherlv_4=List_1
+			otherlv_8=Contains
 			{
-				newLeafNode(otherlv_4, grammarAccess.getListAccess().getListKeyword_3_1());
-			}
-			    |
-			otherlv_5=Table_1
-			{
-				newLeafNode(otherlv_5, grammarAccess.getListAccess().getTableKeyword_3_2());
-			}
-		)
-		(
-			otherlv_6=And
-			{
-				newLeafNode(otherlv_6, grammarAccess.getListAccess().getAndKeyword_4_0());
-			}
-			otherlv_7=Contains
-			{
-				newLeafNode(otherlv_7, grammarAccess.getListAccess().getContainsKeyword_4_1());
+				newLeafNode(otherlv_8, grammarAccess.getListAccess().getContainsKeyword_5_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getListAccess().getElementsLiteralExpressionParserRuleCall_4_2_0());
+						newCompositeNode(grammarAccess.getListAccess().getElementsLiteralExpressionParserRuleCall_5_2_0());
 					}
-					lv_elements_8_0=ruleLiteralExpression
+					lv_elements_9_0=ruleLiteralExpression
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getListRule());
@@ -1558,23 +1507,23 @@ ruleList returns [EObject current=null]
 						add(
 							$current,
 							"elements",
-							lv_elements_8_0,
+							lv_elements_9_0,
 							"tdt4250.pseudocode.Pcode.LiteralExpression");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 			(
-				otherlv_9=Comma
+				otherlv_10=Comma
 				{
-					newLeafNode(otherlv_9, grammarAccess.getListAccess().getCommaKeyword_4_3_0());
+					newLeafNode(otherlv_10, grammarAccess.getListAccess().getCommaKeyword_5_3_0());
 				}
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getListAccess().getElementsLiteralExpressionParserRuleCall_4_3_1_0());
+							newCompositeNode(grammarAccess.getListAccess().getElementsLiteralExpressionParserRuleCall_5_3_1_0());
 						}
-						lv_elements_10_0=ruleLiteralExpression
+						lv_elements_11_0=ruleLiteralExpression
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getListRule());
@@ -1582,7 +1531,7 @@ ruleList returns [EObject current=null]
 							add(
 								$current,
 								"elements",
-								lv_elements_10_0,
+								lv_elements_11_0,
 								"tdt4250.pseudocode.Pcode.LiteralExpression");
 							afterParserOrEnumRuleCall();
 						}
@@ -2815,15 +2764,15 @@ ruleFunctionCall returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleTypeLiteral
-entryRuleTypeLiteral returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getTypeLiteralRule()); }
-	iv_ruleTypeLiteral=ruleTypeLiteral
-	{ $current=$iv_ruleTypeLiteral.current; }
+// Entry rule entryRuleType
+entryRuleType returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getTypeRule()); }
+	iv_ruleType=ruleType
+	{ $current=$iv_ruleType.current; }
 	EOF;
 
-// Rule TypeLiteral
-ruleTypeLiteral returns [EObject current=null]
+// Rule Type
+ruleType returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -2834,93 +2783,68 @@ ruleTypeLiteral returns [EObject current=null]
 		(
 			{
 				$current = forceCreateModelElement(
-					grammarAccess.getTypeLiteralAccess().getTypeLiteralAction_0(),
+					grammarAccess.getTypeAccess().getTypeAction_0(),
 					$current);
 			}
 		)
 		(
 			(
 				(
-					lv_name_1_1=Text_1
 					{
-						newLeafNode(lv_name_1_1, grammarAccess.getTypeLiteralAccess().getNameTextKeyword_1_0_0());
+						newCompositeNode(grammarAccess.getTypeAccess().getTypesTypeLiteralParserRuleCall_1_0_0());
 					}
+					lv_types_1_0=ruleTypeLiteral
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getTypeLiteralRule());
+							$current = createModelElementForParent(grammarAccess.getTypeRule());
 						}
-						setWithLastConsumed($current, "name", lv_name_1_1, null);
-					}
-					    |
-					lv_name_1_2=Number_1
-					{
-						newLeafNode(lv_name_1_2, grammarAccess.getTypeLiteralAccess().getNameNumberKeyword_1_0_1());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getTypeLiteralRule());
-						}
-						setWithLastConsumed($current, "name", lv_name_1_2, null);
-					}
-					    |
-					lv_name_1_3=Decimal_1
-					{
-						newLeafNode(lv_name_1_3, grammarAccess.getTypeLiteralAccess().getNameDecimalKeyword_1_0_2());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getTypeLiteralRule());
-						}
-						setWithLastConsumed($current, "name", lv_name_1_3, null);
-					}
-					    |
-					lv_name_1_4=Array_1
-					{
-						newLeafNode(lv_name_1_4, grammarAccess.getTypeLiteralAccess().getNameArrayKeyword_1_0_3());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getTypeLiteralRule());
-						}
-						setWithLastConsumed($current, "name", lv_name_1_4, null);
-					}
-					    |
-					lv_name_1_5=List_1
-					{
-						newLeafNode(lv_name_1_5, grammarAccess.getTypeLiteralAccess().getNameListKeyword_1_0_4());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getTypeLiteralRule());
-						}
-						setWithLastConsumed($current, "name", lv_name_1_5, null);
-					}
-					    |
-					lv_name_1_6=Table_1
-					{
-						newLeafNode(lv_name_1_6, grammarAccess.getTypeLiteralAccess().getNameTableKeyword_1_0_5());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getTypeLiteralRule());
-						}
-						setWithLastConsumed($current, "name", lv_name_1_6, null);
+						add(
+							$current,
+							"types",
+							lv_types_1_0,
+							"tdt4250.pseudocode.Pcode.TypeLiteral");
+						afterParserOrEnumRuleCall();
 					}
 				)
 			)
+			(
+				otherlv_2=With
+				{
+					newLeafNode(otherlv_2, grammarAccess.getTypeAccess().getWithKeyword_1_1_0());
+				}
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getTypeAccess().getTypesTypeLiteralParserRuleCall_1_1_1_0());
+						}
+						lv_types_3_0=ruleTypeLiteral
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getTypeRule());
+							}
+							add(
+								$current,
+								"types",
+								lv_types_3_0,
+								"tdt4250.pseudocode.Pcode.TypeLiteral");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+			)*
 		)
 	)
 ;
 
-// Entry rule entryRuleEString
-entryRuleEString returns [String current=null]:
-	{ newCompositeNode(grammarAccess.getEStringRule()); }
-	iv_ruleEString=ruleEString
-	{ $current=$iv_ruleEString.current.getText(); }
+// Entry rule entryRuleTypeLiteral
+entryRuleTypeLiteral returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getTypeLiteralRule()); }
+	iv_ruleTypeLiteral=ruleTypeLiteral
+	{ $current=$iv_ruleTypeLiteral.current.getText(); }
 	EOF;
 
-// Rule EString
-ruleEString returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+// Rule TypeLiteral
+ruleTypeLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 @init {
 	enterRule();
 }
@@ -2928,20 +2852,40 @@ ruleEString returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()
 	leaveRule();
 }:
 	(
-		this_STRING_0=RULE_STRING
+		kw=Text
 		{
-			$current.merge(this_STRING_0);
-		}
-		{
-			newLeafNode(this_STRING_0, grammarAccess.getEStringAccess().getSTRINGTerminalRuleCall_0());
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getTypeLiteralAccess().getTextKeyword_0());
 		}
 		    |
-		this_ID_1=RULE_ID
+		kw=Number
 		{
-			$current.merge(this_ID_1);
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getTypeLiteralAccess().getNumberKeyword_1());
 		}
+		    |
+		kw=Decimal
 		{
-			newLeafNode(this_ID_1, grammarAccess.getEStringAccess().getIDTerminalRuleCall_1());
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getTypeLiteralAccess().getDecimalKeyword_2());
+		}
+		    |
+		kw=Array_1
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getTypeLiteralAccess().getArrayKeyword_3());
+		}
+		    |
+		kw=List_1
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getTypeLiteralAccess().getListKeyword_4());
+		}
+		    |
+		kw=Table_1
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getTypeLiteralAccess().getTableKeyword_5());
 		}
 	)
 ;

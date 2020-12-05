@@ -8,42 +8,7 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
-import tdt4250.pseudocode.AndOrExpression;
-import tdt4250.pseudocode.ArithmeticSigned;
-import tdt4250.pseudocode.BooleanLiteral;
-import tdt4250.pseudocode.BooleanNegation;
-import tdt4250.pseudocode.Collection;
-import tdt4250.pseudocode.CollectionAccessor;
-import tdt4250.pseudocode.CollectionAdd;
-import tdt4250.pseudocode.CollectionRemove;
-import tdt4250.pseudocode.Comparison;
-import tdt4250.pseudocode.Equals;
-import tdt4250.pseudocode.Expression;
-import tdt4250.pseudocode.Feature;
-import tdt4250.pseudocode.ForExpression;
-import tdt4250.pseudocode.Function;
-import tdt4250.pseudocode.FunctionCall;
-import tdt4250.pseudocode.Identifier;
-import tdt4250.pseudocode.IfExpression;
-import tdt4250.pseudocode.List;
-import tdt4250.pseudocode.ListLitteral;
-import tdt4250.pseudocode.Minus;
-import tdt4250.pseudocode.Model;
-import tdt4250.pseudocode.MultiOrDiv;
-import tdt4250.pseudocode.NumberLiteral;
-import tdt4250.pseudocode.ParenthesizedExpression;
-import tdt4250.pseudocode.Plus;
-import tdt4250.pseudocode.Print;
-import tdt4250.pseudocode.PseudocodePackage;
-import tdt4250.pseudocode.SetLitteral;
-import tdt4250.pseudocode.Statement;
-import tdt4250.pseudocode.Stop;
-import tdt4250.pseudocode.StringLiteral;
-import tdt4250.pseudocode.TypeLiteral;
-import tdt4250.pseudocode.ValueExchange;
-import tdt4250.pseudocode.Variable;
-import tdt4250.pseudocode.VariableReference;
-import tdt4250.pseudocode.WhileExpression;
+import tdt4250.pseudocode.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -166,11 +131,6 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseTypeLiteral(TypeLiteral object) {
-			return createTypeLiteralAdapter();
-		}
-
-		@Override
 		public Adapter caseVariable(Variable object) {
 			return createVariableAdapter();
 		}
@@ -273,6 +233,11 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseVariableReference(VariableReference object) {
 			return createVariableReferenceAdapter();
+		}
+
+		@Override
+		public Adapter caseType(Type object) {
+			return createTypeAdapter();
 		}
 
 		@Override
@@ -743,6 +708,20 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Type <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tdt4250.pseudocode.Type
+	 * @generated
+	 */
+	public Adapter createTypeAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Identifier <em>Identifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -767,20 +746,6 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCollectionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.TypeLiteral <em>Type Literal</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.TypeLiteral
-	 * @generated
-	 */
-	public Adapter createTypeLiteralAdapter() {
 		return null;
 	}
 

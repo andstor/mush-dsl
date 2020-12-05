@@ -71,12 +71,12 @@ public interface Variable extends Expression {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' containment reference.
-	 * @see #setType(Identifier)
+	 * @see #setType(Type)
 	 * @see tdt4250.pseudocode.PseudocodePackage#getVariable_Type()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Identifier getType();
+	Type getType();
 
 	/**
 	 * Sets the value of the '{@link tdt4250.pseudocode.Variable#getType <em>Type</em>}' containment reference.
@@ -86,7 +86,7 @@ public interface Variable extends Expression {
 	 * @see #getType()
 	 * @generated
 	 */
-	void setType(Identifier value);
+	void setType(Type value);
 
 	/**
 	 * Returns the value of the '<em><b>Op</b></em>' attribute.

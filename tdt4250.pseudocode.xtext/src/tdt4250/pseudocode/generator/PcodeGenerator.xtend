@@ -42,6 +42,7 @@ import java.util.HashSet
 import tdt4250.pseudocode.FunctionCall
 import tdt4250.pseudocode.Minus
 import tdt4250.pseudocode.Model
+import tdt4250.pseudocode.Type
 
 /**
  * Generates code from your model files on save.
@@ -160,9 +161,9 @@ class PcodeGenerator extends AbstractGenerator {
         var parameters = ""
         for (v : variables) {
             val variable = v as Variable
-            val type = variable.type as TypeLiteral
+            val type = typeInferencer.infer(variable.type)
             // if( !varList.contains(variable.name)){ parameters += typeInferencer.toJvmType(type.name) + " " + variable.name + ", "}
-            parameters += typeInferencer.toJvmType(type.name) + " " + variable.name + ", "
+            parameters += typeInferencer.toJvmType(type) + " " + variable.name + ", "
             varList.add(variable.name)
         }
         parameters = parameters.substring(0, parameters.length - 2)
@@ -239,7 +240,7 @@ class PcodeGenerator extends AbstractGenerator {
     }
 
     def dispatch generateExpression(Print e) '''
-        System.out.println(«e.value.LiteralExpression»);
+        System.out.print(«e.value.LiteralExpression»);
     '''
 
     def dispatch generateExpression(CollectionAdd e) '''
@@ -281,7 +282,7 @@ class PcodeGenerator extends AbstractGenerator {
     // TODO: trim last comma ","
     def dispatch String LiteralExpression(List e) {
         var string = ''
-        var listType = typeInferencer.autobox(typeInferencer.toJvmType(e.type))
+        var listType = typeInferencer.autobox(typeInferencer.infer(e.type))
         string += 'new ArrayList<' + listType + '>'
         importTypes.add('java.util.ArrayList')
         importTypes.add('java.util.List')

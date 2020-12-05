@@ -220,7 +220,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getVariable()
 	 * @generated
 	 */
-	int VARIABLE = 14;
+	int VARIABLE = 13;
 
 	/**
 	 * The meta object id for the '{@link tdt4250.pseudocode.impl.CollectionAddImpl <em>Collection Add</em>}' class.
@@ -230,7 +230,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getCollectionAdd()
 	 * @generated
 	 */
-	int COLLECTION_ADD = 15;
+	int COLLECTION_ADD = 14;
 
 	/**
 	 * The meta object id for the '{@link tdt4250.pseudocode.impl.CollectionRemoveImpl <em>Collection Remove</em>}' class.
@@ -240,7 +240,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getCollectionRemove()
 	 * @generated
 	 */
-	int COLLECTION_REMOVE = 16;
+	int COLLECTION_REMOVE = 15;
 
 	/**
 	 * The meta object id for the '{@link tdt4250.pseudocode.impl.ValueExchangeImpl <em>Value Exchange</em>}' class.
@@ -250,7 +250,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getValueExchange()
 	 * @generated
 	 */
-	int VALUE_EXCHANGE = 17;
+	int VALUE_EXCHANGE = 16;
 
 	/**
 	 * The meta object id for the '{@link tdt4250.pseudocode.impl.CollectionImpl <em>Collection</em>}' class.
@@ -263,16 +263,6 @@ public interface PseudocodePackage extends EPackage {
 	int COLLECTION = 12;
 
 	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.TypeLiteralImpl <em>Type Literal</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.TypeLiteralImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getTypeLiteral()
-	 * @generated
-	 */
-	int TYPE_LITERAL = 13;
-
-	/**
 	 * The meta object id for the '{@link tdt4250.pseudocode.impl.ListImpl <em>List</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -280,7 +270,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getList()
 	 * @generated
 	 */
-	int LIST = 18;
+	int LIST = 17;
 
 	/**
 	 * The meta object id for the '{@link tdt4250.pseudocode.impl.SetLitteralImpl <em>Set Litteral</em>}' class.
@@ -290,7 +280,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getSetLitteral()
 	 * @generated
 	 */
-	int SET_LITTERAL = 19;
+	int SET_LITTERAL = 18;
 
 	/**
 	 * The meta object id for the '{@link tdt4250.pseudocode.impl.ListLitteralImpl <em>List Litteral</em>}' class.
@@ -300,7 +290,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getListLitteral()
 	 * @generated
 	 */
-	int LIST_LITTERAL = 20;
+	int LIST_LITTERAL = 19;
 
 	/**
 	 * The meta object id for the '{@link tdt4250.pseudocode.impl.CollectionAccessorImpl <em>Collection Accessor</em>}' class.
@@ -310,7 +300,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getCollectionAccessor()
 	 * @generated
 	 */
-	int COLLECTION_ACCESSOR = 21;
+	int COLLECTION_ACCESSOR = 20;
 
 	/**
 	 * The meta object id for the '{@link tdt4250.pseudocode.impl.AndOrExpressionImpl <em>And Or Expression</em>}' class.
@@ -320,7 +310,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getAndOrExpression()
 	 * @generated
 	 */
-	int AND_OR_EXPRESSION = 22;
+	int AND_OR_EXPRESSION = 21;
 
 	/**
 	 * The meta object id for the '{@link tdt4250.pseudocode.impl.ComparisonImpl <em>Comparison</em>}' class.
@@ -330,7 +320,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getComparison()
 	 * @generated
 	 */
-	int COMPARISON = 23;
+	int COMPARISON = 22;
 
 	/**
 	 * The meta object id for the '{@link tdt4250.pseudocode.impl.EqualsImpl <em>Equals</em>}' class.
@@ -340,7 +330,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getEquals()
 	 * @generated
 	 */
-	int EQUALS = 24;
+	int EQUALS = 23;
 
 	/**
 	 * The meta object id for the '{@link tdt4250.pseudocode.impl.PlusImpl <em>Plus</em>}' class.
@@ -350,7 +340,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getPlus()
 	 * @generated
 	 */
-	int PLUS = 25;
+	int PLUS = 24;
 
 	/**
 	 * The meta object id for the '{@link tdt4250.pseudocode.impl.MinusImpl <em>Minus</em>}' class.
@@ -360,7 +350,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getMinus()
 	 * @generated
 	 */
-	int MINUS = 26;
+	int MINUS = 25;
 
 	/**
 	 * The meta object id for the '{@link tdt4250.pseudocode.impl.MultiOrDivImpl <em>Multi Or Div</em>}' class.
@@ -370,7 +360,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getMultiOrDiv()
 	 * @generated
 	 */
-	int MULTI_OR_DIV = 27;
+	int MULTI_OR_DIV = 26;
 
 	/**
 	 * The meta object id for the '{@link tdt4250.pseudocode.impl.BooleanNegationImpl <em>Boolean Negation</em>}' class.
@@ -380,7 +370,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getBooleanNegation()
 	 * @generated
 	 */
-	int BOOLEAN_NEGATION = 28;
+	int BOOLEAN_NEGATION = 27;
 
 	/**
 	 * The meta object id for the '{@link tdt4250.pseudocode.impl.ArithmeticSignedImpl <em>Arithmetic Signed</em>}' class.
@@ -390,7 +380,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getArithmeticSigned()
 	 * @generated
 	 */
-	int ARITHMETIC_SIGNED = 29;
+	int ARITHMETIC_SIGNED = 28;
 
 	/**
 	 * The meta object id for the '{@link tdt4250.pseudocode.impl.ParenthesizedExpressionImpl <em>Parenthesized Expression</em>}' class.
@@ -400,7 +390,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getParenthesizedExpression()
 	 * @generated
 	 */
-	int PARENTHESIZED_EXPRESSION = 30;
+	int PARENTHESIZED_EXPRESSION = 29;
 
 	/**
 	 * The meta object id for the '{@link tdt4250.pseudocode.impl.NumberLiteralImpl <em>Number Literal</em>}' class.
@@ -410,7 +400,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getNumberLiteral()
 	 * @generated
 	 */
-	int NUMBER_LITERAL = 31;
+	int NUMBER_LITERAL = 30;
 
 	/**
 	 * The meta object id for the '{@link tdt4250.pseudocode.impl.StringLiteralImpl <em>String Literal</em>}' class.
@@ -420,7 +410,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getStringLiteral()
 	 * @generated
 	 */
-	int STRING_LITERAL = 32;
+	int STRING_LITERAL = 31;
 
 	/**
 	 * The meta object id for the '{@link tdt4250.pseudocode.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
@@ -430,7 +420,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getBooleanLiteral()
 	 * @generated
 	 */
-	int BOOLEAN_LITERAL = 33;
+	int BOOLEAN_LITERAL = 32;
 
 	/**
 	 * The meta object id for the '{@link tdt4250.pseudocode.impl.VariableReferenceImpl <em>Variable Reference</em>}' class.
@@ -440,7 +430,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getVariableReference()
 	 * @generated
 	 */
-	int VARIABLE_REFERENCE = 34;
+	int VARIABLE_REFERENCE = 33;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -845,33 +835,6 @@ public interface PseudocodePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_LITERAL__NAME = IDENTIFIER__NAME;
-
-	/**
-	 * The number of structural features of the '<em>Type Literal</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE_LITERAL_FEATURE_COUNT = IDENTIFIER_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Type Literal</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE_LITERAL_OPERATION_COUNT = IDENTIFIER_OPERATION_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
 	int VARIABLE__NAME = EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
@@ -1037,7 +1000,7 @@ public interface PseudocodePackage extends EPackage {
 	int LIST__ELEMENTS = COLLECTION__ELEMENTS;
 
 	/**
-	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * The feature id for the '<em><b>Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1595,6 +1558,43 @@ public interface PseudocodePackage extends EPackage {
 	int VARIABLE_REFERENCE_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.TypeImpl <em>Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.TypeImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getType()
+	 * @generated
+	 */
+	int TYPE = 34;
+
+	/**
+	 * The feature id for the '<em><b>Types</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE__TYPES = 0;
+
+	/**
+	 * The number of structural features of the '<em>Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_OPERATION_COUNT = 0;
+
+	/**
 	 * Returns the meta object for class '{@link tdt4250.pseudocode.Model <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2074,15 +2074,15 @@ public interface PseudocodePackage extends EPackage {
 	EClass getList();
 
 	/**
-	 * Returns the meta object for the attribute '{@link tdt4250.pseudocode.List#getType <em>Type</em>}'.
+	 * Returns the meta object for the containment reference '{@link tdt4250.pseudocode.List#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @return the meta object for the containment reference '<em>Type</em>'.
 	 * @see tdt4250.pseudocode.List#getType()
 	 * @see #getList()
 	 * @generated
 	 */
-	EAttribute getList_Type();
+	EReference getList_Type();
 
 	/**
 	 * Returns the meta object for class '{@link tdt4250.pseudocode.SetLitteral <em>Set Litteral</em>}'.
@@ -2520,6 +2520,27 @@ public interface PseudocodePackage extends EPackage {
 	EReference getVariableReference_Ref();
 
 	/**
+	 * Returns the meta object for class '{@link tdt4250.pseudocode.Type <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Type</em>'.
+	 * @see tdt4250.pseudocode.Type
+	 * @generated
+	 */
+	EClass getType();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link tdt4250.pseudocode.Type#getTypes <em>Types</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Types</em>'.
+	 * @see tdt4250.pseudocode.Type#getTypes()
+	 * @see #getType()
+	 * @generated
+	 */
+	EAttribute getType_Types();
+
+	/**
 	 * Returns the meta object for class '{@link tdt4250.pseudocode.Identifier <em>Identifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2560,16 +2581,6 @@ public interface PseudocodePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getCollection_Elements();
-
-	/**
-	 * Returns the meta object for class '{@link tdt4250.pseudocode.TypeLiteral <em>Type Literal</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Type Literal</em>'.
-	 * @see tdt4250.pseudocode.TypeLiteral
-	 * @generated
-	 */
-	EClass getTypeLiteral();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -2987,12 +2998,12 @@ public interface PseudocodePackage extends EPackage {
 		EClass LIST = eINSTANCE.getList();
 
 		/**
-		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute LIST__TYPE = eINSTANCE.getList_Type();
+		EReference LIST__TYPE = eINSTANCE.getList_Type();
 
 		/**
 		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.SetLitteralImpl <em>Set Litteral</em>}' class.
@@ -3355,6 +3366,24 @@ public interface PseudocodePackage extends EPackage {
 		EReference VARIABLE_REFERENCE__REF = eINSTANCE.getVariableReference_Ref();
 
 		/**
+		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.TypeImpl <em>Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see tdt4250.pseudocode.impl.TypeImpl
+		 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getType()
+		 * @generated
+		 */
+		EClass TYPE = eINSTANCE.getType();
+
+		/**
+		 * The meta object literal for the '<em><b>Types</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TYPE__TYPES = eINSTANCE.getType_Types();
+
+		/**
 		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.IdentifierImpl <em>Identifier</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3389,16 +3418,6 @@ public interface PseudocodePackage extends EPackage {
 		 * @generated
 		 */
 		EReference COLLECTION__ELEMENTS = eINSTANCE.getCollection_Elements();
-
-		/**
-		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.TypeLiteralImpl <em>Type Literal</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see tdt4250.pseudocode.impl.TypeLiteralImpl
-		 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getTypeLiteral()
-		 * @generated
-		 */
-		EClass TYPE_LITERAL = eINSTANCE.getTypeLiteral();
 
 	}
 
