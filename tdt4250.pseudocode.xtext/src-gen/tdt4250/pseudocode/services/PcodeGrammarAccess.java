@@ -28,28 +28,72 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.Model");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cModelAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cFunctionsAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cFunctionsFunctionParserRuleCall_1_0 = (RuleCall)cFunctionsAssignment_1.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cPackageKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cPackageAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cPackageQualifiedNameParserRuleCall_1_1_0 = (RuleCall)cPackageAssignment_1_1.eContents().get(0);
+		private final Assignment cFunctionsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cFunctionsFunctionParserRuleCall_2_0 = (RuleCall)cFunctionsAssignment_2.eContents().get(0);
 		
 		////generate pseudocode "http://www.pseudocode.tdt4250/xtext/Pcode"
 		///* Da burde det meste fungere ;) 
 		// * Da er det bare å gå i gang med å generere kode ;)
 		// * Dette gjøres i tdt4250.pseudocode.generator pakken!
 		// */ Model:
-		//	{Model} functions+=Function*;
+		//	{Model} ('package' package=QualifiedName)?
+		//	functions+=Function*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Model} functions+=Function*
+		//{Model} ('package' package=QualifiedName)? functions+=Function*
 		public Group getGroup() { return cGroup; }
 		
 		//{Model}
 		public Action getModelAction_0() { return cModelAction_0; }
 		
+		//('package' package=QualifiedName)?
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'package'
+		public Keyword getPackageKeyword_1_0() { return cPackageKeyword_1_0; }
+		
+		//package=QualifiedName
+		public Assignment getPackageAssignment_1_1() { return cPackageAssignment_1_1; }
+		
+		//QualifiedName
+		public RuleCall getPackageQualifiedNameParserRuleCall_1_1_0() { return cPackageQualifiedNameParserRuleCall_1_1_0; }
+		
 		//functions+=Function*
-		public Assignment getFunctionsAssignment_1() { return cFunctionsAssignment_1; }
+		public Assignment getFunctionsAssignment_2() { return cFunctionsAssignment_2; }
 		
 		//Function
-		public RuleCall getFunctionsFunctionParserRuleCall_1_0() { return cFunctionsFunctionParserRuleCall_1_0; }
+		public RuleCall getFunctionsFunctionParserRuleCall_2_0() { return cFunctionsFunctionParserRuleCall_2_0; }
+	}
+	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.QualifiedName");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		
+		//QualifiedName:
+		//	ID ('.' ID)*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//ID ('.' ID)*
+		public Group getGroup() { return cGroup; }
+		
+		//ID
+		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
+		
+		//('.' ID)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'.'
+		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
+		
+		//ID
+		public RuleCall getIDTerminalRuleCall_1_1() { return cIDTerminalRuleCall_1_1; }
 	}
 	public class IdentifierElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.Identifier");
@@ -1831,6 +1875,7 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	
 	
 	private final ModelElements pModel;
+	private final QualifiedNameElements pQualifiedName;
 	private final IdentifierElements pIdentifier;
 	private final FunctionElements pFunction;
 	private final FeatureElements pFeature;
@@ -1882,6 +1927,7 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
+		this.pQualifiedName = new QualifiedNameElements();
 		this.pIdentifier = new IdentifierElements();
 		this.pFunction = new FunctionElements();
 		this.pFeature = new FeatureElements();
@@ -1956,13 +2002,24 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	// * Da er det bare å gå i gang med å generere kode ;)
 	// * Dette gjøres i tdt4250.pseudocode.generator pakken!
 	// */ Model:
-	//	{Model} functions+=Function*;
+	//	{Model} ('package' package=QualifiedName)?
+	//	functions+=Function*;
 	public ModelElements getModelAccess() {
 		return pModel;
 	}
 	
 	public ParserRule getModelRule() {
 		return getModelAccess().getRule();
+	}
+	
+	//QualifiedName:
+	//	ID ('.' ID)*;
+	public QualifiedNameElements getQualifiedNameAccess() {
+		return pQualifiedName;
+	}
+	
+	public ParserRule getQualifiedNameRule() {
+		return getQualifiedNameAccess().getRule();
 	}
 	
 	//Identifier:

@@ -1,13 +1,15 @@
+package koko.lol;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.ArrayList;
 
-class PARTITION {
-    public static String implementation( int p, int r ) {
-        List<List<List<Integer>>> ff = new ArrayList<List<List<Integer>>>(Arrays.asList(new ArrayList<List<Integer>>(Arrays.asList(new ArrayList<Integer>(Arrays.asList(1,2))))));
-        List<Integer> B = new ArrayList<Integer>(Arrays.asList(1,2));
+public class PARTITION {
+    public static String run(int p, int r) {
+        List<List<List<Integer>>> ff = new ArrayList<List<List<Integer>>>(Arrays.asList(new ArrayList<List<Integer>>(Arrays.asList(new ArrayList<Integer>(Arrays.asList(1,2,4))))));
+        List<Integer> B = new ArrayList<Integer>(Arrays.asList(1,2,3));
         ArrayList<Integer> B1 = new ArrayList<Integer>(Arrays.asList(1,2,3,4));
         ArrayList<Integer> B2 = new ArrayList<Integer>(Arrays.asList(1,1,1,1));
         Set<Set<Integer>> y = new HashSet<Set<Integer>>(Arrays.asList(new HashSet<Integer>(Arrays.asList(1,1)),new HashSet<Integer>(Arrays.asList(1,1)),new HashSet<Integer>(Arrays.asList(3,3))));
@@ -15,8 +17,8 @@ class PARTITION {
         int i = p;
         i = i;
         int j = p;
-        int f = 0;
-        String ww = PARTITION.implementation();
+        int f = 2;
+        String ww = PARTITION.run();
         for (int VAR0 = 1; VAR0 <= r+1; VAR0++) {
             int temp = B.get(j);
             if (2<=x+1) {
@@ -32,7 +34,7 @@ class PARTITION {
         B.set(i+1,VAR4);
         B.set(r,VAR3);
         System.out.println(ff);
-        String testing = LOL.implementation()+"asdasdasdasd";
+        String testing = LOL.run()+"asdasdasdasd";
         return testing;
     }
 }

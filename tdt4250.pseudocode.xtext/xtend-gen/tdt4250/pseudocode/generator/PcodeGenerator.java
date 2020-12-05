@@ -35,6 +35,7 @@ import tdt4250.pseudocode.IfExpression;
 import tdt4250.pseudocode.List;
 import tdt4250.pseudocode.ListLitteral;
 import tdt4250.pseudocode.Minus;
+import tdt4250.pseudocode.Model;
 import tdt4250.pseudocode.MultiOrDiv;
 import tdt4250.pseudocode.NumberLiteral;
 import tdt4250.pseudocode.ParenthesizedExpression;
@@ -103,12 +104,22 @@ public class PcodeGenerator extends AbstractGenerator {
         this.varCounter = 0;
         this.varList.clear();
         this.importTypes.clear();
+        EObject _eContainer = e.eContainer();
+        String packageName = ((Model) _eContainer).getPackage();
+        String folder = "";
+        if ((packageName != null)) {
+          String _folder = folder;
+          String _replace = packageName.replace(".", "/");
+          String _plus = (_replace + "/");
+          folder = (_folder + _plus);
+        }
         String res = this.generate(e);
         String _resPrint = resPrint;
         resPrint = (_resPrint + res);
         String _name = e.getName();
-        String _plus = (_name + ".java");
-        fsa.generateFile(_plus, res);
+        String _plus_1 = (folder + _name);
+        String _plus_2 = (_plus_1 + ".java");
+        fsa.generateFile(_plus_2, res);
       }
     }
     InputOutput.<String>println(resPrint);
@@ -119,8 +130,17 @@ public class PcodeGenerator extends AbstractGenerator {
   }
   
   public String generate(final Function e) {
-    String params = this.generateParameters(e.getParameters());
+    EObject _eContainer = e.eContainer();
+    String packageName = ((Model) _eContainer).getPackage();
     String type = this.typeInferencer.infer(e);
+    String params = "";
+    boolean _isEmpty = e.getParameters().isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      String _params = params;
+      String _generateParameters = this.generateParameters(e.getParameters());
+      params = (_params + _generateParameters);
+    }
     String body = "";
     EList<Feature> _features = e.getFeatures();
     for (final Feature f : _features) {
@@ -129,6 +149,11 @@ public class PcodeGenerator extends AbstractGenerator {
       body = (_body + _generateFeature);
     }
     StringConcatenation _builder = new StringConcatenation();
+    _builder.append("package ");
+    _builder.append(packageName);
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
     {
       for(final String importType : this.importTypes) {
         _builder.append("import ");
@@ -138,7 +163,7 @@ public class PcodeGenerator extends AbstractGenerator {
       }
     }
     _builder.newLine();
-    _builder.append("class ");
+    _builder.append("public class ");
     String _name = e.getName();
     _builder.append(_name);
     _builder.append(" {");
@@ -146,10 +171,9 @@ public class PcodeGenerator extends AbstractGenerator {
     _builder.append("    ");
     _builder.append("public static ");
     _builder.append(type, "    ");
-    _builder.append(" implementation( ");
-    String _generateParameters = this.generateParameters(e.getParameters());
-    _builder.append(_generateParameters, "    ");
-    _builder.append(" ) {");
+    _builder.append(" run(");
+    _builder.append(params, "    ");
+    _builder.append(") {");
     _builder.newLineIfNotEmpty();
     _builder.append("        ");
     _builder.append(body, "        ");
@@ -221,12 +245,12 @@ public class PcodeGenerator extends AbstractGenerator {
       if (_not) {
         _builder.append(" else {");
         _builder.newLineIfNotEmpty();
-        _builder.append("                ");
+        _builder.append("                    ");
         {
           EList<Feature> _otherwise = e.getOtherwise();
           for(final Feature f_1 : _otherwise) {
             Object _generateFeature_1 = this.generateFeature(f_1);
-            _builder.append(_generateFeature_1, "                ");
+            _builder.append(_generateFeature_1, "                    ");
           }
         }
         _builder.newLineIfNotEmpty();
@@ -641,7 +665,7 @@ public class PcodeGenerator extends AbstractGenerator {
     String string = "";
     String _string = string;
     String _name = e.getRef().getName();
-    String _plus = (_name + ".implementation(");
+    String _plus = (_name + ".run(");
     string = (_string + _plus);
     boolean _isEmpty = e.getParameters().isEmpty();
     if (_isEmpty) {

@@ -7,29 +7,29 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Model</b></em>'.
+ * A representation of the model object '<em><b>Package</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link tdt4250.pseudocode.Model#getFunctions <em>Functions</em>}</li>
- *   <li>{@link tdt4250.pseudocode.Model#getPackage <em>Package</em>}</li>
+ *   <li>{@link tdt4250.pseudocode.Package#getFunctions <em>Functions</em>}</li>
+ *   <li>{@link tdt4250.pseudocode.Package#getPackage <em>Package</em>}</li>
  * </ul>
  *
- * @see tdt4250.pseudocode.PseudocodePackage#getModel()
+ * @see tdt4250.pseudocode.PseudocodePackage#getPackage()
  * @model
  * @generated
  */
-public interface Model extends EObject {
+public interface Package extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Functions</b></em>' containment reference list.
 	 * The list contents are of type {@link tdt4250.pseudocode.Function}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Functions</em>' containment reference list.
-	 * @see tdt4250.pseudocode.PseudocodePackage#getModel_Functions()
+	 * @see tdt4250.pseudocode.PseudocodePackage#getPackage_Functions()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -41,14 +41,14 @@ public interface Model extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Package</em>' attribute.
 	 * @see #setPackage(String)
-	 * @see tdt4250.pseudocode.PseudocodePackage#getModel_Package()
+	 * @see tdt4250.pseudocode.PseudocodePackage#getPackage_Package()
 	 * @model
 	 * @generated
 	 */
 	String getPackage();
 
 	/**
-	 * Sets the value of the '{@link tdt4250.pseudocode.Model#getPackage <em>Package</em>}' attribute.
+	 * Sets the value of the '{@link tdt4250.pseudocode.Package#getPackage <em>Package</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Package</em>' attribute.
@@ -57,4 +57,4 @@ public interface Model extends EObject {
 	 */
 	void setPackage(String value);
 
-} // Model
+} // Package

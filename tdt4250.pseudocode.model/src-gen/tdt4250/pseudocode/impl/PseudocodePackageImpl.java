@@ -389,6 +389,16 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
+	public EAttribute getModel_Package() {
+		return (EAttribute) modelEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getFunction() {
 		return functionEClass;
 	}
@@ -1305,6 +1315,7 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		// Create classes and their features
 		modelEClass = createEClass(MODEL);
 		createEReference(modelEClass, MODEL__FUNCTIONS);
+		createEAttribute(modelEClass, MODEL__PACKAGE);
 
 		identifierEClass = createEClass(IDENTIFIER);
 		createEAttribute(identifierEClass, IDENTIFIER__NAME);
@@ -1497,6 +1508,8 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		initEReference(getModel_Functions(), this.getFunction(), null, "functions", null, 0, -1, Model.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getModel_Package(), ecorePackage.getEString(), "package", null, 0, 1, Model.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(identifierEClass, Identifier.class, "Identifier", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);

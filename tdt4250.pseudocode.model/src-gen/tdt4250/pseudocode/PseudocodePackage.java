@@ -76,13 +76,22 @@ public interface PseudocodePackage extends EPackage {
 	int MODEL__FUNCTIONS = 0;
 
 	/**
+	 * The feature id for the '<em><b>Package</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__PACKAGE = 1;
+
+	/**
 	 * The number of structural features of the '<em>Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_FEATURE_COUNT = 1;
+	int MODEL_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Model</em>' class.
@@ -102,6 +111,336 @@ public interface PseudocodePackage extends EPackage {
 	 * @generated
 	 */
 	int IDENTIFIER = 1;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.FunctionImpl <em>Function</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.FunctionImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getFunction()
+	 * @generated
+	 */
+	int FUNCTION = 2;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.FeatureImpl <em>Feature</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.FeatureImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getFeature()
+	 * @generated
+	 */
+	int FEATURE = 3;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.StatementImpl <em>Statement</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.StatementImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getStatement()
+	 * @generated
+	 */
+	int STATEMENT = 4;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.ExpressionImpl <em>Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.ExpressionImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getExpression()
+	 * @generated
+	 */
+	int EXPRESSION = 5;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.IfExpressionImpl <em>If Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.IfExpressionImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getIfExpression()
+	 * @generated
+	 */
+	int IF_EXPRESSION = 6;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.ForExpressionImpl <em>For Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.ForExpressionImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getForExpression()
+	 * @generated
+	 */
+	int FOR_EXPRESSION = 7;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.WhileExpressionImpl <em>While Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.WhileExpressionImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getWhileExpression()
+	 * @generated
+	 */
+	int WHILE_EXPRESSION = 8;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.StopImpl <em>Stop</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.StopImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getStop()
+	 * @generated
+	 */
+	int STOP = 9;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.PrintImpl <em>Print</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.PrintImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getPrint()
+	 * @generated
+	 */
+	int PRINT = 10;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.FunctionCallImpl <em>Function Call</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.FunctionCallImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getFunctionCall()
+	 * @generated
+	 */
+	int FUNCTION_CALL = 11;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.VariableImpl <em>Variable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.VariableImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getVariable()
+	 * @generated
+	 */
+	int VARIABLE = 14;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.CollectionAddImpl <em>Collection Add</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.CollectionAddImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getCollectionAdd()
+	 * @generated
+	 */
+	int COLLECTION_ADD = 15;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.CollectionRemoveImpl <em>Collection Remove</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.CollectionRemoveImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getCollectionRemove()
+	 * @generated
+	 */
+	int COLLECTION_REMOVE = 16;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.ValueExchangeImpl <em>Value Exchange</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.ValueExchangeImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getValueExchange()
+	 * @generated
+	 */
+	int VALUE_EXCHANGE = 17;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.CollectionImpl <em>Collection</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.CollectionImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getCollection()
+	 * @generated
+	 */
+	int COLLECTION = 12;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.TypeLiteralImpl <em>Type Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.TypeLiteralImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getTypeLiteral()
+	 * @generated
+	 */
+	int TYPE_LITERAL = 13;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.ListImpl <em>List</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.ListImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getList()
+	 * @generated
+	 */
+	int LIST = 18;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.SetLitteralImpl <em>Set Litteral</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.SetLitteralImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getSetLitteral()
+	 * @generated
+	 */
+	int SET_LITTERAL = 19;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.ListLitteralImpl <em>List Litteral</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.ListLitteralImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getListLitteral()
+	 * @generated
+	 */
+	int LIST_LITTERAL = 20;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.CollectionAccessorImpl <em>Collection Accessor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.CollectionAccessorImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getCollectionAccessor()
+	 * @generated
+	 */
+	int COLLECTION_ACCESSOR = 21;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.AndOrExpressionImpl <em>And Or Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.AndOrExpressionImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getAndOrExpression()
+	 * @generated
+	 */
+	int AND_OR_EXPRESSION = 22;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.ComparisonImpl <em>Comparison</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.ComparisonImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getComparison()
+	 * @generated
+	 */
+	int COMPARISON = 23;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.EqualsImpl <em>Equals</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.EqualsImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getEquals()
+	 * @generated
+	 */
+	int EQUALS = 24;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.PlusImpl <em>Plus</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.PlusImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getPlus()
+	 * @generated
+	 */
+	int PLUS = 25;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.MinusImpl <em>Minus</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.MinusImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getMinus()
+	 * @generated
+	 */
+	int MINUS = 26;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.MultiOrDivImpl <em>Multi Or Div</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.MultiOrDivImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getMultiOrDiv()
+	 * @generated
+	 */
+	int MULTI_OR_DIV = 27;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.BooleanNegationImpl <em>Boolean Negation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.BooleanNegationImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getBooleanNegation()
+	 * @generated
+	 */
+	int BOOLEAN_NEGATION = 28;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.ArithmeticSignedImpl <em>Arithmetic Signed</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.ArithmeticSignedImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getArithmeticSigned()
+	 * @generated
+	 */
+	int ARITHMETIC_SIGNED = 29;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.ParenthesizedExpressionImpl <em>Parenthesized Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.ParenthesizedExpressionImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getParenthesizedExpression()
+	 * @generated
+	 */
+	int PARENTHESIZED_EXPRESSION = 30;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.NumberLiteralImpl <em>Number Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.NumberLiteralImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getNumberLiteral()
+	 * @generated
+	 */
+	int NUMBER_LITERAL = 31;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.StringLiteralImpl <em>String Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.StringLiteralImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getStringLiteral()
+	 * @generated
+	 */
+	int STRING_LITERAL = 32;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.BooleanLiteralImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getBooleanLiteral()
+	 * @generated
+	 */
+	int BOOLEAN_LITERAL = 33;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.VariableReferenceImpl <em>Variable Reference</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.VariableReferenceImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getVariableReference()
+	 * @generated
+	 */
+	int VARIABLE_REFERENCE = 34;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -129,16 +468,6 @@ public interface PseudocodePackage extends EPackage {
 	 * @ordered
 	 */
 	int IDENTIFIER_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.FunctionImpl <em>Function</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.FunctionImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getFunction()
-	 * @generated
-	 */
-	int FUNCTION = 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -186,16 +515,6 @@ public interface PseudocodePackage extends EPackage {
 	int FUNCTION_OPERATION_COUNT = IDENTIFIER_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.FeatureImpl <em>Feature</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.FeatureImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getFeature()
-	 * @generated
-	 */
-	int FEATURE = 3;
-
-	/**
 	 * The number of structural features of the '<em>Feature</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -212,16 +531,6 @@ public interface PseudocodePackage extends EPackage {
 	 * @ordered
 	 */
 	int FEATURE_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.StatementImpl <em>Statement</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.StatementImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getStatement()
-	 * @generated
-	 */
-	int STATEMENT = 4;
 
 	/**
 	 * The number of structural features of the '<em>Statement</em>' class.
@@ -242,16 +551,6 @@ public interface PseudocodePackage extends EPackage {
 	int STATEMENT_OPERATION_COUNT = FEATURE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.ExpressionImpl <em>Expression</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.ExpressionImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getExpression()
-	 * @generated
-	 */
-	int EXPRESSION = 5;
-
-	/**
 	 * The number of structural features of the '<em>Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -268,16 +567,6 @@ public interface PseudocodePackage extends EPackage {
 	 * @ordered
 	 */
 	int EXPRESSION_OPERATION_COUNT = FEATURE_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.IfExpressionImpl <em>If Expression</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.IfExpressionImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getIfExpression()
-	 * @generated
-	 */
-	int IF_EXPRESSION = 6;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -334,16 +623,6 @@ public interface PseudocodePackage extends EPackage {
 	int IF_EXPRESSION_OPERATION_COUNT = STATEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.ForExpressionImpl <em>For Expression</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.ForExpressionImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getForExpression()
-	 * @generated
-	 */
-	int FOR_EXPRESSION = 7;
-
-	/**
 	 * The feature id for the '<em><b>From</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -389,16 +668,6 @@ public interface PseudocodePackage extends EPackage {
 	int FOR_EXPRESSION_OPERATION_COUNT = STATEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.WhileExpressionImpl <em>While Expression</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.WhileExpressionImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getWhileExpression()
-	 * @generated
-	 */
-	int WHILE_EXPRESSION = 8;
-
-	/**
 	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -433,16 +702,6 @@ public interface PseudocodePackage extends EPackage {
 	 * @ordered
 	 */
 	int WHILE_EXPRESSION_OPERATION_COUNT = STATEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.StopImpl <em>Stop</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.StopImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getStop()
-	 * @generated
-	 */
-	int STOP = 9;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -481,16 +740,6 @@ public interface PseudocodePackage extends EPackage {
 	int STOP_OPERATION_COUNT = STATEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.PrintImpl <em>Print</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.PrintImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getPrint()
-	 * @generated
-	 */
-	int PRINT = 10;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -525,16 +774,6 @@ public interface PseudocodePackage extends EPackage {
 	 * @ordered
 	 */
 	int PRINT_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.FunctionCallImpl <em>Function Call</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.FunctionCallImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getFunctionCall()
-	 * @generated
-	 */
-	int FUNCTION_CALL = 11;
 
 	/**
 	 * The feature id for the '<em><b>Ref</b></em>' reference.
@@ -573,56 +812,6 @@ public interface PseudocodePackage extends EPackage {
 	int FUNCTION_CALL_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.VariableImpl <em>Variable</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.VariableImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getVariable()
-	 * @generated
-	 */
-	int VARIABLE = 14;
-
-	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.CollectionAddImpl <em>Collection Add</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.CollectionAddImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getCollectionAdd()
-	 * @generated
-	 */
-	int COLLECTION_ADD = 15;
-
-	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.CollectionRemoveImpl <em>Collection Remove</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.CollectionRemoveImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getCollectionRemove()
-	 * @generated
-	 */
-	int COLLECTION_REMOVE = 16;
-
-	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.ValueExchangeImpl <em>Value Exchange</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.ValueExchangeImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getValueExchange()
-	 * @generated
-	 */
-	int VALUE_EXCHANGE = 17;
-
-	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.CollectionImpl <em>Collection</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.CollectionImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getCollection()
-	 * @generated
-	 */
-	int COLLECTION = 12;
-
-	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -648,16 +837,6 @@ public interface PseudocodePackage extends EPackage {
 	 * @ordered
 	 */
 	int COLLECTION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.TypeLiteralImpl <em>Type Literal</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.TypeLiteralImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getTypeLiteral()
-	 * @generated
-	 */
-	int TYPE_LITERAL = 13;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -849,16 +1028,6 @@ public interface PseudocodePackage extends EPackage {
 	int VALUE_EXCHANGE_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.ListImpl <em>List</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.ListImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getList()
-	 * @generated
-	 */
-	int LIST = 18;
-
-	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -895,16 +1064,6 @@ public interface PseudocodePackage extends EPackage {
 	int LIST_OPERATION_COUNT = COLLECTION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.SetLitteralImpl <em>Set Litteral</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.SetLitteralImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getSetLitteral()
-	 * @generated
-	 */
-	int SET_LITTERAL = 19;
-
-	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -932,16 +1091,6 @@ public interface PseudocodePackage extends EPackage {
 	int SET_LITTERAL_OPERATION_COUNT = COLLECTION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.ListLitteralImpl <em>List Litteral</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.ListLitteralImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getListLitteral()
-	 * @generated
-	 */
-	int LIST_LITTERAL = 20;
-
-	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -967,16 +1116,6 @@ public interface PseudocodePackage extends EPackage {
 	 * @ordered
 	 */
 	int LIST_LITTERAL_OPERATION_COUNT = COLLECTION_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.CollectionAccessorImpl <em>Collection Accessor</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.CollectionAccessorImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getCollectionAccessor()
-	 * @generated
-	 */
-	int COLLECTION_ACCESSOR = 21;
 
 	/**
 	 * The feature id for the '<em><b>Collection</b></em>' reference.
@@ -1013,16 +1152,6 @@ public interface PseudocodePackage extends EPackage {
 	 * @ordered
 	 */
 	int COLLECTION_ACCESSOR_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.AndOrExpressionImpl <em>And Or Expression</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.AndOrExpressionImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getAndOrExpression()
-	 * @generated
-	 */
-	int AND_OR_EXPRESSION = 22;
 
 	/**
 	 * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1070,16 +1199,6 @@ public interface PseudocodePackage extends EPackage {
 	int AND_OR_EXPRESSION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.ComparisonImpl <em>Comparison</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.ComparisonImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getComparison()
-	 * @generated
-	 */
-	int COMPARISON = 23;
-
-	/**
 	 * The feature id for the '<em><b>Left</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1123,16 +1242,6 @@ public interface PseudocodePackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPARISON_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.EqualsImpl <em>Equals</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.EqualsImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getEquals()
-	 * @generated
-	 */
-	int EQUALS = 24;
 
 	/**
 	 * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1180,16 +1289,6 @@ public interface PseudocodePackage extends EPackage {
 	int EQUALS_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.PlusImpl <em>Plus</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.PlusImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getPlus()
-	 * @generated
-	 */
-	int PLUS = 25;
-
-	/**
 	 * The feature id for the '<em><b>Left</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1226,16 +1325,6 @@ public interface PseudocodePackage extends EPackage {
 	int PLUS_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.MinusImpl <em>Minus</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.MinusImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getMinus()
-	 * @generated
-	 */
-	int MINUS = 26;
-
-	/**
 	 * The feature id for the '<em><b>Left</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1270,16 +1359,6 @@ public interface PseudocodePackage extends EPackage {
 	 * @ordered
 	 */
 	int MINUS_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.MultiOrDivImpl <em>Multi Or Div</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.MultiOrDivImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getMultiOrDiv()
-	 * @generated
-	 */
-	int MULTI_OR_DIV = 27;
 
 	/**
 	 * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1327,16 +1406,6 @@ public interface PseudocodePackage extends EPackage {
 	int MULTI_OR_DIV_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.BooleanNegationImpl <em>Boolean Negation</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.BooleanNegationImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getBooleanNegation()
-	 * @generated
-	 */
-	int BOOLEAN_NEGATION = 28;
-
-	/**
 	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1362,16 +1431,6 @@ public interface PseudocodePackage extends EPackage {
 	 * @ordered
 	 */
 	int BOOLEAN_NEGATION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.ArithmeticSignedImpl <em>Arithmetic Signed</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.ArithmeticSignedImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getArithmeticSigned()
-	 * @generated
-	 */
-	int ARITHMETIC_SIGNED = 29;
 
 	/**
 	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -1401,16 +1460,6 @@ public interface PseudocodePackage extends EPackage {
 	int ARITHMETIC_SIGNED_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.ParenthesizedExpressionImpl <em>Parenthesized Expression</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.ParenthesizedExpressionImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getParenthesizedExpression()
-	 * @generated
-	 */
-	int PARENTHESIZED_EXPRESSION = 30;
-
-	/**
 	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1436,16 +1485,6 @@ public interface PseudocodePackage extends EPackage {
 	 * @ordered
 	 */
 	int PARENTHESIZED_EXPRESSION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.NumberLiteralImpl <em>Number Literal</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.NumberLiteralImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getNumberLiteral()
-	 * @generated
-	 */
-	int NUMBER_LITERAL = 31;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1475,16 +1514,6 @@ public interface PseudocodePackage extends EPackage {
 	int NUMBER_LITERAL_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.StringLiteralImpl <em>String Literal</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.StringLiteralImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getStringLiteral()
-	 * @generated
-	 */
-	int STRING_LITERAL = 32;
-
-	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1512,16 +1541,6 @@ public interface PseudocodePackage extends EPackage {
 	int STRING_LITERAL_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.BooleanLiteralImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getBooleanLiteral()
-	 * @generated
-	 */
-	int BOOLEAN_LITERAL = 33;
-
-	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1547,16 +1566,6 @@ public interface PseudocodePackage extends EPackage {
 	 * @ordered
 	 */
 	int BOOLEAN_LITERAL_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.VariableReferenceImpl <em>Variable Reference</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.VariableReferenceImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getVariableReference()
-	 * @generated
-	 */
-	int VARIABLE_REFERENCE = 34;
 
 	/**
 	 * The feature id for the '<em><b>Ref</b></em>' reference.
@@ -1605,6 +1614,17 @@ public interface PseudocodePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getModel_Functions();
+
+	/**
+	 * Returns the meta object for the attribute '{@link tdt4250.pseudocode.Model#getPackage <em>Package</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Package</em>'.
+	 * @see tdt4250.pseudocode.Model#getPackage()
+	 * @see #getModel()
+	 * @generated
+	 */
+	EAttribute getModel_Package();
 
 	/**
 	 * Returns the meta object for class '{@link tdt4250.pseudocode.Function <em>Function</em>}'.
@@ -2591,6 +2611,14 @@ public interface PseudocodePackage extends EPackage {
 		 * @generated
 		 */
 		EReference MODEL__FUNCTIONS = eINSTANCE.getModel_Functions();
+
+		/**
+		 * The meta object literal for the '<em><b>Package</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODEL__PACKAGE = eINSTANCE.getModel_Package();
 
 		/**
 		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.FunctionImpl <em>Function</em>}' class.

@@ -65,6 +65,9 @@ public class PcodeParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getTypeLiteralAccess().getNameAlternatives_1_0(), "rule__TypeLiteral__NameAlternatives_1_0");
 			builder.put(grammarAccess.getEStringAccess().getAlternatives(), "rule__EString__Alternatives");
 			builder.put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
+			builder.put(grammarAccess.getModelAccess().getGroup_1(), "rule__Model__Group_1__0");
+			builder.put(grammarAccess.getQualifiedNameAccess().getGroup(), "rule__QualifiedName__Group__0");
+			builder.put(grammarAccess.getQualifiedNameAccess().getGroup_1(), "rule__QualifiedName__Group_1__0");
 			builder.put(grammarAccess.getFunctionAccess().getGroup(), "rule__Function__Group__0");
 			builder.put(grammarAccess.getFunctionAccess().getGroup_3(), "rule__Function__Group_3__0");
 			builder.put(grammarAccess.getFunctionAccess().getGroup_3_1(), "rule__Function__Group_3_1__0");
@@ -124,7 +127,8 @@ public class PcodeParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getFunctionCallAccess().getGroup_3(), "rule__FunctionCall__Group_3__0");
 			builder.put(grammarAccess.getFunctionCallAccess().getGroup_3_1(), "rule__FunctionCall__Group_3_1__0");
 			builder.put(grammarAccess.getTypeLiteralAccess().getGroup(), "rule__TypeLiteral__Group__0");
-			builder.put(grammarAccess.getModelAccess().getFunctionsAssignment_1(), "rule__Model__FunctionsAssignment_1");
+			builder.put(grammarAccess.getModelAccess().getPackageAssignment_1_1(), "rule__Model__PackageAssignment_1_1");
+			builder.put(grammarAccess.getModelAccess().getFunctionsAssignment_2(), "rule__Model__FunctionsAssignment_2");
 			builder.put(grammarAccess.getFunctionAccess().getNameAssignment_1(), "rule__Function__NameAssignment_1");
 			builder.put(grammarAccess.getFunctionAccess().getParametersAssignment_3_0(), "rule__Function__ParametersAssignment_3_0");
 			builder.put(grammarAccess.getFunctionAccess().getParametersAssignment_3_1_1(), "rule__Function__ParametersAssignment_3_1_1");

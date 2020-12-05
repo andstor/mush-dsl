@@ -21,6 +21,8 @@ Interval : ('I'|'i')('N'|'n')('T'|'t')('E'|'e')('R'|'r')('V'|'v')('A'|'a')('L'|'
 
 Decimal_1 : ('D'|'d')('E'|'e')('C'|'c')('I'|'i')('M'|'m')('A'|'a')('L'|'l');
 
+Package : ('P'|'p')('A'|'a')('C'|'c')('K'|'k')('A'|'a')('G'|'g')('E'|'e');
+
 Equals : ('E'|'e')('Q'|'q')('U'|'u')('A'|'a')('L'|'l')('S'|'s');
 
 Number_1 : ('N'|'n')('U'|'u')('M'|'m')('B'|'b')('E'|'e')('R'|'r');
@@ -110,6 +112,8 @@ PlusSign : '+';
 Comma : ',';
 
 HyphenMinus : '-';
+
+FullStop : '.';
 
 Solidus : '/';
 

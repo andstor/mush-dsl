@@ -38,77 +38,39 @@ public class PcodeParsingTest {
     @Override
     public String apply() {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("        \t");
+      _builder.append("package no.test.pseudo2");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("PARTITION2(number p, number r)");
       _builder.newLine();
-      _builder.append("        \t   ");
+      _builder.append("    ");
       _builder.append("a=0");
       _builder.newLine();
-      _builder.append("        \t   ");
+      _builder.append("    ");
+      _builder.append("asf=2");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("print 2 + \"lol\"");
+      _builder.newLine();
+      _builder.append("    ");
       _builder.append("return a");
+      _builder.newLine();
       _builder.newLine();
       _builder.newLine();
       _builder.append("PARTITION(number p, number r)");
       _builder.newLine();
-      _builder.append("\t");
-      _builder.append("ff=[[[1,2]]]");
+      _builder.append("    ");
+      _builder.append("ff=3");
       _builder.newLine();
-      _builder.append("\t");
-      _builder.append("B=[1,2]");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("B1 = new number list and contains 1,2,3,4");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("B2 = new number list and contains 1,1,1,1");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("//error B2 = new number list and contains [1],[1],[1],[1]");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("y={{1,1}, {1,1}, {3,3}}");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("x = B[r]");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("i = p ");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("i=i");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("j = p");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("f=0");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("ww=PARTITION2()");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("for interval 1 to r");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("temp = B[j]");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("if 2 <= x+1");
-      _builder.newLine();
-      _builder.append("\t\t\t");
-      _builder.append("iasd = PARTITION2() + \"lol\"");
-      _builder.newLine();
-      _builder.append("\t\t\t");
-      _builder.append("exchange B[i] with B[j]");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("exchange B at index i+1 with B[r]");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("print ff");
-      _builder.newLine();
-      _builder.append("\t");
+      _builder.append("    ");
       _builder.append("return ff");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.newLine();
+      _builder.append("LOL()");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("asd=0");
       _builder.newLine();
       return _builder.toString();
     }
@@ -116,13 +78,13 @@ public class PcodeParsingTest {
   
   /**
    * val code = '''
-   * ANNABELLE(nUMBeR alder, Number hoyde)
-   * i = 2
-   * i += 8
-   * i++
-   * s=9
-   * if 9==2 then
-   * s= 0
+   * 	ANNABELLE(nUMBeR alder, Number hoyde)
+   * 	i = 2
+   * 	i += 8
+   * 	i++
+   * 	s=9
+   * 	if 9==2 then
+   * 		s= 0
    * 
    * '''
    */
@@ -152,17 +114,16 @@ public class PcodeParsingTest {
       _builder.append("    ");
       _builder.append("private String title;");
       _builder.newLine();
-      _builder.append("\t\t\t\t");
       _builder.newLine();
-      _builder.append("    ");
+      _builder.append("         ");
       _builder.append("public String implementation(asd) {");
       _builder.newLine();
-      _builder.append("        ");
+      _builder.append("             ");
       _builder.newLine();
-      _builder.append("        ");
+      _builder.append("             ");
       _builder.append("return title;");
       _builder.newLine();
-      _builder.append("    ");
+      _builder.append("         ");
       _builder.append("}");
       _builder.newLine();
       _builder.append("}");

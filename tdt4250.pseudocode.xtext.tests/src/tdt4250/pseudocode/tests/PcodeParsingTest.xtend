@@ -17,69 +17,55 @@ import tdt4250.pseudocode.Model
 @ExtendWith(InjectionExtension)
 @InjectWith(PcodeInjectorProvider)
 class PcodeParsingTest {
-	@Inject ParseHelper<Model> parseHelper
-	
-	@Inject extension CompilationTestHelper
-	val code = '''
-        	PARTITION2(number p, number r)
-        	   a=0
-        	   return a
+    @Inject ParseHelper<Model> parseHelper
 
-			PARTITION(number p, number r)
-				ff=[[[1,2]]]
-				B=[1,2]
-				B1 = new number list and contains 1,2,3,4
-				B2 = new number list and contains 1,1,1,1
-				//error B2 = new number list and contains [1],[1],[1],[1]
-				y={{1,1}, {1,1}, {3,3}}
-				x = B[r]
-				i = p 
-				i=i
-				j = p
-				f=0
-				ww=PARTITION2()
-				for interval 1 to r
-					temp = B[j]
-					if 2 <= x+1
-						iasd = PARTITION2() + "lol"
-						exchange B[i] with B[j]
-				exchange B at index i+1 with B[r]
-				print ff
-				return ff
-		'''
-		
-	/*val code = '''
-		ANNABELLE(nUMBeR alder, Number hoyde)
-		i = 2
-		i += 8
-		i++
-		s=9
-		if 9==2 then
-			s= 0
-		
-		'''*/
-	
-	@Test def void parseModel() {
-		val result = parseHelper.parse(code)
-		println(EmfFormatter.objToStr(result))
-		val errors = result.eResource.errors
-		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
-	}
-	
-	
-	@Test def compileModel() {
-     code.assertCompilesTo('''
-         public class ANNABELLE {
-             private String title;
-				
-             public String implementation(asd) {
-                 
-                 return title;
-             }
-         }
-     ''')
-     }
-	
-	
-	
+    @Inject extension CompilationTestHelper
+    val code = '''
+        package no.test.pseudo2
+        
+        PARTITION2(number p, number r)
+            a=0
+            asf=2
+            print 2 + "lol"
+            return a
+        
+        
+        PARTITION(number p, number r)
+            ff=3
+            return ff
+            
+        LOL()
+            asd=0
+    '''
+
+    /*val code = '''
+     * 	ANNABELLE(nUMBeR alder, Number hoyde)
+     * 	i = 2
+     * 	i += 8
+     * 	i++
+     * 	s=9
+     * 	if 9==2 then
+     * 		s= 0
+     * 	
+     '''*/
+    @Test def void parseModel() {
+        val result = parseHelper.parse(code)
+        println(EmfFormatter.objToStr(result))
+        val errors = result.eResource.errors
+        Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+    }
+
+    @Test def compileModel() {
+        code.assertCompilesTo('''
+            public class ANNABELLE {
+                private String title;
+            
+                     public String implementation(asd) {
+                         
+                         return title;
+                     }
+            }
+        ''')
+    }
+
 }

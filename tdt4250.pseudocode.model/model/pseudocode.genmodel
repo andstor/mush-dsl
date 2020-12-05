@@ -11,6 +11,7 @@
       ecorePackage="pseudocode.ecore#/">
     <genClasses ecoreClass="pseudocode.ecore#//Model">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Model/functions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Model/package"/>
     </genClasses>
     <genClasses ecoreClass="pseudocode.ecore#//Identifier">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Identifier/name"/>

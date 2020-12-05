@@ -41,6 +41,7 @@ import java.util.StringJoiner
 import java.util.HashSet
 import tdt4250.pseudocode.FunctionCall
 import tdt4250.pseudocode.Minus
+import tdt4250.pseudocode.Model
 
 /**
  * Generates code from your model files on save.
@@ -70,8 +71,6 @@ class PcodeGenerator extends AbstractGenerator {
      * Foreslår at vi generere vanlige strenger? Evt. string builder?
      * 
      */
-     
-     
     /*Da tror jeg  reassignments av variabler skal fungere fint!
      * Lagret navnene på variablene i en tabel varList, og når en variabel lages sjekker den typen variabel
      * Jeg la også til en op type i variabel modellen, da får vi lett satt hvordan forskjellige typer kan brukes
@@ -80,8 +79,6 @@ class PcodeGenerator extends AbstractGenerator {
      * 
      * Må også fikse print da den kun tar et element
      * */
-     
-     
     /**
      * Da er vi vel mer eller mindre good!
      * 
@@ -112,14 +109,21 @@ class PcodeGenerator extends AbstractGenerator {
     override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 
         var resPrint = ""
+
         for (e : resource.allContents.toIterable.filter(Function)) {
             varCounter = 0 // Reset counter
             varList.clear() // Empty variable list
             importTypes.clear() // Empty import list
+            var packageName = (e.eContainer as Model).package
+            var folder = ''
+            if (packageName !== null) {
+                folder += packageName.replace('.', '/') + '/'
+            }
             var res = e.generate
             resPrint += res
-            fsa.generateFile(e.name + '.java', res)
+            fsa.generateFile(folder + e.name + '.java', res)
         }
+        
         println(resPrint)
         println("--------------------------------------------------")
         println('Variable counter: ' + varCounter)
@@ -128,19 +132,25 @@ class PcodeGenerator extends AbstractGenerator {
     }
 
     def generate(Function e) {
-        var params = e.parameters.generateParameters
+        var packageName = (e.eContainer as Model).package
         var type = typeInferencer.infer(e)
+        var params = ''
+        if (!e.parameters.isEmpty) {
+            params += e.parameters.generateParameters
+        }
         var body = ''
         for (f : e.features) {
             body += f.generateFeature
         }
         return '''
+        package «packageName»;
+        
         «FOR importType : importTypes»
             import «importType»;
         «ENDFOR»
         
-        class «e.name» {
-            public static «type» implementation( «e.parameters.generateParameters» ) {
+        public class «e.name» {
+            public static «type» run(«params») {
                 «body»
             }
         }'''
@@ -171,7 +181,7 @@ class PcodeGenerator extends AbstractGenerator {
                 «f.generateFeature»
             «ENDFOR»
         }«IF !e.otherwise.isEmpty» else {
-                        «FOR f : e.otherwise»«f.generateFeature»«ENDFOR»
+                            «FOR f : e.otherwise»«f.generateFeature»«ENDFOR»
         }«ENDIF»
     '''
 
@@ -374,7 +384,7 @@ class PcodeGenerator extends AbstractGenerator {
 
     def dispatch LiteralExpression(FunctionCall e) {
         var string = ''
-        string += e.ref.name + '.implementation('
+        string += e.ref.name + '.run('
         if (e.parameters.isEmpty) {
             var joiner = new StringJoiner(",");
             for (param : e.parameters) {
