@@ -253,38 +253,40 @@ ruleFunction returns [EObject current=null]
 					)
 				)
 			)*
-		)*
+		)?
 		otherlv_6=RightParenthesis
 		{
 			newLeafNode(otherlv_6, grammarAccess.getFunctionAccess().getRightParenthesisKeyword_4());
 		}
-		this_BEGIN_7=RULE_BEGIN
-		{
-			newLeafNode(this_BEGIN_7, grammarAccess.getFunctionAccess().getBEGINTerminalRuleCall_5());
-		}
 		(
+			this_BEGIN_7=RULE_BEGIN
+			{
+				newLeafNode(this_BEGIN_7, grammarAccess.getFunctionAccess().getBEGINTerminalRuleCall_5_0());
+			}
 			(
-				{
-					newCompositeNode(grammarAccess.getFunctionAccess().getFeaturesFeatureParserRuleCall_6_0());
-				}
-				lv_features_8_0=ruleFeature
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getFunctionRule());
+				(
+					{
+						newCompositeNode(grammarAccess.getFunctionAccess().getFeaturesFeatureParserRuleCall_5_1_0());
 					}
-					add(
-						$current,
-						"features",
-						lv_features_8_0,
-						"tdt4250.pseudocode.Pcode.Feature");
-					afterParserOrEnumRuleCall();
-				}
-			)
+					lv_features_8_0=ruleFeature
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getFunctionRule());
+						}
+						add(
+							$current,
+							"features",
+							lv_features_8_0,
+							"tdt4250.pseudocode.Pcode.Feature");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)*
+			this_END_9=RULE_END
+			{
+				newLeafNode(this_END_9, grammarAccess.getFunctionAccess().getENDTerminalRuleCall_5_2());
+			}
 		)*
-		this_END_9=RULE_END
-		{
-			newLeafNode(this_END_9, grammarAccess.getFunctionAccess().getENDTerminalRuleCall_7());
-		}
 	)
 ;
 

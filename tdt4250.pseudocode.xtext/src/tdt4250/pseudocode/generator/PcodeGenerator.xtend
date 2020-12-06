@@ -43,6 +43,7 @@ import tdt4250.pseudocode.FunctionCall
 import tdt4250.pseudocode.Minus
 import tdt4250.pseudocode.Model
 import tdt4250.pseudocode.Type
+import tdt4250.pseudocode.BooleanLiteral
 
 /**
  * Generates code from your model files on save.
@@ -107,6 +108,32 @@ class PcodeGenerator extends AbstractGenerator {
      * - også må vi selvfølgelig lage en (eller flere :) ) readme filer som beskriver prosjektene...
      *      ta en titt på denne ;) https://github.com/andstor/tdt4250
      */
+     
+     
+     /**
+      * Da har jeg fått ordnet litt til :)
+      * Kanskje vi kan ta et lite møte på søndag kl 2?
+      * Bare å ringe meg om jeg fortsatt er i koma xD 91601472
+      * 
+      * - auto import virker nå som det skal
+      * - avanserte variabel typer funker nå ;) eks "list with list with number" = List<List<Integer>
+      * - Formatering - når en starter en eclipse instans så har nå editoren auto formatering av innrykk ;) 
+      *     Men man MÅ skrive første innrykket etter funksjoner eller if osv.. Pga. BEGIN og END.. har prøvd mye men får det ikke helt til.
+      *     Ser på nett at det er tydeligvis noe bugs i xtext...
+      *     ellers så er det rom  for forbedring her!!!!
+      * - Pakker - la inn pakke som man KAN spesifisere i starten av filen. Dette lager
+      *     java pakker (mappe struktur) og importering virker. Det virker å lage flere .pcode filer og 
+      *     referere til funksjoner i de !! :)
+      * 
+      * Tror at print er ok uten komma... Btw så gjorde jeg den om til System.out.print istedenfor println.
+      *     ettersom det bare er å skrive \n for linje.
+      * 
+      * Så da står igjen (se forrige kommentar over)
+      * - litt fiksing/rydding i ecore modellen
+      * - validering - spes typer.. eks kan ikke si at en int variabel skal plusse på  en  String senere...
+      * - Readme filer
+      * - formatering - diverse
+      */
     override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 
         var resPrint = ""
@@ -124,7 +151,7 @@ class PcodeGenerator extends AbstractGenerator {
             resPrint += res
             fsa.generateFile(folder + e.name + '.java', res)
         }
-        
+        //TODO: remove prints below before delivery
         println(resPrint)
         println("--------------------------------------------------")
         println('Variable counter: ' + varCounter)
@@ -182,7 +209,7 @@ class PcodeGenerator extends AbstractGenerator {
                 «f.generateFeature»
             «ENDFOR»
         }«IF !e.otherwise.isEmpty» else {
-                            «FOR f : e.otherwise»«f.generateFeature»«ENDFOR»
+            «FOR f : e.otherwise»«f.generateFeature»«ENDFOR»
         }«ENDIF»
     '''
 
@@ -231,7 +258,7 @@ class PcodeGenerator extends AbstractGenerator {
             varList.add(e.name)
         } else {
             if (e.op.equals('++') || e.op.equals('--')) {
-                string += e.op
+                string += e.name + e.op
             } else {
                 string += e.name + ' ' + e.op + ' ' + e.value.LiteralExpression + ';'
             }
@@ -380,12 +407,17 @@ class PcodeGenerator extends AbstractGenerator {
 
     def dispatch LiteralExpression(StringLiteral e) { return '"' + e.value + '"' }
 
+    def dispatch LiteralExpression(BooleanLiteral e) { return e.value }
+
     def dispatch LiteralExpression(VariableReference e) '''
     «e.ref.name»'''
 
     def dispatch LiteralExpression(FunctionCall e) {
         var string = ''
         string += e.ref.name + '.run('
+        var refPackageName = (e.ref.eContainer as Model).package
+        // TODO: don't need to add import if call is to function in current file.
+        importTypes.add(refPackageName + '.' + e.ref.name)
         if (e.parameters.isEmpty) {
             var joiner = new StringJoiner(",");
             for (param : e.parameters) {

@@ -19,6 +19,7 @@ import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import tdt4250.pseudocode.AndOrExpression;
 import tdt4250.pseudocode.ArithmeticSigned;
+import tdt4250.pseudocode.BooleanLiteral;
 import tdt4250.pseudocode.BooleanNegation;
 import tdt4250.pseudocode.CollectionAccessor;
 import tdt4250.pseudocode.CollectionAdd;
@@ -67,31 +68,28 @@ public class PcodeGenerator extends AbstractGenerator {
   private HashSet<String> importTypes = new HashSet<String>();
   
   /**
-   * Da er vi vel mer eller mindre good!
+   * Da har jeg fått ordnet litt til :)
+   * Kanskje vi kan ta et lite møte på søndag kl 2?
+   * Bare å ringe meg om jeg fortsatt er i koma xD 91601472
    * 
-   * Har fikset opp litt av hvert. Blant annet så er vel mer eller mindre all
-   * automatisk type gjenfinning ok :) Sets funker også. Diverse java typer blir
-   * automatisk importert om man bruker set eller list.
-   * Formatering bør også nå se bra ut !
-   * Fikset lister med ekstra komma.
+   * - auto import virker nå som det skal
+   * - avanserte variabel typer funker nå ;) eks "list with list with number" = List<List<Integer>
+   * - Formatering - når en starter en eclipse instans så har nå editoren auto formatering av innrykk ;)
+   *     Men man MÅ skrive første innrykket etter funksjoner eller if osv.. Pga. BEGIN og END.. har prøvd mye men får det ikke helt til.
+   *     Ser på nett at det er tydeligvis noe bugs i xtext...
+   *     ellers så er det rom  for forbedring her!!!!
+   * - Pakker - la inn pakke som man KAN spesifisere i starten av filen. Dette lager
+   *     java pakker (mappe struktur) og importering virker. Det virker å lage flere .pcode filer og
+   *     referere til funksjoner i de !! :)
    * 
+   * Tror at print er ok uten komma... Btw så gjorde jeg den om til System.out.print istedenfor println.
+   *     ettersom det bare er å skrive \n for linje.
    * 
-   * Det som står igjen er:
-   * 
-   * - print tar kun et element
-   * - auto importering av genererte klasse filer hvis de refereres til
-   * - kunne skrive mer avanserte typer i parametere (i FUNCTION(her!!! lol) )
-   *      vi trenger f.eks list of list of number
-   * 
-   * - + gjøre eCore modellen finere? med andre ord, legge til abstrakte klasser og liknende?
-   *      kanskje vi kan flytte logikken i typeInferencer til operasjoner på selve ecore objektene?
-   *      eks. getType? idk...
-   * 
-   * - ellers så er det generell koderydding også validering da... Dette gjøres i tdt4250.pseudocode.validation
-   *      formatering også er kanskje nyttig?  : i tdt4250.pseudocode.formatting2
-   * 
-   * - også må vi selvfølgelig lage en (eller flere :) ) readme filer som beskriver prosjektene...
-   *      ta en titt på denne ;) https://github.com/andstor/tdt4250
+   * Så da står igjen (se forrige kommentar over)
+   * - litt fiksing/rydding i ecore modellen
+   * - validering - spes typer.. eks kan ikke si at en int variabel skal plusse på  en  String senere...
+   * - Readme filer
+   * - formatering - diverse
    */
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
@@ -242,12 +240,12 @@ public class PcodeGenerator extends AbstractGenerator {
       if (_not) {
         _builder.append(" else {");
         _builder.newLineIfNotEmpty();
-        _builder.append("                    ");
+        _builder.append("    ");
         {
           EList<Feature> _otherwise = e.getOtherwise();
           for(final Feature f_1 : _otherwise) {
             Object _generateFeature_1 = this.generateFeature(f_1);
-            _builder.append(_generateFeature_1, "                    ");
+            _builder.append(_generateFeature_1, "    ");
           }
         }
         _builder.newLineIfNotEmpty();
@@ -358,19 +356,21 @@ public class PcodeGenerator extends AbstractGenerator {
     } else {
       if ((e.getOp().equals("++") || e.getOp().equals("--"))) {
         String _string_1 = string;
+        String _name_1 = e.getName();
         String _op = e.getOp();
-        string = (_string_1 + _op);
+        String _plus_5 = (_name_1 + _op);
+        string = (_string_1 + _plus_5);
       } else {
         String _string_2 = string;
-        String _name_1 = e.getName();
-        String _plus_5 = (_name_1 + " ");
+        String _name_2 = e.getName();
+        String _plus_6 = (_name_2 + " ");
         String _op_1 = e.getOp();
-        String _plus_6 = (_plus_5 + _op_1);
-        String _plus_7 = (_plus_6 + " ");
+        String _plus_7 = (_plus_6 + _op_1);
+        String _plus_8 = (_plus_7 + " ");
         Object _LiteralExpression_1 = this.LiteralExpression(e.getValue());
-        String _plus_8 = (_plus_7 + _LiteralExpression_1);
-        String _plus_9 = (_plus_8 + ";");
-        string = (_string_2 + _plus_9);
+        String _plus_9 = (_plus_8 + _LiteralExpression_1);
+        String _plus_10 = (_plus_9 + ";");
+        string = (_string_2 + _plus_10);
       }
     }
     return (string + "\n");
@@ -651,6 +651,10 @@ public class PcodeGenerator extends AbstractGenerator {
     return (_plus + "\"");
   }
   
+  protected Object _LiteralExpression(final BooleanLiteral e) {
+    return e.getValue();
+  }
+  
   protected Object _LiteralExpression(final VariableReference e) {
     StringConcatenation _builder = new StringConcatenation();
     String _name = e.getRef().getName();
@@ -664,6 +668,11 @@ public class PcodeGenerator extends AbstractGenerator {
     String _name = e.getRef().getName();
     String _plus = (_name + ".run(");
     string = (_string + _plus);
+    EObject _eContainer = e.getRef().eContainer();
+    String refPackageName = ((Model) _eContainer).getPackage();
+    String _name_1 = e.getRef().getName();
+    String _plus_1 = ((refPackageName + ".") + _name_1);
+    this.importTypes.add(_plus_1);
     boolean _isEmpty = e.getParameters().isEmpty();
     if (_isEmpty) {
       StringJoiner joiner = new StringJoiner(",");
@@ -734,6 +743,8 @@ public class PcodeGenerator extends AbstractGenerator {
       return _LiteralExpression((AndOrExpression)e);
     } else if (e instanceof ArithmeticSigned) {
       return _LiteralExpression((ArithmeticSigned)e);
+    } else if (e instanceof BooleanLiteral) {
+      return _LiteralExpression((BooleanLiteral)e);
     } else if (e instanceof BooleanNegation) {
       return _LiteralExpression((BooleanNegation)e);
     } else if (e instanceof CollectionAccessor) {

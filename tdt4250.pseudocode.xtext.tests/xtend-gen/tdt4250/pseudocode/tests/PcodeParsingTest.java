@@ -7,6 +7,8 @@ import com.google.inject.Inject;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.resource.SaveOptions;
+import org.eclipse.xtext.serializer.ISerializer;
 import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.extensions.InjectionExtension;
 import org.eclipse.xtext.testing.util.ParseHelper;
@@ -32,6 +34,10 @@ public class PcodeParsingTest {
   
   @Inject
   @Extension
+  private ISerializer serializer;
+  
+  @Inject
+  @Extension
   private CompilationTestHelper _compilationTestHelper;
   
   private final String code = new Function0<String>() {
@@ -41,13 +47,6 @@ public class PcodeParsingTest {
       _builder.append("package no.test.pseudo");
       _builder.newLine();
       _builder.append("PARTITION2(number p, number r)");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("a=0");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("return a");
-      _builder.newLine();
       _builder.newLine();
       _builder.append("PARTITION(list with list with text p, number r)");
       _builder.newLine();
@@ -148,26 +147,29 @@ public class PcodeParsingTest {
   public void compileModel() {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("public class ANNABELLE {");
+      this._compilationTestHelper.assertCompilesTo(this.code, _builder);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void formatModel() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("PARTITION2()");
       _builder.newLine();
       _builder.append("    ");
-      _builder.append("private String title;");
+      _builder.append("a=0");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("return a");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("         ");
-      _builder.append("public String implementation(asd) {");
-      _builder.newLine();
-      _builder.append("             ");
-      _builder.newLine();
-      _builder.append("             ");
-      _builder.append("return title;");
-      _builder.newLine();
-      _builder.append("         ");
-      _builder.append("}");
-      _builder.newLine();
-      _builder.append("}");
-      _builder.newLine();
-      this._compilationTestHelper.assertCompilesTo(this.code, _builder);
+      final Model model = this.parseHelper.parse(_builder);
+      InputOutput.<String>println(EmfFormatter.objToStr(model));
+      final String result = this.serializer.serialize(model, SaveOptions.newBuilder().format().getOptions());
+      InputOutput.<String>println(result);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

@@ -129,23 +129,21 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final Assignment cParametersAssignment_3_1_1 = (Assignment)cGroup_3_1.eContents().get(1);
 		private final RuleCall cParametersParameterParserRuleCall_3_1_1_0 = (RuleCall)cParametersAssignment_3_1_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final RuleCall cBEGINTerminalRuleCall_5 = (RuleCall)cGroup.eContents().get(5);
-		private final Assignment cFeaturesAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cFeaturesFeatureParserRuleCall_6_0 = (RuleCall)cFeaturesAssignment_6.eContents().get(0);
-		private final RuleCall cENDTerminalRuleCall_7 = (RuleCall)cGroup.eContents().get(7);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final RuleCall cBEGINTerminalRuleCall_5_0 = (RuleCall)cGroup_5.eContents().get(0);
+		private final Assignment cFeaturesAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final RuleCall cFeaturesFeatureParserRuleCall_5_1_0 = (RuleCall)cFeaturesAssignment_5_1.eContents().get(0);
+		private final RuleCall cENDTerminalRuleCall_5_2 = (RuleCall)cGroup_5.eContents().get(2);
 		
 		//Function:
 		//	{Function} name=ID
-		//	'(' (parameters+=Parameter ("," parameters+=Parameter)*)*
-		//	')'
-		//	//('\n' ('\n')*)
-		//	BEGIN
+		//	'(' (parameters+=Parameter ("," parameters+=Parameter)*)?
+		//	')' (BEGIN
 		//	features+=Feature*
-		//	END;
+		//	END)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Function} name=ID '(' (parameters+=Parameter ("," parameters+=Parameter)*)* ')' //('\n' ('\n')*)
-		//BEGIN features+=Feature* END
+		//{Function} name=ID '(' (parameters+=Parameter ("," parameters+=Parameter)*)? ')' (BEGIN features+=Feature* END)*
 		public Group getGroup() { return cGroup; }
 		
 		//{Function}
@@ -160,7 +158,7 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//'('
 		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
 		
-		//(parameters+=Parameter ("," parameters+=Parameter)*)*
+		//(parameters+=Parameter ("," parameters+=Parameter)*)?
 		public Group getGroup_3() { return cGroup_3; }
 		
 		//parameters+=Parameter
@@ -184,18 +182,20 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//')'
 		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
 		
-		////('\n' ('\n')*)
+		//(BEGIN features+=Feature* END)*
+		public Group getGroup_5() { return cGroup_5; }
+		
 		//BEGIN
-		public RuleCall getBEGINTerminalRuleCall_5() { return cBEGINTerminalRuleCall_5; }
+		public RuleCall getBEGINTerminalRuleCall_5_0() { return cBEGINTerminalRuleCall_5_0; }
 		
 		//features+=Feature*
-		public Assignment getFeaturesAssignment_6() { return cFeaturesAssignment_6; }
+		public Assignment getFeaturesAssignment_5_1() { return cFeaturesAssignment_5_1; }
 		
 		//Feature
-		public RuleCall getFeaturesFeatureParserRuleCall_6_0() { return cFeaturesFeatureParserRuleCall_6_0; }
+		public RuleCall getFeaturesFeatureParserRuleCall_5_1_0() { return cFeaturesFeatureParserRuleCall_5_1_0; }
 		
 		//END
-		public RuleCall getENDTerminalRuleCall_7() { return cENDTerminalRuleCall_7; }
+		public RuleCall getENDTerminalRuleCall_5_2() { return cENDTerminalRuleCall_5_2; }
 	}
 	public class FeatureElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.Feature");
@@ -2034,12 +2034,10 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	
 	//Function:
 	//	{Function} name=ID
-	//	'(' (parameters+=Parameter ("," parameters+=Parameter)*)*
-	//	')'
-	//	//('\n' ('\n')*)
-	//	BEGIN
+	//	'(' (parameters+=Parameter ("," parameters+=Parameter)*)?
+	//	')' (BEGIN
 	//	features+=Feature*
-	//	END;
+	//	END)*;
 	public FunctionElements getFunctionAccess() {
 		return pFunction;
 	}

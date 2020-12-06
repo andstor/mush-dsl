@@ -535,7 +535,7 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Function returns Function
 	 *
 	 * Constraint:
-	 *     (name=ID (parameters+=Parameter parameters+=Parameter*)* features+=Feature*)
+	 *     (name=ID (parameters+=Parameter parameters+=Parameter*)? features+=Feature*)
 	 */
 	protected void sequence_Function(ISerializationContext context, Function semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

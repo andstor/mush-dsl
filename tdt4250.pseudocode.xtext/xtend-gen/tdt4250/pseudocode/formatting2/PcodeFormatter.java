@@ -9,8 +9,11 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.formatting2.AbstractFormatter2;
 import org.eclipse.xtext.formatting2.IFormattableDocument;
+import org.eclipse.xtext.formatting2.IHiddenRegionFormatter;
+import org.eclipse.xtext.formatting2.regionaccess.ISemanticRegion;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import tdt4250.pseudocode.Expression;
 import tdt4250.pseudocode.Feature;
 import tdt4250.pseudocode.Function;
@@ -26,7 +29,10 @@ public class PcodeFormatter extends AbstractFormatter2 {
   protected void _format(final Model model, @Extension final IFormattableDocument document) {
     EList<Function> _functions = model.getFunctions();
     for (final Function function : _functions) {
-      document.<Function>format(function);
+      final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
+        it.setNewLines(1, 1, 2);
+      };
+      document.<Function>append(document.<Function>format(function), _function);
     }
   }
   
@@ -35,6 +41,20 @@ public class PcodeFormatter extends AbstractFormatter2 {
     for (final Expression expression : _parameters) {
       document.<Expression>format(expression);
     }
+    final ISemanticRegion begin = this.textRegionExtensions.regionFor(function).ruleCallTo(this._pcodeGrammarAccess.getBEGINRule());
+    final ISemanticRegion end = this.textRegionExtensions.regionFor(function).ruleCallTo(this._pcodeGrammarAccess.getENDRule());
+    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.append(this.textRegionExtensions.regionFor(function).keyword("synthetic:BEGIN"), _function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(this.textRegionExtensions.regionFor(function).keyword("synthetic:END"), _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.indent();
+    };
+    document.<ISemanticRegion, ISemanticRegion>interior(begin, end, _function_2);
     EList<Feature> _features = function.getFeatures();
     for (final Feature feature : _features) {
       document.<Feature>format(feature);

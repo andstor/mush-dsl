@@ -69,6 +69,7 @@ public class PcodeParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getFunctionAccess().getGroup(), "rule__Function__Group__0");
 			builder.put(grammarAccess.getFunctionAccess().getGroup_3(), "rule__Function__Group_3__0");
 			builder.put(grammarAccess.getFunctionAccess().getGroup_3_1(), "rule__Function__Group_3_1__0");
+			builder.put(grammarAccess.getFunctionAccess().getGroup_5(), "rule__Function__Group_5__0");
 			builder.put(grammarAccess.getVariableAccess().getGroup(), "rule__Variable__Group__0");
 			builder.put(grammarAccess.getVariableAccess().getGroup_1_0(), "rule__Variable__Group_1_0__0");
 			builder.put(grammarAccess.getVariableAccess().getGroup_1_1(), "rule__Variable__Group_1_1__0");
@@ -132,7 +133,7 @@ public class PcodeParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getFunctionAccess().getNameAssignment_1(), "rule__Function__NameAssignment_1");
 			builder.put(grammarAccess.getFunctionAccess().getParametersAssignment_3_0(), "rule__Function__ParametersAssignment_3_0");
 			builder.put(grammarAccess.getFunctionAccess().getParametersAssignment_3_1_1(), "rule__Function__ParametersAssignment_3_1_1");
-			builder.put(grammarAccess.getFunctionAccess().getFeaturesAssignment_6(), "rule__Function__FeaturesAssignment_6");
+			builder.put(grammarAccess.getFunctionAccess().getFeaturesAssignment_5_1(), "rule__Function__FeaturesAssignment_5_1");
 			builder.put(grammarAccess.getVariableAccess().getNameAssignment_1_0_0(), "rule__Variable__NameAssignment_1_0_0");
 			builder.put(grammarAccess.getVariableAccess().getOpAssignment_1_0_1(), "rule__Variable__OpAssignment_1_0_1");
 			builder.put(grammarAccess.getVariableAccess().getValueAssignment_1_0_2(), "rule__Variable__ValueAssignment_1_0_2");

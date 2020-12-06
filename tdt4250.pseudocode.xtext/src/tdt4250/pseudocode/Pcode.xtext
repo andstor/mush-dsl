@@ -32,12 +32,11 @@ Function:
 	{Function}
 	name=ID
 	'('
-	(parameters+=Parameter ("," parameters+=Parameter)*)*		
+	(parameters+=Parameter ("," parameters+=Parameter)*)?
 	')'
-	//('\n' ('\n')*)
-	BEGIN
+	(BEGIN
 		features+=Feature*
-	END;
+	END)*;
 
 Feature:
 	Statement | Expression
@@ -55,12 +54,14 @@ Expression returns Expression:
 	ValueExchange
 ;
 
+// Primarily variable assignment
 Variable returns Expression:
 	{Variable} 
 	(name=ID op=('=' | 'equals' | 'is'|'+='|'-=') value=(LiteralExpression)
 	|	name=ID op= ('++'|'--')
 	);
 
+// Variable declaration
 Parameter returns Expression: 
 	{Variable} type=Type name=ID;
 

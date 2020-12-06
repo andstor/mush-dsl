@@ -25,6 +25,7 @@ import java.util.HashSet
 import tdt4250.pseudocode.Minus
 import tdt4250.pseudocode.Type
 import java.util.StringJoiner
+import tdt4250.pseudocode.BooleanLiteral
 
 class PcodeTypeInferencer {
 
@@ -147,6 +148,8 @@ class PcodeTypeInferencer {
     def dispatch String infer(NumberLiteral e) { return 'int' }
 
     def dispatch String infer(StringLiteral e) { return 'String' }
+
+    def dispatch String infer(BooleanLiteral e) { return 'boolean' }
 
     def dispatch String infer(VariableReference e) {
         return infer(e.ref)

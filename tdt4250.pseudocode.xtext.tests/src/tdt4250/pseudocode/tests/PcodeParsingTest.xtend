@@ -4,6 +4,8 @@
 package tdt4250.pseudocode.tests
 
 import com.google.inject.Inject
+import org.eclipse.xtext.resource.SaveOptions
+import org.eclipse.xtext.serializer.ISerializer
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.extensions.InjectionExtension
 import org.eclipse.xtext.testing.util.ParseHelper
@@ -19,13 +21,13 @@ import tdt4250.pseudocode.Model
 class PcodeParsingTest {
     @Inject ParseHelper<Model> parseHelper
 
+    @Inject extension ISerializer serializer
+
+
     @Inject extension CompilationTestHelper
     val code = '''
         package no.test.pseudo
         PARTITION2(number p, number r)
-            a=0
-            return a
-        
         PARTITION(list with list with text p, number r)
             ff=[[[1,2]]]
             B=[1,2]
@@ -67,16 +69,19 @@ class PcodeParsingTest {
     }
 
     @Test def compileModel() {
-        code.assertCompilesTo('''
-            public class ANNABELLE {
-                private String title;
-            
-                     public String implementation(asd) {
-                         
-                         return title;
-                     }
-            }
-        ''')
+        code.assertCompilesTo('''''')
     }
+    
+    @Test def void formatModel() {
+		val model = parseHelper.parse('''
+        PARTITION2()
+            a=0
+            return a
+        
+    ''')
+        println(EmfFormatter.objToStr(model))
+		val result = serializer.serialize(model, SaveOptions::newBuilder.format().options)
+		println(result)
 
+	}
 }

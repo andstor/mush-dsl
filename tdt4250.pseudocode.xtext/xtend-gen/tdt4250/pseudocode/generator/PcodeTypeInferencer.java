@@ -12,6 +12,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import tdt4250.pseudocode.AndOrExpression;
 import tdt4250.pseudocode.ArithmeticSigned;
+import tdt4250.pseudocode.BooleanLiteral;
 import tdt4250.pseudocode.BooleanNegation;
 import tdt4250.pseudocode.Collection;
 import tdt4250.pseudocode.CollectionAccessor;
@@ -188,6 +189,10 @@ public class PcodeTypeInferencer {
     return "String";
   }
   
+  protected String _infer(final BooleanLiteral e) {
+    return "boolean";
+  }
+  
   protected String _infer(final VariableReference e) {
     return this.infer(e.getRef());
   }
@@ -234,6 +239,8 @@ public class PcodeTypeInferencer {
       return _infer((AndOrExpression)e);
     } else if (e instanceof ArithmeticSigned) {
       return _infer((ArithmeticSigned)e);
+    } else if (e instanceof BooleanLiteral) {
+      return _infer((BooleanLiteral)e);
     } else if (e instanceof BooleanNegation) {
       return _infer((BooleanNegation)e);
     } else if (e instanceof CollectionAccessor) {

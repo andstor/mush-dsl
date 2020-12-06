@@ -1,0 +1,5 @@
+package koko.ok
+Test()
+	a=[1,2,3,4]
+	b=LOL()
+	return a

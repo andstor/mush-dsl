@@ -9,27 +9,41 @@ import org.eclipse.xtext.formatting2.IFormattableDocument
 import tdt4250.pseudocode.Function
 import tdt4250.pseudocode.Model
 import tdt4250.pseudocode.services.PcodeGrammarAccess
+import tdt4250.pseudocode.Feature
+import tdt4250.pseudocode.IfExpression
+import tdt4250.pseudocode.ForExpression
+import tdt4250.pseudocode.WhileExpression
+import tdt4250.pseudocode.Variable
 
 class PcodeFormatter extends AbstractFormatter2 {
-	
-	@Inject extension PcodeGrammarAccess
 
-	def dispatch void format(Model model, extension IFormattableDocument document) {
-		// TODO: format HiddenRegions around keywords, attributes, cross references, etc. 
-		for (function : model.functions) {
-			function.format
-		}
-	}
+    @Inject extension PcodeGrammarAccess
 
-	def dispatch void format(Function function, extension IFormattableDocument document) {
-		// TODO: format HiddenRegions around keywords, attributes, cross references, etc. 
-		for (expression : function.parameters) {
-			expression.format
-		}
-		for (feature : function.features) {
-			feature.format
-		}
-	}
-	
-	// TODO: implement for Variable, IfExpression, ForExpression, WhileExpression, Print, CollectionAdd, ValueExchange, FunctionCall, List, SetLitteral, ListLitteral, CollectionAccessor, AndOrExpression, Comparison, Equals, MultiOrDiv, BooleanNegation, ArithmeticSigned, Plus, Minus
+    def dispatch void format(Model model, extension IFormattableDocument document) {
+        // TODO: format HiddenRegions around keywords, attributes, cross references, etc. 
+        for (function : model.functions) {
+            function.format.append[setNewLines(1, 1, 2)]
+        }
+    }
+
+    def dispatch void format(Function function, extension IFormattableDocument document) {
+        // TODO: format HiddenRegions around keywords, attributes, cross references, etc. 
+        for (expression : function.parameters) {
+            expression.format
+        }
+        
+        val begin = function.regionFor.ruleCallTo(BEGINRule)
+        val end = function.regionFor.ruleCallTo(ENDRule)
+
+        function.regionFor.keyword("synthetic:BEGIN").append[newLine]
+        function.regionFor.keyword("synthetic:END").prepend[newLine]
+
+        interior(begin, end)[indent]
+        
+        for (feature : function.features) {
+            feature.format
+        }
+    }
+
+// TODO: implement for Variable, Print, CollectionAdd, ValueExchange, FunctionCall, List, SetLitteral, ListLitteral, CollectionAccessor, AndOrExpression, Comparison, Equals, MultiOrDiv, BooleanNegation, ArithmeticSigned, Plus, Minus
 }
