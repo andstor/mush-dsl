@@ -13,4 +13,9 @@ public class PcodeGeneratorUtils {
     String endString = string.substring(_plus);
     return ((beginString + replace) + endString);
   }
+  
+  public static String escape(final String s) {
+    return s.replace("\\", "\\\\").replace("\t", "\\t").replace("\b", "\\b").replace("\n", "\\n").replace("\r", 
+      "\\r").replace("\f", "\\f").replace("\'", "\\\'").replace("\"", "\\\"");
+  }
 }

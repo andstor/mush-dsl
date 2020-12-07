@@ -24,6 +24,7 @@ import tdt4250.pseudocode.PseudocodePackage;
  * <ul>
  *   <li>{@link tdt4250.pseudocode.impl.PrintImpl#getName <em>Name</em>}</li>
  *   <li>{@link tdt4250.pseudocode.impl.PrintImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link tdt4250.pseudocode.impl.PrintImpl#isNewline <em>Newline</em>}</li>
  * </ul>
  *
  * @generated
@@ -58,6 +59,26 @@ public class PrintImpl extends ExpressionImpl implements Print {
 	 * @ordered
 	 */
 	protected Expression value;
+
+	/**
+	 * The default value of the '{@link #isNewline() <em>Newline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isNewline()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean NEWLINE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isNewline() <em>Newline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isNewline()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean newline = NEWLINE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -158,6 +179,30 @@ public class PrintImpl extends ExpressionImpl implements Print {
 	 * @generated
 	 */
 	@Override
+	public boolean isNewline() {
+		return newline;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setNewline(boolean newNewline) {
+		boolean oldNewline = newline;
+		newline = newNewline;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PseudocodePackage.PRINT__NEWLINE, oldNewline,
+					newline));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case PseudocodePackage.PRINT__VALUE:
@@ -178,6 +223,8 @@ public class PrintImpl extends ExpressionImpl implements Print {
 			return getName();
 		case PseudocodePackage.PRINT__VALUE:
 			return getValue();
+		case PseudocodePackage.PRINT__NEWLINE:
+			return isNewline();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -195,6 +242,9 @@ public class PrintImpl extends ExpressionImpl implements Print {
 			return;
 		case PseudocodePackage.PRINT__VALUE:
 			setValue((Expression) newValue);
+			return;
+		case PseudocodePackage.PRINT__NEWLINE:
+			setNewline((Boolean) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -214,6 +264,9 @@ public class PrintImpl extends ExpressionImpl implements Print {
 		case PseudocodePackage.PRINT__VALUE:
 			setValue((Expression) null);
 			return;
+		case PseudocodePackage.PRINT__NEWLINE:
+			setNewline(NEWLINE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -230,6 +283,8 @@ public class PrintImpl extends ExpressionImpl implements Print {
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case PseudocodePackage.PRINT__VALUE:
 			return value != null;
+		case PseudocodePackage.PRINT__NEWLINE:
+			return newline != NEWLINE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -247,6 +302,8 @@ public class PrintImpl extends ExpressionImpl implements Print {
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", newline: ");
+		result.append(newline);
 		result.append(')');
 		return result.toString();
 	}

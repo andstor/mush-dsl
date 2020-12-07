@@ -13,11 +13,13 @@ import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.extensions.InjectionExtension;
 import org.eclipse.xtext.testing.util.ParseHelper;
 import org.eclipse.xtext.util.EmfFormatter;
+import org.eclipse.xtext.util.IAcceptor;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.Pair;
 import org.eclipse.xtext.xbase.testing.CompilationTestHelper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -48,67 +50,18 @@ public class PcodeParsingTest {
       _builder.newLine();
       _builder.append("PARTITION2(number p, number r)");
       _builder.newLine();
-      _builder.append("PARTITION(list with list with text p, number r)");
+      _builder.append("executable PARTITION(list with list with text p, number r)");
       _builder.newLine();
       _builder.append("    ");
-      _builder.append("ff=[[[1,2]]]");
       _builder.newLine();
       _builder.append("    ");
-      _builder.append("B=[1,2]");
+      _builder.append("ww=PARTITION2(p,r)");
       _builder.newLine();
       _builder.append("    ");
-      _builder.append("B1 = new list with number that contains 1,2,3,4");
+      _builder.append("lol=\"lol \\n\"");
       _builder.newLine();
       _builder.append("    ");
-      _builder.append("B2 = new list with number that contains 1,1,1,1");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("B3 = new list with list with number that contains [1],[1],[1],[1]");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("y={{1,1}, {1,1}, {3,3}}");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("x = B[r]");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("i = p ");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("i=i");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("j = p");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("f=0");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("ww=PARTITION2()");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("for interval 1 to r");
-      _builder.newLine();
-      _builder.append("        ");
-      _builder.append("temp = B[j]");
-      _builder.newLine();
-      _builder.append("        ");
-      _builder.append("if 2 <= x+1");
-      _builder.newLine();
-      _builder.append("            ");
-      _builder.append("iasd = PARTITION2() + \"lol\"");
-      _builder.newLine();
-      _builder.append("            ");
-      _builder.append("exchange B[i] with B[j]");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("exchange B at index i+1 with B[r]");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("print ff");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("return ff");
+      _builder.append("return ww");
       _builder.newLine();
       return _builder.toString();
     }
@@ -146,8 +99,12 @@ public class PcodeParsingTest {
   @Test
   public void compileModel() {
     try {
-      StringConcatenation _builder = new StringConcatenation();
-      this._compilationTestHelper.assertCompilesTo(this.code, _builder);
+      this.parseModel();
+      final IAcceptor<CompilationTestHelper.Result> _function = (CompilationTestHelper.Result it) -> {
+        CompilationTestHelper.Result _println = InputOutput.<CompilationTestHelper.Result>println(it);
+        /* Pair.<CompilationTestHelper.Result, CompilationTestHelper.Result>of(it, _println); */
+      };
+      this._compilationTestHelper.compile(this.code, _function);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -156,17 +113,7 @@ public class PcodeParsingTest {
   @Test
   public void formatModel() {
     try {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("PARTITION2()");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("a=0");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("return a");
-      _builder.newLine();
-      _builder.newLine();
-      final Model model = this.parseHelper.parse(_builder);
+      final Model model = this.parseHelper.parse(this.code);
       InputOutput.<String>println(EmfFormatter.objToStr(model));
       final String result = this.serializer.serialize(model, SaveOptions.newBuilder().format().getOptions());
       InputOutput.<String>println(result);

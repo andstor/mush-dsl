@@ -17,6 +17,7 @@ import tdt4250.pseudocode.BooleanNegation;
 import tdt4250.pseudocode.Collection;
 import tdt4250.pseudocode.CollectionAccessor;
 import tdt4250.pseudocode.Comparison;
+import tdt4250.pseudocode.DoubleLiteral;
 import tdt4250.pseudocode.Equals;
 import tdt4250.pseudocode.Expression;
 import tdt4250.pseudocode.Function;
@@ -83,7 +84,7 @@ public class PcodeTypeInferencer {
         case "text":
           return "String";
         case "decimal":
-          return "float";
+          return "double";
         case "array":
         case "list":
         case "table":
@@ -106,8 +107,8 @@ public class PcodeTypeInferencer {
           return "Boolean";
         case "int":
           return "Integer";
-        case "float":
-          return "Float";
+        case "double":
+          return "Double";
         default:
           return type;
       }
@@ -162,10 +163,18 @@ public class PcodeTypeInferencer {
     if (((leftType != rightType) && (Objects.equal(leftType, "String") || Objects.equal(rightType, "String")))) {
       return "String";
     }
+    if ((Objects.equal(leftType, "double") || Objects.equal(rightType, "double"))) {
+      return "double";
+    }
     return leftType;
   }
   
   protected String _infer(final Minus e) {
+    String leftType = this.infer(e.getLeft());
+    String rightType = this.infer(e.getRight());
+    if ((Objects.equal(leftType, "double") || Objects.equal(rightType, "double"))) {
+      return "double";
+    }
     return this.infer(e.getLeft());
   }
   
@@ -183,6 +192,10 @@ public class PcodeTypeInferencer {
   
   protected String _infer(final NumberLiteral e) {
     return "int";
+  }
+  
+  protected String _infer(final DoubleLiteral e) {
+    return "double";
   }
   
   protected String _infer(final StringLiteral e) {
@@ -247,6 +260,8 @@ public class PcodeTypeInferencer {
       return _infer((CollectionAccessor)e);
     } else if (e instanceof Comparison) {
       return _infer((Comparison)e);
+    } else if (e instanceof DoubleLiteral) {
+      return _infer((DoubleLiteral)e);
     } else if (e instanceof Equals) {
       return _infer((Equals)e);
     } else if (e instanceof FunctionCall) {

@@ -14,7 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link tdt4250.pseudocode.FunctionCall#getRef <em>Ref</em>}</li>
- *   <li>{@link tdt4250.pseudocode.FunctionCall#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link tdt4250.pseudocode.FunctionCall#getArguments <em>Arguments</em>}</li>
  * </ul>
  *
  * @see tdt4250.pseudocode.PseudocodePackage#getFunctionCall()
@@ -22,18 +22,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface FunctionCall extends Expression {
-	/**
-	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
-	 * The list contents are of type {@link tdt4250.pseudocode.Expression}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parameters</em>' containment reference list.
-	 * @see tdt4250.pseudocode.PseudocodePackage#getFunctionCall_Parameters()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Expression> getParameters();
-
 	/**
 	 * Returns the value of the '<em><b>Ref</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -55,5 +43,17 @@ public interface FunctionCall extends Expression {
 	 * @generated
 	 */
 	void setRef(Function value);
+
+	/**
+	 * Returns the value of the '<em><b>Arguments</b></em>' containment reference list.
+	 * The list contents are of type {@link tdt4250.pseudocode.Expression}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Arguments</em>' containment reference list.
+	 * @see tdt4250.pseudocode.PseudocodePackage#getFunctionCall_Arguments()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Expression> getArguments();
 
 } // FunctionCall

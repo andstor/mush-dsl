@@ -31,7 +31,7 @@ import tdt4250.pseudocode.PseudocodePackage;
  * </p>
  * <ul>
  *   <li>{@link tdt4250.pseudocode.impl.FunctionCallImpl#getRef <em>Ref</em>}</li>
- *   <li>{@link tdt4250.pseudocode.impl.FunctionCallImpl#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link tdt4250.pseudocode.impl.FunctionCallImpl#getArguments <em>Arguments</em>}</li>
  * </ul>
  *
  * @generated
@@ -48,14 +48,14 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall {
 	protected Function ref;
 
 	/**
-	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
+	 * The cached value of the '{@link #getArguments() <em>Arguments</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getParameters()
+	 * @see #getArguments()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Expression> parameters;
+	protected EList<Expression> arguments;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -74,20 +74,6 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall {
 	@Override
 	protected EClass eStaticClass() {
 		return PseudocodePackage.Literals.FUNCTION_CALL;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<Expression> getParameters() {
-		if (parameters == null) {
-			parameters = new EObjectContainmentEList<Expression>(Expression.class, this,
-					PseudocodePackage.FUNCTION_CALL__PARAMETERS);
-		}
-		return parameters;
 	}
 
 	/**
@@ -137,10 +123,24 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall {
 	 * @generated
 	 */
 	@Override
+	public EList<Expression> getArguments() {
+		if (arguments == null) {
+			arguments = new EObjectContainmentEList<Expression>(Expression.class, this,
+					PseudocodePackage.FUNCTION_CALL__ARGUMENTS);
+		}
+		return arguments;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case PseudocodePackage.FUNCTION_CALL__PARAMETERS:
-			return ((InternalEList<?>) getParameters()).basicRemove(otherEnd, msgs);
+		case PseudocodePackage.FUNCTION_CALL__ARGUMENTS:
+			return ((InternalEList<?>) getArguments()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -157,8 +157,8 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall {
 			if (resolve)
 				return getRef();
 			return basicGetRef();
-		case PseudocodePackage.FUNCTION_CALL__PARAMETERS:
-			return getParameters();
+		case PseudocodePackage.FUNCTION_CALL__ARGUMENTS:
+			return getArguments();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -175,9 +175,9 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall {
 		case PseudocodePackage.FUNCTION_CALL__REF:
 			setRef((Function) newValue);
 			return;
-		case PseudocodePackage.FUNCTION_CALL__PARAMETERS:
-			getParameters().clear();
-			getParameters().addAll((Collection<? extends Expression>) newValue);
+		case PseudocodePackage.FUNCTION_CALL__ARGUMENTS:
+			getArguments().clear();
+			getArguments().addAll((Collection<? extends Expression>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -194,8 +194,8 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall {
 		case PseudocodePackage.FUNCTION_CALL__REF:
 			setRef((Function) null);
 			return;
-		case PseudocodePackage.FUNCTION_CALL__PARAMETERS:
-			getParameters().clear();
+		case PseudocodePackage.FUNCTION_CALL__ARGUMENTS:
+			getArguments().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -211,8 +211,8 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall {
 		switch (featureID) {
 		case PseudocodePackage.FUNCTION_CALL__REF:
 			return ref != null;
-		case PseudocodePackage.FUNCTION_CALL__PARAMETERS:
-			return parameters != null && !parameters.isEmpty();
+		case PseudocodePackage.FUNCTION_CALL__ARGUMENTS:
+			return arguments != null && !arguments.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

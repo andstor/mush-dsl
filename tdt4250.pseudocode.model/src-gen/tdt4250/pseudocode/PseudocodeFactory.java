@@ -319,13 +319,13 @@ public interface PseudocodeFactory extends EFactory {
 	Type createType();
 
 	/**
-	 * Returns a new object of class '<em>Identifier</em>'.
+	 * Returns a new object of class '<em>Double Literal</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Identifier</em>'.
+	 * @return a new object of class '<em>Double Literal</em>'.
 	 * @generated
 	 */
-	Identifier createIdentifier();
+	DoubleLiteral createDoubleLiteral();
 
 	/**
 	 * Returns a new object of class '<em>Collection</em>'.

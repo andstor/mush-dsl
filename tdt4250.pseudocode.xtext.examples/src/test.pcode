@@ -1,5 +1,5 @@
-package koko.ok
+package koko.oklol
 Test()
 	a=[1,2,3,4]
-	b=LOL()
+	b=PARTITION()
 	return a

@@ -72,18 +72,9 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case PseudocodePackage.IDENTIFIER: {
-			Identifier identifier = (Identifier) theEObject;
-			T result = caseIdentifier(identifier);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
 		case PseudocodePackage.FUNCTION: {
 			Function function = (Function) theEObject;
 			T result = caseFunction(function);
-			if (result == null)
-				result = caseIdentifier(function);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -430,6 +421,17 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 		case PseudocodePackage.TYPE: {
 			Type type = (Type) theEObject;
 			T result = caseType(type);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PseudocodePackage.DOUBLE_LITERAL: {
+			DoubleLiteral doubleLiteral = (DoubleLiteral) theEObject;
+			T result = caseDoubleLiteral(doubleLiteral);
+			if (result == null)
+				result = caseExpression(doubleLiteral);
+			if (result == null)
+				result = caseFeature(doubleLiteral);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -935,17 +937,17 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Identifier</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Double Literal</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Identifier</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Double Literal</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseIdentifier(Identifier object) {
+	public T caseDoubleLiteral(DoubleLiteral object) {
 		return null;
 	}
 

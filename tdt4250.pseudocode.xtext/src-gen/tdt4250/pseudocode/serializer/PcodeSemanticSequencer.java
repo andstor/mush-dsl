@@ -22,6 +22,7 @@ import tdt4250.pseudocode.CollectionAccessor;
 import tdt4250.pseudocode.CollectionAdd;
 import tdt4250.pseudocode.CollectionRemove;
 import tdt4250.pseudocode.Comparison;
+import tdt4250.pseudocode.DoubleLiteral;
 import tdt4250.pseudocode.Equals;
 import tdt4250.pseudocode.ForExpression;
 import tdt4250.pseudocode.Function;
@@ -84,6 +85,9 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 				return; 
 			case PseudocodePackage.COMPARISON:
 				sequence_Comparison(context, (Comparison) semanticObject); 
+				return; 
+			case PseudocodePackage.DOUBLE_LITERAL:
+				sequence_Atomic(context, (DoubleLiteral) semanticObject); 
 				return; 
 			case PseudocodePackage.EQUALS:
 				sequence_Equals(context, (Equals) semanticObject); 
@@ -255,6 +259,38 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
+	 *     LiteralExpression returns DoubleLiteral
+	 *     BooleanExpression returns DoubleLiteral
+	 *     BooleanExpression.AndOrExpression_1_0_0 returns DoubleLiteral
+	 *     Comparison returns DoubleLiteral
+	 *     Comparison.Comparison_1_0_0 returns DoubleLiteral
+	 *     Equals returns DoubleLiteral
+	 *     Equals.Equals_1_0_0 returns DoubleLiteral
+	 *     ArithmeticExpression returns DoubleLiteral
+	 *     Addition returns DoubleLiteral
+	 *     Addition.Plus_1_0_0_0 returns DoubleLiteral
+	 *     Addition.Minus_1_0_1_0 returns DoubleLiteral
+	 *     Multiplication returns DoubleLiteral
+	 *     Multiplication.MultiOrDiv_1_0_0 returns DoubleLiteral
+	 *     Prefixed returns DoubleLiteral
+	 *     Atomic returns DoubleLiteral
+	 *
+	 * Constraint:
+	 *     value=DOUBLE
+	 */
+	protected void sequence_Atomic(ISerializationContext context, DoubleLiteral semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PseudocodePackage.Literals.DOUBLE_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PseudocodePackage.Literals.DOUBLE_LITERAL__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAtomicAccess().getValueDOUBLETerminalRuleCall_2_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     LiteralExpression returns NumberLiteral
 	 *     BooleanExpression returns NumberLiteral
 	 *     BooleanExpression.AndOrExpression_1_0_0 returns NumberLiteral
@@ -344,7 +380,7 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PseudocodePackage.Literals.STRING_LITERAL__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicAccess().getValueSTRINGTerminalRuleCall_2_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getAtomicAccess().getValueSTRINGTerminalRuleCall_3_1_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -376,7 +412,7 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PseudocodePackage.Literals.VARIABLE_REFERENCE__REF));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicAccess().getRefVariableIDTerminalRuleCall_4_1_0_1(), semanticObject.eGet(PseudocodePackage.Literals.VARIABLE_REFERENCE__REF, false));
+		feeder.accept(grammarAccess.getAtomicAccess().getRefVariableIDTerminalRuleCall_5_1_0_1(), semanticObject.eGet(PseudocodePackage.Literals.VARIABLE_REFERENCE__REF, false));
 		feeder.finish();
 	}
 	
@@ -522,7 +558,7 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     FunctionCall returns FunctionCall
 	 *
 	 * Constraint:
-	 *     (ref=[Function|ID] (parameters+=Parameter parameters+=Parameter*)?)
+	 *     (ref=[Function|ID] (arguments+=LiteralExpression arguments+=LiteralExpression*)?)
 	 */
 	protected void sequence_FunctionCall(ISerializationContext context, FunctionCall semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -531,11 +567,10 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     Identifier returns Function
 	 *     Function returns Function
 	 *
 	 * Constraint:
-	 *     (name=ID (parameters+=Parameter parameters+=Parameter*)? features+=Feature*)
+	 *     (executable?='executable'? name=ID (parameters+=Parameter parameters+=Parameter*)? features+=Feature*)
 	 */
 	protected void sequence_Function(ISerializationContext context, Function semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -711,19 +746,10 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Print returns Print
 	 *
 	 * Constraint:
-	 *     (name='print' value=LiteralExpression)
+	 *     (name='print' newline?='line'? value=LiteralExpression)
 	 */
 	protected void sequence_Print(ISerializationContext context, Print semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, PseudocodePackage.Literals.PRINT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PseudocodePackage.Literals.PRINT__NAME));
-			if (transientValues.isValueTransient(semanticObject, PseudocodePackage.Literals.PRINT__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PseudocodePackage.Literals.PRINT__VALUE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getPrintAccess().getNamePrintKeyword_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getPrintAccess().getValueLiteralExpressionParserRuleCall_1_0(), semanticObject.getValue());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

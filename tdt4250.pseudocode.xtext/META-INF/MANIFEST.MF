@@ -35,4 +35,5 @@ Export-Package: tdt4250.pseudocode.formatting2,
  tdt4250.pseudocode.pseudocode.util,
  tdt4250.pseudocode.pseudocode,
  tdt4250.pseudocode.pseudocode.impl
-Import-Package: org.apache.log4j
+Import-Package: org.apache.log4j,
+ org.eclipse.acceleo.query.delegates;version="5.0.1"

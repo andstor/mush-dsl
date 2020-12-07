@@ -3,9 +3,16 @@
  */
 package tdt4250.pseudocode;
 
+import org.eclipse.xtext.formatting.INodeModelFormatter;
+
+import tdt4250.pseudocode.formatting2.PcodeNodeModelFormatter;
+
 /**
  * Use this class to register components to be used at runtime / without the
  * Equinox extension registry.
  */
 public class PcodeRuntimeModule extends AbstractPcodeRuntimeModule {
+	public Class<? extends INodeModelFormatter> bindINodeModelFormatter() {
+		return PcodeNodeModelFormatter.class;
+	}
 }

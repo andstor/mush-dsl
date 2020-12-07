@@ -15,6 +15,7 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import tdt4250.pseudocode.AndOrExpression;
@@ -25,6 +26,7 @@ import tdt4250.pseudocode.CollectionAccessor;
 import tdt4250.pseudocode.CollectionAdd;
 import tdt4250.pseudocode.CollectionRemove;
 import tdt4250.pseudocode.Comparison;
+import tdt4250.pseudocode.DoubleLiteral;
 import tdt4250.pseudocode.Equals;
 import tdt4250.pseudocode.Expression;
 import tdt4250.pseudocode.Feature;
@@ -67,29 +69,33 @@ public class PcodeGenerator extends AbstractGenerator {
   
   private HashSet<String> importTypes = new HashSet<String>();
   
+  private String packageName = "";
+  
   /**
-   * Da har jeg fått ordnet litt til :)
-   * Kanskje vi kan ta et lite møte på søndag kl 2?
-   * Bare å ringe meg om jeg fortsatt er i koma xD 91601472
+   * Da har jeg  fikset litt til :)
    * 
-   * - auto import virker nå som det skal
-   * - avanserte variabel typer funker nå ;) eks "list with list with number" = List<List<Integer>
-   * - Formatering - når en starter en eclipse instans så har nå editoren auto formatering av innrykk ;)
-   *     Men man MÅ skrive første innrykket etter funksjoner eller if osv.. Pga. BEGIN og END.. har prøvd mye men får det ikke helt til.
-   *     Ser på nett at det er tydeligvis noe bugs i xtext...
-   *     ellers så er det rom  for forbedring her!!!!
-   * - Pakker - la inn pakke som man KAN spesifisere i starten av filen. Dette lager
-   *     java pakker (mappe struktur) og importering virker. Det virker å lage flere .pcode filer og
-   *     referere til funksjoner i de !! :)
+   * - Parametere i funksjonskall funker
+   * - Main fuunksjon er da good to go! Ble ganske fancy :)  Va litt jobb her ettersom man kan kalle main med  argumenter
+   *     (gjøres i Run Configuration,eller når man  kjører via kommandolinje)
+   *     Har pr. nå støtte for String, int, double og boolean. Dette er dynamisk  basert på parameterene til funksjonen som er satt til "executable".
+   *     Man kan ikke lage ister som argument (har brukt mye tid på dette, men d gikk ikke .. ARRRG!)
+   * - Man  kan nå skrive print line "xxx"  og  det svarer til System.out.println. \n er også nå riktig escapet.
    * 
-   * Tror at print er ok uten komma... Btw så gjorde jeg den om til System.out.print istedenfor println.
-   *     ettersom det bare er å skrive \n for linje.
    * 
-   * Så da står igjen (se forrige kommentar over)
-   * - litt fiksing/rydding i ecore modellen
-   * - validering - spes typer.. eks kan ikke si at en int variabel skal plusse på  en  String senere...
-   * - Readme filer
-   * - formatering - diverse
+   * Prøvde å fikse times og divide keywords, men  dette tror jeg vi må gjøre med enums ;) .... ble veldig rotete
+   * Skal få satt opp readme struktur i morra (den 7. des.).
+   * 
+   * 
+   * Så også på  validering med Acceleo query language (AQL) (constraints),  men dette viste seg å være VELDIG
+   * vankselig å koble inn  i xtext prosjektet... Så tror vi dropper dette...
+   * Det får holde  med enums (og forhåpentligvis operasjoner når jeg kommer så langt) :)
+   * 
+   * btw så kom jeg på at man kan lage TYPER i ecore... Er dette noe vi kunna brukt? (må isåfall sjekke at typer faktisk virker i Xtext)
+   * eks for TypeLiteral? - istedenfor enums? åsså kan vi heller ha enums til eks operasjons tegn ol.? eks for =,  + "pluss", - "minus"?? idk..
+   * Du får styre på slik du vill ;)
+   * 
+   * 
+   * Snakes!
    */
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
@@ -100,12 +106,13 @@ public class PcodeGenerator extends AbstractGenerator {
         this.varCounter = 0;
         this.varList.clear();
         this.importTypes.clear();
+        this.packageName = null;
         EObject _eContainer = e.eContainer();
-        String packageName = ((Model) _eContainer).getPackage();
+        this.packageName = ((Model) _eContainer).getPackage();
         String folder = "";
-        if ((packageName != null)) {
+        if ((this.packageName != null)) {
           String _folder = folder;
-          String _replace = packageName.replace(".", "/");
+          String _replace = this.packageName.replace(".", "/");
           String _plus = (_replace + "/");
           folder = (_folder + _plus);
         }
@@ -126,8 +133,7 @@ public class PcodeGenerator extends AbstractGenerator {
   }
   
   public String generate(final Function e) {
-    EObject _eContainer = e.eContainer();
-    String packageName = ((Model) _eContainer).getPackage();
+    String string = "";
     String type = this.typeInferencer.infer(e);
     String params = "";
     boolean _isEmpty = e.getParameters().isEmpty();
@@ -144,10 +150,20 @@ public class PcodeGenerator extends AbstractGenerator {
       CharSequence _generateFeature = this.generateFeature(f);
       body = (_body + _generateFeature);
     }
+    String main = "";
+    boolean _isExecutable = e.isExecutable();
+    if (_isExecutable) {
+      main = this.generateMainFunction(e);
+    }
+    String _string = string;
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("package ");
-    _builder.append(packageName);
-    _builder.append(";");
+    {
+      if ((this.packageName != null)) {
+        _builder.append(" package ");
+        _builder.append(this.packageName);
+        _builder.append(";");
+      }
+    }
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     {
@@ -177,8 +193,76 @@ public class PcodeGenerator extends AbstractGenerator {
     _builder.append("    ");
     _builder.append("}");
     _builder.newLine();
+    _builder.append("    ");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append(main, "    ");
+    _builder.newLineIfNotEmpty();
     _builder.append("}");
-    return _builder.toString();
+    _builder.newLine();
+    string = (_string + _builder);
+    return string;
+  }
+  
+  public String generateMainFunction(final Function function) {
+    String _xblockexpression = null;
+    {
+      String string = "";
+      String argString = "";
+      StringJoiner argList = new StringJoiner(",");
+      boolean _isEmpty = function.getParameters().isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        for (int i = 0; (i < ((Object[])Conversions.unwrapArray(function.getParameters(), Object.class)).length); i++) {
+          {
+            Expression param = function.getParameters().get(i);
+            final Variable variable = ((Variable) param);
+            final String type = this.typeInferencer.infer(variable.getType());
+            final String convertedType = this.generateTypeConvertionCode((("args[" + Integer.valueOf(i)) + "]"), type);
+            String arg = ("ARG" + Integer.valueOf(i));
+            String _argString = argString;
+            argString = (_argString + (((((type + " ") + arg) + " = ") + convertedType) + ";\n"));
+            argList.add(arg);
+          }
+        }
+      }
+      String _string = string;
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("public static void main(final String[] args) {");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append(argString, "    ");
+      _builder.newLineIfNotEmpty();
+      _builder.append("    ");
+      _builder.append("run(");
+      String _string_1 = argList.toString();
+      _builder.append(_string_1, "    ");
+      _builder.append(");");
+      _builder.newLineIfNotEmpty();
+      _builder.append("}");
+      _builder.newLine();
+      _xblockexpression = string = (_string + _builder);
+    }
+    return _xblockexpression;
+  }
+  
+  public String generateTypeConvertionCode(final String value, final String type) {
+    if (type != null) {
+      switch (type) {
+        case "String":
+          return value;
+        case "int":
+          return (("Integer.parseInt(" + value) + ")");
+        case "double":
+          return (("Double.parseDouble(" + value) + ")");
+        case "boolean":
+          return (("Boolean.parseBoolean(" + value) + ")");
+        default:
+          return value;
+      }
+    } else {
+      return value;
+    }
   }
   
   public String generateParameters(final EList<Expression> variables) {
@@ -240,12 +324,12 @@ public class PcodeGenerator extends AbstractGenerator {
       if (_not) {
         _builder.append(" else {");
         _builder.newLineIfNotEmpty();
-        _builder.append("    ");
+        _builder.append("                                                    ");
         {
           EList<Feature> _otherwise = e.getOtherwise();
           for(final Feature f_1 : _otherwise) {
             Object _generateFeature_1 = this.generateFeature(f_1);
-            _builder.append(_generateFeature_1, "    ");
+            _builder.append(_generateFeature_1, "                                                    ");
           }
         }
         _builder.newLineIfNotEmpty();
@@ -377,13 +461,24 @@ public class PcodeGenerator extends AbstractGenerator {
   }
   
   protected CharSequence _generateExpression(final Print e) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("System.out.print(");
-    Object _LiteralExpression = this.LiteralExpression(e.getValue());
-    _builder.append(_LiteralExpression);
-    _builder.append(");");
-    _builder.newLineIfNotEmpty();
-    return _builder;
+    boolean _isNewline = e.isNewline();
+    if (_isNewline) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("System.out.println(");
+      Object _LiteralExpression = this.LiteralExpression(e.getValue());
+      _builder.append(_LiteralExpression);
+      _builder.append(");");
+      _builder.newLineIfNotEmpty();
+      return _builder.toString();
+    } else {
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("System.out.print(");
+      Object _LiteralExpression_1 = this.LiteralExpression(e.getValue());
+      _builder_1.append(_LiteralExpression_1);
+      _builder_1.append(");");
+      _builder_1.newLineIfNotEmpty();
+      return _builder_1.toString();
+    }
   }
   
   protected CharSequence _generateExpression(final CollectionAdd e) {
@@ -645,9 +740,13 @@ public class PcodeGenerator extends AbstractGenerator {
     return Integer.valueOf(e.getValue());
   }
   
+  protected Object _LiteralExpression(final DoubleLiteral e) {
+    return e.getValue();
+  }
+  
   protected Object _LiteralExpression(final StringLiteral e) {
-    String _value = e.getValue();
-    String _plus = ("\"" + _value);
+    String _escape = PcodeGeneratorUtils.escape(e.getValue());
+    String _plus = ("\"" + _escape);
     return (_plus + "\"");
   }
   
@@ -670,14 +769,17 @@ public class PcodeGenerator extends AbstractGenerator {
     string = (_string + _plus);
     EObject _eContainer = e.getRef().eContainer();
     String refPackageName = ((Model) _eContainer).getPackage();
-    String _name_1 = e.getRef().getName();
-    String _plus_1 = ((refPackageName + ".") + _name_1);
-    this.importTypes.add(_plus_1);
-    boolean _isEmpty = e.getParameters().isEmpty();
-    if (_isEmpty) {
+    if (((refPackageName != null) && (!refPackageName.equals(this.packageName)))) {
+      String _name_1 = e.getRef().getName();
+      String _plus_1 = ((refPackageName + ".") + _name_1);
+      this.importTypes.add(_plus_1);
+    }
+    boolean _isEmpty = e.getArguments().isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
       StringJoiner joiner = new StringJoiner(",");
-      EList<Expression> _parameters = e.getParameters();
-      for (final Expression param : _parameters) {
+      EList<Expression> _arguments = e.getArguments();
+      for (final Expression param : _arguments) {
         joiner.add(this.LiteralExpression(param).toString());
       }
       String _string_1 = string;
@@ -751,6 +853,8 @@ public class PcodeGenerator extends AbstractGenerator {
       return _LiteralExpression((CollectionAccessor)e);
     } else if (e instanceof Comparison) {
       return _LiteralExpression((Comparison)e);
+    } else if (e instanceof DoubleLiteral) {
+      return _LiteralExpression((DoubleLiteral)e);
     } else if (e instanceof Equals) {
       return _LiteralExpression((Equals)e);
     } else if (e instanceof FunctionCall) {

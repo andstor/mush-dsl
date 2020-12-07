@@ -11,6 +11,8 @@ package tdt4250.pseudocode.ide.contentassist.antlr.lexer;
 import org.eclipse.xtext.ide.editor.contentassist.antlr.internal.Lexer;
 }
 
+Executable : ('E'|'e')('X'|'x')('E'|'e')('C'|'c')('U'|'u')('T'|'t')('A'|'a')('B'|'b')('L'|'l')('E'|'e');
+
 Contains : ('C'|'c')('O'|'o')('N'|'n')('T'|'t')('A'|'a')('I'|'i')('N'|'n')('S'|'s');
 
 Continue : ('C'|'c')('O'|'o')('N'|'n')('T'|'t')('I'|'i')('N'|'n')('U'|'u')('E'|'e');
@@ -50,6 +52,8 @@ While : ('W'|'w')('H'|'h')('I'|'i')('L'|'l')('E'|'e');
 Text : ('T'|'t')('E'|'e')('X'|'x')('T'|'t');
 
 Else : ('E'|'e')('L'|'l')('S'|'s')('E'|'e');
+
+Line : ('L'|'l')('I'|'i')('N'|'n')('E'|'e');
 
 List_1 : ('L'|'l')('I'|'i')('S'|'s')('T'|'t');
 

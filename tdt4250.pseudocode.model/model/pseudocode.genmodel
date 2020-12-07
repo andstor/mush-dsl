@@ -9,16 +9,18 @@
   <foreignModel>pseudocode.ecore</foreignModel>
   <genPackages prefix="Pseudocode" basePackage="tdt4250" resource="XMI" disposableProviderFactory="true"
       ecorePackage="pseudocode.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="pseudocode.ecore#//TypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="pseudocode.ecore#//TypeEnum/Text"/>
+    </genEnums>
     <genClasses ecoreClass="pseudocode.ecore#//Model">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Model/functions"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Model/package"/>
     </genClasses>
-    <genClasses ecoreClass="pseudocode.ecore#//Identifier">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Identifier/name"/>
-    </genClasses>
     <genClasses ecoreClass="pseudocode.ecore#//Function">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Function/parameters"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Function/features"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Function/executable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Function/name"/>
     </genClasses>
     <genClasses image="false" ecoreClass="pseudocode.ecore#//Feature"/>
     <genClasses image="false" ecoreClass="pseudocode.ecore#//Statement"/>
@@ -45,10 +47,11 @@
     <genClasses ecoreClass="pseudocode.ecore#//Print">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Print/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Print/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Print/newline"/>
     </genClasses>
     <genClasses ecoreClass="pseudocode.ecore#//FunctionCall">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pseudocode.ecore#//FunctionCall/ref"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//FunctionCall/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//FunctionCall/arguments"/>
     </genClasses>
     <genClasses ecoreClass="pseudocode.ecore#//Collection">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Collection/elements"/>
@@ -72,7 +75,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//ValueExchange/value"/>
     </genClasses>
     <genClasses ecoreClass="pseudocode.ecore#//List">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//List/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference pseudocode.ecore#//List/type"/>
     </genClasses>
     <genClasses ecoreClass="pseudocode.ecore#//SetLitteral"/>
     <genClasses ecoreClass="pseudocode.ecore#//ListLitteral"/>
@@ -131,6 +134,9 @@
     </genClasses>
     <genClasses ecoreClass="pseudocode.ecore#//Type">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Type/types"/>
+    </genClasses>
+    <genClasses ecoreClass="pseudocode.ecore#//DoubleLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//DoubleLiteral/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

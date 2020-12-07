@@ -3,12 +3,15 @@
 package tdt4250.pseudocode.impl;
 
 import java.util.Collection;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -27,11 +30,13 @@ import tdt4250.pseudocode.PseudocodePackage;
  * <ul>
  *   <li>{@link tdt4250.pseudocode.impl.FunctionImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link tdt4250.pseudocode.impl.FunctionImpl#getFeatures <em>Features</em>}</li>
+ *   <li>{@link tdt4250.pseudocode.impl.FunctionImpl#isExecutable <em>Executable</em>}</li>
+ *   <li>{@link tdt4250.pseudocode.impl.FunctionImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class FunctionImpl extends IdentifierImpl implements Function {
+public class FunctionImpl extends MinimalEObjectImpl.Container implements Function {
 	/**
 	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -51,6 +56,46 @@ public class FunctionImpl extends IdentifierImpl implements Function {
 	 * @ordered
 	 */
 	protected EList<Feature> features;
+
+	/**
+	 * The default value of the '{@link #isExecutable() <em>Executable</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isExecutable()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean EXECUTABLE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isExecutable() <em>Executable</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isExecutable()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean executable = EXECUTABLE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -104,6 +149,53 @@ public class FunctionImpl extends IdentifierImpl implements Function {
 	 * @generated
 	 */
 	@Override
+	public boolean isExecutable() {
+		return executable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setExecutable(boolean newExecutable) {
+		boolean oldExecutable = executable;
+		executable = newExecutable;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PseudocodePackage.FUNCTION__EXECUTABLE, oldExecutable,
+					executable));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PseudocodePackage.FUNCTION__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case PseudocodePackage.FUNCTION__PARAMETERS:
@@ -126,6 +218,10 @@ public class FunctionImpl extends IdentifierImpl implements Function {
 			return getParameters();
 		case PseudocodePackage.FUNCTION__FEATURES:
 			return getFeatures();
+		case PseudocodePackage.FUNCTION__EXECUTABLE:
+			return isExecutable();
+		case PseudocodePackage.FUNCTION__NAME:
+			return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -147,6 +243,12 @@ public class FunctionImpl extends IdentifierImpl implements Function {
 			getFeatures().clear();
 			getFeatures().addAll((Collection<? extends Feature>) newValue);
 			return;
+		case PseudocodePackage.FUNCTION__EXECUTABLE:
+			setExecutable((Boolean) newValue);
+			return;
+		case PseudocodePackage.FUNCTION__NAME:
+			setName((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -165,6 +267,12 @@ public class FunctionImpl extends IdentifierImpl implements Function {
 		case PseudocodePackage.FUNCTION__FEATURES:
 			getFeatures().clear();
 			return;
+		case PseudocodePackage.FUNCTION__EXECUTABLE:
+			setExecutable(EXECUTABLE_EDEFAULT);
+			return;
+		case PseudocodePackage.FUNCTION__NAME:
+			setName(NAME_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -181,8 +289,31 @@ public class FunctionImpl extends IdentifierImpl implements Function {
 			return parameters != null && !parameters.isEmpty();
 		case PseudocodePackage.FUNCTION__FEATURES:
 			return features != null && !features.isEmpty();
+		case PseudocodePackage.FUNCTION__EXECUTABLE:
+			return executable != EXECUTABLE_EDEFAULT;
+		case PseudocodePackage.FUNCTION__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (executable: ");
+		result.append(executable);
+		result.append(", name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //FunctionImpl

@@ -71,11 +71,6 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseIdentifier(Identifier object) {
-			return createIdentifierAdapter();
-		}
-
-		@Override
 		public Adapter caseFunction(Function object) {
 			return createFunctionAdapter();
 		}
@@ -238,6 +233,11 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseType(Type object) {
 			return createTypeAdapter();
+		}
+
+		@Override
+		public Adapter caseDoubleLiteral(DoubleLiteral object) {
+			return createDoubleLiteralAdapter();
 		}
 
 		@Override
@@ -722,16 +722,16 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.Identifier <em>Identifier</em>}'.
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.DoubleLiteral <em>Double Literal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.Identifier
+	 * @see tdt4250.pseudocode.DoubleLiteral
 	 * @generated
 	 */
-	public Adapter createIdentifierAdapter() {
+	public Adapter createDoubleLiteralAdapter() {
 		return null;
 	}
 

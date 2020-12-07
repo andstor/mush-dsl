@@ -4,6 +4,7 @@ package tdt4250.pseudocode.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -18,13 +19,13 @@ import tdt4250.pseudocode.CollectionAccessor;
 import tdt4250.pseudocode.CollectionAdd;
 import tdt4250.pseudocode.CollectionRemove;
 import tdt4250.pseudocode.Comparison;
+import tdt4250.pseudocode.DoubleLiteral;
 import tdt4250.pseudocode.Equals;
 import tdt4250.pseudocode.Expression;
 import tdt4250.pseudocode.Feature;
 import tdt4250.pseudocode.ForExpression;
 import tdt4250.pseudocode.Function;
 import tdt4250.pseudocode.FunctionCall;
-import tdt4250.pseudocode.Identifier;
 import tdt4250.pseudocode.IfExpression;
 import tdt4250.pseudocode.List;
 import tdt4250.pseudocode.ListLitteral;
@@ -42,6 +43,7 @@ import tdt4250.pseudocode.Statement;
 import tdt4250.pseudocode.Stop;
 import tdt4250.pseudocode.StringLiteral;
 import tdt4250.pseudocode.Type;
+import tdt4250.pseudocode.TypeEnum;
 import tdt4250.pseudocode.ValueExchange;
 import tdt4250.pseudocode.Variable;
 import tdt4250.pseudocode.VariableReference;
@@ -290,7 +292,14 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass identifierEClass = null;
+	private EClass doubleLiteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum typeEnumEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -421,6 +430,26 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	@Override
 	public EReference getFunction_Features() {
 		return (EReference) functionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getFunction_Executable() {
+		return (EAttribute) functionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getFunction_Name() {
+		return (EAttribute) functionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -639,6 +668,16 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
+	public EAttribute getPrint_Newline() {
+		return (EAttribute) printEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getFunctionCall() {
 		return functionCallEClass;
 	}
@@ -649,8 +688,8 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
-	public EReference getFunctionCall_Parameters() {
-		return (EReference) functionCallEClass.getEStructuralFeatures().get(1);
+	public EReference getFunctionCall_Ref() {
+		return (EReference) functionCallEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -659,8 +698,8 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
-	public EReference getFunctionCall_Ref() {
-		return (EReference) functionCallEClass.getEStructuralFeatures().get(0);
+	public EReference getFunctionCall_Arguments() {
+		return (EReference) functionCallEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1259,8 +1298,8 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
-	public EClass getIdentifier() {
-		return identifierEClass;
+	public EClass getDoubleLiteral() {
+		return doubleLiteralEClass;
 	}
 
 	/**
@@ -1269,8 +1308,18 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getIdentifier_Name() {
-		return (EAttribute) identifierEClass.getEStructuralFeatures().get(0);
+	public EAttribute getDoubleLiteral_Value() {
+		return (EAttribute) doubleLiteralEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getTypeEnum() {
+		return typeEnumEEnum;
 	}
 
 	/**
@@ -1327,12 +1376,11 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		createEReference(modelEClass, MODEL__FUNCTIONS);
 		createEAttribute(modelEClass, MODEL__PACKAGE);
 
-		identifierEClass = createEClass(IDENTIFIER);
-		createEAttribute(identifierEClass, IDENTIFIER__NAME);
-
 		functionEClass = createEClass(FUNCTION);
 		createEReference(functionEClass, FUNCTION__PARAMETERS);
 		createEReference(functionEClass, FUNCTION__FEATURES);
+		createEAttribute(functionEClass, FUNCTION__EXECUTABLE);
+		createEAttribute(functionEClass, FUNCTION__NAME);
 
 		featureEClass = createEClass(FEATURE);
 
@@ -1362,10 +1410,11 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		printEClass = createEClass(PRINT);
 		createEAttribute(printEClass, PRINT__NAME);
 		createEReference(printEClass, PRINT__VALUE);
+		createEAttribute(printEClass, PRINT__NEWLINE);
 
 		functionCallEClass = createEClass(FUNCTION_CALL);
 		createEReference(functionCallEClass, FUNCTION_CALL__REF);
-		createEReference(functionCallEClass, FUNCTION_CALL__PARAMETERS);
+		createEReference(functionCallEClass, FUNCTION_CALL__ARGUMENTS);
 
 		collectionEClass = createEClass(COLLECTION);
 		createEReference(collectionEClass, COLLECTION__ELEMENTS);
@@ -1450,6 +1499,12 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 
 		typeEClass = createEClass(TYPE);
 		createEAttribute(typeEClass, TYPE__TYPES);
+
+		doubleLiteralEClass = createEClass(DOUBLE_LITERAL);
+		createEAttribute(doubleLiteralEClass, DOUBLE_LITERAL__VALUE);
+
+		// Create enums
+		typeEnumEEnum = createEEnum(TYPE_ENUM);
 	}
 
 	/**
@@ -1481,7 +1536,6 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		functionEClass.getESuperTypes().add(this.getIdentifier());
 		statementEClass.getESuperTypes().add(this.getFeature());
 		expressionEClass.getESuperTypes().add(this.getFeature());
 		ifExpressionEClass.getESuperTypes().add(this.getStatement());
@@ -1512,6 +1566,7 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		stringLiteralEClass.getESuperTypes().add(this.getExpression());
 		booleanLiteralEClass.getESuperTypes().add(this.getExpression());
 		variableReferenceEClass.getESuperTypes().add(this.getExpression());
+		doubleLiteralEClass.getESuperTypes().add(this.getExpression());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1521,11 +1576,6 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		initEAttribute(getModel_Package(), ecorePackage.getEString(), "package", null, 0, 1, Model.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(identifierEClass, Identifier.class, "Identifier", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getIdentifier_Name(), ecorePackage.getEString(), "name", null, 0, 1, Identifier.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(functionEClass, Function.class, "Function", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getFunction_Parameters(), this.getExpression(), null, "parameters", null, 0, -1, Function.class,
@@ -1534,6 +1584,10 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		initEReference(getFunction_Features(), this.getFeature(), null, "features", null, 0, -1, Function.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFunction_Executable(), ecorePackage.getEBoolean(), "executable", null, 0, 1, Function.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFunction_Name(), ecorePackage.getEString(), "name", null, 0, 1, Function.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(featureEClass, Feature.class, "Feature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1591,13 +1645,15 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		initEReference(getPrint_Value(), this.getExpression(), null, "value", null, 0, 1, Print.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
+		initEAttribute(getPrint_Newline(), ecorePackage.getEBoolean(), "newline", null, 0, 1, Print.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(functionCallEClass, FunctionCall.class, "FunctionCall", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getFunctionCall_Ref(), this.getFunction(), null, "ref", null, 0, 1, FunctionCall.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFunctionCall_Parameters(), this.getExpression(), null, "parameters", null, 0, -1,
+		initEReference(getFunctionCall_Arguments(), this.getExpression(), null, "arguments", null, 0, -1,
 				FunctionCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1768,6 +1824,15 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getType_Types(), ecorePackage.getEString(), "types", null, 0, -1, Type.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(doubleLiteralEClass, DoubleLiteral.class, "DoubleLiteral", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDoubleLiteral_Value(), ecorePackage.getEString(), "value", null, 0, 1, DoubleLiteral.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(typeEnumEEnum, TypeEnum.class, "TypeEnum");
+		addEEnumLiteral(typeEnumEEnum, TypeEnum.TEXT);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -3,14 +3,22 @@
  */
 package tdt4250.pseudocode.validation;
 
+import org.eclipse.acceleo.query.delegates.AQLValidationDelegate;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EValidator;
+import org.eclipse.emf.ecore.EValidator.ValidationDelegate;
+import org.eclipse.xtext.validation.EValidatorRegistrar;
+
+import tdt4250.pseudocode.PseudocodePackage;
 
 /**
- * This class contains custom validation rules. 
+ * This class contains custom validation rules.
  *
- * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
+ * See
+ * https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 public class PcodeValidator extends AbstractPcodeValidator {
-	
+
 //	public static final String INVALID_NAME = "invalidName";
 //
 //	@Check
@@ -21,5 +29,5 @@ public class PcodeValidator extends AbstractPcodeValidator {
 //					INVALID_NAME);
 //		}
 //	}
-	
+
 }

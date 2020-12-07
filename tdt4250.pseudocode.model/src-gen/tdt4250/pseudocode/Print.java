@@ -13,6 +13,7 @@ package tdt4250.pseudocode;
  * <ul>
  *   <li>{@link tdt4250.pseudocode.Print#getName <em>Name</em>}</li>
  *   <li>{@link tdt4250.pseudocode.Print#getValue <em>Value</em>}</li>
+ *   <li>{@link tdt4250.pseudocode.Print#isNewline <em>Newline</em>}</li>
  * </ul>
  *
  * @see tdt4250.pseudocode.PseudocodePackage#getPrint()
@@ -63,5 +64,27 @@ public interface Print extends Expression {
 	 * @generated
 	 */
 	void setValue(Expression value);
+
+	/**
+	 * Returns the value of the '<em><b>Newline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Newline</em>' attribute.
+	 * @see #setNewline(boolean)
+	 * @see tdt4250.pseudocode.PseudocodePackage#getPrint_Newline()
+	 * @model
+	 * @generated
+	 */
+	boolean isNewline();
+
+	/**
+	 * Sets the value of the '{@link tdt4250.pseudocode.Print#isNewline <em>Newline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Newline</em>' attribute.
+	 * @see #isNewline()
+	 * @generated
+	 */
+	void setNewline(boolean value);
 
 } // Print

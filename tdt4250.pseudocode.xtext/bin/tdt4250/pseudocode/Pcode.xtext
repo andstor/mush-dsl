@@ -7,13 +7,6 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 //generate pseudocode "http://www.pseudocode.tdt4250/xtext/Pcode"
 
 
-/* Da burde det meste fungere ;) 
- * Da er det bare å gå i gang med å generere kode ;)
- * Dette gjøres i tdt4250.pseudocode.generator pakken!
- */
-
-
-
 Model returns Model:
 	{Model}
 	('package' package = QualifiedName)?
@@ -24,12 +17,10 @@ QualifiedName:
     ID('.'ID)*
 ;
 
-Identifier:
-	Function | TypeLiteral
-;
 
 Function:
 	{Function}
+	(executable?='executable')?
 	name=ID
 	'('
 	(parameters+=Parameter ("," parameters+=Parameter)*)?
@@ -56,7 +47,7 @@ Expression returns Expression:
 
 // Primarily variable assignment
 Variable returns Expression:
-	{Variable} 
+	{Variable}
 	(name=ID op=('=' | 'equals' | 'is'|'+='|'-=') value=(LiteralExpression)
 	|	name=ID op= ('++'|'--')
 	);
@@ -103,7 +94,7 @@ Stop returns Stop:
 
 
 Print:
-	name='print' value=LiteralExpression
+	name='print' (newline?='line')? value=LiteralExpression
 ;
 
 CollectionAdd returns Expression:
@@ -191,33 +182,37 @@ ArithmeticExpression returns Expression:
 
 
 Addition returns Expression:
-	Multiplication (({Plus.left=current} PlusOperator | {Minus.left=current} ('-' | 'minus')) right=Multiplication)*; 
+	Multiplication (({Plus.left=current} PlusOperator | {Minus.left=current} MinusOperator) right=Multiplication)*; 
 
 PlusOperator:
 	('+' | 'plus')
 ;
 
+MinusOperator:
+    ('-' | 'minus')
+;
+
 Multiplication returns Expression:
 	Prefixed (({MultiOrDiv.left=current} op=("*"|"/")) right=Prefixed)*;
 
+
 Prefixed returns Expression:
 	{BooleanNegation} =>"!" expression=Atomic | /* right associativity */
-	{ArithmeticSigned} =>('-' | 'minus') expression=Atomic | /* right associativity */
+	{ArithmeticSigned} =>MinusOperator expression=Atomic | /* right associativity */
 	Atomic;
 
 Atomic returns Expression:
 	{ParenthesizedExpression} '(' expression=LiteralExpression ')' |
 	{NumberLiteral} value=INT |
+	{DoubleLiteral} value=DOUBLE |
 	{StringLiteral} value=STRING |
 	{BooleanLiteral} value=('true'|'false') |
 	{VariableReference} ref=[Variable]  |
 	FunctionCall;
 
-
-
 FunctionCall:
     {FunctionCall}
-    ref=[Function] '(' (parameters+=Parameter ("," parameters+=Parameter)*)? ')';
+    ref=[Function] '(' (arguments+=LiteralExpression ("," arguments+=LiteralExpression)*)? ')';
 
 
 // --- Diff ---
