@@ -27,7 +27,10 @@ class PcodeParsingTest {
     @Inject extension CompilationTestHelper
     val code = '''
         executable PARTITION(list with text p, number r, text lol)
-            
+            B = {1,2,3}
+            C =[6,5,4]
+            bo equals new list with number that contains 1,2,3
+            c is 3
             for interval 1 to r
                 if 2 <= 1
                     kk=0

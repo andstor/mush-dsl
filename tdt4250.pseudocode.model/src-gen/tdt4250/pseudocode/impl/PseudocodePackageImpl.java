@@ -22,10 +22,10 @@ import tdt4250.pseudocode.DoubleLiteral;
 import tdt4250.pseudocode.Equals;
 import tdt4250.pseudocode.Expression;
 import tdt4250.pseudocode.Feature;
-import tdt4250.pseudocode.ForExpression;
+import tdt4250.pseudocode.ForStatement;
 import tdt4250.pseudocode.Function;
 import tdt4250.pseudocode.FunctionCall;
-import tdt4250.pseudocode.IfExpression;
+import tdt4250.pseudocode.IfStatement;
 import tdt4250.pseudocode.List;
 import tdt4250.pseudocode.ListLitteral;
 import tdt4250.pseudocode.Minus;
@@ -45,7 +45,7 @@ import tdt4250.pseudocode.Type;
 import tdt4250.pseudocode.ValueExchange;
 import tdt4250.pseudocode.Variable;
 import tdt4250.pseudocode.VariableReference;
-import tdt4250.pseudocode.WhileExpression;
+import tdt4250.pseudocode.WhileStatement;
 
 /**
  * <!-- begin-user-doc -->
@@ -94,21 +94,21 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass ifExpressionEClass = null;
+	private EClass ifStatementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass forExpressionEClass = null;
+	private EClass forStatementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass whileExpressionEClass = null;
+	private EClass whileStatementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -479,8 +479,8 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
-	public EClass getIfExpression() {
-		return ifExpressionEClass;
+	public EClass getIfStatement() {
+		return ifStatementEClass;
 	}
 
 	/**
@@ -489,8 +489,8 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getIfExpression_Name() {
-		return (EAttribute) ifExpressionEClass.getEStructuralFeatures().get(0);
+	public EAttribute getIfStatement_Name() {
+		return (EAttribute) ifStatementEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -499,8 +499,8 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
-	public EReference getIfExpression_Condition() {
-		return (EReference) ifExpressionEClass.getEStructuralFeatures().get(1);
+	public EReference getIfStatement_Condition() {
+		return (EReference) ifStatementEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -509,8 +509,8 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
-	public EReference getIfExpression_Then() {
-		return (EReference) ifExpressionEClass.getEStructuralFeatures().get(2);
+	public EReference getIfStatement_Then() {
+		return (EReference) ifStatementEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -519,8 +519,8 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
-	public EReference getIfExpression_Otherwise() {
-		return (EReference) ifExpressionEClass.getEStructuralFeatures().get(3);
+	public EReference getIfStatement_Otherwise() {
+		return (EReference) ifStatementEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -529,8 +529,8 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
-	public EClass getForExpression() {
-		return forExpressionEClass;
+	public EClass getForStatement() {
+		return forStatementEClass;
 	}
 
 	/**
@@ -539,8 +539,8 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
-	public EReference getForExpression_From() {
-		return (EReference) forExpressionEClass.getEStructuralFeatures().get(0);
+	public EReference getForStatement_From() {
+		return (EReference) forStatementEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -549,8 +549,8 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
-	public EReference getForExpression_To() {
-		return (EReference) forExpressionEClass.getEStructuralFeatures().get(1);
+	public EReference getForStatement_To() {
+		return (EReference) forStatementEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -559,8 +559,8 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
-	public EReference getForExpression_Block() {
-		return (EReference) forExpressionEClass.getEStructuralFeatures().get(2);
+	public EReference getForStatement_Block() {
+		return (EReference) forStatementEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -569,8 +569,8 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
-	public EClass getWhileExpression() {
-		return whileExpressionEClass;
+	public EClass getWhileStatement() {
+		return whileStatementEClass;
 	}
 
 	/**
@@ -579,8 +579,8 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
-	public EReference getWhileExpression_Condition() {
-		return (EReference) whileExpressionEClass.getEStructuralFeatures().get(0);
+	public EReference getWhileStatement_Condition() {
+		return (EReference) whileStatementEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -589,8 +589,8 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
-	public EReference getWhileExpression_Block() {
-		return (EReference) whileExpressionEClass.getEStructuralFeatures().get(1);
+	public EReference getWhileStatement_Block() {
+		return (EReference) whileStatementEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1369,20 +1369,20 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 
 		expressionEClass = createEClass(EXPRESSION);
 
-		ifExpressionEClass = createEClass(IF_EXPRESSION);
-		createEAttribute(ifExpressionEClass, IF_EXPRESSION__NAME);
-		createEReference(ifExpressionEClass, IF_EXPRESSION__CONDITION);
-		createEReference(ifExpressionEClass, IF_EXPRESSION__THEN);
-		createEReference(ifExpressionEClass, IF_EXPRESSION__OTHERWISE);
+		ifStatementEClass = createEClass(IF_STATEMENT);
+		createEAttribute(ifStatementEClass, IF_STATEMENT__NAME);
+		createEReference(ifStatementEClass, IF_STATEMENT__CONDITION);
+		createEReference(ifStatementEClass, IF_STATEMENT__THEN);
+		createEReference(ifStatementEClass, IF_STATEMENT__OTHERWISE);
 
-		forExpressionEClass = createEClass(FOR_EXPRESSION);
-		createEReference(forExpressionEClass, FOR_EXPRESSION__FROM);
-		createEReference(forExpressionEClass, FOR_EXPRESSION__TO);
-		createEReference(forExpressionEClass, FOR_EXPRESSION__BLOCK);
+		forStatementEClass = createEClass(FOR_STATEMENT);
+		createEReference(forStatementEClass, FOR_STATEMENT__FROM);
+		createEReference(forStatementEClass, FOR_STATEMENT__TO);
+		createEReference(forStatementEClass, FOR_STATEMENT__BLOCK);
 
-		whileExpressionEClass = createEClass(WHILE_EXPRESSION);
-		createEReference(whileExpressionEClass, WHILE_EXPRESSION__CONDITION);
-		createEReference(whileExpressionEClass, WHILE_EXPRESSION__BLOCK);
+		whileStatementEClass = createEClass(WHILE_STATEMENT);
+		createEReference(whileStatementEClass, WHILE_STATEMENT__CONDITION);
+		createEReference(whileStatementEClass, WHILE_STATEMENT__BLOCK);
 
 		stopEClass = createEClass(STOP);
 		createEAttribute(stopEClass, STOP__TYPE);
@@ -1516,9 +1516,9 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		// Add supertypes to classes
 		statementEClass.getESuperTypes().add(this.getFeature());
 		expressionEClass.getESuperTypes().add(this.getFeature());
-		ifExpressionEClass.getESuperTypes().add(this.getStatement());
-		forExpressionEClass.getESuperTypes().add(this.getStatement());
-		whileExpressionEClass.getESuperTypes().add(this.getStatement());
+		ifStatementEClass.getESuperTypes().add(this.getStatement());
+		forStatementEClass.getESuperTypes().add(this.getStatement());
+		whileStatementEClass.getESuperTypes().add(this.getStatement());
 		stopEClass.getESuperTypes().add(this.getStatement());
 		printEClass.getESuperTypes().add(this.getExpression());
 		functionCallEClass.getESuperTypes().add(this.getExpression());
@@ -1575,38 +1575,38 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(ifExpressionEClass, IfExpression.class, "IfExpression", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(ifStatementEClass, IfStatement.class, "IfStatement", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getIfExpression_Name(), ecorePackage.getEString(), "name", null, 0, 1, IfExpression.class,
+		initEAttribute(getIfStatement_Name(), ecorePackage.getEString(), "name", null, 0, 1, IfStatement.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIfExpression_Condition(), this.getExpression(), null, "condition", null, 0, 1,
-				IfExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+		initEReference(getIfStatement_Condition(), this.getExpression(), null, "condition", null, 0, 1,
+				IfStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIfExpression_Then(), this.getFeature(), null, "then", null, 0, -1, IfExpression.class,
+		initEReference(getIfStatement_Then(), this.getFeature(), null, "then", null, 0, -1, IfStatement.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIfExpression_Otherwise(), this.getFeature(), null, "otherwise", null, 0, -1,
-				IfExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(forExpressionEClass, ForExpression.class, "ForExpression", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getForExpression_From(), this.getExpression(), null, "from", null, 0, 1, ForExpression.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getForExpression_To(), this.getExpression(), null, "to", null, 0, 1, ForExpression.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getForExpression_Block(), this.getFeature(), null, "block", null, 0, -1, ForExpression.class,
+		initEReference(getIfStatement_Otherwise(), this.getFeature(), null, "otherwise", null, 0, -1, IfStatement.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(whileExpressionEClass, WhileExpression.class, "WhileExpression", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(forStatementEClass, ForStatement.class, "ForStatement", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getWhileExpression_Condition(), this.getExpression(), null, "condition", null, 0, 1,
-				WhileExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+		initEReference(getForStatement_From(), this.getExpression(), null, "from", null, 0, 1, ForStatement.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getForStatement_To(), this.getExpression(), null, "to", null, 0, 1, ForStatement.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getForStatement_Block(), this.getFeature(), null, "block", null, 0, -1, ForStatement.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(whileStatementEClass, WhileStatement.class, "WhileStatement", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getWhileStatement_Condition(), this.getExpression(), null, "condition", null, 0, 1,
+				WhileStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getWhileExpression_Block(), this.getFeature(), null, "block", null, 0, -1, WhileExpression.class,
+		initEReference(getWhileStatement_Block(), this.getFeature(), null, "block", null, 0, -1, WhileStatement.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

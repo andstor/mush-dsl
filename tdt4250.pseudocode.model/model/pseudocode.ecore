@@ -18,7 +18,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Feature"/>
   <eClassifiers xsi:type="ecore:EClass" name="Statement" eSuperTypes="#//Feature"/>
   <eClassifiers xsi:type="ecore:EClass" name="Expression" eSuperTypes="#//Feature"/>
-  <eClassifiers xsi:type="ecore:EClass" name="IfExpression" eSuperTypes="#//Statement">
+  <eClassifiers xsi:type="ecore:EClass" name="IfStatement" eSuperTypes="#//Statement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//Expression"
         containment="true"/>
@@ -27,7 +27,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="otherwise" upperBound="-1"
         eType="#//Feature" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ForExpression" eSuperTypes="#//Statement">
+  <eClassifiers xsi:type="ecore:EClass" name="ForStatement" eSuperTypes="#//Statement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="from" eType="#//Expression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="to" eType="#//Expression"
@@ -35,7 +35,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="block" upperBound="-1"
         eType="#//Feature" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WhileExpression" eSuperTypes="#//Statement">
+  <eClassifiers xsi:type="ecore:EClass" name="WhileStatement" eSuperTypes="#//Statement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//Expression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="block" upperBound="-1"

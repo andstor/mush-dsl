@@ -143,36 +143,6 @@ public interface PseudocodePackage extends EPackage {
 	int EXPRESSION = 4;
 
 	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.IfExpressionImpl <em>If Expression</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.IfExpressionImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getIfExpression()
-	 * @generated
-	 */
-	int IF_EXPRESSION = 5;
-
-	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.ForExpressionImpl <em>For Expression</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.ForExpressionImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getForExpression()
-	 * @generated
-	 */
-	int FOR_EXPRESSION = 6;
-
-	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.impl.WhileExpressionImpl <em>While Expression</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.impl.WhileExpressionImpl
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getWhileExpression()
-	 * @generated
-	 */
-	int WHILE_EXPRESSION = 7;
-
-	/**
 	 * The meta object id for the '{@link tdt4250.pseudocode.impl.StopImpl <em>Stop</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -531,13 +501,23 @@ public interface PseudocodePackage extends EPackage {
 	int EXPRESSION_OPERATION_COUNT = FEATURE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.IfStatementImpl <em>If Statement</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.IfStatementImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getIfStatement()
+	 * @generated
+	 */
+	int IF_STATEMENT = 5;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IF_EXPRESSION__NAME = STATEMENT_FEATURE_COUNT + 0;
+	int IF_STATEMENT__NAME = STATEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -546,7 +526,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IF_EXPRESSION__CONDITION = STATEMENT_FEATURE_COUNT + 1;
+	int IF_STATEMENT__CONDITION = STATEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Then</b></em>' containment reference list.
@@ -555,7 +535,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IF_EXPRESSION__THEN = STATEMENT_FEATURE_COUNT + 2;
+	int IF_STATEMENT__THEN = STATEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Otherwise</b></em>' containment reference list.
@@ -564,25 +544,35 @@ public interface PseudocodePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IF_EXPRESSION__OTHERWISE = STATEMENT_FEATURE_COUNT + 3;
+	int IF_STATEMENT__OTHERWISE = STATEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the '<em>If Expression</em>' class.
+	 * The number of structural features of the '<em>If Statement</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IF_EXPRESSION_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 4;
+	int IF_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of operations of the '<em>If Expression</em>' class.
+	 * The number of operations of the '<em>If Statement</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IF_EXPRESSION_OPERATION_COUNT = STATEMENT_OPERATION_COUNT + 0;
+	int IF_STATEMENT_OPERATION_COUNT = STATEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.ForStatementImpl <em>For Statement</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.ForStatementImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getForStatement()
+	 * @generated
+	 */
+	int FOR_STATEMENT = 6;
 
 	/**
 	 * The feature id for the '<em><b>From</b></em>' containment reference.
@@ -591,7 +581,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FOR_EXPRESSION__FROM = STATEMENT_FEATURE_COUNT + 0;
+	int FOR_STATEMENT__FROM = STATEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>To</b></em>' containment reference.
@@ -600,7 +590,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FOR_EXPRESSION__TO = STATEMENT_FEATURE_COUNT + 1;
+	int FOR_STATEMENT__TO = STATEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Block</b></em>' containment reference list.
@@ -609,25 +599,35 @@ public interface PseudocodePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FOR_EXPRESSION__BLOCK = STATEMENT_FEATURE_COUNT + 2;
+	int FOR_STATEMENT__BLOCK = STATEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>For Expression</em>' class.
+	 * The number of structural features of the '<em>For Statement</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FOR_EXPRESSION_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 3;
+	int FOR_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of operations of the '<em>For Expression</em>' class.
+	 * The number of operations of the '<em>For Statement</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FOR_EXPRESSION_OPERATION_COUNT = STATEMENT_OPERATION_COUNT + 0;
+	int FOR_STATEMENT_OPERATION_COUNT = STATEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.WhileStatementImpl <em>While Statement</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.WhileStatementImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getWhileStatement()
+	 * @generated
+	 */
+	int WHILE_STATEMENT = 7;
 
 	/**
 	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -636,7 +636,7 @@ public interface PseudocodePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WHILE_EXPRESSION__CONDITION = STATEMENT_FEATURE_COUNT + 0;
+	int WHILE_STATEMENT__CONDITION = STATEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Block</b></em>' containment reference list.
@@ -645,25 +645,25 @@ public interface PseudocodePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WHILE_EXPRESSION__BLOCK = STATEMENT_FEATURE_COUNT + 1;
+	int WHILE_STATEMENT__BLOCK = STATEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>While Expression</em>' class.
+	 * The number of structural features of the '<em>While Statement</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WHILE_EXPRESSION_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
+	int WHILE_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>While Expression</em>' class.
+	 * The number of operations of the '<em>While Statement</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WHILE_EXPRESSION_OPERATION_COUNT = STATEMENT_OPERATION_COUNT + 0;
+	int WHILE_STATEMENT_OPERATION_COUNT = STATEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1729,133 +1729,133 @@ public interface PseudocodePackage extends EPackage {
 	EClass getExpression();
 
 	/**
-	 * Returns the meta object for class '{@link tdt4250.pseudocode.IfExpression <em>If Expression</em>}'.
+	 * Returns the meta object for class '{@link tdt4250.pseudocode.IfStatement <em>If Statement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>If Expression</em>'.
-	 * @see tdt4250.pseudocode.IfExpression
+	 * @return the meta object for class '<em>If Statement</em>'.
+	 * @see tdt4250.pseudocode.IfStatement
 	 * @generated
 	 */
-	EClass getIfExpression();
+	EClass getIfStatement();
 
 	/**
-	 * Returns the meta object for the attribute '{@link tdt4250.pseudocode.IfExpression#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link tdt4250.pseudocode.IfStatement#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see tdt4250.pseudocode.IfExpression#getName()
-	 * @see #getIfExpression()
+	 * @see tdt4250.pseudocode.IfStatement#getName()
+	 * @see #getIfStatement()
 	 * @generated
 	 */
-	EAttribute getIfExpression_Name();
+	EAttribute getIfStatement_Name();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link tdt4250.pseudocode.IfExpression#getCondition <em>Condition</em>}'.
+	 * Returns the meta object for the containment reference '{@link tdt4250.pseudocode.IfStatement#getCondition <em>Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Condition</em>'.
-	 * @see tdt4250.pseudocode.IfExpression#getCondition()
-	 * @see #getIfExpression()
+	 * @see tdt4250.pseudocode.IfStatement#getCondition()
+	 * @see #getIfStatement()
 	 * @generated
 	 */
-	EReference getIfExpression_Condition();
+	EReference getIfStatement_Condition();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link tdt4250.pseudocode.IfExpression#getThen <em>Then</em>}'.
+	 * Returns the meta object for the containment reference list '{@link tdt4250.pseudocode.IfStatement#getThen <em>Then</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Then</em>'.
-	 * @see tdt4250.pseudocode.IfExpression#getThen()
-	 * @see #getIfExpression()
+	 * @see tdt4250.pseudocode.IfStatement#getThen()
+	 * @see #getIfStatement()
 	 * @generated
 	 */
-	EReference getIfExpression_Then();
+	EReference getIfStatement_Then();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link tdt4250.pseudocode.IfExpression#getOtherwise <em>Otherwise</em>}'.
+	 * Returns the meta object for the containment reference list '{@link tdt4250.pseudocode.IfStatement#getOtherwise <em>Otherwise</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Otherwise</em>'.
-	 * @see tdt4250.pseudocode.IfExpression#getOtherwise()
-	 * @see #getIfExpression()
+	 * @see tdt4250.pseudocode.IfStatement#getOtherwise()
+	 * @see #getIfStatement()
 	 * @generated
 	 */
-	EReference getIfExpression_Otherwise();
+	EReference getIfStatement_Otherwise();
 
 	/**
-	 * Returns the meta object for class '{@link tdt4250.pseudocode.ForExpression <em>For Expression</em>}'.
+	 * Returns the meta object for class '{@link tdt4250.pseudocode.ForStatement <em>For Statement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>For Expression</em>'.
-	 * @see tdt4250.pseudocode.ForExpression
+	 * @return the meta object for class '<em>For Statement</em>'.
+	 * @see tdt4250.pseudocode.ForStatement
 	 * @generated
 	 */
-	EClass getForExpression();
+	EClass getForStatement();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link tdt4250.pseudocode.ForExpression#getFrom <em>From</em>}'.
+	 * Returns the meta object for the containment reference '{@link tdt4250.pseudocode.ForStatement#getFrom <em>From</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>From</em>'.
-	 * @see tdt4250.pseudocode.ForExpression#getFrom()
-	 * @see #getForExpression()
+	 * @see tdt4250.pseudocode.ForStatement#getFrom()
+	 * @see #getForStatement()
 	 * @generated
 	 */
-	EReference getForExpression_From();
+	EReference getForStatement_From();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link tdt4250.pseudocode.ForExpression#getTo <em>To</em>}'.
+	 * Returns the meta object for the containment reference '{@link tdt4250.pseudocode.ForStatement#getTo <em>To</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>To</em>'.
-	 * @see tdt4250.pseudocode.ForExpression#getTo()
-	 * @see #getForExpression()
+	 * @see tdt4250.pseudocode.ForStatement#getTo()
+	 * @see #getForStatement()
 	 * @generated
 	 */
-	EReference getForExpression_To();
+	EReference getForStatement_To();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link tdt4250.pseudocode.ForExpression#getBlock <em>Block</em>}'.
+	 * Returns the meta object for the containment reference list '{@link tdt4250.pseudocode.ForStatement#getBlock <em>Block</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Block</em>'.
-	 * @see tdt4250.pseudocode.ForExpression#getBlock()
-	 * @see #getForExpression()
+	 * @see tdt4250.pseudocode.ForStatement#getBlock()
+	 * @see #getForStatement()
 	 * @generated
 	 */
-	EReference getForExpression_Block();
+	EReference getForStatement_Block();
 
 	/**
-	 * Returns the meta object for class '{@link tdt4250.pseudocode.WhileExpression <em>While Expression</em>}'.
+	 * Returns the meta object for class '{@link tdt4250.pseudocode.WhileStatement <em>While Statement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>While Expression</em>'.
-	 * @see tdt4250.pseudocode.WhileExpression
+	 * @return the meta object for class '<em>While Statement</em>'.
+	 * @see tdt4250.pseudocode.WhileStatement
 	 * @generated
 	 */
-	EClass getWhileExpression();
+	EClass getWhileStatement();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link tdt4250.pseudocode.WhileExpression#getCondition <em>Condition</em>}'.
+	 * Returns the meta object for the containment reference '{@link tdt4250.pseudocode.WhileStatement#getCondition <em>Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Condition</em>'.
-	 * @see tdt4250.pseudocode.WhileExpression#getCondition()
-	 * @see #getWhileExpression()
+	 * @see tdt4250.pseudocode.WhileStatement#getCondition()
+	 * @see #getWhileStatement()
 	 * @generated
 	 */
-	EReference getWhileExpression_Condition();
+	EReference getWhileStatement_Condition();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link tdt4250.pseudocode.WhileExpression#getBlock <em>Block</em>}'.
+	 * Returns the meta object for the containment reference list '{@link tdt4250.pseudocode.WhileStatement#getBlock <em>Block</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Block</em>'.
-	 * @see tdt4250.pseudocode.WhileExpression#getBlock()
-	 * @see #getWhileExpression()
+	 * @see tdt4250.pseudocode.WhileStatement#getBlock()
+	 * @see #getWhileStatement()
 	 * @generated
 	 */
-	EReference getWhileExpression_Block();
+	EReference getWhileStatement_Block();
 
 	/**
 	 * Returns the meta object for class '{@link tdt4250.pseudocode.Stop <em>Stop</em>}'.
@@ -2755,14 +2755,14 @@ public interface PseudocodePackage extends EPackage {
 		EClass EXPRESSION = eINSTANCE.getExpression();
 
 		/**
-		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.IfExpressionImpl <em>If Expression</em>}' class.
+		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.IfStatementImpl <em>If Statement</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see tdt4250.pseudocode.impl.IfExpressionImpl
-		 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getIfExpression()
+		 * @see tdt4250.pseudocode.impl.IfStatementImpl
+		 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getIfStatement()
 		 * @generated
 		 */
-		EClass IF_EXPRESSION = eINSTANCE.getIfExpression();
+		EClass IF_STATEMENT = eINSTANCE.getIfStatement();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -2770,7 +2770,7 @@ public interface PseudocodePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute IF_EXPRESSION__NAME = eINSTANCE.getIfExpression_Name();
+		EAttribute IF_STATEMENT__NAME = eINSTANCE.getIfStatement_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
@@ -2778,7 +2778,7 @@ public interface PseudocodePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference IF_EXPRESSION__CONDITION = eINSTANCE.getIfExpression_Condition();
+		EReference IF_STATEMENT__CONDITION = eINSTANCE.getIfStatement_Condition();
 
 		/**
 		 * The meta object literal for the '<em><b>Then</b></em>' containment reference list feature.
@@ -2786,7 +2786,7 @@ public interface PseudocodePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference IF_EXPRESSION__THEN = eINSTANCE.getIfExpression_Then();
+		EReference IF_STATEMENT__THEN = eINSTANCE.getIfStatement_Then();
 
 		/**
 		 * The meta object literal for the '<em><b>Otherwise</b></em>' containment reference list feature.
@@ -2794,17 +2794,17 @@ public interface PseudocodePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference IF_EXPRESSION__OTHERWISE = eINSTANCE.getIfExpression_Otherwise();
+		EReference IF_STATEMENT__OTHERWISE = eINSTANCE.getIfStatement_Otherwise();
 
 		/**
-		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.ForExpressionImpl <em>For Expression</em>}' class.
+		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.ForStatementImpl <em>For Statement</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see tdt4250.pseudocode.impl.ForExpressionImpl
-		 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getForExpression()
+		 * @see tdt4250.pseudocode.impl.ForStatementImpl
+		 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getForStatement()
 		 * @generated
 		 */
-		EClass FOR_EXPRESSION = eINSTANCE.getForExpression();
+		EClass FOR_STATEMENT = eINSTANCE.getForStatement();
 
 		/**
 		 * The meta object literal for the '<em><b>From</b></em>' containment reference feature.
@@ -2812,7 +2812,7 @@ public interface PseudocodePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference FOR_EXPRESSION__FROM = eINSTANCE.getForExpression_From();
+		EReference FOR_STATEMENT__FROM = eINSTANCE.getForStatement_From();
 
 		/**
 		 * The meta object literal for the '<em><b>To</b></em>' containment reference feature.
@@ -2820,7 +2820,7 @@ public interface PseudocodePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference FOR_EXPRESSION__TO = eINSTANCE.getForExpression_To();
+		EReference FOR_STATEMENT__TO = eINSTANCE.getForStatement_To();
 
 		/**
 		 * The meta object literal for the '<em><b>Block</b></em>' containment reference list feature.
@@ -2828,17 +2828,17 @@ public interface PseudocodePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference FOR_EXPRESSION__BLOCK = eINSTANCE.getForExpression_Block();
+		EReference FOR_STATEMENT__BLOCK = eINSTANCE.getForStatement_Block();
 
 		/**
-		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.WhileExpressionImpl <em>While Expression</em>}' class.
+		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.WhileStatementImpl <em>While Statement</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see tdt4250.pseudocode.impl.WhileExpressionImpl
-		 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getWhileExpression()
+		 * @see tdt4250.pseudocode.impl.WhileStatementImpl
+		 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getWhileStatement()
 		 * @generated
 		 */
-		EClass WHILE_EXPRESSION = eINSTANCE.getWhileExpression();
+		EClass WHILE_STATEMENT = eINSTANCE.getWhileStatement();
 
 		/**
 		 * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
@@ -2846,7 +2846,7 @@ public interface PseudocodePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference WHILE_EXPRESSION__CONDITION = eINSTANCE.getWhileExpression_Condition();
+		EReference WHILE_STATEMENT__CONDITION = eINSTANCE.getWhileStatement_Condition();
 
 		/**
 		 * The meta object literal for the '<em><b>Block</b></em>' containment reference list feature.
@@ -2854,7 +2854,7 @@ public interface PseudocodePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference WHILE_EXPRESSION__BLOCK = eINSTANCE.getWhileExpression_Block();
+		EReference WHILE_STATEMENT__BLOCK = eINSTANCE.getWhileStatement_Block();
 
 		/**
 		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.StopImpl <em>Stop</em>}' class.

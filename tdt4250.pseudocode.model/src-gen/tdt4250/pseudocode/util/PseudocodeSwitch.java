@@ -104,35 +104,35 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case PseudocodePackage.IF_EXPRESSION: {
-			IfExpression ifExpression = (IfExpression) theEObject;
-			T result = caseIfExpression(ifExpression);
+		case PseudocodePackage.IF_STATEMENT: {
+			IfStatement ifStatement = (IfStatement) theEObject;
+			T result = caseIfStatement(ifStatement);
 			if (result == null)
-				result = caseStatement(ifExpression);
+				result = caseStatement(ifStatement);
 			if (result == null)
-				result = caseFeature(ifExpression);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case PseudocodePackage.FOR_EXPRESSION: {
-			ForExpression forExpression = (ForExpression) theEObject;
-			T result = caseForExpression(forExpression);
-			if (result == null)
-				result = caseStatement(forExpression);
-			if (result == null)
-				result = caseFeature(forExpression);
+				result = caseFeature(ifStatement);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case PseudocodePackage.WHILE_EXPRESSION: {
-			WhileExpression whileExpression = (WhileExpression) theEObject;
-			T result = caseWhileExpression(whileExpression);
+		case PseudocodePackage.FOR_STATEMENT: {
+			ForStatement forStatement = (ForStatement) theEObject;
+			T result = caseForStatement(forStatement);
 			if (result == null)
-				result = caseStatement(whileExpression);
+				result = caseStatement(forStatement);
 			if (result == null)
-				result = caseFeature(whileExpression);
+				result = caseFeature(forStatement);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PseudocodePackage.WHILE_STATEMENT: {
+			WhileStatement whileStatement = (WhileStatement) theEObject;
+			T result = caseWhileStatement(whileStatement);
+			if (result == null)
+				result = caseStatement(whileStatement);
+			if (result == null)
+				result = caseFeature(whileStatement);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -517,47 +517,47 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>If Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>If Statement</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>If Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>If Statement</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseIfExpression(IfExpression object) {
+	public T caseIfStatement(IfStatement object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>For Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>For Statement</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>For Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>For Statement</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseForExpression(ForExpression object) {
+	public T caseForStatement(ForStatement object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>While Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>While Statement</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>While Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>While Statement</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseWhileExpression(WhileExpression object) {
+	public T caseWhileStatement(WhileStatement object) {
 		return null;
 	}
 

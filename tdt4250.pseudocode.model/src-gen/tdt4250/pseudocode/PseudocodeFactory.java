@@ -67,31 +67,31 @@ public interface PseudocodeFactory extends EFactory {
 	Expression createExpression();
 
 	/**
-	 * Returns a new object of class '<em>If Expression</em>'.
+	 * Returns a new object of class '<em>If Statement</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>If Expression</em>'.
+	 * @return a new object of class '<em>If Statement</em>'.
 	 * @generated
 	 */
-	IfExpression createIfExpression();
+	IfStatement createIfStatement();
 
 	/**
-	 * Returns a new object of class '<em>For Expression</em>'.
+	 * Returns a new object of class '<em>For Statement</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>For Expression</em>'.
+	 * @return a new object of class '<em>For Statement</em>'.
 	 * @generated
 	 */
-	ForExpression createForExpression();
+	ForStatement createForStatement();
 
 	/**
-	 * Returns a new object of class '<em>While Expression</em>'.
+	 * Returns a new object of class '<em>While Statement</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>While Expression</em>'.
+	 * @return a new object of class '<em>While Statement</em>'.
 	 * @generated
 	 */
-	WhileExpression createWhileExpression();
+	WhileStatement createWhileStatement();
 
 	/**
 	 * Returns a new object of class '<em>Stop</em>'.

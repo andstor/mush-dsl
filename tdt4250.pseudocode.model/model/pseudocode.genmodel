@@ -22,20 +22,20 @@
     <genClasses image="false" ecoreClass="pseudocode.ecore#//Feature"/>
     <genClasses image="false" ecoreClass="pseudocode.ecore#//Statement"/>
     <genClasses ecoreClass="pseudocode.ecore#//Expression"/>
-    <genClasses ecoreClass="pseudocode.ecore#//IfExpression">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//IfExpression/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//IfExpression/condition"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//IfExpression/then"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//IfExpression/otherwise"/>
+    <genClasses ecoreClass="pseudocode.ecore#//IfStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//IfStatement/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//IfStatement/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//IfStatement/then"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//IfStatement/otherwise"/>
     </genClasses>
-    <genClasses ecoreClass="pseudocode.ecore#//ForExpression">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//ForExpression/from"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//ForExpression/to"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//ForExpression/block"/>
+    <genClasses ecoreClass="pseudocode.ecore#//ForStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//ForStatement/from"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//ForStatement/to"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//ForStatement/block"/>
     </genClasses>
-    <genClasses ecoreClass="pseudocode.ecore#//WhileExpression">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//WhileExpression/condition"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//WhileExpression/block"/>
+    <genClasses ecoreClass="pseudocode.ecore#//WhileStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//WhileStatement/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//WhileStatement/block"/>
     </genClasses>
     <genClasses ecoreClass="pseudocode.ecore#//Stop">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Stop/type"/>

@@ -22,10 +22,10 @@ import tdt4250.pseudocode.Comparison
 import tdt4250.pseudocode.DoubleLiteral
 import tdt4250.pseudocode.Equals
 import tdt4250.pseudocode.Expression
-import tdt4250.pseudocode.ForExpression
+import tdt4250.pseudocode.ForStatement
 import tdt4250.pseudocode.Function
 import tdt4250.pseudocode.FunctionCall
-import tdt4250.pseudocode.IfExpression
+import tdt4250.pseudocode.IfStatement
 import tdt4250.pseudocode.List
 import tdt4250.pseudocode.ListLitteral
 import tdt4250.pseudocode.Minus
@@ -42,7 +42,7 @@ import tdt4250.pseudocode.StringLiteral
 import tdt4250.pseudocode.ValueExchange
 import tdt4250.pseudocode.Variable
 import tdt4250.pseudocode.VariableReference
-import tdt4250.pseudocode.WhileExpression
+import tdt4250.pseudocode.WhileStatement
 
 /**
  * Generates code from your model files on save.
@@ -284,7 +284,7 @@ class PcodeGenerator extends AbstractGenerator {
     def dispatch generateFeature(Expression e) '''
     «e.generateExpression»'''
 
-    def dispatch generateStatement(IfExpression e) '''
+    def dispatch generateStatement(IfStatement e) '''
         if («e.condition.LiteralExpression») {
             «FOR f : e.then»
                 «f.generateFeature»
@@ -294,7 +294,7 @@ class PcodeGenerator extends AbstractGenerator {
         }«ENDIF»
     '''
 
-    def dispatch generateStatement(ForExpression e) {
+    def dispatch generateStatement(ForStatement e) {
         var variable = uniqueVariable();
         return '''
             for (int «variable» = «e.from.LiteralExpression»; «variable» <= «e.to.LiteralExpression»; «variable»++) {
@@ -309,7 +309,7 @@ class PcodeGenerator extends AbstractGenerator {
         return 'VAR' + varCounter++
     }
 
-    def dispatch generateStatement(WhileExpression e) '''
+    def dispatch generateStatement(WhileStatement e) '''
         while («e.condition.LiteralExpression») {
         	«FOR b : e.block»
         	    «b.generateFeature»

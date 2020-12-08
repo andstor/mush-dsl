@@ -30,10 +30,10 @@ import tdt4250.pseudocode.DoubleLiteral;
 import tdt4250.pseudocode.Equals;
 import tdt4250.pseudocode.Expression;
 import tdt4250.pseudocode.Feature;
-import tdt4250.pseudocode.ForExpression;
+import tdt4250.pseudocode.ForStatement;
 import tdt4250.pseudocode.Function;
 import tdt4250.pseudocode.FunctionCall;
-import tdt4250.pseudocode.IfExpression;
+import tdt4250.pseudocode.IfStatement;
 import tdt4250.pseudocode.List;
 import tdt4250.pseudocode.ListLitteral;
 import tdt4250.pseudocode.Minus;
@@ -50,7 +50,7 @@ import tdt4250.pseudocode.StringLiteral;
 import tdt4250.pseudocode.ValueExchange;
 import tdt4250.pseudocode.Variable;
 import tdt4250.pseudocode.VariableReference;
-import tdt4250.pseudocode.WhileExpression;
+import tdt4250.pseudocode.WhileStatement;
 import tdt4250.pseudocode.generator.PcodeGeneratorUtils;
 import tdt4250.pseudocode.generator.PcodeTypeInferencer;
 
@@ -301,7 +301,7 @@ public class PcodeGenerator extends AbstractGenerator {
     return _builder;
   }
   
-  protected CharSequence _generateStatement(final IfExpression e) {
+  protected CharSequence _generateStatement(final IfStatement e) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("if (");
     Object _LiteralExpression = this.LiteralExpression(e.getCondition());
@@ -340,7 +340,7 @@ public class PcodeGenerator extends AbstractGenerator {
     return _builder;
   }
   
-  protected CharSequence _generateStatement(final ForExpression e) {
+  protected CharSequence _generateStatement(final ForStatement e) {
     String variable = this.uniqueVariable();
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("for (int ");
@@ -376,7 +376,7 @@ public class PcodeGenerator extends AbstractGenerator {
     return ("VAR" + Integer.valueOf(_plusPlus));
   }
   
-  protected CharSequence _generateStatement(final WhileExpression e) {
+  protected CharSequence _generateStatement(final WhileStatement e) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("while (");
     Object _LiteralExpression = this.LiteralExpression(e.getCondition());
@@ -804,14 +804,14 @@ public class PcodeGenerator extends AbstractGenerator {
   }
   
   public CharSequence generateStatement(final Statement e) {
-    if (e instanceof ForExpression) {
-      return _generateStatement((ForExpression)e);
-    } else if (e instanceof IfExpression) {
-      return _generateStatement((IfExpression)e);
+    if (e instanceof ForStatement) {
+      return _generateStatement((ForStatement)e);
+    } else if (e instanceof IfStatement) {
+      return _generateStatement((IfStatement)e);
     } else if (e instanceof Stop) {
       return _generateStatement((Stop)e);
-    } else if (e instanceof WhileExpression) {
-      return _generateStatement((WhileExpression)e);
+    } else if (e instanceof WhileStatement) {
+      return _generateStatement((WhileStatement)e);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(e).toString());

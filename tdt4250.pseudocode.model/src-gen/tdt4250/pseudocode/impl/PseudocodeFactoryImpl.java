@@ -65,12 +65,12 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 			return createStatement();
 		case PseudocodePackage.EXPRESSION:
 			return createExpression();
-		case PseudocodePackage.IF_EXPRESSION:
-			return createIfExpression();
-		case PseudocodePackage.FOR_EXPRESSION:
-			return createForExpression();
-		case PseudocodePackage.WHILE_EXPRESSION:
-			return createWhileExpression();
+		case PseudocodePackage.IF_STATEMENT:
+			return createIfStatement();
+		case PseudocodePackage.FOR_STATEMENT:
+			return createForStatement();
+		case PseudocodePackage.WHILE_STATEMENT:
+			return createWhileStatement();
 		case PseudocodePackage.STOP:
 			return createStop();
 		case PseudocodePackage.PRINT:
@@ -191,9 +191,9 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	 * @generated
 	 */
 	@Override
-	public IfExpression createIfExpression() {
-		IfExpressionImpl ifExpression = new IfExpressionImpl();
-		return ifExpression;
+	public IfStatement createIfStatement() {
+		IfStatementImpl ifStatement = new IfStatementImpl();
+		return ifStatement;
 	}
 
 	/**
@@ -202,9 +202,9 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	 * @generated
 	 */
 	@Override
-	public ForExpression createForExpression() {
-		ForExpressionImpl forExpression = new ForExpressionImpl();
-		return forExpression;
+	public ForStatement createForStatement() {
+		ForStatementImpl forStatement = new ForStatementImpl();
+		return forStatement;
 	}
 
 	/**
@@ -213,9 +213,9 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	 * @generated
 	 */
 	@Override
-	public WhileExpression createWhileExpression() {
-		WhileExpressionImpl whileExpression = new WhileExpressionImpl();
-		return whileExpression;
+	public WhileStatement createWhileStatement() {
+		WhileStatementImpl whileStatement = new WhileStatementImpl();
+		return whileStatement;
 	}
 
 	/**

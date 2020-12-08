@@ -91,18 +91,18 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseIfExpression(IfExpression object) {
-			return createIfExpressionAdapter();
+		public Adapter caseIfStatement(IfStatement object) {
+			return createIfStatementAdapter();
 		}
 
 		@Override
-		public Adapter caseForExpression(ForExpression object) {
-			return createForExpressionAdapter();
+		public Adapter caseForStatement(ForStatement object) {
+			return createForStatementAdapter();
 		}
 
 		@Override
-		public Adapter caseWhileExpression(WhileExpression object) {
-			return createWhileExpressionAdapter();
+		public Adapter caseWhileStatement(WhileStatement object) {
+			return createWhileStatementAdapter();
 		}
 
 		@Override
@@ -330,44 +330,44 @@ public class PseudocodeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.IfExpression <em>If Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.IfStatement <em>If Statement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.IfExpression
+	 * @see tdt4250.pseudocode.IfStatement
 	 * @generated
 	 */
-	public Adapter createIfExpressionAdapter() {
+	public Adapter createIfStatementAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.ForExpression <em>For Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.ForStatement <em>For Statement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.ForExpression
+	 * @see tdt4250.pseudocode.ForStatement
 	 * @generated
 	 */
-	public Adapter createForExpressionAdapter() {
+	public Adapter createForStatementAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.WhileExpression <em>While Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link tdt4250.pseudocode.WhileStatement <em>While Statement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see tdt4250.pseudocode.WhileExpression
+	 * @see tdt4250.pseudocode.WhileStatement
 	 * @generated
 	 */
-	public Adapter createWhileExpressionAdapter() {
+	public Adapter createWhileStatementAdapter() {
 		return null;
 	}
 

@@ -49,6 +49,16 @@ public class PcodeParsingTest {
       _builder.append("executable PARTITION(list with text p, number r, text lol)");
       _builder.newLine();
       _builder.append("    ");
+      _builder.append("B = {1,2,3}");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("C =[6,5,4]");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("bo equals new list with number that contains 1,2,3");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("c is 3");
       _builder.newLine();
       _builder.append("    ");
       _builder.append("for interval 1 to r");
