@@ -466,9 +466,20 @@ class PcodeGenerator extends AbstractGenerator {
         }
         return string
     }
+    
+    def checkAndORType(AndOrExpression e){
+    	if(e.op.equals('or')) return '|'
+    	else if(e.op.equals('and')) return '&'
+    	else return e.op
+    }
+    def checkMultiOrDiv(MultiOrDiv e){
+    	if(e.op.equals('times')) return '*'
+    	else if(e.op.equals('divide')) return '/'
+    	else return e.op
+    }
 
     def dispatch LiteralExpression(AndOrExpression e) '''
-    «e.left.LiteralExpression»«e.op»«e.right.LiteralExpression»'''
+    «e.left.LiteralExpression»«checkAndORType(e)»«e.right.LiteralExpression»'''
 
     def dispatch LiteralExpression(Comparison e) '''
     «e.left.LiteralExpression»«e.op»«e.right.LiteralExpression»'''
@@ -487,7 +498,7 @@ class PcodeGenerator extends AbstractGenerator {
     «e.left.LiteralExpression»-«e.right.LiteralExpression»'''
 
     def dispatch LiteralExpression(MultiOrDiv e) '''
-    «e.left.LiteralExpression»«e.op»«e.right.LiteralExpression»'''
+    «e.left.LiteralExpression»«checkMultiOrDiv(e)»«e.right.LiteralExpression»'''
 
     // TODO fix convert to float and support keywords divide and times
     def dispatch LiteralExpression(BooleanNegation e) '''

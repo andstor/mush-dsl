@@ -648,12 +648,40 @@ public class PcodeGenerator extends AbstractGenerator {
     return string;
   }
   
+  public String checkAndORType(final AndOrExpression e) {
+    boolean _equals = e.getOp().equals("or");
+    if (_equals) {
+      return "|";
+    } else {
+      boolean _equals_1 = e.getOp().equals("and");
+      if (_equals_1) {
+        return "&";
+      } else {
+        return e.getOp();
+      }
+    }
+  }
+  
+  public String checkMultiOrDiv(final MultiOrDiv e) {
+    boolean _equals = e.getOp().equals("times");
+    if (_equals) {
+      return "*";
+    } else {
+      boolean _equals_1 = e.getOp().equals("divide");
+      if (_equals_1) {
+        return "/";
+      } else {
+        return e.getOp();
+      }
+    }
+  }
+  
   protected Object _LiteralExpression(final AndOrExpression e) {
     StringConcatenation _builder = new StringConcatenation();
     Object _LiteralExpression = this.LiteralExpression(e.getLeft());
     _builder.append(_LiteralExpression);
-    String _op = e.getOp();
-    _builder.append(_op);
+    String _checkAndORType = this.checkAndORType(e);
+    _builder.append(_checkAndORType);
     Object _LiteralExpression_1 = this.LiteralExpression(e.getRight());
     _builder.append(_LiteralExpression_1);
     return _builder;
@@ -714,8 +742,8 @@ public class PcodeGenerator extends AbstractGenerator {
     StringConcatenation _builder = new StringConcatenation();
     Object _LiteralExpression = this.LiteralExpression(e.getLeft());
     _builder.append(_LiteralExpression);
-    String _op = e.getOp();
-    _builder.append(_op);
+    String _checkMultiOrDiv = this.checkMultiOrDiv(e);
+    _builder.append(_checkMultiOrDiv);
     Object _LiteralExpression_1 = this.LiteralExpression(e.getRight());
     _builder.append(_LiteralExpression_1);
     return _builder;

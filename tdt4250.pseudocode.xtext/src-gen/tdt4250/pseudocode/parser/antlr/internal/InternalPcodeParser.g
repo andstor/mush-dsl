@@ -1943,26 +1943,36 @@ ruleBooleanExpression returns [EObject current=null]
 				(
 					(
 						(
-							lv_op_2_1=VerticalLineVerticalLine
 							{
-								newLeafNode(lv_op_2_1, grammarAccess.getBooleanExpressionAccess().getOpVerticalLineVerticalLineKeyword_1_0_1_0_0());
+								newCompositeNode(grammarAccess.getBooleanExpressionAccess().getOpOrOperatorParserRuleCall_1_0_1_0_0());
 							}
+							lv_op_2_1=ruleOrOperator
 							{
 								if ($current==null) {
-									$current = createModelElement(grammarAccess.getBooleanExpressionRule());
+									$current = createModelElementForParent(grammarAccess.getBooleanExpressionRule());
 								}
-								setWithLastConsumed($current, "op", lv_op_2_1, null);
+								set(
+									$current,
+									"op",
+									lv_op_2_1,
+									"tdt4250.pseudocode.Pcode.OrOperator");
+								afterParserOrEnumRuleCall();
 							}
 							    |
-							lv_op_2_2=AmpersandAmpersand
 							{
-								newLeafNode(lv_op_2_2, grammarAccess.getBooleanExpressionAccess().getOpAmpersandAmpersandKeyword_1_0_1_0_1());
+								newCompositeNode(grammarAccess.getBooleanExpressionAccess().getOpAndOperatorParserRuleCall_1_0_1_0_1());
 							}
+							lv_op_2_2=ruleAndOperator
 							{
 								if ($current==null) {
-									$current = createModelElement(grammarAccess.getBooleanExpressionRule());
+									$current = createModelElementForParent(grammarAccess.getBooleanExpressionRule());
 								}
-								setWithLastConsumed($current, "op", lv_op_2_2, null);
+								set(
+									$current,
+									"op",
+									lv_op_2_2,
+									"tdt4250.pseudocode.Pcode.AndOperator");
+								afterParserOrEnumRuleCall();
 							}
 						)
 					)
@@ -1988,6 +1998,66 @@ ruleBooleanExpression returns [EObject current=null]
 				)
 			)
 		)*
+	)
+;
+
+// Entry rule entryRuleOrOperator
+entryRuleOrOperator returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getOrOperatorRule()); }
+	iv_ruleOrOperator=ruleOrOperator
+	{ $current=$iv_ruleOrOperator.current.getText(); }
+	EOF;
+
+// Rule OrOperator
+ruleOrOperator returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		kw=VerticalLine
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getOrOperatorAccess().getVerticalLineKeyword_0());
+		}
+		    |
+		kw=Or
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getOrOperatorAccess().getOrKeyword_1());
+		}
+	)
+;
+
+// Entry rule entryRuleAndOperator
+entryRuleAndOperator returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getAndOperatorRule()); }
+	iv_ruleAndOperator=ruleAndOperator
+	{ $current=$iv_ruleAndOperator.current.getText(); }
+	EOF;
+
+// Rule AndOperator
+ruleAndOperator returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		kw=Ampersand
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getAndOperatorAccess().getAmpersandKeyword_0());
+		}
+		    |
+		kw=And
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getAndOperatorAccess().getAndKeyword_1());
+		}
 	)
 ;
 
@@ -2144,15 +2214,20 @@ ruleEquals returns [EObject current=null]
 								setWithLastConsumed($current, "op", lv_op_2_3, null);
 							}
 							    |
-							lv_op_2_4=ExclamationMarkEqualsSign
 							{
-								newLeafNode(lv_op_2_4, grammarAccess.getEqualsAccess().getOpExclamationMarkEqualsSignKeyword_1_0_1_0_3());
+								newCompositeNode(grammarAccess.getEqualsAccess().getOpNotEqualOperatorParserRuleCall_1_0_1_0_3());
 							}
+							lv_op_2_4=ruleNotEqualOperator
 							{
 								if ($current==null) {
-									$current = createModelElement(grammarAccess.getEqualsRule());
+									$current = createModelElementForParent(grammarAccess.getEqualsRule());
 								}
-								setWithLastConsumed($current, "op", lv_op_2_4, null);
+								set(
+									$current,
+									"op",
+									lv_op_2_4,
+									"tdt4250.pseudocode.Pcode.NotEqualOperator");
+								afterParserOrEnumRuleCall();
 							}
 						)
 					)
@@ -2178,6 +2253,36 @@ ruleEquals returns [EObject current=null]
 				)
 			)
 		)*
+	)
+;
+
+// Entry rule entryRuleNotEqualOperator
+entryRuleNotEqualOperator returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getNotEqualOperatorRule()); }
+	iv_ruleNotEqualOperator=ruleNotEqualOperator
+	{ $current=$iv_ruleNotEqualOperator.current.getText(); }
+	EOF;
+
+// Rule NotEqualOperator
+ruleNotEqualOperator returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		kw=ExclamationMarkEqualsSign
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getNotEqualOperatorAccess().getExclamationMarkEqualsSignKeyword_0());
+		}
+		    |
+		kw=NotEqual
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getNotEqualOperatorAccess().getNotEqualKeyword_1());
+		}
 	)
 ;
 
@@ -2385,26 +2490,36 @@ ruleMultiplication returns [EObject current=null]
 				(
 					(
 						(
-							lv_op_2_1=Asterisk
 							{
-								newLeafNode(lv_op_2_1, grammarAccess.getMultiplicationAccess().getOpAsteriskKeyword_1_0_1_0_0());
+								newCompositeNode(grammarAccess.getMultiplicationAccess().getOpTimesOperatorParserRuleCall_1_0_1_0_0());
 							}
+							lv_op_2_1=ruleTimesOperator
 							{
 								if ($current==null) {
-									$current = createModelElement(grammarAccess.getMultiplicationRule());
+									$current = createModelElementForParent(grammarAccess.getMultiplicationRule());
 								}
-								setWithLastConsumed($current, "op", lv_op_2_1, null);
+								set(
+									$current,
+									"op",
+									lv_op_2_1,
+									"tdt4250.pseudocode.Pcode.TimesOperator");
+								afterParserOrEnumRuleCall();
 							}
 							    |
-							lv_op_2_2=Solidus
 							{
-								newLeafNode(lv_op_2_2, grammarAccess.getMultiplicationAccess().getOpSolidusKeyword_1_0_1_0_1());
+								newCompositeNode(grammarAccess.getMultiplicationAccess().getOpDivideOperatorParserRuleCall_1_0_1_0_1());
 							}
+							lv_op_2_2=ruleDivideOperator
 							{
 								if ($current==null) {
-									$current = createModelElement(grammarAccess.getMultiplicationRule());
+									$current = createModelElementForParent(grammarAccess.getMultiplicationRule());
 								}
-								setWithLastConsumed($current, "op", lv_op_2_2, null);
+								set(
+									$current,
+									"op",
+									lv_op_2_2,
+									"tdt4250.pseudocode.Pcode.DivideOperator");
+								afterParserOrEnumRuleCall();
 							}
 						)
 					)
@@ -2430,6 +2545,66 @@ ruleMultiplication returns [EObject current=null]
 				)
 			)
 		)*
+	)
+;
+
+// Entry rule entryRuleTimesOperator
+entryRuleTimesOperator returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getTimesOperatorRule()); }
+	iv_ruleTimesOperator=ruleTimesOperator
+	{ $current=$iv_ruleTimesOperator.current.getText(); }
+	EOF;
+
+// Rule TimesOperator
+ruleTimesOperator returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		kw=Asterisk
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getTimesOperatorAccess().getAsteriskKeyword_0());
+		}
+		    |
+		kw=Times
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getTimesOperatorAccess().getTimesKeyword_1());
+		}
+	)
+;
+
+// Entry rule entryRuleDivideOperator
+entryRuleDivideOperator returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getDivideOperatorRule()); }
+	iv_ruleDivideOperator=ruleDivideOperator
+	{ $current=$iv_ruleDivideOperator.current.getText(); }
+	EOF;
+
+// Rule DivideOperator
+ruleDivideOperator returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		kw=Solidus
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getDivideOperatorAccess().getSolidusKeyword_0());
+		}
+		    |
+		kw=Divide
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getDivideOperatorAccess().getDivideKeyword_1());
+		}
 	)
 ;
 

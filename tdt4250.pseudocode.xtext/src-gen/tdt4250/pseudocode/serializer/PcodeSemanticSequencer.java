@@ -424,7 +424,7 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     BooleanExpression.AndOrExpression_1_0_0 returns AndOrExpression
 	 *
 	 * Constraint:
-	 *     (left=BooleanExpression_AndOrExpression_1_0_0 (op='||' | op='&&') right=Comparison)
+	 *     (left=BooleanExpression_AndOrExpression_1_0_0 (op=OrOperator | op=AndOperator) right=Comparison)
 	 */
 	protected void sequence_BooleanExpression(ISerializationContext context, AndOrExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -517,7 +517,7 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Equals.Equals_1_0_0 returns Equals
 	 *
 	 * Constraint:
-	 *     (left=Equals_Equals_1_0_0 (op='==' | op='<=' | op='>=' | op='!=') right=Addition)
+	 *     (left=Equals_Equals_1_0_0 (op='==' | op='<=' | op='>=' | op=NotEqualOperator) right=Addition)
 	 */
 	protected void sequence_Equals(ISerializationContext context, Equals semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -649,7 +649,7 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Multiplication.MultiOrDiv_1_0_0 returns MultiOrDiv
 	 *
 	 * Constraint:
-	 *     (left=Multiplication_MultiOrDiv_1_0_0 (op='*' | op='/') right=Prefixed)
+	 *     (left=Multiplication_MultiOrDiv_1_0_0 (op=TimesOperator | op=DivideOperator) right=Prefixed)
 	 */
 	protected void sequence_Multiplication(ISerializationContext context, MultiOrDiv semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

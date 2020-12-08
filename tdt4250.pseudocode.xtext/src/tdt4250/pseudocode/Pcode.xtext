@@ -136,13 +136,13 @@ CollectionAccessor returns Expression:
     //----- Logic and Math------
 BooleanExpression returns Expression:
     Comparison
-    (({AndOrExpression.left=current} op=("||" | "&&")) right=Comparison)*;
+    (({AndOrExpression.left=current} op=(OrOperator | AndOperator)) right=Comparison)*;
 
 OrOperator:
-	('||'| 'or');
+	('|'| 'or');
 
 AndOperator:
-	('&&'|'and');
+	('&'|'and');
 	
 Comparison returns Expression:
     Equals
@@ -165,8 +165,13 @@ MinusOperator:
     ('-' | 'minus');
 
 Multiplication returns Expression:
-    Prefixed (({MultiOrDiv.left=current} op=("*" | "/")) right=Prefixed)*;
+    Prefixed (({MultiOrDiv.left=current} op=(TimesOperator | DivideOperator)) right=Prefixed)*;
 
+TimesOperator:
+	('*'|'times');
+	
+DivideOperator:
+	('/'|'divide');
 Prefixed returns Expression:
     {BooleanNegation} => "!" expression=Atomic | /* right associativity */
     {ArithmeticSigned} => MinusOperator expression=Atomic | /* right associativity */

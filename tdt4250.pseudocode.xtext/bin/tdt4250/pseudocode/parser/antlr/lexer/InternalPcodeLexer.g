@@ -13,6 +13,8 @@ import org.eclipse.xtext.parser.antlr.Lexer;
 
 Executable : ('E'|'e')('X'|'x')('E'|'e')('C'|'c')('U'|'u')('T'|'t')('A'|'a')('B'|'b')('L'|'l')('E'|'e');
 
+NotEqual : ('N'|'n')('O'|'o')('T'|'t')' '('E'|'e')('Q'|'q')('U'|'u')('A'|'a')('L'|'l');
+
 Contains : ('C'|'c')('O'|'o')('N'|'n')('T'|'t')('A'|'a')('I'|'i')('N'|'n')('S'|'s');
 
 Continue : ('C'|'c')('O'|'o')('N'|'n')('T'|'t')('I'|'i')('N'|'n')('U'|'u')('E'|'e');
@@ -26,6 +28,8 @@ Decimal : ('D'|'d')('E'|'e')('C'|'c')('I'|'i')('M'|'m')('A'|'a')('L'|'l');
 Package : ('P'|'p')('A'|'a')('C'|'c')('K'|'k')('A'|'a')('G'|'g')('E'|'e');
 
 Number : ('N'|'n')('U'|'u')('M'|'m')('B'|'b')('E'|'e')('R'|'r');
+
+Divide : ('D'|'d')('I'|'i')('V'|'v')('I'|'i')('D'|'d')('E'|'e');
 
 Equals : ('E'|'e')('Q'|'q')('U'|'u')('A'|'a')('L'|'l')('S'|'s');
 
@@ -46,6 +50,8 @@ Minus : ('M'|'m')('I'|'i')('N'|'n')('U'|'u')('S'|'s');
 Print : ('P'|'p')('R'|'r')('I'|'i')('N'|'n')('T'|'t');
 
 Table_1 : ('T'|'t')('A'|'a')('B'|'b')('L'|'l')('E'|'e');
+
+Times : ('T'|'t')('I'|'i')('M'|'m')('E'|'e')('S'|'s');
 
 While : ('W'|'w')('H'|'h')('I'|'i')('L'|'l')('E'|'e');
 
@@ -109,6 +115,8 @@ VerticalLineVerticalLine : '|''|';
 
 ExclamationMark : '!';
 
+Ampersand : '&';
+
 LeftParenthesis : '(';
 
 RightParenthesis : ')';
@@ -137,7 +145,11 @@ RightSquareBracket : ']';
 
 CircumflexAccent : '^';
 
+N : ('N'|'n');
+
 LeftCurlyBracket : '{';
+
+VerticalLine : '|';
 
 RightCurlyBracket : '}';
 

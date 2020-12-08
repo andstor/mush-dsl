@@ -1165,42 +1165,42 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final Action cAndOrExpressionLeftAction_1_0_0 = (Action)cGroup_1_0.eContents().get(0);
 		private final Assignment cOpAssignment_1_0_1 = (Assignment)cGroup_1_0.eContents().get(1);
 		private final Alternatives cOpAlternatives_1_0_1_0 = (Alternatives)cOpAssignment_1_0_1.eContents().get(0);
-		private final Keyword cOpVerticalLineVerticalLineKeyword_1_0_1_0_0 = (Keyword)cOpAlternatives_1_0_1_0.eContents().get(0);
-		private final Keyword cOpAmpersandAmpersandKeyword_1_0_1_0_1 = (Keyword)cOpAlternatives_1_0_1_0.eContents().get(1);
+		private final RuleCall cOpOrOperatorParserRuleCall_1_0_1_0_0 = (RuleCall)cOpAlternatives_1_0_1_0.eContents().get(0);
+		private final RuleCall cOpAndOperatorParserRuleCall_1_0_1_0_1 = (RuleCall)cOpAlternatives_1_0_1_0.eContents().get(1);
 		private final Assignment cRightAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cRightComparisonParserRuleCall_1_1_0 = (RuleCall)cRightAssignment_1_1.eContents().get(0);
 		
 		////----- Logic and Math------
 		//BooleanExpression Expression:
-		//	Comparison (({AndOrExpression.left=current} op=("||" | "&&")) right=Comparison)*;
+		//	Comparison (({AndOrExpression.left=current} op=(OrOperator | AndOperator)) right=Comparison)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Comparison (({AndOrExpression.left=current} op=("||" | "&&")) right=Comparison)*
+		//Comparison (({AndOrExpression.left=current} op=(OrOperator | AndOperator)) right=Comparison)*
 		public Group getGroup() { return cGroup; }
 		
 		//Comparison
 		public RuleCall getComparisonParserRuleCall_0() { return cComparisonParserRuleCall_0; }
 		
-		//(({AndOrExpression.left=current} op=("||" | "&&")) right=Comparison)*
+		//(({AndOrExpression.left=current} op=(OrOperator | AndOperator)) right=Comparison)*
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//({AndOrExpression.left=current} op=("||" | "&&"))
+		//({AndOrExpression.left=current} op=(OrOperator | AndOperator))
 		public Group getGroup_1_0() { return cGroup_1_0; }
 		
 		//{AndOrExpression.left=current}
 		public Action getAndOrExpressionLeftAction_1_0_0() { return cAndOrExpressionLeftAction_1_0_0; }
 		
-		//op=("||" | "&&")
+		//op=(OrOperator | AndOperator)
 		public Assignment getOpAssignment_1_0_1() { return cOpAssignment_1_0_1; }
 		
-		//("||" | "&&")
+		//(OrOperator | AndOperator)
 		public Alternatives getOpAlternatives_1_0_1_0() { return cOpAlternatives_1_0_1_0; }
 		
-		//"||"
-		public Keyword getOpVerticalLineVerticalLineKeyword_1_0_1_0_0() { return cOpVerticalLineVerticalLineKeyword_1_0_1_0_0; }
+		//OrOperator
+		public RuleCall getOpOrOperatorParserRuleCall_1_0_1_0_0() { return cOpOrOperatorParserRuleCall_1_0_1_0_0; }
 		
-		//"&&"
-		public Keyword getOpAmpersandAmpersandKeyword_1_0_1_0_1() { return cOpAmpersandAmpersandKeyword_1_0_1_0_1; }
+		//AndOperator
+		public RuleCall getOpAndOperatorParserRuleCall_1_0_1_0_1() { return cOpAndOperatorParserRuleCall_1_0_1_0_1; }
 		
 		//right=Comparison
 		public Assignment getRightAssignment_1_1() { return cRightAssignment_1_1; }
@@ -1211,18 +1211,18 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	public class OrOperatorElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.OrOperator");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Keyword cVerticalLineVerticalLineKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cVerticalLineKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
 		private final Keyword cOrKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
 		
 		//OrOperator:
-		//	'||' | 'or';
+		//	'|' | 'or';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'||' | 'or'
+		//'|' | 'or'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//'||'
-		public Keyword getVerticalLineVerticalLineKeyword_0() { return cVerticalLineVerticalLineKeyword_0; }
+		//'|'
+		public Keyword getVerticalLineKeyword_0() { return cVerticalLineKeyword_0; }
 		
 		//'or'
 		public Keyword getOrKeyword_1() { return cOrKeyword_1; }
@@ -1230,18 +1230,18 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	public class AndOperatorElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.AndOperator");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Keyword cAmpersandAmpersandKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cAmpersandKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
 		private final Keyword cAndKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
 		
 		//AndOperator:
-		//	'&&' | 'and';
+		//	'&' | 'and';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'&&' | 'and'
+		//'&' | 'and'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//'&&'
-		public Keyword getAmpersandAmpersandKeyword_0() { return cAmpersandAmpersandKeyword_0; }
+		//'&'
+		public Keyword getAmpersandKeyword_0() { return cAmpersandKeyword_0; }
 		
 		//'and'
 		public Keyword getAndKeyword_1() { return cAndKeyword_1; }
@@ -1309,33 +1309,33 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final Keyword cOpEqualsSignEqualsSignKeyword_1_0_1_0_0 = (Keyword)cOpAlternatives_1_0_1_0.eContents().get(0);
 		private final Keyword cOpLessThanSignEqualsSignKeyword_1_0_1_0_1 = (Keyword)cOpAlternatives_1_0_1_0.eContents().get(1);
 		private final Keyword cOpGreaterThanSignEqualsSignKeyword_1_0_1_0_2 = (Keyword)cOpAlternatives_1_0_1_0.eContents().get(2);
-		private final Keyword cOpExclamationMarkEqualsSignKeyword_1_0_1_0_3 = (Keyword)cOpAlternatives_1_0_1_0.eContents().get(3);
+		private final RuleCall cOpNotEqualOperatorParserRuleCall_1_0_1_0_3 = (RuleCall)cOpAlternatives_1_0_1_0.eContents().get(3);
 		private final Assignment cRightAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cRightAdditionParserRuleCall_1_1_0 = (RuleCall)cRightAssignment_1_1.eContents().get(0);
 		
 		//Equals Expression:
-		//	Addition (({Equals.left=current} op=('==' | '<=' | '>=' | '!=')) right=Addition)*;
+		//	Addition (({Equals.left=current} op=('==' | '<=' | '>=' | NotEqualOperator)) right=Addition)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Addition (({Equals.left=current} op=('==' | '<=' | '>=' | '!=')) right=Addition)*
+		//Addition (({Equals.left=current} op=('==' | '<=' | '>=' | NotEqualOperator)) right=Addition)*
 		public Group getGroup() { return cGroup; }
 		
 		//Addition
 		public RuleCall getAdditionParserRuleCall_0() { return cAdditionParserRuleCall_0; }
 		
-		//(({Equals.left=current} op=('==' | '<=' | '>=' | '!=')) right=Addition)*
+		//(({Equals.left=current} op=('==' | '<=' | '>=' | NotEqualOperator)) right=Addition)*
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//({Equals.left=current} op=('==' | '<=' | '>=' | '!='))
+		//({Equals.left=current} op=('==' | '<=' | '>=' | NotEqualOperator))
 		public Group getGroup_1_0() { return cGroup_1_0; }
 		
 		//{Equals.left=current}
 		public Action getEqualsLeftAction_1_0_0() { return cEqualsLeftAction_1_0_0; }
 		
-		//op=('==' | '<=' | '>=' | '!=')
+		//op=('==' | '<=' | '>=' | NotEqualOperator)
 		public Assignment getOpAssignment_1_0_1() { return cOpAssignment_1_0_1; }
 		
-		//('==' | '<=' | '>=' | '!=')
+		//('==' | '<=' | '>=' | NotEqualOperator)
 		public Alternatives getOpAlternatives_1_0_1_0() { return cOpAlternatives_1_0_1_0; }
 		
 		//'=='
@@ -1347,14 +1347,44 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//'>='
 		public Keyword getOpGreaterThanSignEqualsSignKeyword_1_0_1_0_2() { return cOpGreaterThanSignEqualsSignKeyword_1_0_1_0_2; }
 		
-		//'!='
-		public Keyword getOpExclamationMarkEqualsSignKeyword_1_0_1_0_3() { return cOpExclamationMarkEqualsSignKeyword_1_0_1_0_3; }
+		//NotEqualOperator
+		public RuleCall getOpNotEqualOperatorParserRuleCall_1_0_1_0_3() { return cOpNotEqualOperatorParserRuleCall_1_0_1_0_3; }
 		
 		//right=Addition
 		public Assignment getRightAssignment_1_1() { return cRightAssignment_1_1; }
 		
 		//Addition
 		public RuleCall getRightAdditionParserRuleCall_1_1_0() { return cRightAdditionParserRuleCall_1_1_0; }
+	}
+	public class EqualsOperatorsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.EqualsOperators");
+		private final Keyword cNKeyword = (Keyword)rule.eContents().get(1);
+		
+		//EqualsOperators:
+		//	'n';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'n'
+		public Keyword getNKeyword() { return cNKeyword; }
+	}
+	public class NotEqualOperatorElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.NotEqualOperator");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Keyword cExclamationMarkEqualsSignKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cNotEqualKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		
+		//NotEqualOperator:
+		//	'!=' | 'not equal';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'!=' | 'not equal'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//'!='
+		public Keyword getExclamationMarkEqualsSignKeyword_0() { return cExclamationMarkEqualsSignKeyword_0; }
+		
+		//'not equal'
+		public Keyword getNotEqualKeyword_1() { return cNotEqualKeyword_1; }
 	}
 	public class ArithmeticExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.ArithmeticExpression");
@@ -1469,47 +1499,85 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final Action cMultiOrDivLeftAction_1_0_0 = (Action)cGroup_1_0.eContents().get(0);
 		private final Assignment cOpAssignment_1_0_1 = (Assignment)cGroup_1_0.eContents().get(1);
 		private final Alternatives cOpAlternatives_1_0_1_0 = (Alternatives)cOpAssignment_1_0_1.eContents().get(0);
-		private final Keyword cOpAsteriskKeyword_1_0_1_0_0 = (Keyword)cOpAlternatives_1_0_1_0.eContents().get(0);
-		private final Keyword cOpSolidusKeyword_1_0_1_0_1 = (Keyword)cOpAlternatives_1_0_1_0.eContents().get(1);
+		private final RuleCall cOpTimesOperatorParserRuleCall_1_0_1_0_0 = (RuleCall)cOpAlternatives_1_0_1_0.eContents().get(0);
+		private final RuleCall cOpDivideOperatorParserRuleCall_1_0_1_0_1 = (RuleCall)cOpAlternatives_1_0_1_0.eContents().get(1);
 		private final Assignment cRightAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cRightPrefixedParserRuleCall_1_1_0 = (RuleCall)cRightAssignment_1_1.eContents().get(0);
 		
 		//Multiplication Expression:
-		//	Prefixed (({MultiOrDiv.left=current} op=("*" | "/")) right=Prefixed)*;
+		//	Prefixed (({MultiOrDiv.left=current} op=(TimesOperator | DivideOperator)) right=Prefixed)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Prefixed (({MultiOrDiv.left=current} op=("*" | "/")) right=Prefixed)*
+		//Prefixed (({MultiOrDiv.left=current} op=(TimesOperator | DivideOperator)) right=Prefixed)*
 		public Group getGroup() { return cGroup; }
 		
 		//Prefixed
 		public RuleCall getPrefixedParserRuleCall_0() { return cPrefixedParserRuleCall_0; }
 		
-		//(({MultiOrDiv.left=current} op=("*" | "/")) right=Prefixed)*
+		//(({MultiOrDiv.left=current} op=(TimesOperator | DivideOperator)) right=Prefixed)*
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//({MultiOrDiv.left=current} op=("*" | "/"))
+		//({MultiOrDiv.left=current} op=(TimesOperator | DivideOperator))
 		public Group getGroup_1_0() { return cGroup_1_0; }
 		
 		//{MultiOrDiv.left=current}
 		public Action getMultiOrDivLeftAction_1_0_0() { return cMultiOrDivLeftAction_1_0_0; }
 		
-		//op=("*" | "/")
+		//op=(TimesOperator | DivideOperator)
 		public Assignment getOpAssignment_1_0_1() { return cOpAssignment_1_0_1; }
 		
-		//("*" | "/")
+		//(TimesOperator | DivideOperator)
 		public Alternatives getOpAlternatives_1_0_1_0() { return cOpAlternatives_1_0_1_0; }
 		
-		//"*"
-		public Keyword getOpAsteriskKeyword_1_0_1_0_0() { return cOpAsteriskKeyword_1_0_1_0_0; }
+		//TimesOperator
+		public RuleCall getOpTimesOperatorParserRuleCall_1_0_1_0_0() { return cOpTimesOperatorParserRuleCall_1_0_1_0_0; }
 		
-		//"/"
-		public Keyword getOpSolidusKeyword_1_0_1_0_1() { return cOpSolidusKeyword_1_0_1_0_1; }
+		//DivideOperator
+		public RuleCall getOpDivideOperatorParserRuleCall_1_0_1_0_1() { return cOpDivideOperatorParserRuleCall_1_0_1_0_1; }
 		
 		//right=Prefixed
 		public Assignment getRightAssignment_1_1() { return cRightAssignment_1_1; }
 		
 		//Prefixed
 		public RuleCall getRightPrefixedParserRuleCall_1_1_0() { return cRightPrefixedParserRuleCall_1_1_0; }
+	}
+	public class TimesOperatorElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.TimesOperator");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Keyword cAsteriskKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cTimesKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		
+		//TimesOperator:
+		//	'*' | 'times';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'*' | 'times'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//'*'
+		public Keyword getAsteriskKeyword_0() { return cAsteriskKeyword_0; }
+		
+		//'times'
+		public Keyword getTimesKeyword_1() { return cTimesKeyword_1; }
+	}
+	public class DivideOperatorElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.DivideOperator");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Keyword cSolidusKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cDivideKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		
+		//DivideOperator:
+		//	'/' | 'divide';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'/' | 'divide'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//'/'
+		public Keyword getSolidusKeyword_0() { return cSolidusKeyword_0; }
+		
+		//'divide'
+		public Keyword getDivideKeyword_1() { return cDivideKeyword_1; }
 	}
 	public class PrefixedElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.pseudocode.Pcode.Prefixed");
@@ -1957,11 +2025,15 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	private final AndOperatorElements pAndOperator;
 	private final ComparisonElements pComparison;
 	private final EqualsElements pEquals;
+	private final EqualsOperatorsElements pEqualsOperators;
+	private final NotEqualOperatorElements pNotEqualOperator;
 	private final ArithmeticExpressionElements pArithmeticExpression;
 	private final AdditionElements pAddition;
 	private final PlusOperatorElements pPlusOperator;
 	private final MinusOperatorElements pMinusOperator;
 	private final MultiplicationElements pMultiplication;
+	private final TimesOperatorElements pTimesOperator;
+	private final DivideOperatorElements pDivideOperator;
 	private final PrefixedElements pPrefixed;
 	private final AtomicElements pAtomic;
 	private final FunctionCallElements pFunctionCall;
@@ -2011,11 +2083,15 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		this.pAndOperator = new AndOperatorElements();
 		this.pComparison = new ComparisonElements();
 		this.pEquals = new EqualsElements();
+		this.pEqualsOperators = new EqualsOperatorsElements();
+		this.pNotEqualOperator = new NotEqualOperatorElements();
 		this.pArithmeticExpression = new ArithmeticExpressionElements();
 		this.pAddition = new AdditionElements();
 		this.pPlusOperator = new PlusOperatorElements();
 		this.pMinusOperator = new MinusOperatorElements();
 		this.pMultiplication = new MultiplicationElements();
+		this.pTimesOperator = new TimesOperatorElements();
+		this.pDivideOperator = new DivideOperatorElements();
 		this.pPrefixed = new PrefixedElements();
 		this.pAtomic = new AtomicElements();
 		this.pFunctionCall = new FunctionCallElements();
@@ -2330,7 +2406,7 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	
 	////----- Logic and Math------
 	//BooleanExpression Expression:
-	//	Comparison (({AndOrExpression.left=current} op=("||" | "&&")) right=Comparison)*;
+	//	Comparison (({AndOrExpression.left=current} op=(OrOperator | AndOperator)) right=Comparison)*;
 	public BooleanExpressionElements getBooleanExpressionAccess() {
 		return pBooleanExpression;
 	}
@@ -2340,7 +2416,7 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	}
 	
 	//OrOperator:
-	//	'||' | 'or';
+	//	'|' | 'or';
 	public OrOperatorElements getOrOperatorAccess() {
 		return pOrOperator;
 	}
@@ -2350,7 +2426,7 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	}
 	
 	//AndOperator:
-	//	'&&' | 'and';
+	//	'&' | 'and';
 	public AndOperatorElements getAndOperatorAccess() {
 		return pAndOperator;
 	}
@@ -2370,13 +2446,33 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	}
 	
 	//Equals Expression:
-	//	Addition (({Equals.left=current} op=('==' | '<=' | '>=' | '!=')) right=Addition)*;
+	//	Addition (({Equals.left=current} op=('==' | '<=' | '>=' | NotEqualOperator)) right=Addition)*;
 	public EqualsElements getEqualsAccess() {
 		return pEquals;
 	}
 	
 	public ParserRule getEqualsRule() {
 		return getEqualsAccess().getRule();
+	}
+	
+	//EqualsOperators:
+	//	'n';
+	public EqualsOperatorsElements getEqualsOperatorsAccess() {
+		return pEqualsOperators;
+	}
+	
+	public ParserRule getEqualsOperatorsRule() {
+		return getEqualsOperatorsAccess().getRule();
+	}
+	
+	//NotEqualOperator:
+	//	'!=' | 'not equal';
+	public NotEqualOperatorElements getNotEqualOperatorAccess() {
+		return pNotEqualOperator;
+	}
+	
+	public ParserRule getNotEqualOperatorRule() {
+		return getNotEqualOperatorAccess().getRule();
 	}
 	
 	//ArithmeticExpression Expression:
@@ -2420,13 +2516,33 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	}
 	
 	//Multiplication Expression:
-	//	Prefixed (({MultiOrDiv.left=current} op=("*" | "/")) right=Prefixed)*;
+	//	Prefixed (({MultiOrDiv.left=current} op=(TimesOperator | DivideOperator)) right=Prefixed)*;
 	public MultiplicationElements getMultiplicationAccess() {
 		return pMultiplication;
 	}
 	
 	public ParserRule getMultiplicationRule() {
 		return getMultiplicationAccess().getRule();
+	}
+	
+	//TimesOperator:
+	//	'*' | 'times';
+	public TimesOperatorElements getTimesOperatorAccess() {
+		return pTimesOperator;
+	}
+	
+	public ParserRule getTimesOperatorRule() {
+		return getTimesOperatorAccess().getRule();
+	}
+	
+	//DivideOperator:
+	//	'/' | 'divide';
+	public DivideOperatorElements getDivideOperatorAccess() {
+		return pDivideOperator;
+	}
+	
+	public ParserRule getDivideOperatorRule() {
+		return getDivideOperatorAccess().getRule();
 	}
 	
 	//Prefixed Expression:

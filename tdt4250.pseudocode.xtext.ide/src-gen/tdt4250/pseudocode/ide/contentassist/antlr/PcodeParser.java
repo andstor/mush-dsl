@@ -51,10 +51,13 @@ public class PcodeParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getAndOperatorAccess().getAlternatives(), "rule__AndOperator__Alternatives");
 			builder.put(grammarAccess.getComparisonAccess().getOpAlternatives_1_0_1_0(), "rule__Comparison__OpAlternatives_1_0_1_0");
 			builder.put(grammarAccess.getEqualsAccess().getOpAlternatives_1_0_1_0(), "rule__Equals__OpAlternatives_1_0_1_0");
+			builder.put(grammarAccess.getNotEqualOperatorAccess().getAlternatives(), "rule__NotEqualOperator__Alternatives");
 			builder.put(grammarAccess.getAdditionAccess().getAlternatives_1_0(), "rule__Addition__Alternatives_1_0");
 			builder.put(grammarAccess.getPlusOperatorAccess().getAlternatives(), "rule__PlusOperator__Alternatives");
 			builder.put(grammarAccess.getMinusOperatorAccess().getAlternatives(), "rule__MinusOperator__Alternatives");
 			builder.put(grammarAccess.getMultiplicationAccess().getOpAlternatives_1_0_1_0(), "rule__Multiplication__OpAlternatives_1_0_1_0");
+			builder.put(grammarAccess.getTimesOperatorAccess().getAlternatives(), "rule__TimesOperator__Alternatives");
+			builder.put(grammarAccess.getDivideOperatorAccess().getAlternatives(), "rule__DivideOperator__Alternatives");
 			builder.put(grammarAccess.getPrefixedAccess().getAlternatives(), "rule__Prefixed__Alternatives");
 			builder.put(grammarAccess.getAtomicAccess().getAlternatives(), "rule__Atomic__Alternatives");
 			builder.put(grammarAccess.getAtomicAccess().getValueAlternatives_4_1_0(), "rule__Atomic__ValueAlternatives_4_1_0");

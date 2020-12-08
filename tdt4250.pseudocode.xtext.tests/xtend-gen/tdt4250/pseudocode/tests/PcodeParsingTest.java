@@ -46,37 +46,19 @@ public class PcodeParsingTest {
     @Override
     public String apply() {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("executable PARTITION(list with text p, number r, text lol)");
+      _builder.append("executable PARTITION()");
       _builder.newLine();
-      _builder.append("    ");
-      _builder.append("B = {1,2,3}");
+      _builder.append("\t");
+      _builder.append("n = 2 divide 3");
       _builder.newLine();
-      _builder.append("    ");
-      _builder.append("C =[6,5,4]");
+      _builder.append("\t");
+      _builder.append("n = 2 * 2");
       _builder.newLine();
-      _builder.append("    ");
-      _builder.append("bo equals new list with number that contains 1,2,3");
+      _builder.append("\t");
+      _builder.append("if 2 notEqual 1");
       _builder.newLine();
-      _builder.append("    ");
-      _builder.append("c is 3");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("for interval 1 to r");
-      _builder.newLine();
-      _builder.append("        ");
-      _builder.append("if 2 <= 1");
-      _builder.newLine();
-      _builder.append("            ");
+      _builder.append("    \t");
       _builder.append("kk=0");
-      _builder.newLine();
-      _builder.append("        ");
-      _builder.append("else");
-      _builder.newLine();
-      _builder.append("            ");
-      _builder.append("o=1");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("return 2");
       _builder.newLine();
       return _builder.toString();
     }
