@@ -345,6 +345,8 @@ class PcodeGenerator extends AbstractGenerator {
         } else {
             if (e.op.equals('++') || e.op.equals('--')) {
                 string += e.name + e.op + ';'
+            }else if(e.op.equals('equals')||e.op.equals('is')){
+            	 string += e.name + ' ' + '=' + ' ' + e.value.LiteralExpression + ';'
             } else {
                 string += e.name + ' ' + e.op + ' ' + e.value.LiteralExpression + ';'
             }
@@ -486,15 +488,22 @@ class PcodeGenerator extends AbstractGenerator {
     def checkMultiOrDiv(MultiOrDiv e) {
         if (e.op.equals('times'))
             return '*'
-        else if(e.op.equals('divide')) return '/' else return e.op
+        else if(e.op.equals('divide')) return '/'
+        else if(e.op.equals('modulo')) return '%'
+        else return e.op
     }
     
+    def checkComparison(Comparison e){
+    	if(e.op.equals('lessThen')) return '<'
+    	else if(e.op.equals('biggerThen')) return '>'
+    	else return e.op
+    }
 
     def dispatch LiteralExpression(AndOrExpression e) '''
     «e.left.LiteralExpression»«checkAndORType(e)»«e.right.LiteralExpression»'''
 
     def dispatch LiteralExpression(Comparison e) '''
-    «e.left.LiteralExpression»«e.op»«e.right.LiteralExpression»'''
+    «e.left.LiteralExpression»«checkComparison(e)»«e.right.LiteralExpression»'''
 
     def dispatch LiteralExpression(Equals e) '''
     «e.left.LiteralExpression»«e.op»«e.right.LiteralExpression»'''

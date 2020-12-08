@@ -455,16 +455,28 @@ public class PcodeGenerator extends AbstractGenerator {
         String _plus_6 = (_plus_5 + ";");
         string = (_string_1 + _plus_6);
       } else {
-        String _string_2 = string;
-        String _name_2 = e.getName();
-        String _plus_7 = (_name_2 + " ");
-        String _op_1 = e.getOp();
-        String _plus_8 = (_plus_7 + _op_1);
-        String _plus_9 = (_plus_8 + " ");
-        Object _LiteralExpression_1 = this.LiteralExpression(e.getValue());
-        String _plus_10 = (_plus_9 + _LiteralExpression_1);
-        String _plus_11 = (_plus_10 + ";");
-        string = (_string_2 + _plus_11);
+        if ((e.getOp().equals("equals") || e.getOp().equals("is"))) {
+          String _string_2 = string;
+          String _name_2 = e.getName();
+          String _plus_7 = (_name_2 + " ");
+          String _plus_8 = (_plus_7 + "=");
+          String _plus_9 = (_plus_8 + " ");
+          Object _LiteralExpression_1 = this.LiteralExpression(e.getValue());
+          String _plus_10 = (_plus_9 + _LiteralExpression_1);
+          String _plus_11 = (_plus_10 + ";");
+          string = (_string_2 + _plus_11);
+        } else {
+          String _string_3 = string;
+          String _name_3 = e.getName();
+          String _plus_12 = (_name_3 + " ");
+          String _op_1 = e.getOp();
+          String _plus_13 = (_plus_12 + _op_1);
+          String _plus_14 = (_plus_13 + " ");
+          Object _LiteralExpression_2 = this.LiteralExpression(e.getValue());
+          String _plus_15 = (_plus_14 + _LiteralExpression_2);
+          String _plus_16 = (_plus_15 + ";");
+          string = (_string_3 + _plus_16);
+        }
       }
     }
     return (string + "\n");
@@ -689,6 +701,25 @@ public class PcodeGenerator extends AbstractGenerator {
       if (_equals_1) {
         return "/";
       } else {
+        boolean _equals_2 = e.getOp().equals("modulo");
+        if (_equals_2) {
+          return "%";
+        } else {
+          return e.getOp();
+        }
+      }
+    }
+  }
+  
+  public String checkComparison(final Comparison e) {
+    boolean _equals = e.getOp().equals("lessThen");
+    if (_equals) {
+      return "<";
+    } else {
+      boolean _equals_1 = e.getOp().equals("biggerThen");
+      if (_equals_1) {
+        return ">";
+      } else {
         return e.getOp();
       }
     }
@@ -709,8 +740,8 @@ public class PcodeGenerator extends AbstractGenerator {
     StringConcatenation _builder = new StringConcatenation();
     Object _LiteralExpression = this.LiteralExpression(e.getLeft());
     _builder.append(_LiteralExpression);
-    String _op = e.getOp();
-    _builder.append(_op);
+    String _checkComparison = this.checkComparison(e);
+    _builder.append(_checkComparison);
     Object _LiteralExpression_1 = this.LiteralExpression(e.getRight());
     _builder.append(_LiteralExpression_1);
     return _builder;

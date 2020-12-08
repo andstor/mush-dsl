@@ -22,88 +22,92 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalPcodeParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "Executable", "Contains", "Continue", "Exchange", "Interval", "Decimal", "Package", "Number", "Divide", "Equals", "Remove", "Return", "Array_1", "Break", "False", "Index", "Minus", "Print", "Table_1", "Times", "While", "Text", "Else", "Line", "List_1", "Plus", "Stop", "That", "Then", "True", "With", "Add", "And", "For", "New", "ExclamationMarkEqualsSign", "AmpersandAmpersand", "PlusSignPlusSign", "PlusSignEqualsSign", "HyphenMinusHyphenMinus", "HyphenMinusEqualsSign", "LessThanSignEqualsSign", "EqualsSignEqualsSign", "GreaterThanSignEqualsSign", "At", "If", "Is", "Or", "To", "VerticalLineVerticalLine", "ExclamationMark", "Ampersand", "LeftParenthesis", "RightParenthesis", "Asterisk", "PlusSign", "Comma", "HyphenMinus", "FullStop", "Solidus", "LessThanSign", "EqualsSign", "GreaterThanSign", "LeftSquareBracket", "RightSquareBracket", "CircumflexAccent", "LeftCurlyBracket", "VerticalLine", "RightCurlyBracket", "RULE_BEGIN", "RULE_END", "RULE_INT", "RULE_DOUBLE", "RULE_ID", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "BiggerThen", "Executable", "Contains", "Continue", "Exchange", "Interval", "LessThen", "Decimal", "Package", "Number", "Divide", "Equals", "Modulo", "Remove", "Return", "Array_1", "Break", "False", "Index", "Minus", "Print", "Table_1", "Times", "While", "Text", "Else", "Line", "List_1", "Plus", "Stop", "That", "Then", "True", "With", "Add", "And", "For", "New", "ExclamationMarkEqualsSign", "AmpersandAmpersand", "PlusSignPlusSign", "PlusSignEqualsSign", "HyphenMinusHyphenMinus", "HyphenMinusEqualsSign", "LessThanSignEqualsSign", "EqualsSignEqualsSign", "GreaterThanSignEqualsSign", "At", "If", "Is", "Or", "To", "VerticalLineVerticalLine", "ExclamationMark", "PercentSign", "Ampersand", "LeftParenthesis", "RightParenthesis", "Asterisk", "PlusSign", "Comma", "HyphenMinus", "FullStop", "Solidus", "LessThanSign", "EqualsSign", "GreaterThanSign", "LeftSquareBracket", "RightSquareBracket", "CircumflexAccent", "LeftCurlyBracket", "VerticalLine", "RightCurlyBracket", "RULE_BEGIN", "RULE_END", "RULE_INT", "RULE_DOUBLE", "RULE_ID", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER"
     };
-    public static final int Add=35;
-    public static final int HyphenMinusHyphenMinus=43;
-    public static final int New=38;
-    public static final int Or=51;
-    public static final int RULE_BEGIN=73;
-    public static final int Stop=30;
-    public static final int Break=17;
-    public static final int True=33;
-    public static final int Index=19;
-    public static final int Remove=14;
-    public static final int False=18;
-    public static final int LessThanSign=64;
-    public static final int Divide=12;
-    public static final int Print=21;
-    public static final int LeftParenthesis=56;
-    public static final int Decimal=9;
-    public static final int Then=32;
-    public static final int Ampersand=55;
-    public static final int To=52;
-    public static final int Executable=4;
-    public static final int Plus=29;
-    public static final int RightSquareBracket=68;
-    public static final int ExclamationMark=54;
-    public static final int GreaterThanSign=66;
-    public static final int RULE_ID=77;
-    public static final int For=37;
-    public static final int RightParenthesis=57;
-    public static final int GreaterThanSignEqualsSign=47;
-    public static final int Exchange=7;
-    public static final int Line=27;
-    public static final int EqualsSignEqualsSign=46;
-    public static final int VerticalLine=71;
-    public static final int And=36;
-    public static final int PlusSign=59;
-    public static final int RULE_INT=75;
-    public static final int Contains=5;
-    public static final int RULE_ML_COMMENT=79;
-    public static final int LeftSquareBracket=67;
-    public static final int Package=10;
-    public static final int If=49;
-    public static final int Minus=20;
-    public static final int Interval=8;
-    public static final int RULE_END=74;
-    public static final int VerticalLineVerticalLine=53;
-    public static final int Table_1=22;
-    public static final int Is=50;
-    public static final int RULE_STRING=78;
-    public static final int Continue=6;
-    public static final int With=34;
-    public static final int RULE_SL_COMMENT=80;
-    public static final int Comma=60;
-    public static final int EqualsSign=65;
-    public static final int HyphenMinus=61;
-    public static final int At=48;
-    public static final int Number=11;
-    public static final int AmpersandAmpersand=40;
-    public static final int RULE_DOUBLE=76;
-    public static final int Array_1=16;
-    public static final int HyphenMinusEqualsSign=44;
-    public static final int LessThanSignEqualsSign=45;
-    public static final int Solidus=63;
-    public static final int RightCurlyBracket=72;
+    public static final int Add=38;
+    public static final int HyphenMinusHyphenMinus=46;
+    public static final int New=41;
+    public static final int Or=54;
+    public static final int RULE_BEGIN=77;
+    public static final int Stop=33;
+    public static final int Break=20;
+    public static final int True=36;
+    public static final int Index=22;
+    public static final int Remove=17;
+    public static final int False=21;
+    public static final int LessThanSign=68;
+    public static final int Divide=14;
+    public static final int Print=24;
+    public static final int PercentSign=58;
+    public static final int LeftParenthesis=60;
+    public static final int Decimal=11;
+    public static final int Then=35;
+    public static final int Ampersand=59;
+    public static final int To=55;
+    public static final int Executable=5;
+    public static final int Plus=32;
+    public static final int LessThen=10;
+    public static final int RightSquareBracket=72;
+    public static final int ExclamationMark=57;
+    public static final int GreaterThanSign=70;
+    public static final int RULE_ID=81;
+    public static final int Modulo=16;
+    public static final int For=40;
+    public static final int RightParenthesis=61;
+    public static final int GreaterThanSignEqualsSign=50;
+    public static final int Exchange=8;
+    public static final int Line=30;
+    public static final int EqualsSignEqualsSign=49;
+    public static final int BiggerThen=4;
+    public static final int VerticalLine=75;
+    public static final int And=39;
+    public static final int PlusSign=63;
+    public static final int RULE_INT=79;
+    public static final int Contains=6;
+    public static final int RULE_ML_COMMENT=83;
+    public static final int LeftSquareBracket=71;
+    public static final int Package=12;
+    public static final int If=52;
+    public static final int Minus=23;
+    public static final int Interval=9;
+    public static final int RULE_END=78;
+    public static final int VerticalLineVerticalLine=56;
+    public static final int Table_1=25;
+    public static final int Is=53;
+    public static final int RULE_STRING=82;
+    public static final int Continue=7;
+    public static final int With=37;
+    public static final int RULE_SL_COMMENT=84;
+    public static final int Comma=64;
+    public static final int EqualsSign=69;
+    public static final int HyphenMinus=65;
+    public static final int At=51;
+    public static final int Number=13;
+    public static final int AmpersandAmpersand=43;
+    public static final int RULE_DOUBLE=80;
+    public static final int Array_1=19;
+    public static final int HyphenMinusEqualsSign=47;
+    public static final int LessThanSignEqualsSign=48;
+    public static final int Solidus=67;
+    public static final int RightCurlyBracket=76;
     public static final int EOF=-1;
-    public static final int List_1=28;
-    public static final int Asterisk=58;
-    public static final int PlusSignEqualsSign=42;
-    public static final int That=31;
-    public static final int FullStop=62;
-    public static final int Return=15;
-    public static final int RULE_WS=81;
-    public static final int LeftCurlyBracket=70;
-    public static final int Text=25;
-    public static final int While=24;
-    public static final int RULE_ANY_OTHER=82;
-    public static final int CircumflexAccent=69;
-    public static final int Equals=13;
-    public static final int PlusSignPlusSign=41;
-    public static final int Times=23;
-    public static final int Else=26;
-    public static final int ExclamationMarkEqualsSign=39;
+    public static final int List_1=31;
+    public static final int Asterisk=62;
+    public static final int PlusSignEqualsSign=45;
+    public static final int That=34;
+    public static final int FullStop=66;
+    public static final int Return=18;
+    public static final int RULE_WS=85;
+    public static final int LeftCurlyBracket=74;
+    public static final int Text=28;
+    public static final int While=27;
+    public static final int RULE_ANY_OTHER=86;
+    public static final int CircumflexAccent=73;
+    public static final int Equals=15;
+    public static final int PlusSignPlusSign=44;
+    public static final int Times=26;
+    public static final int Else=29;
+    public static final int ExclamationMarkEqualsSign=42;
 
     // delegates
     // delegators
@@ -1302,6 +1306,11 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
             case RULE_ID:
                 {
                 switch ( input.LA(2) ) {
+                case LeftParenthesis:
+                    {
+                    alt11=2;
+                    }
+                    break;
                 case Equals:
                 case PlusSignPlusSign:
                 case PlusSignEqualsSign:
@@ -1316,11 +1325,6 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
                 case Remove:
                     {
                     alt11=5;
-                    }
-                    break;
-                case LeftParenthesis:
-                    {
-                    alt11=2;
                     }
                     break;
                 case Add:
@@ -4043,7 +4047,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
                 if ( (LA25_2==At||LA25_2==LeftSquareBracket) ) {
                     alt25=2;
                 }
-                else if ( (LA25_2==EOF||(LA25_2>=Continue && LA25_2<=Exchange)||LA25_2==Divide||LA25_2==Return||LA25_2==Break||(LA25_2>=Minus && LA25_2<=Print)||(LA25_2>=Times && LA25_2<=While)||(LA25_2>=Plus && LA25_2<=Stop)||LA25_2==Then||LA25_2==With||(LA25_2>=And && LA25_2<=For)||LA25_2==ExclamationMarkEqualsSign||(LA25_2>=LessThanSignEqualsSign && LA25_2<=GreaterThanSignEqualsSign)||LA25_2==If||LA25_2==Or||(LA25_2>=Ampersand && LA25_2<=HyphenMinus)||(LA25_2>=Solidus && LA25_2<=LessThanSign)||LA25_2==GreaterThanSign||LA25_2==RightSquareBracket||(LA25_2>=VerticalLine && LA25_2<=RULE_END)||LA25_2==RULE_ID) ) {
+                else if ( (LA25_2==EOF||LA25_2==BiggerThen||(LA25_2>=Continue && LA25_2<=Exchange)||LA25_2==LessThen||LA25_2==Divide||LA25_2==Modulo||LA25_2==Return||LA25_2==Break||(LA25_2>=Minus && LA25_2<=Print)||(LA25_2>=Times && LA25_2<=While)||(LA25_2>=Plus && LA25_2<=Stop)||LA25_2==Then||LA25_2==With||(LA25_2>=And && LA25_2<=For)||LA25_2==ExclamationMarkEqualsSign||(LA25_2>=LessThanSignEqualsSign && LA25_2<=GreaterThanSignEqualsSign)||LA25_2==If||LA25_2==Or||(LA25_2>=PercentSign && LA25_2<=HyphenMinus)||(LA25_2>=Solidus && LA25_2<=LessThanSign)||LA25_2==GreaterThanSign||LA25_2==RightSquareBracket||(LA25_2>=VerticalLine && LA25_2<=RULE_END)||LA25_2==RULE_ID) ) {
                     alt25=3;
                 }
                 else {
@@ -6236,12 +6240,14 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleComparison"
-    // InternalPcodeParser.g:2081:1: ruleComparison returns [EObject current=null] : (this_Equals_0= ruleEquals ( ( () ( ( (lv_op_2_1= LessThanSign | lv_op_2_2= GreaterThanSign ) ) ) ) ( (lv_right_3_0= ruleEquals ) ) )* ) ;
+    // InternalPcodeParser.g:2081:1: ruleComparison returns [EObject current=null] : (this_Equals_0= ruleEquals ( ( () ( ( (lv_op_2_1= LessThanSign | lv_op_2_2= LessThen | lv_op_2_3= GreaterThanSign | lv_op_2_4= BiggerThen ) ) ) ) ( (lv_right_3_0= ruleEquals ) ) )* ) ;
     public final EObject ruleComparison() throws RecognitionException {
         EObject current = null;
 
         Token lv_op_2_1=null;
         Token lv_op_2_2=null;
+        Token lv_op_2_3=null;
+        Token lv_op_2_4=null;
         EObject this_Equals_0 = null;
 
         EObject lv_right_3_0 = null;
@@ -6251,11 +6257,11 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalPcodeParser.g:2087:2: ( (this_Equals_0= ruleEquals ( ( () ( ( (lv_op_2_1= LessThanSign | lv_op_2_2= GreaterThanSign ) ) ) ) ( (lv_right_3_0= ruleEquals ) ) )* ) )
-            // InternalPcodeParser.g:2088:2: (this_Equals_0= ruleEquals ( ( () ( ( (lv_op_2_1= LessThanSign | lv_op_2_2= GreaterThanSign ) ) ) ) ( (lv_right_3_0= ruleEquals ) ) )* )
+            // InternalPcodeParser.g:2087:2: ( (this_Equals_0= ruleEquals ( ( () ( ( (lv_op_2_1= LessThanSign | lv_op_2_2= LessThen | lv_op_2_3= GreaterThanSign | lv_op_2_4= BiggerThen ) ) ) ) ( (lv_right_3_0= ruleEquals ) ) )* ) )
+            // InternalPcodeParser.g:2088:2: (this_Equals_0= ruleEquals ( ( () ( ( (lv_op_2_1= LessThanSign | lv_op_2_2= LessThen | lv_op_2_3= GreaterThanSign | lv_op_2_4= BiggerThen ) ) ) ) ( (lv_right_3_0= ruleEquals ) ) )* )
             {
-            // InternalPcodeParser.g:2088:2: (this_Equals_0= ruleEquals ( ( () ( ( (lv_op_2_1= LessThanSign | lv_op_2_2= GreaterThanSign ) ) ) ) ( (lv_right_3_0= ruleEquals ) ) )* )
-            // InternalPcodeParser.g:2089:3: this_Equals_0= ruleEquals ( ( () ( ( (lv_op_2_1= LessThanSign | lv_op_2_2= GreaterThanSign ) ) ) ) ( (lv_right_3_0= ruleEquals ) ) )*
+            // InternalPcodeParser.g:2088:2: (this_Equals_0= ruleEquals ( ( () ( ( (lv_op_2_1= LessThanSign | lv_op_2_2= LessThen | lv_op_2_3= GreaterThanSign | lv_op_2_4= BiggerThen ) ) ) ) ( (lv_right_3_0= ruleEquals ) ) )* )
+            // InternalPcodeParser.g:2089:3: this_Equals_0= ruleEquals ( ( () ( ( (lv_op_2_1= LessThanSign | lv_op_2_2= LessThen | lv_op_2_3= GreaterThanSign | lv_op_2_4= BiggerThen ) ) ) ) ( (lv_right_3_0= ruleEquals ) ) )*
             {
             if ( state.backtracking==0 ) {
 
@@ -6273,23 +6279,23 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
               			afterParserOrEnumRuleCall();
               		
             }
-            // InternalPcodeParser.g:2097:3: ( ( () ( ( (lv_op_2_1= LessThanSign | lv_op_2_2= GreaterThanSign ) ) ) ) ( (lv_right_3_0= ruleEquals ) ) )*
+            // InternalPcodeParser.g:2097:3: ( ( () ( ( (lv_op_2_1= LessThanSign | lv_op_2_2= LessThen | lv_op_2_3= GreaterThanSign | lv_op_2_4= BiggerThen ) ) ) ) ( (lv_right_3_0= ruleEquals ) ) )*
             loop44:
             do {
                 int alt44=2;
                 int LA44_0 = input.LA(1);
 
-                if ( (LA44_0==LessThanSign||LA44_0==GreaterThanSign) ) {
+                if ( (LA44_0==BiggerThen||LA44_0==LessThen||LA44_0==LessThanSign||LA44_0==GreaterThanSign) ) {
                     alt44=1;
                 }
 
 
                 switch (alt44) {
             	case 1 :
-            	    // InternalPcodeParser.g:2098:4: ( () ( ( (lv_op_2_1= LessThanSign | lv_op_2_2= GreaterThanSign ) ) ) ) ( (lv_right_3_0= ruleEquals ) )
+            	    // InternalPcodeParser.g:2098:4: ( () ( ( (lv_op_2_1= LessThanSign | lv_op_2_2= LessThen | lv_op_2_3= GreaterThanSign | lv_op_2_4= BiggerThen ) ) ) ) ( (lv_right_3_0= ruleEquals ) )
             	    {
-            	    // InternalPcodeParser.g:2098:4: ( () ( ( (lv_op_2_1= LessThanSign | lv_op_2_2= GreaterThanSign ) ) ) )
-            	    // InternalPcodeParser.g:2099:5: () ( ( (lv_op_2_1= LessThanSign | lv_op_2_2= GreaterThanSign ) ) )
+            	    // InternalPcodeParser.g:2098:4: ( () ( ( (lv_op_2_1= LessThanSign | lv_op_2_2= LessThen | lv_op_2_3= GreaterThanSign | lv_op_2_4= BiggerThen ) ) ) )
+            	    // InternalPcodeParser.g:2099:5: () ( ( (lv_op_2_1= LessThanSign | lv_op_2_2= LessThen | lv_op_2_3= GreaterThanSign | lv_op_2_4= BiggerThen ) ) )
             	    {
             	    // InternalPcodeParser.g:2099:5: ()
             	    // InternalPcodeParser.g:2100:6: 
@@ -6304,29 +6310,43 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // InternalPcodeParser.g:2106:5: ( ( (lv_op_2_1= LessThanSign | lv_op_2_2= GreaterThanSign ) ) )
-            	    // InternalPcodeParser.g:2107:6: ( (lv_op_2_1= LessThanSign | lv_op_2_2= GreaterThanSign ) )
+            	    // InternalPcodeParser.g:2106:5: ( ( (lv_op_2_1= LessThanSign | lv_op_2_2= LessThen | lv_op_2_3= GreaterThanSign | lv_op_2_4= BiggerThen ) ) )
+            	    // InternalPcodeParser.g:2107:6: ( (lv_op_2_1= LessThanSign | lv_op_2_2= LessThen | lv_op_2_3= GreaterThanSign | lv_op_2_4= BiggerThen ) )
             	    {
-            	    // InternalPcodeParser.g:2107:6: ( (lv_op_2_1= LessThanSign | lv_op_2_2= GreaterThanSign ) )
-            	    // InternalPcodeParser.g:2108:7: (lv_op_2_1= LessThanSign | lv_op_2_2= GreaterThanSign )
+            	    // InternalPcodeParser.g:2107:6: ( (lv_op_2_1= LessThanSign | lv_op_2_2= LessThen | lv_op_2_3= GreaterThanSign | lv_op_2_4= BiggerThen ) )
+            	    // InternalPcodeParser.g:2108:7: (lv_op_2_1= LessThanSign | lv_op_2_2= LessThen | lv_op_2_3= GreaterThanSign | lv_op_2_4= BiggerThen )
             	    {
-            	    // InternalPcodeParser.g:2108:7: (lv_op_2_1= LessThanSign | lv_op_2_2= GreaterThanSign )
-            	    int alt43=2;
-            	    int LA43_0 = input.LA(1);
-
-            	    if ( (LA43_0==LessThanSign) ) {
+            	    // InternalPcodeParser.g:2108:7: (lv_op_2_1= LessThanSign | lv_op_2_2= LessThen | lv_op_2_3= GreaterThanSign | lv_op_2_4= BiggerThen )
+            	    int alt43=4;
+            	    switch ( input.LA(1) ) {
+            	    case LessThanSign:
+            	        {
             	        alt43=1;
-            	    }
-            	    else if ( (LA43_0==GreaterThanSign) ) {
+            	        }
+            	        break;
+            	    case LessThen:
+            	        {
             	        alt43=2;
-            	    }
-            	    else {
+            	        }
+            	        break;
+            	    case GreaterThanSign:
+            	        {
+            	        alt43=3;
+            	        }
+            	        break;
+            	    case BiggerThen:
+            	        {
+            	        alt43=4;
+            	        }
+            	        break;
+            	    default:
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        NoViableAltException nvae =
             	            new NoViableAltException("", 43, 0, input);
 
             	        throw nvae;
             	    }
+
             	    switch (alt43) {
             	        case 1 :
             	            // InternalPcodeParser.g:2109:8: lv_op_2_1= LessThanSign
@@ -6349,12 +6369,12 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 2 :
-            	            // InternalPcodeParser.g:2120:8: lv_op_2_2= GreaterThanSign
+            	            // InternalPcodeParser.g:2120:8: lv_op_2_2= LessThen
             	            {
-            	            lv_op_2_2=(Token)match(input,GreaterThanSign,FOLLOW_13); if (state.failed) return current;
+            	            lv_op_2_2=(Token)match(input,LessThen,FOLLOW_13); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
-            	              								newLeafNode(lv_op_2_2, grammarAccess.getComparisonAccess().getOpGreaterThanSignKeyword_1_0_1_0_1());
+            	              								newLeafNode(lv_op_2_2, grammarAccess.getComparisonAccess().getOpLessThenKeyword_1_0_1_0_1());
             	              							
             	            }
             	            if ( state.backtracking==0 ) {
@@ -6363,6 +6383,46 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
             	              									current = createModelElement(grammarAccess.getComparisonRule());
             	              								}
             	              								setWithLastConsumed(current, "op", lv_op_2_2, null);
+            	              							
+            	            }
+
+            	            }
+            	            break;
+            	        case 3 :
+            	            // InternalPcodeParser.g:2131:8: lv_op_2_3= GreaterThanSign
+            	            {
+            	            lv_op_2_3=(Token)match(input,GreaterThanSign,FOLLOW_13); if (state.failed) return current;
+            	            if ( state.backtracking==0 ) {
+
+            	              								newLeafNode(lv_op_2_3, grammarAccess.getComparisonAccess().getOpGreaterThanSignKeyword_1_0_1_0_2());
+            	              							
+            	            }
+            	            if ( state.backtracking==0 ) {
+
+            	              								if (current==null) {
+            	              									current = createModelElement(grammarAccess.getComparisonRule());
+            	              								}
+            	              								setWithLastConsumed(current, "op", lv_op_2_3, null);
+            	              							
+            	            }
+
+            	            }
+            	            break;
+            	        case 4 :
+            	            // InternalPcodeParser.g:2142:8: lv_op_2_4= BiggerThen
+            	            {
+            	            lv_op_2_4=(Token)match(input,BiggerThen,FOLLOW_13); if (state.failed) return current;
+            	            if ( state.backtracking==0 ) {
+
+            	              								newLeafNode(lv_op_2_4, grammarAccess.getComparisonAccess().getOpBiggerThenKeyword_1_0_1_0_3());
+            	              							
+            	            }
+            	            if ( state.backtracking==0 ) {
+
+            	              								if (current==null) {
+            	              									current = createModelElement(grammarAccess.getComparisonRule());
+            	              								}
+            	              								setWithLastConsumed(current, "op", lv_op_2_4, null);
             	              							
             	            }
 
@@ -6380,11 +6440,11 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // InternalPcodeParser.g:2134:4: ( (lv_right_3_0= ruleEquals ) )
-            	    // InternalPcodeParser.g:2135:5: (lv_right_3_0= ruleEquals )
+            	    // InternalPcodeParser.g:2156:4: ( (lv_right_3_0= ruleEquals ) )
+            	    // InternalPcodeParser.g:2157:5: (lv_right_3_0= ruleEquals )
             	    {
-            	    // InternalPcodeParser.g:2135:5: (lv_right_3_0= ruleEquals )
-            	    // InternalPcodeParser.g:2136:6: lv_right_3_0= ruleEquals
+            	    // InternalPcodeParser.g:2157:5: (lv_right_3_0= ruleEquals )
+            	    // InternalPcodeParser.g:2158:6: lv_right_3_0= ruleEquals
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -6449,7 +6509,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEquals"
-    // InternalPcodeParser.g:2158:1: entryRuleEquals returns [EObject current=null] : iv_ruleEquals= ruleEquals EOF ;
+    // InternalPcodeParser.g:2180:1: entryRuleEquals returns [EObject current=null] : iv_ruleEquals= ruleEquals EOF ;
     public final EObject entryRuleEquals() throws RecognitionException {
         EObject current = null;
 
@@ -6457,8 +6517,8 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalPcodeParser.g:2158:47: (iv_ruleEquals= ruleEquals EOF )
-            // InternalPcodeParser.g:2159:2: iv_ruleEquals= ruleEquals EOF
+            // InternalPcodeParser.g:2180:47: (iv_ruleEquals= ruleEquals EOF )
+            // InternalPcodeParser.g:2181:2: iv_ruleEquals= ruleEquals EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getEqualsRule()); 
@@ -6489,7 +6549,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEquals"
-    // InternalPcodeParser.g:2165:1: ruleEquals returns [EObject current=null] : (this_Addition_0= ruleAddition ( ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign ) ) ) ) ( (lv_right_3_0= ruleAddition ) ) )* ) ;
+    // InternalPcodeParser.g:2187:1: ruleEquals returns [EObject current=null] : (this_Addition_0= ruleAddition ( ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign ) ) ) ) ( (lv_right_3_0= ruleAddition ) ) )* ) ;
     public final EObject ruleEquals() throws RecognitionException {
         EObject current = null;
 
@@ -6506,11 +6566,11 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalPcodeParser.g:2171:2: ( (this_Addition_0= ruleAddition ( ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign ) ) ) ) ( (lv_right_3_0= ruleAddition ) ) )* ) )
-            // InternalPcodeParser.g:2172:2: (this_Addition_0= ruleAddition ( ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign ) ) ) ) ( (lv_right_3_0= ruleAddition ) ) )* )
+            // InternalPcodeParser.g:2193:2: ( (this_Addition_0= ruleAddition ( ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign ) ) ) ) ( (lv_right_3_0= ruleAddition ) ) )* ) )
+            // InternalPcodeParser.g:2194:2: (this_Addition_0= ruleAddition ( ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign ) ) ) ) ( (lv_right_3_0= ruleAddition ) ) )* )
             {
-            // InternalPcodeParser.g:2172:2: (this_Addition_0= ruleAddition ( ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign ) ) ) ) ( (lv_right_3_0= ruleAddition ) ) )* )
-            // InternalPcodeParser.g:2173:3: this_Addition_0= ruleAddition ( ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign ) ) ) ) ( (lv_right_3_0= ruleAddition ) ) )*
+            // InternalPcodeParser.g:2194:2: (this_Addition_0= ruleAddition ( ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign ) ) ) ) ( (lv_right_3_0= ruleAddition ) ) )* )
+            // InternalPcodeParser.g:2195:3: this_Addition_0= ruleAddition ( ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign ) ) ) ) ( (lv_right_3_0= ruleAddition ) ) )*
             {
             if ( state.backtracking==0 ) {
 
@@ -6528,7 +6588,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
               			afterParserOrEnumRuleCall();
               		
             }
-            // InternalPcodeParser.g:2181:3: ( ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign ) ) ) ) ( (lv_right_3_0= ruleAddition ) ) )*
+            // InternalPcodeParser.g:2203:3: ( ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign ) ) ) ) ( (lv_right_3_0= ruleAddition ) ) )*
             loop46:
             do {
                 int alt46=2;
@@ -6541,13 +6601,13 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
                 switch (alt46) {
             	case 1 :
-            	    // InternalPcodeParser.g:2182:4: ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign ) ) ) ) ( (lv_right_3_0= ruleAddition ) )
+            	    // InternalPcodeParser.g:2204:4: ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign ) ) ) ) ( (lv_right_3_0= ruleAddition ) )
             	    {
-            	    // InternalPcodeParser.g:2182:4: ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign ) ) ) )
-            	    // InternalPcodeParser.g:2183:5: () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign ) ) )
+            	    // InternalPcodeParser.g:2204:4: ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign ) ) ) )
+            	    // InternalPcodeParser.g:2205:5: () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign ) ) )
             	    {
-            	    // InternalPcodeParser.g:2183:5: ()
-            	    // InternalPcodeParser.g:2184:6: 
+            	    // InternalPcodeParser.g:2205:5: ()
+            	    // InternalPcodeParser.g:2206:6: 
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -6559,13 +6619,13 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // InternalPcodeParser.g:2190:5: ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign ) ) )
-            	    // InternalPcodeParser.g:2191:6: ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign ) )
+            	    // InternalPcodeParser.g:2212:5: ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign ) ) )
+            	    // InternalPcodeParser.g:2213:6: ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign ) )
             	    {
-            	    // InternalPcodeParser.g:2191:6: ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign ) )
-            	    // InternalPcodeParser.g:2192:7: (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign )
+            	    // InternalPcodeParser.g:2213:6: ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign ) )
+            	    // InternalPcodeParser.g:2214:7: (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign )
             	    {
-            	    // InternalPcodeParser.g:2192:7: (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign )
+            	    // InternalPcodeParser.g:2214:7: (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSignEqualsSign | lv_op_2_4= ExclamationMarkEqualsSign )
             	    int alt45=4;
             	    switch ( input.LA(1) ) {
             	    case EqualsSignEqualsSign:
@@ -6598,7 +6658,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
             	    switch (alt45) {
             	        case 1 :
-            	            // InternalPcodeParser.g:2193:8: lv_op_2_1= EqualsSignEqualsSign
+            	            // InternalPcodeParser.g:2215:8: lv_op_2_1= EqualsSignEqualsSign
             	            {
             	            lv_op_2_1=(Token)match(input,EqualsSignEqualsSign,FOLLOW_13); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
@@ -6618,7 +6678,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 2 :
-            	            // InternalPcodeParser.g:2204:8: lv_op_2_2= LessThanSignEqualsSign
+            	            // InternalPcodeParser.g:2226:8: lv_op_2_2= LessThanSignEqualsSign
             	            {
             	            lv_op_2_2=(Token)match(input,LessThanSignEqualsSign,FOLLOW_13); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
@@ -6638,7 +6698,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 3 :
-            	            // InternalPcodeParser.g:2215:8: lv_op_2_3= GreaterThanSignEqualsSign
+            	            // InternalPcodeParser.g:2237:8: lv_op_2_3= GreaterThanSignEqualsSign
             	            {
             	            lv_op_2_3=(Token)match(input,GreaterThanSignEqualsSign,FOLLOW_13); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
@@ -6658,7 +6718,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 4 :
-            	            // InternalPcodeParser.g:2226:8: lv_op_2_4= ExclamationMarkEqualsSign
+            	            // InternalPcodeParser.g:2248:8: lv_op_2_4= ExclamationMarkEqualsSign
             	            {
             	            lv_op_2_4=(Token)match(input,ExclamationMarkEqualsSign,FOLLOW_13); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
@@ -6689,11 +6749,11 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // InternalPcodeParser.g:2240:4: ( (lv_right_3_0= ruleAddition ) )
-            	    // InternalPcodeParser.g:2241:5: (lv_right_3_0= ruleAddition )
+            	    // InternalPcodeParser.g:2262:4: ( (lv_right_3_0= ruleAddition ) )
+            	    // InternalPcodeParser.g:2263:5: (lv_right_3_0= ruleAddition )
             	    {
-            	    // InternalPcodeParser.g:2241:5: (lv_right_3_0= ruleAddition )
-            	    // InternalPcodeParser.g:2242:6: lv_right_3_0= ruleAddition
+            	    // InternalPcodeParser.g:2263:5: (lv_right_3_0= ruleAddition )
+            	    // InternalPcodeParser.g:2264:6: lv_right_3_0= ruleAddition
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -6758,7 +6818,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleArithmeticExpression"
-    // InternalPcodeParser.g:2264:1: entryRuleArithmeticExpression returns [EObject current=null] : iv_ruleArithmeticExpression= ruleArithmeticExpression EOF ;
+    // InternalPcodeParser.g:2286:1: entryRuleArithmeticExpression returns [EObject current=null] : iv_ruleArithmeticExpression= ruleArithmeticExpression EOF ;
     public final EObject entryRuleArithmeticExpression() throws RecognitionException {
         EObject current = null;
 
@@ -6766,8 +6826,8 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalPcodeParser.g:2264:61: (iv_ruleArithmeticExpression= ruleArithmeticExpression EOF )
-            // InternalPcodeParser.g:2265:2: iv_ruleArithmeticExpression= ruleArithmeticExpression EOF
+            // InternalPcodeParser.g:2286:61: (iv_ruleArithmeticExpression= ruleArithmeticExpression EOF )
+            // InternalPcodeParser.g:2287:2: iv_ruleArithmeticExpression= ruleArithmeticExpression EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getArithmeticExpressionRule()); 
@@ -6798,7 +6858,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleArithmeticExpression"
-    // InternalPcodeParser.g:2271:1: ruleArithmeticExpression returns [EObject current=null] : this_Addition_0= ruleAddition ;
+    // InternalPcodeParser.g:2293:1: ruleArithmeticExpression returns [EObject current=null] : this_Addition_0= ruleAddition ;
     public final EObject ruleArithmeticExpression() throws RecognitionException {
         EObject current = null;
 
@@ -6809,8 +6869,8 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalPcodeParser.g:2277:2: (this_Addition_0= ruleAddition )
-            // InternalPcodeParser.g:2278:2: this_Addition_0= ruleAddition
+            // InternalPcodeParser.g:2299:2: (this_Addition_0= ruleAddition )
+            // InternalPcodeParser.g:2300:2: this_Addition_0= ruleAddition
             {
             if ( state.backtracking==0 ) {
 
@@ -6850,7 +6910,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAddition"
-    // InternalPcodeParser.g:2289:1: entryRuleAddition returns [EObject current=null] : iv_ruleAddition= ruleAddition EOF ;
+    // InternalPcodeParser.g:2311:1: entryRuleAddition returns [EObject current=null] : iv_ruleAddition= ruleAddition EOF ;
     public final EObject entryRuleAddition() throws RecognitionException {
         EObject current = null;
 
@@ -6858,8 +6918,8 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalPcodeParser.g:2289:49: (iv_ruleAddition= ruleAddition EOF )
-            // InternalPcodeParser.g:2290:2: iv_ruleAddition= ruleAddition EOF
+            // InternalPcodeParser.g:2311:49: (iv_ruleAddition= ruleAddition EOF )
+            // InternalPcodeParser.g:2312:2: iv_ruleAddition= ruleAddition EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getAdditionRule()); 
@@ -6890,7 +6950,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAddition"
-    // InternalPcodeParser.g:2296:1: ruleAddition returns [EObject current=null] : (this_Multiplication_0= ruleMultiplication ( ( ( () rulePlusOperator ) | ( () ruleMinusOperator ) ) ( (lv_right_5_0= ruleMultiplication ) ) )* ) ;
+    // InternalPcodeParser.g:2318:1: ruleAddition returns [EObject current=null] : (this_Multiplication_0= ruleMultiplication ( ( ( () rulePlusOperator ) | ( () ruleMinusOperator ) ) ( (lv_right_5_0= ruleMultiplication ) ) )* ) ;
     public final EObject ruleAddition() throws RecognitionException {
         EObject current = null;
 
@@ -6903,11 +6963,11 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalPcodeParser.g:2302:2: ( (this_Multiplication_0= ruleMultiplication ( ( ( () rulePlusOperator ) | ( () ruleMinusOperator ) ) ( (lv_right_5_0= ruleMultiplication ) ) )* ) )
-            // InternalPcodeParser.g:2303:2: (this_Multiplication_0= ruleMultiplication ( ( ( () rulePlusOperator ) | ( () ruleMinusOperator ) ) ( (lv_right_5_0= ruleMultiplication ) ) )* )
+            // InternalPcodeParser.g:2324:2: ( (this_Multiplication_0= ruleMultiplication ( ( ( () rulePlusOperator ) | ( () ruleMinusOperator ) ) ( (lv_right_5_0= ruleMultiplication ) ) )* ) )
+            // InternalPcodeParser.g:2325:2: (this_Multiplication_0= ruleMultiplication ( ( ( () rulePlusOperator ) | ( () ruleMinusOperator ) ) ( (lv_right_5_0= ruleMultiplication ) ) )* )
             {
-            // InternalPcodeParser.g:2303:2: (this_Multiplication_0= ruleMultiplication ( ( ( () rulePlusOperator ) | ( () ruleMinusOperator ) ) ( (lv_right_5_0= ruleMultiplication ) ) )* )
-            // InternalPcodeParser.g:2304:3: this_Multiplication_0= ruleMultiplication ( ( ( () rulePlusOperator ) | ( () ruleMinusOperator ) ) ( (lv_right_5_0= ruleMultiplication ) ) )*
+            // InternalPcodeParser.g:2325:2: (this_Multiplication_0= ruleMultiplication ( ( ( () rulePlusOperator ) | ( () ruleMinusOperator ) ) ( (lv_right_5_0= ruleMultiplication ) ) )* )
+            // InternalPcodeParser.g:2326:3: this_Multiplication_0= ruleMultiplication ( ( ( () rulePlusOperator ) | ( () ruleMinusOperator ) ) ( (lv_right_5_0= ruleMultiplication ) ) )*
             {
             if ( state.backtracking==0 ) {
 
@@ -6925,7 +6985,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
               			afterParserOrEnumRuleCall();
               		
             }
-            // InternalPcodeParser.g:2312:3: ( ( ( () rulePlusOperator ) | ( () ruleMinusOperator ) ) ( (lv_right_5_0= ruleMultiplication ) ) )*
+            // InternalPcodeParser.g:2334:3: ( ( ( () rulePlusOperator ) | ( () ruleMinusOperator ) ) ( (lv_right_5_0= ruleMultiplication ) ) )*
             loop48:
             do {
                 int alt48=2;
@@ -6938,9 +6998,9 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
                 switch (alt48) {
             	case 1 :
-            	    // InternalPcodeParser.g:2313:4: ( ( () rulePlusOperator ) | ( () ruleMinusOperator ) ) ( (lv_right_5_0= ruleMultiplication ) )
+            	    // InternalPcodeParser.g:2335:4: ( ( () rulePlusOperator ) | ( () ruleMinusOperator ) ) ( (lv_right_5_0= ruleMultiplication ) )
             	    {
-            	    // InternalPcodeParser.g:2313:4: ( ( () rulePlusOperator ) | ( () ruleMinusOperator ) )
+            	    // InternalPcodeParser.g:2335:4: ( ( () rulePlusOperator ) | ( () ruleMinusOperator ) )
             	    int alt47=2;
             	    int LA47_0 = input.LA(1);
 
@@ -6959,13 +7019,13 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
             	    }
             	    switch (alt47) {
             	        case 1 :
-            	            // InternalPcodeParser.g:2314:5: ( () rulePlusOperator )
+            	            // InternalPcodeParser.g:2336:5: ( () rulePlusOperator )
             	            {
-            	            // InternalPcodeParser.g:2314:5: ( () rulePlusOperator )
-            	            // InternalPcodeParser.g:2315:6: () rulePlusOperator
+            	            // InternalPcodeParser.g:2336:5: ( () rulePlusOperator )
+            	            // InternalPcodeParser.g:2337:6: () rulePlusOperator
             	            {
-            	            // InternalPcodeParser.g:2315:6: ()
-            	            // InternalPcodeParser.g:2316:7: 
+            	            // InternalPcodeParser.g:2337:6: ()
+            	            // InternalPcodeParser.g:2338:7: 
             	            {
             	            if ( state.backtracking==0 ) {
 
@@ -6999,13 +7059,13 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 2 :
-            	            // InternalPcodeParser.g:2331:5: ( () ruleMinusOperator )
+            	            // InternalPcodeParser.g:2353:5: ( () ruleMinusOperator )
             	            {
-            	            // InternalPcodeParser.g:2331:5: ( () ruleMinusOperator )
-            	            // InternalPcodeParser.g:2332:6: () ruleMinusOperator
+            	            // InternalPcodeParser.g:2353:5: ( () ruleMinusOperator )
+            	            // InternalPcodeParser.g:2354:6: () ruleMinusOperator
             	            {
-            	            // InternalPcodeParser.g:2332:6: ()
-            	            // InternalPcodeParser.g:2333:7: 
+            	            // InternalPcodeParser.g:2354:6: ()
+            	            // InternalPcodeParser.g:2355:7: 
             	            {
             	            if ( state.backtracking==0 ) {
 
@@ -7041,11 +7101,11 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // InternalPcodeParser.g:2348:4: ( (lv_right_5_0= ruleMultiplication ) )
-            	    // InternalPcodeParser.g:2349:5: (lv_right_5_0= ruleMultiplication )
+            	    // InternalPcodeParser.g:2370:4: ( (lv_right_5_0= ruleMultiplication ) )
+            	    // InternalPcodeParser.g:2371:5: (lv_right_5_0= ruleMultiplication )
             	    {
-            	    // InternalPcodeParser.g:2349:5: (lv_right_5_0= ruleMultiplication )
-            	    // InternalPcodeParser.g:2350:6: lv_right_5_0= ruleMultiplication
+            	    // InternalPcodeParser.g:2371:5: (lv_right_5_0= ruleMultiplication )
+            	    // InternalPcodeParser.g:2372:6: lv_right_5_0= ruleMultiplication
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -7110,7 +7170,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePlusOperator"
-    // InternalPcodeParser.g:2372:1: entryRulePlusOperator returns [String current=null] : iv_rulePlusOperator= rulePlusOperator EOF ;
+    // InternalPcodeParser.g:2394:1: entryRulePlusOperator returns [String current=null] : iv_rulePlusOperator= rulePlusOperator EOF ;
     public final String entryRulePlusOperator() throws RecognitionException {
         String current = null;
 
@@ -7118,8 +7178,8 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalPcodeParser.g:2372:52: (iv_rulePlusOperator= rulePlusOperator EOF )
-            // InternalPcodeParser.g:2373:2: iv_rulePlusOperator= rulePlusOperator EOF
+            // InternalPcodeParser.g:2394:52: (iv_rulePlusOperator= rulePlusOperator EOF )
+            // InternalPcodeParser.g:2395:2: iv_rulePlusOperator= rulePlusOperator EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getPlusOperatorRule()); 
@@ -7150,7 +7210,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePlusOperator"
-    // InternalPcodeParser.g:2379:1: rulePlusOperator returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= PlusSign | kw= Plus ) ;
+    // InternalPcodeParser.g:2401:1: rulePlusOperator returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= PlusSign | kw= Plus ) ;
     public final AntlrDatatypeRuleToken rulePlusOperator() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -7160,10 +7220,10 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalPcodeParser.g:2385:2: ( (kw= PlusSign | kw= Plus ) )
-            // InternalPcodeParser.g:2386:2: (kw= PlusSign | kw= Plus )
+            // InternalPcodeParser.g:2407:2: ( (kw= PlusSign | kw= Plus ) )
+            // InternalPcodeParser.g:2408:2: (kw= PlusSign | kw= Plus )
             {
-            // InternalPcodeParser.g:2386:2: (kw= PlusSign | kw= Plus )
+            // InternalPcodeParser.g:2408:2: (kw= PlusSign | kw= Plus )
             int alt49=2;
             int LA49_0 = input.LA(1);
 
@@ -7182,7 +7242,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
             }
             switch (alt49) {
                 case 1 :
-                    // InternalPcodeParser.g:2387:3: kw= PlusSign
+                    // InternalPcodeParser.g:2409:3: kw= PlusSign
                     {
                     kw=(Token)match(input,PlusSign,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -7195,7 +7255,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalPcodeParser.g:2393:3: kw= Plus
+                    // InternalPcodeParser.g:2415:3: kw= Plus
                     {
                     kw=(Token)match(input,Plus,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -7232,7 +7292,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMinusOperator"
-    // InternalPcodeParser.g:2402:1: entryRuleMinusOperator returns [String current=null] : iv_ruleMinusOperator= ruleMinusOperator EOF ;
+    // InternalPcodeParser.g:2424:1: entryRuleMinusOperator returns [String current=null] : iv_ruleMinusOperator= ruleMinusOperator EOF ;
     public final String entryRuleMinusOperator() throws RecognitionException {
         String current = null;
 
@@ -7240,8 +7300,8 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalPcodeParser.g:2402:53: (iv_ruleMinusOperator= ruleMinusOperator EOF )
-            // InternalPcodeParser.g:2403:2: iv_ruleMinusOperator= ruleMinusOperator EOF
+            // InternalPcodeParser.g:2424:53: (iv_ruleMinusOperator= ruleMinusOperator EOF )
+            // InternalPcodeParser.g:2425:2: iv_ruleMinusOperator= ruleMinusOperator EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getMinusOperatorRule()); 
@@ -7272,7 +7332,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMinusOperator"
-    // InternalPcodeParser.g:2409:1: ruleMinusOperator returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= HyphenMinus | kw= Minus ) ;
+    // InternalPcodeParser.g:2431:1: ruleMinusOperator returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= HyphenMinus | kw= Minus ) ;
     public final AntlrDatatypeRuleToken ruleMinusOperator() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -7282,10 +7342,10 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalPcodeParser.g:2415:2: ( (kw= HyphenMinus | kw= Minus ) )
-            // InternalPcodeParser.g:2416:2: (kw= HyphenMinus | kw= Minus )
+            // InternalPcodeParser.g:2437:2: ( (kw= HyphenMinus | kw= Minus ) )
+            // InternalPcodeParser.g:2438:2: (kw= HyphenMinus | kw= Minus )
             {
-            // InternalPcodeParser.g:2416:2: (kw= HyphenMinus | kw= Minus )
+            // InternalPcodeParser.g:2438:2: (kw= HyphenMinus | kw= Minus )
             int alt50=2;
             int LA50_0 = input.LA(1);
 
@@ -7304,7 +7364,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
             }
             switch (alt50) {
                 case 1 :
-                    // InternalPcodeParser.g:2417:3: kw= HyphenMinus
+                    // InternalPcodeParser.g:2439:3: kw= HyphenMinus
                     {
                     kw=(Token)match(input,HyphenMinus,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -7317,7 +7377,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalPcodeParser.g:2423:3: kw= Minus
+                    // InternalPcodeParser.g:2445:3: kw= Minus
                     {
                     kw=(Token)match(input,Minus,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -7354,7 +7414,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMultiplication"
-    // InternalPcodeParser.g:2432:1: entryRuleMultiplication returns [EObject current=null] : iv_ruleMultiplication= ruleMultiplication EOF ;
+    // InternalPcodeParser.g:2454:1: entryRuleMultiplication returns [EObject current=null] : iv_ruleMultiplication= ruleMultiplication EOF ;
     public final EObject entryRuleMultiplication() throws RecognitionException {
         EObject current = null;
 
@@ -7362,8 +7422,8 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalPcodeParser.g:2432:55: (iv_ruleMultiplication= ruleMultiplication EOF )
-            // InternalPcodeParser.g:2433:2: iv_ruleMultiplication= ruleMultiplication EOF
+            // InternalPcodeParser.g:2454:55: (iv_ruleMultiplication= ruleMultiplication EOF )
+            // InternalPcodeParser.g:2455:2: iv_ruleMultiplication= ruleMultiplication EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getMultiplicationRule()); 
@@ -7394,7 +7454,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMultiplication"
-    // InternalPcodeParser.g:2439:1: ruleMultiplication returns [EObject current=null] : (this_Prefixed_0= rulePrefixed ( ( () ( ( (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator ) ) ) ) ( (lv_right_3_0= rulePrefixed ) ) )* ) ;
+    // InternalPcodeParser.g:2461:1: ruleMultiplication returns [EObject current=null] : (this_Prefixed_0= rulePrefixed ( ( () ( ( (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator ) ) ) ) ( (lv_right_3_0= rulePrefixed ) ) )* ) ;
     public final EObject ruleMultiplication() throws RecognitionException {
         EObject current = null;
 
@@ -7411,11 +7471,11 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalPcodeParser.g:2445:2: ( (this_Prefixed_0= rulePrefixed ( ( () ( ( (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator ) ) ) ) ( (lv_right_3_0= rulePrefixed ) ) )* ) )
-            // InternalPcodeParser.g:2446:2: (this_Prefixed_0= rulePrefixed ( ( () ( ( (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator ) ) ) ) ( (lv_right_3_0= rulePrefixed ) ) )* )
+            // InternalPcodeParser.g:2467:2: ( (this_Prefixed_0= rulePrefixed ( ( () ( ( (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator ) ) ) ) ( (lv_right_3_0= rulePrefixed ) ) )* ) )
+            // InternalPcodeParser.g:2468:2: (this_Prefixed_0= rulePrefixed ( ( () ( ( (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator ) ) ) ) ( (lv_right_3_0= rulePrefixed ) ) )* )
             {
-            // InternalPcodeParser.g:2446:2: (this_Prefixed_0= rulePrefixed ( ( () ( ( (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator ) ) ) ) ( (lv_right_3_0= rulePrefixed ) ) )* )
-            // InternalPcodeParser.g:2447:3: this_Prefixed_0= rulePrefixed ( ( () ( ( (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator ) ) ) ) ( (lv_right_3_0= rulePrefixed ) ) )*
+            // InternalPcodeParser.g:2468:2: (this_Prefixed_0= rulePrefixed ( ( () ( ( (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator ) ) ) ) ( (lv_right_3_0= rulePrefixed ) ) )* )
+            // InternalPcodeParser.g:2469:3: this_Prefixed_0= rulePrefixed ( ( () ( ( (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator ) ) ) ) ( (lv_right_3_0= rulePrefixed ) ) )*
             {
             if ( state.backtracking==0 ) {
 
@@ -7433,26 +7493,26 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
               			afterParserOrEnumRuleCall();
               		
             }
-            // InternalPcodeParser.g:2455:3: ( ( () ( ( (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator ) ) ) ) ( (lv_right_3_0= rulePrefixed ) ) )*
+            // InternalPcodeParser.g:2477:3: ( ( () ( ( (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator ) ) ) ) ( (lv_right_3_0= rulePrefixed ) ) )*
             loop52:
             do {
                 int alt52=2;
                 int LA52_0 = input.LA(1);
 
-                if ( (LA52_0==Divide||LA52_0==Times||LA52_0==Asterisk||LA52_0==Solidus) ) {
+                if ( (LA52_0==Divide||LA52_0==Modulo||LA52_0==Times||LA52_0==PercentSign||LA52_0==Asterisk||LA52_0==Solidus) ) {
                     alt52=1;
                 }
 
 
                 switch (alt52) {
             	case 1 :
-            	    // InternalPcodeParser.g:2456:4: ( () ( ( (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator ) ) ) ) ( (lv_right_3_0= rulePrefixed ) )
+            	    // InternalPcodeParser.g:2478:4: ( () ( ( (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator ) ) ) ) ( (lv_right_3_0= rulePrefixed ) )
             	    {
-            	    // InternalPcodeParser.g:2456:4: ( () ( ( (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator ) ) ) )
-            	    // InternalPcodeParser.g:2457:5: () ( ( (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator ) ) )
+            	    // InternalPcodeParser.g:2478:4: ( () ( ( (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator ) ) ) )
+            	    // InternalPcodeParser.g:2479:5: () ( ( (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator ) ) )
             	    {
-            	    // InternalPcodeParser.g:2457:5: ()
-            	    // InternalPcodeParser.g:2458:6: 
+            	    // InternalPcodeParser.g:2479:5: ()
+            	    // InternalPcodeParser.g:2480:6: 
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -7464,20 +7524,20 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // InternalPcodeParser.g:2464:5: ( ( (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator ) ) )
-            	    // InternalPcodeParser.g:2465:6: ( (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator ) )
+            	    // InternalPcodeParser.g:2486:5: ( ( (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator ) ) )
+            	    // InternalPcodeParser.g:2487:6: ( (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator ) )
             	    {
-            	    // InternalPcodeParser.g:2465:6: ( (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator ) )
-            	    // InternalPcodeParser.g:2466:7: (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator )
+            	    // InternalPcodeParser.g:2487:6: ( (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator ) )
+            	    // InternalPcodeParser.g:2488:7: (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator )
             	    {
-            	    // InternalPcodeParser.g:2466:7: (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator )
+            	    // InternalPcodeParser.g:2488:7: (lv_op_2_1= ruleTimesOperator | lv_op_2_2= ruleDivideOperator )
             	    int alt51=2;
             	    int LA51_0 = input.LA(1);
 
             	    if ( (LA51_0==Times||LA51_0==Asterisk) ) {
             	        alt51=1;
             	    }
-            	    else if ( (LA51_0==Divide||LA51_0==Solidus) ) {
+            	    else if ( (LA51_0==Divide||LA51_0==Modulo||LA51_0==PercentSign||LA51_0==Solidus) ) {
             	        alt51=2;
             	    }
             	    else {
@@ -7489,7 +7549,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
             	    }
             	    switch (alt51) {
             	        case 1 :
-            	            // InternalPcodeParser.g:2467:8: lv_op_2_1= ruleTimesOperator
+            	            // InternalPcodeParser.g:2489:8: lv_op_2_1= ruleTimesOperator
             	            {
             	            if ( state.backtracking==0 ) {
 
@@ -7518,7 +7578,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 2 :
-            	            // InternalPcodeParser.g:2483:8: lv_op_2_2= ruleDivideOperator
+            	            // InternalPcodeParser.g:2505:8: lv_op_2_2= ruleDivideOperator
             	            {
             	            if ( state.backtracking==0 ) {
 
@@ -7558,11 +7618,11 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // InternalPcodeParser.g:2502:4: ( (lv_right_3_0= rulePrefixed ) )
-            	    // InternalPcodeParser.g:2503:5: (lv_right_3_0= rulePrefixed )
+            	    // InternalPcodeParser.g:2524:4: ( (lv_right_3_0= rulePrefixed ) )
+            	    // InternalPcodeParser.g:2525:5: (lv_right_3_0= rulePrefixed )
             	    {
-            	    // InternalPcodeParser.g:2503:5: (lv_right_3_0= rulePrefixed )
-            	    // InternalPcodeParser.g:2504:6: lv_right_3_0= rulePrefixed
+            	    // InternalPcodeParser.g:2525:5: (lv_right_3_0= rulePrefixed )
+            	    // InternalPcodeParser.g:2526:6: lv_right_3_0= rulePrefixed
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -7627,7 +7687,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTimesOperator"
-    // InternalPcodeParser.g:2526:1: entryRuleTimesOperator returns [String current=null] : iv_ruleTimesOperator= ruleTimesOperator EOF ;
+    // InternalPcodeParser.g:2548:1: entryRuleTimesOperator returns [String current=null] : iv_ruleTimesOperator= ruleTimesOperator EOF ;
     public final String entryRuleTimesOperator() throws RecognitionException {
         String current = null;
 
@@ -7635,8 +7695,8 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalPcodeParser.g:2526:53: (iv_ruleTimesOperator= ruleTimesOperator EOF )
-            // InternalPcodeParser.g:2527:2: iv_ruleTimesOperator= ruleTimesOperator EOF
+            // InternalPcodeParser.g:2548:53: (iv_ruleTimesOperator= ruleTimesOperator EOF )
+            // InternalPcodeParser.g:2549:2: iv_ruleTimesOperator= ruleTimesOperator EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getTimesOperatorRule()); 
@@ -7667,7 +7727,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTimesOperator"
-    // InternalPcodeParser.g:2533:1: ruleTimesOperator returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= Asterisk | kw= Times ) ;
+    // InternalPcodeParser.g:2555:1: ruleTimesOperator returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= Asterisk | kw= Times ) ;
     public final AntlrDatatypeRuleToken ruleTimesOperator() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -7677,10 +7737,10 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalPcodeParser.g:2539:2: ( (kw= Asterisk | kw= Times ) )
-            // InternalPcodeParser.g:2540:2: (kw= Asterisk | kw= Times )
+            // InternalPcodeParser.g:2561:2: ( (kw= Asterisk | kw= Times ) )
+            // InternalPcodeParser.g:2562:2: (kw= Asterisk | kw= Times )
             {
-            // InternalPcodeParser.g:2540:2: (kw= Asterisk | kw= Times )
+            // InternalPcodeParser.g:2562:2: (kw= Asterisk | kw= Times )
             int alt53=2;
             int LA53_0 = input.LA(1);
 
@@ -7699,7 +7759,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
             }
             switch (alt53) {
                 case 1 :
-                    // InternalPcodeParser.g:2541:3: kw= Asterisk
+                    // InternalPcodeParser.g:2563:3: kw= Asterisk
                     {
                     kw=(Token)match(input,Asterisk,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -7712,7 +7772,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalPcodeParser.g:2547:3: kw= Times
+                    // InternalPcodeParser.g:2569:3: kw= Times
                     {
                     kw=(Token)match(input,Times,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -7749,7 +7809,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDivideOperator"
-    // InternalPcodeParser.g:2556:1: entryRuleDivideOperator returns [String current=null] : iv_ruleDivideOperator= ruleDivideOperator EOF ;
+    // InternalPcodeParser.g:2578:1: entryRuleDivideOperator returns [String current=null] : iv_ruleDivideOperator= ruleDivideOperator EOF ;
     public final String entryRuleDivideOperator() throws RecognitionException {
         String current = null;
 
@@ -7757,8 +7817,8 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalPcodeParser.g:2556:54: (iv_ruleDivideOperator= ruleDivideOperator EOF )
-            // InternalPcodeParser.g:2557:2: iv_ruleDivideOperator= ruleDivideOperator EOF
+            // InternalPcodeParser.g:2578:54: (iv_ruleDivideOperator= ruleDivideOperator EOF )
+            // InternalPcodeParser.g:2579:2: iv_ruleDivideOperator= ruleDivideOperator EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getDivideOperatorRule()); 
@@ -7789,7 +7849,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDivideOperator"
-    // InternalPcodeParser.g:2563:1: ruleDivideOperator returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= Solidus | kw= Divide ) ;
+    // InternalPcodeParser.g:2585:1: ruleDivideOperator returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= Solidus | kw= Divide | kw= PercentSign | kw= Modulo ) ;
     public final AntlrDatatypeRuleToken ruleDivideOperator() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -7799,29 +7859,43 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalPcodeParser.g:2569:2: ( (kw= Solidus | kw= Divide ) )
-            // InternalPcodeParser.g:2570:2: (kw= Solidus | kw= Divide )
+            // InternalPcodeParser.g:2591:2: ( (kw= Solidus | kw= Divide | kw= PercentSign | kw= Modulo ) )
+            // InternalPcodeParser.g:2592:2: (kw= Solidus | kw= Divide | kw= PercentSign | kw= Modulo )
             {
-            // InternalPcodeParser.g:2570:2: (kw= Solidus | kw= Divide )
-            int alt54=2;
-            int LA54_0 = input.LA(1);
-
-            if ( (LA54_0==Solidus) ) {
+            // InternalPcodeParser.g:2592:2: (kw= Solidus | kw= Divide | kw= PercentSign | kw= Modulo )
+            int alt54=4;
+            switch ( input.LA(1) ) {
+            case Solidus:
+                {
                 alt54=1;
-            }
-            else if ( (LA54_0==Divide) ) {
+                }
+                break;
+            case Divide:
+                {
                 alt54=2;
-            }
-            else {
+                }
+                break;
+            case PercentSign:
+                {
+                alt54=3;
+                }
+                break;
+            case Modulo:
+                {
+                alt54=4;
+                }
+                break;
+            default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
                     new NoViableAltException("", 54, 0, input);
 
                 throw nvae;
             }
+
             switch (alt54) {
                 case 1 :
-                    // InternalPcodeParser.g:2571:3: kw= Solidus
+                    // InternalPcodeParser.g:2593:3: kw= Solidus
                     {
                     kw=(Token)match(input,Solidus,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -7834,13 +7908,39 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalPcodeParser.g:2577:3: kw= Divide
+                    // InternalPcodeParser.g:2599:3: kw= Divide
                     {
                     kw=(Token)match(input,Divide,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       			current.merge(kw);
                       			newLeafNode(kw, grammarAccess.getDivideOperatorAccess().getDivideKeyword_1());
+                      		
+                    }
+
+                    }
+                    break;
+                case 3 :
+                    // InternalPcodeParser.g:2605:3: kw= PercentSign
+                    {
+                    kw=(Token)match(input,PercentSign,FOLLOW_2); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      			current.merge(kw);
+                      			newLeafNode(kw, grammarAccess.getDivideOperatorAccess().getPercentSignKeyword_2());
+                      		
+                    }
+
+                    }
+                    break;
+                case 4 :
+                    // InternalPcodeParser.g:2611:3: kw= Modulo
+                    {
+                    kw=(Token)match(input,Modulo,FOLLOW_2); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      			current.merge(kw);
+                      			newLeafNode(kw, grammarAccess.getDivideOperatorAccess().getModuloKeyword_3());
                       		
                     }
 
@@ -7871,7 +7971,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePrefixed"
-    // InternalPcodeParser.g:2586:1: entryRulePrefixed returns [EObject current=null] : iv_rulePrefixed= rulePrefixed EOF ;
+    // InternalPcodeParser.g:2620:1: entryRulePrefixed returns [EObject current=null] : iv_rulePrefixed= rulePrefixed EOF ;
     public final EObject entryRulePrefixed() throws RecognitionException {
         EObject current = null;
 
@@ -7879,8 +7979,8 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalPcodeParser.g:2586:49: (iv_rulePrefixed= rulePrefixed EOF )
-            // InternalPcodeParser.g:2587:2: iv_rulePrefixed= rulePrefixed EOF
+            // InternalPcodeParser.g:2620:49: (iv_rulePrefixed= rulePrefixed EOF )
+            // InternalPcodeParser.g:2621:2: iv_rulePrefixed= rulePrefixed EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getPrefixedRule()); 
@@ -7911,7 +8011,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePrefixed"
-    // InternalPcodeParser.g:2593:1: rulePrefixed returns [EObject current=null] : ( ( () ( ( ExclamationMark )=>otherlv_1= ExclamationMark ) ( (lv_expression_2_0= ruleAtomic ) ) ) | ( () ( ( ruleMinusOperator )=> ruleMinusOperator ) ( (lv_expression_5_0= ruleAtomic ) ) ) | this_Atomic_6= ruleAtomic ) ;
+    // InternalPcodeParser.g:2627:1: rulePrefixed returns [EObject current=null] : ( ( () ( ( ExclamationMark )=>otherlv_1= ExclamationMark ) ( (lv_expression_2_0= ruleAtomic ) ) ) | ( () ( ( ruleMinusOperator )=> ruleMinusOperator ) ( (lv_expression_5_0= ruleAtomic ) ) ) | this_Atomic_6= ruleAtomic ) ;
     public final EObject rulePrefixed() throws RecognitionException {
         EObject current = null;
 
@@ -7927,10 +8027,10 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalPcodeParser.g:2599:2: ( ( ( () ( ( ExclamationMark )=>otherlv_1= ExclamationMark ) ( (lv_expression_2_0= ruleAtomic ) ) ) | ( () ( ( ruleMinusOperator )=> ruleMinusOperator ) ( (lv_expression_5_0= ruleAtomic ) ) ) | this_Atomic_6= ruleAtomic ) )
-            // InternalPcodeParser.g:2600:2: ( ( () ( ( ExclamationMark )=>otherlv_1= ExclamationMark ) ( (lv_expression_2_0= ruleAtomic ) ) ) | ( () ( ( ruleMinusOperator )=> ruleMinusOperator ) ( (lv_expression_5_0= ruleAtomic ) ) ) | this_Atomic_6= ruleAtomic )
+            // InternalPcodeParser.g:2633:2: ( ( ( () ( ( ExclamationMark )=>otherlv_1= ExclamationMark ) ( (lv_expression_2_0= ruleAtomic ) ) ) | ( () ( ( ruleMinusOperator )=> ruleMinusOperator ) ( (lv_expression_5_0= ruleAtomic ) ) ) | this_Atomic_6= ruleAtomic ) )
+            // InternalPcodeParser.g:2634:2: ( ( () ( ( ExclamationMark )=>otherlv_1= ExclamationMark ) ( (lv_expression_2_0= ruleAtomic ) ) ) | ( () ( ( ruleMinusOperator )=> ruleMinusOperator ) ( (lv_expression_5_0= ruleAtomic ) ) ) | this_Atomic_6= ruleAtomic )
             {
-            // InternalPcodeParser.g:2600:2: ( ( () ( ( ExclamationMark )=>otherlv_1= ExclamationMark ) ( (lv_expression_2_0= ruleAtomic ) ) ) | ( () ( ( ruleMinusOperator )=> ruleMinusOperator ) ( (lv_expression_5_0= ruleAtomic ) ) ) | this_Atomic_6= ruleAtomic )
+            // InternalPcodeParser.g:2634:2: ( ( () ( ( ExclamationMark )=>otherlv_1= ExclamationMark ) ( (lv_expression_2_0= ruleAtomic ) ) ) | ( () ( ( ruleMinusOperator )=> ruleMinusOperator ) ( (lv_expression_5_0= ruleAtomic ) ) ) | this_Atomic_6= ruleAtomic )
             int alt55=3;
             switch ( input.LA(1) ) {
             case ExclamationMark:
@@ -7965,13 +8065,13 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
             switch (alt55) {
                 case 1 :
-                    // InternalPcodeParser.g:2601:3: ( () ( ( ExclamationMark )=>otherlv_1= ExclamationMark ) ( (lv_expression_2_0= ruleAtomic ) ) )
+                    // InternalPcodeParser.g:2635:3: ( () ( ( ExclamationMark )=>otherlv_1= ExclamationMark ) ( (lv_expression_2_0= ruleAtomic ) ) )
                     {
-                    // InternalPcodeParser.g:2601:3: ( () ( ( ExclamationMark )=>otherlv_1= ExclamationMark ) ( (lv_expression_2_0= ruleAtomic ) ) )
-                    // InternalPcodeParser.g:2602:4: () ( ( ExclamationMark )=>otherlv_1= ExclamationMark ) ( (lv_expression_2_0= ruleAtomic ) )
+                    // InternalPcodeParser.g:2635:3: ( () ( ( ExclamationMark )=>otherlv_1= ExclamationMark ) ( (lv_expression_2_0= ruleAtomic ) ) )
+                    // InternalPcodeParser.g:2636:4: () ( ( ExclamationMark )=>otherlv_1= ExclamationMark ) ( (lv_expression_2_0= ruleAtomic ) )
                     {
-                    // InternalPcodeParser.g:2602:4: ()
-                    // InternalPcodeParser.g:2603:5: 
+                    // InternalPcodeParser.g:2636:4: ()
+                    // InternalPcodeParser.g:2637:5: 
                     {
                     if ( state.backtracking==0 ) {
 
@@ -7983,8 +8083,8 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalPcodeParser.g:2609:4: ( ( ExclamationMark )=>otherlv_1= ExclamationMark )
-                    // InternalPcodeParser.g:2610:5: ( ExclamationMark )=>otherlv_1= ExclamationMark
+                    // InternalPcodeParser.g:2643:4: ( ( ExclamationMark )=>otherlv_1= ExclamationMark )
+                    // InternalPcodeParser.g:2644:5: ( ExclamationMark )=>otherlv_1= ExclamationMark
                     {
                     otherlv_1=(Token)match(input,ExclamationMark,FOLLOW_13); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -7995,11 +8095,11 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalPcodeParser.g:2616:4: ( (lv_expression_2_0= ruleAtomic ) )
-                    // InternalPcodeParser.g:2617:5: (lv_expression_2_0= ruleAtomic )
+                    // InternalPcodeParser.g:2650:4: ( (lv_expression_2_0= ruleAtomic ) )
+                    // InternalPcodeParser.g:2651:5: (lv_expression_2_0= ruleAtomic )
                     {
-                    // InternalPcodeParser.g:2617:5: (lv_expression_2_0= ruleAtomic )
-                    // InternalPcodeParser.g:2618:6: lv_expression_2_0= ruleAtomic
+                    // InternalPcodeParser.g:2651:5: (lv_expression_2_0= ruleAtomic )
+                    // InternalPcodeParser.g:2652:6: lv_expression_2_0= ruleAtomic
                     {
                     if ( state.backtracking==0 ) {
 
@@ -8037,13 +8137,13 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalPcodeParser.g:2637:3: ( () ( ( ruleMinusOperator )=> ruleMinusOperator ) ( (lv_expression_5_0= ruleAtomic ) ) )
+                    // InternalPcodeParser.g:2671:3: ( () ( ( ruleMinusOperator )=> ruleMinusOperator ) ( (lv_expression_5_0= ruleAtomic ) ) )
                     {
-                    // InternalPcodeParser.g:2637:3: ( () ( ( ruleMinusOperator )=> ruleMinusOperator ) ( (lv_expression_5_0= ruleAtomic ) ) )
-                    // InternalPcodeParser.g:2638:4: () ( ( ruleMinusOperator )=> ruleMinusOperator ) ( (lv_expression_5_0= ruleAtomic ) )
+                    // InternalPcodeParser.g:2671:3: ( () ( ( ruleMinusOperator )=> ruleMinusOperator ) ( (lv_expression_5_0= ruleAtomic ) ) )
+                    // InternalPcodeParser.g:2672:4: () ( ( ruleMinusOperator )=> ruleMinusOperator ) ( (lv_expression_5_0= ruleAtomic ) )
                     {
-                    // InternalPcodeParser.g:2638:4: ()
-                    // InternalPcodeParser.g:2639:5: 
+                    // InternalPcodeParser.g:2672:4: ()
+                    // InternalPcodeParser.g:2673:5: 
                     {
                     if ( state.backtracking==0 ) {
 
@@ -8055,8 +8155,8 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalPcodeParser.g:2645:4: ( ( ruleMinusOperator )=> ruleMinusOperator )
-                    // InternalPcodeParser.g:2646:5: ( ruleMinusOperator )=> ruleMinusOperator
+                    // InternalPcodeParser.g:2679:4: ( ( ruleMinusOperator )=> ruleMinusOperator )
+                    // InternalPcodeParser.g:2680:5: ( ruleMinusOperator )=> ruleMinusOperator
                     {
                     if ( state.backtracking==0 ) {
 
@@ -8076,11 +8176,11 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalPcodeParser.g:2655:4: ( (lv_expression_5_0= ruleAtomic ) )
-                    // InternalPcodeParser.g:2656:5: (lv_expression_5_0= ruleAtomic )
+                    // InternalPcodeParser.g:2689:4: ( (lv_expression_5_0= ruleAtomic ) )
+                    // InternalPcodeParser.g:2690:5: (lv_expression_5_0= ruleAtomic )
                     {
-                    // InternalPcodeParser.g:2656:5: (lv_expression_5_0= ruleAtomic )
-                    // InternalPcodeParser.g:2657:6: lv_expression_5_0= ruleAtomic
+                    // InternalPcodeParser.g:2690:5: (lv_expression_5_0= ruleAtomic )
+                    // InternalPcodeParser.g:2691:6: lv_expression_5_0= ruleAtomic
                     {
                     if ( state.backtracking==0 ) {
 
@@ -8118,7 +8218,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalPcodeParser.g:2676:3: this_Atomic_6= ruleAtomic
+                    // InternalPcodeParser.g:2710:3: this_Atomic_6= ruleAtomic
                     {
                     if ( state.backtracking==0 ) {
 
@@ -8164,7 +8264,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAtomic"
-    // InternalPcodeParser.g:2688:1: entryRuleAtomic returns [EObject current=null] : iv_ruleAtomic= ruleAtomic EOF ;
+    // InternalPcodeParser.g:2722:1: entryRuleAtomic returns [EObject current=null] : iv_ruleAtomic= ruleAtomic EOF ;
     public final EObject entryRuleAtomic() throws RecognitionException {
         EObject current = null;
 
@@ -8172,8 +8272,8 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalPcodeParser.g:2688:47: (iv_ruleAtomic= ruleAtomic EOF )
-            // InternalPcodeParser.g:2689:2: iv_ruleAtomic= ruleAtomic EOF
+            // InternalPcodeParser.g:2722:47: (iv_ruleAtomic= ruleAtomic EOF )
+            // InternalPcodeParser.g:2723:2: iv_ruleAtomic= ruleAtomic EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getAtomicRule()); 
@@ -8204,7 +8304,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAtomic"
-    // InternalPcodeParser.g:2695:1: ruleAtomic returns [EObject current=null] : ( ( () otherlv_1= LeftParenthesis ( (lv_expression_2_0= ruleLiteralExpression ) ) otherlv_3= RightParenthesis ) | ( () ( (lv_value_5_0= RULE_INT ) ) ) | ( () ( (lv_value_7_0= RULE_DOUBLE ) ) ) | ( () ( (lv_value_9_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_11_1= True | lv_value_11_2= False ) ) ) ) | ( () ( (otherlv_13= RULE_ID ) ) ) | this_FunctionCall_14= ruleFunctionCall ) ;
+    // InternalPcodeParser.g:2729:1: ruleAtomic returns [EObject current=null] : ( ( () otherlv_1= LeftParenthesis ( (lv_expression_2_0= ruleLiteralExpression ) ) otherlv_3= RightParenthesis ) | ( () ( (lv_value_5_0= RULE_INT ) ) ) | ( () ( (lv_value_7_0= RULE_DOUBLE ) ) ) | ( () ( (lv_value_9_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_11_1= True | lv_value_11_2= False ) ) ) ) | ( () ( (otherlv_13= RULE_ID ) ) ) | this_FunctionCall_14= ruleFunctionCall ) ;
     public final EObject ruleAtomic() throws RecognitionException {
         EObject current = null;
 
@@ -8225,10 +8325,10 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalPcodeParser.g:2701:2: ( ( ( () otherlv_1= LeftParenthesis ( (lv_expression_2_0= ruleLiteralExpression ) ) otherlv_3= RightParenthesis ) | ( () ( (lv_value_5_0= RULE_INT ) ) ) | ( () ( (lv_value_7_0= RULE_DOUBLE ) ) ) | ( () ( (lv_value_9_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_11_1= True | lv_value_11_2= False ) ) ) ) | ( () ( (otherlv_13= RULE_ID ) ) ) | this_FunctionCall_14= ruleFunctionCall ) )
-            // InternalPcodeParser.g:2702:2: ( ( () otherlv_1= LeftParenthesis ( (lv_expression_2_0= ruleLiteralExpression ) ) otherlv_3= RightParenthesis ) | ( () ( (lv_value_5_0= RULE_INT ) ) ) | ( () ( (lv_value_7_0= RULE_DOUBLE ) ) ) | ( () ( (lv_value_9_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_11_1= True | lv_value_11_2= False ) ) ) ) | ( () ( (otherlv_13= RULE_ID ) ) ) | this_FunctionCall_14= ruleFunctionCall )
+            // InternalPcodeParser.g:2735:2: ( ( ( () otherlv_1= LeftParenthesis ( (lv_expression_2_0= ruleLiteralExpression ) ) otherlv_3= RightParenthesis ) | ( () ( (lv_value_5_0= RULE_INT ) ) ) | ( () ( (lv_value_7_0= RULE_DOUBLE ) ) ) | ( () ( (lv_value_9_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_11_1= True | lv_value_11_2= False ) ) ) ) | ( () ( (otherlv_13= RULE_ID ) ) ) | this_FunctionCall_14= ruleFunctionCall ) )
+            // InternalPcodeParser.g:2736:2: ( ( () otherlv_1= LeftParenthesis ( (lv_expression_2_0= ruleLiteralExpression ) ) otherlv_3= RightParenthesis ) | ( () ( (lv_value_5_0= RULE_INT ) ) ) | ( () ( (lv_value_7_0= RULE_DOUBLE ) ) ) | ( () ( (lv_value_9_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_11_1= True | lv_value_11_2= False ) ) ) ) | ( () ( (otherlv_13= RULE_ID ) ) ) | this_FunctionCall_14= ruleFunctionCall )
             {
-            // InternalPcodeParser.g:2702:2: ( ( () otherlv_1= LeftParenthesis ( (lv_expression_2_0= ruleLiteralExpression ) ) otherlv_3= RightParenthesis ) | ( () ( (lv_value_5_0= RULE_INT ) ) ) | ( () ( (lv_value_7_0= RULE_DOUBLE ) ) ) | ( () ( (lv_value_9_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_11_1= True | lv_value_11_2= False ) ) ) ) | ( () ( (otherlv_13= RULE_ID ) ) ) | this_FunctionCall_14= ruleFunctionCall )
+            // InternalPcodeParser.g:2736:2: ( ( () otherlv_1= LeftParenthesis ( (lv_expression_2_0= ruleLiteralExpression ) ) otherlv_3= RightParenthesis ) | ( () ( (lv_value_5_0= RULE_INT ) ) ) | ( () ( (lv_value_7_0= RULE_DOUBLE ) ) ) | ( () ( (lv_value_9_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_11_1= True | lv_value_11_2= False ) ) ) ) | ( () ( (otherlv_13= RULE_ID ) ) ) | this_FunctionCall_14= ruleFunctionCall )
             int alt57=7;
             switch ( input.LA(1) ) {
             case LeftParenthesis:
@@ -8264,7 +8364,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
                 if ( (LA57_6==LeftParenthesis) ) {
                     alt57=7;
                 }
-                else if ( (LA57_6==EOF||(LA57_6>=Continue && LA57_6<=Exchange)||LA57_6==Divide||LA57_6==Return||LA57_6==Break||(LA57_6>=Minus && LA57_6<=Print)||(LA57_6>=Times && LA57_6<=While)||(LA57_6>=Plus && LA57_6<=Stop)||LA57_6==Then||LA57_6==With||(LA57_6>=And && LA57_6<=For)||LA57_6==ExclamationMarkEqualsSign||(LA57_6>=LessThanSignEqualsSign && LA57_6<=GreaterThanSignEqualsSign)||LA57_6==If||(LA57_6>=Or && LA57_6<=To)||LA57_6==Ampersand||(LA57_6>=RightParenthesis && LA57_6<=HyphenMinus)||(LA57_6>=Solidus && LA57_6<=LessThanSign)||LA57_6==GreaterThanSign||LA57_6==RightSquareBracket||(LA57_6>=VerticalLine && LA57_6<=RULE_END)||LA57_6==RULE_ID) ) {
+                else if ( (LA57_6==EOF||LA57_6==BiggerThen||(LA57_6>=Continue && LA57_6<=Exchange)||LA57_6==LessThen||LA57_6==Divide||LA57_6==Modulo||LA57_6==Return||LA57_6==Break||(LA57_6>=Minus && LA57_6<=Print)||(LA57_6>=Times && LA57_6<=While)||(LA57_6>=Plus && LA57_6<=Stop)||LA57_6==Then||LA57_6==With||(LA57_6>=And && LA57_6<=For)||LA57_6==ExclamationMarkEqualsSign||(LA57_6>=LessThanSignEqualsSign && LA57_6<=GreaterThanSignEqualsSign)||LA57_6==If||(LA57_6>=Or && LA57_6<=To)||(LA57_6>=PercentSign && LA57_6<=Ampersand)||(LA57_6>=RightParenthesis && LA57_6<=HyphenMinus)||(LA57_6>=Solidus && LA57_6<=LessThanSign)||LA57_6==GreaterThanSign||LA57_6==RightSquareBracket||(LA57_6>=VerticalLine && LA57_6<=RULE_END)||LA57_6==RULE_ID) ) {
                     alt57=6;
                 }
                 else {
@@ -8286,13 +8386,13 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
             switch (alt57) {
                 case 1 :
-                    // InternalPcodeParser.g:2703:3: ( () otherlv_1= LeftParenthesis ( (lv_expression_2_0= ruleLiteralExpression ) ) otherlv_3= RightParenthesis )
+                    // InternalPcodeParser.g:2737:3: ( () otherlv_1= LeftParenthesis ( (lv_expression_2_0= ruleLiteralExpression ) ) otherlv_3= RightParenthesis )
                     {
-                    // InternalPcodeParser.g:2703:3: ( () otherlv_1= LeftParenthesis ( (lv_expression_2_0= ruleLiteralExpression ) ) otherlv_3= RightParenthesis )
-                    // InternalPcodeParser.g:2704:4: () otherlv_1= LeftParenthesis ( (lv_expression_2_0= ruleLiteralExpression ) ) otherlv_3= RightParenthesis
+                    // InternalPcodeParser.g:2737:3: ( () otherlv_1= LeftParenthesis ( (lv_expression_2_0= ruleLiteralExpression ) ) otherlv_3= RightParenthesis )
+                    // InternalPcodeParser.g:2738:4: () otherlv_1= LeftParenthesis ( (lv_expression_2_0= ruleLiteralExpression ) ) otherlv_3= RightParenthesis
                     {
-                    // InternalPcodeParser.g:2704:4: ()
-                    // InternalPcodeParser.g:2705:5: 
+                    // InternalPcodeParser.g:2738:4: ()
+                    // InternalPcodeParser.g:2739:5: 
                     {
                     if ( state.backtracking==0 ) {
 
@@ -8310,11 +8410,11 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
                       				newLeafNode(otherlv_1, grammarAccess.getAtomicAccess().getLeftParenthesisKeyword_0_1());
                       			
                     }
-                    // InternalPcodeParser.g:2715:4: ( (lv_expression_2_0= ruleLiteralExpression ) )
-                    // InternalPcodeParser.g:2716:5: (lv_expression_2_0= ruleLiteralExpression )
+                    // InternalPcodeParser.g:2749:4: ( (lv_expression_2_0= ruleLiteralExpression ) )
+                    // InternalPcodeParser.g:2750:5: (lv_expression_2_0= ruleLiteralExpression )
                     {
-                    // InternalPcodeParser.g:2716:5: (lv_expression_2_0= ruleLiteralExpression )
-                    // InternalPcodeParser.g:2717:6: lv_expression_2_0= ruleLiteralExpression
+                    // InternalPcodeParser.g:2750:5: (lv_expression_2_0= ruleLiteralExpression )
+                    // InternalPcodeParser.g:2751:6: lv_expression_2_0= ruleLiteralExpression
                     {
                     if ( state.backtracking==0 ) {
 
@@ -8358,13 +8458,13 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalPcodeParser.g:2740:3: ( () ( (lv_value_5_0= RULE_INT ) ) )
+                    // InternalPcodeParser.g:2774:3: ( () ( (lv_value_5_0= RULE_INT ) ) )
                     {
-                    // InternalPcodeParser.g:2740:3: ( () ( (lv_value_5_0= RULE_INT ) ) )
-                    // InternalPcodeParser.g:2741:4: () ( (lv_value_5_0= RULE_INT ) )
+                    // InternalPcodeParser.g:2774:3: ( () ( (lv_value_5_0= RULE_INT ) ) )
+                    // InternalPcodeParser.g:2775:4: () ( (lv_value_5_0= RULE_INT ) )
                     {
-                    // InternalPcodeParser.g:2741:4: ()
-                    // InternalPcodeParser.g:2742:5: 
+                    // InternalPcodeParser.g:2775:4: ()
+                    // InternalPcodeParser.g:2776:5: 
                     {
                     if ( state.backtracking==0 ) {
 
@@ -8376,11 +8476,11 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalPcodeParser.g:2748:4: ( (lv_value_5_0= RULE_INT ) )
-                    // InternalPcodeParser.g:2749:5: (lv_value_5_0= RULE_INT )
+                    // InternalPcodeParser.g:2782:4: ( (lv_value_5_0= RULE_INT ) )
+                    // InternalPcodeParser.g:2783:5: (lv_value_5_0= RULE_INT )
                     {
-                    // InternalPcodeParser.g:2749:5: (lv_value_5_0= RULE_INT )
-                    // InternalPcodeParser.g:2750:6: lv_value_5_0= RULE_INT
+                    // InternalPcodeParser.g:2783:5: (lv_value_5_0= RULE_INT )
+                    // InternalPcodeParser.g:2784:6: lv_value_5_0= RULE_INT
                     {
                     lv_value_5_0=(Token)match(input,RULE_INT,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -8413,13 +8513,13 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalPcodeParser.g:2768:3: ( () ( (lv_value_7_0= RULE_DOUBLE ) ) )
+                    // InternalPcodeParser.g:2802:3: ( () ( (lv_value_7_0= RULE_DOUBLE ) ) )
                     {
-                    // InternalPcodeParser.g:2768:3: ( () ( (lv_value_7_0= RULE_DOUBLE ) ) )
-                    // InternalPcodeParser.g:2769:4: () ( (lv_value_7_0= RULE_DOUBLE ) )
+                    // InternalPcodeParser.g:2802:3: ( () ( (lv_value_7_0= RULE_DOUBLE ) ) )
+                    // InternalPcodeParser.g:2803:4: () ( (lv_value_7_0= RULE_DOUBLE ) )
                     {
-                    // InternalPcodeParser.g:2769:4: ()
-                    // InternalPcodeParser.g:2770:5: 
+                    // InternalPcodeParser.g:2803:4: ()
+                    // InternalPcodeParser.g:2804:5: 
                     {
                     if ( state.backtracking==0 ) {
 
@@ -8431,11 +8531,11 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalPcodeParser.g:2776:4: ( (lv_value_7_0= RULE_DOUBLE ) )
-                    // InternalPcodeParser.g:2777:5: (lv_value_7_0= RULE_DOUBLE )
+                    // InternalPcodeParser.g:2810:4: ( (lv_value_7_0= RULE_DOUBLE ) )
+                    // InternalPcodeParser.g:2811:5: (lv_value_7_0= RULE_DOUBLE )
                     {
-                    // InternalPcodeParser.g:2777:5: (lv_value_7_0= RULE_DOUBLE )
-                    // InternalPcodeParser.g:2778:6: lv_value_7_0= RULE_DOUBLE
+                    // InternalPcodeParser.g:2811:5: (lv_value_7_0= RULE_DOUBLE )
+                    // InternalPcodeParser.g:2812:6: lv_value_7_0= RULE_DOUBLE
                     {
                     lv_value_7_0=(Token)match(input,RULE_DOUBLE,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -8468,13 +8568,13 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalPcodeParser.g:2796:3: ( () ( (lv_value_9_0= RULE_STRING ) ) )
+                    // InternalPcodeParser.g:2830:3: ( () ( (lv_value_9_0= RULE_STRING ) ) )
                     {
-                    // InternalPcodeParser.g:2796:3: ( () ( (lv_value_9_0= RULE_STRING ) ) )
-                    // InternalPcodeParser.g:2797:4: () ( (lv_value_9_0= RULE_STRING ) )
+                    // InternalPcodeParser.g:2830:3: ( () ( (lv_value_9_0= RULE_STRING ) ) )
+                    // InternalPcodeParser.g:2831:4: () ( (lv_value_9_0= RULE_STRING ) )
                     {
-                    // InternalPcodeParser.g:2797:4: ()
-                    // InternalPcodeParser.g:2798:5: 
+                    // InternalPcodeParser.g:2831:4: ()
+                    // InternalPcodeParser.g:2832:5: 
                     {
                     if ( state.backtracking==0 ) {
 
@@ -8486,11 +8586,11 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalPcodeParser.g:2804:4: ( (lv_value_9_0= RULE_STRING ) )
-                    // InternalPcodeParser.g:2805:5: (lv_value_9_0= RULE_STRING )
+                    // InternalPcodeParser.g:2838:4: ( (lv_value_9_0= RULE_STRING ) )
+                    // InternalPcodeParser.g:2839:5: (lv_value_9_0= RULE_STRING )
                     {
-                    // InternalPcodeParser.g:2805:5: (lv_value_9_0= RULE_STRING )
-                    // InternalPcodeParser.g:2806:6: lv_value_9_0= RULE_STRING
+                    // InternalPcodeParser.g:2839:5: (lv_value_9_0= RULE_STRING )
+                    // InternalPcodeParser.g:2840:6: lv_value_9_0= RULE_STRING
                     {
                     lv_value_9_0=(Token)match(input,RULE_STRING,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -8523,13 +8623,13 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalPcodeParser.g:2824:3: ( () ( ( (lv_value_11_1= True | lv_value_11_2= False ) ) ) )
+                    // InternalPcodeParser.g:2858:3: ( () ( ( (lv_value_11_1= True | lv_value_11_2= False ) ) ) )
                     {
-                    // InternalPcodeParser.g:2824:3: ( () ( ( (lv_value_11_1= True | lv_value_11_2= False ) ) ) )
-                    // InternalPcodeParser.g:2825:4: () ( ( (lv_value_11_1= True | lv_value_11_2= False ) ) )
+                    // InternalPcodeParser.g:2858:3: ( () ( ( (lv_value_11_1= True | lv_value_11_2= False ) ) ) )
+                    // InternalPcodeParser.g:2859:4: () ( ( (lv_value_11_1= True | lv_value_11_2= False ) ) )
                     {
-                    // InternalPcodeParser.g:2825:4: ()
-                    // InternalPcodeParser.g:2826:5: 
+                    // InternalPcodeParser.g:2859:4: ()
+                    // InternalPcodeParser.g:2860:5: 
                     {
                     if ( state.backtracking==0 ) {
 
@@ -8541,13 +8641,13 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalPcodeParser.g:2832:4: ( ( (lv_value_11_1= True | lv_value_11_2= False ) ) )
-                    // InternalPcodeParser.g:2833:5: ( (lv_value_11_1= True | lv_value_11_2= False ) )
+                    // InternalPcodeParser.g:2866:4: ( ( (lv_value_11_1= True | lv_value_11_2= False ) ) )
+                    // InternalPcodeParser.g:2867:5: ( (lv_value_11_1= True | lv_value_11_2= False ) )
                     {
-                    // InternalPcodeParser.g:2833:5: ( (lv_value_11_1= True | lv_value_11_2= False ) )
-                    // InternalPcodeParser.g:2834:6: (lv_value_11_1= True | lv_value_11_2= False )
+                    // InternalPcodeParser.g:2867:5: ( (lv_value_11_1= True | lv_value_11_2= False ) )
+                    // InternalPcodeParser.g:2868:6: (lv_value_11_1= True | lv_value_11_2= False )
                     {
-                    // InternalPcodeParser.g:2834:6: (lv_value_11_1= True | lv_value_11_2= False )
+                    // InternalPcodeParser.g:2868:6: (lv_value_11_1= True | lv_value_11_2= False )
                     int alt56=2;
                     int LA56_0 = input.LA(1);
 
@@ -8566,7 +8666,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt56) {
                         case 1 :
-                            // InternalPcodeParser.g:2835:7: lv_value_11_1= True
+                            // InternalPcodeParser.g:2869:7: lv_value_11_1= True
                             {
                             lv_value_11_1=(Token)match(input,True,FOLLOW_2); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
@@ -8586,7 +8686,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalPcodeParser.g:2846:7: lv_value_11_2= False
+                            // InternalPcodeParser.g:2880:7: lv_value_11_2= False
                             {
                             lv_value_11_2=(Token)match(input,False,FOLLOW_2); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
@@ -8621,13 +8721,13 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalPcodeParser.g:2861:3: ( () ( (otherlv_13= RULE_ID ) ) )
+                    // InternalPcodeParser.g:2895:3: ( () ( (otherlv_13= RULE_ID ) ) )
                     {
-                    // InternalPcodeParser.g:2861:3: ( () ( (otherlv_13= RULE_ID ) ) )
-                    // InternalPcodeParser.g:2862:4: () ( (otherlv_13= RULE_ID ) )
+                    // InternalPcodeParser.g:2895:3: ( () ( (otherlv_13= RULE_ID ) ) )
+                    // InternalPcodeParser.g:2896:4: () ( (otherlv_13= RULE_ID ) )
                     {
-                    // InternalPcodeParser.g:2862:4: ()
-                    // InternalPcodeParser.g:2863:5: 
+                    // InternalPcodeParser.g:2896:4: ()
+                    // InternalPcodeParser.g:2897:5: 
                     {
                     if ( state.backtracking==0 ) {
 
@@ -8639,11 +8739,11 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalPcodeParser.g:2869:4: ( (otherlv_13= RULE_ID ) )
-                    // InternalPcodeParser.g:2870:5: (otherlv_13= RULE_ID )
+                    // InternalPcodeParser.g:2903:4: ( (otherlv_13= RULE_ID ) )
+                    // InternalPcodeParser.g:2904:5: (otherlv_13= RULE_ID )
                     {
-                    // InternalPcodeParser.g:2870:5: (otherlv_13= RULE_ID )
-                    // InternalPcodeParser.g:2871:6: otherlv_13= RULE_ID
+                    // InternalPcodeParser.g:2904:5: (otherlv_13= RULE_ID )
+                    // InternalPcodeParser.g:2905:6: otherlv_13= RULE_ID
                     {
                     if ( state.backtracking==0 ) {
 
@@ -8671,7 +8771,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // InternalPcodeParser.g:2884:3: this_FunctionCall_14= ruleFunctionCall
+                    // InternalPcodeParser.g:2918:3: this_FunctionCall_14= ruleFunctionCall
                     {
                     if ( state.backtracking==0 ) {
 
@@ -8717,7 +8817,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFunctionCall"
-    // InternalPcodeParser.g:2896:1: entryRuleFunctionCall returns [EObject current=null] : iv_ruleFunctionCall= ruleFunctionCall EOF ;
+    // InternalPcodeParser.g:2930:1: entryRuleFunctionCall returns [EObject current=null] : iv_ruleFunctionCall= ruleFunctionCall EOF ;
     public final EObject entryRuleFunctionCall() throws RecognitionException {
         EObject current = null;
 
@@ -8725,8 +8825,8 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalPcodeParser.g:2896:53: (iv_ruleFunctionCall= ruleFunctionCall EOF )
-            // InternalPcodeParser.g:2897:2: iv_ruleFunctionCall= ruleFunctionCall EOF
+            // InternalPcodeParser.g:2930:53: (iv_ruleFunctionCall= ruleFunctionCall EOF )
+            // InternalPcodeParser.g:2931:2: iv_ruleFunctionCall= ruleFunctionCall EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getFunctionCallRule()); 
@@ -8757,7 +8857,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFunctionCall"
-    // InternalPcodeParser.g:2903:1: ruleFunctionCall returns [EObject current=null] : ( () ( (otherlv_1= RULE_ID ) ) otherlv_2= LeftParenthesis ( ( (lv_arguments_3_0= ruleLiteralExpression ) ) (otherlv_4= Comma ( (lv_arguments_5_0= ruleLiteralExpression ) ) )* )? otherlv_6= RightParenthesis ) ;
+    // InternalPcodeParser.g:2937:1: ruleFunctionCall returns [EObject current=null] : ( () ( (otherlv_1= RULE_ID ) ) otherlv_2= LeftParenthesis ( ( (lv_arguments_3_0= ruleLiteralExpression ) ) (otherlv_4= Comma ( (lv_arguments_5_0= ruleLiteralExpression ) ) )* )? otherlv_6= RightParenthesis ) ;
     public final EObject ruleFunctionCall() throws RecognitionException {
         EObject current = null;
 
@@ -8774,14 +8874,14 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalPcodeParser.g:2909:2: ( ( () ( (otherlv_1= RULE_ID ) ) otherlv_2= LeftParenthesis ( ( (lv_arguments_3_0= ruleLiteralExpression ) ) (otherlv_4= Comma ( (lv_arguments_5_0= ruleLiteralExpression ) ) )* )? otherlv_6= RightParenthesis ) )
-            // InternalPcodeParser.g:2910:2: ( () ( (otherlv_1= RULE_ID ) ) otherlv_2= LeftParenthesis ( ( (lv_arguments_3_0= ruleLiteralExpression ) ) (otherlv_4= Comma ( (lv_arguments_5_0= ruleLiteralExpression ) ) )* )? otherlv_6= RightParenthesis )
+            // InternalPcodeParser.g:2943:2: ( ( () ( (otherlv_1= RULE_ID ) ) otherlv_2= LeftParenthesis ( ( (lv_arguments_3_0= ruleLiteralExpression ) ) (otherlv_4= Comma ( (lv_arguments_5_0= ruleLiteralExpression ) ) )* )? otherlv_6= RightParenthesis ) )
+            // InternalPcodeParser.g:2944:2: ( () ( (otherlv_1= RULE_ID ) ) otherlv_2= LeftParenthesis ( ( (lv_arguments_3_0= ruleLiteralExpression ) ) (otherlv_4= Comma ( (lv_arguments_5_0= ruleLiteralExpression ) ) )* )? otherlv_6= RightParenthesis )
             {
-            // InternalPcodeParser.g:2910:2: ( () ( (otherlv_1= RULE_ID ) ) otherlv_2= LeftParenthesis ( ( (lv_arguments_3_0= ruleLiteralExpression ) ) (otherlv_4= Comma ( (lv_arguments_5_0= ruleLiteralExpression ) ) )* )? otherlv_6= RightParenthesis )
-            // InternalPcodeParser.g:2911:3: () ( (otherlv_1= RULE_ID ) ) otherlv_2= LeftParenthesis ( ( (lv_arguments_3_0= ruleLiteralExpression ) ) (otherlv_4= Comma ( (lv_arguments_5_0= ruleLiteralExpression ) ) )* )? otherlv_6= RightParenthesis
+            // InternalPcodeParser.g:2944:2: ( () ( (otherlv_1= RULE_ID ) ) otherlv_2= LeftParenthesis ( ( (lv_arguments_3_0= ruleLiteralExpression ) ) (otherlv_4= Comma ( (lv_arguments_5_0= ruleLiteralExpression ) ) )* )? otherlv_6= RightParenthesis )
+            // InternalPcodeParser.g:2945:3: () ( (otherlv_1= RULE_ID ) ) otherlv_2= LeftParenthesis ( ( (lv_arguments_3_0= ruleLiteralExpression ) ) (otherlv_4= Comma ( (lv_arguments_5_0= ruleLiteralExpression ) ) )* )? otherlv_6= RightParenthesis
             {
-            // InternalPcodeParser.g:2911:3: ()
-            // InternalPcodeParser.g:2912:4: 
+            // InternalPcodeParser.g:2945:3: ()
+            // InternalPcodeParser.g:2946:4: 
             {
             if ( state.backtracking==0 ) {
 
@@ -8793,11 +8893,11 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalPcodeParser.g:2918:3: ( (otherlv_1= RULE_ID ) )
-            // InternalPcodeParser.g:2919:4: (otherlv_1= RULE_ID )
+            // InternalPcodeParser.g:2952:3: ( (otherlv_1= RULE_ID ) )
+            // InternalPcodeParser.g:2953:4: (otherlv_1= RULE_ID )
             {
-            // InternalPcodeParser.g:2919:4: (otherlv_1= RULE_ID )
-            // InternalPcodeParser.g:2920:5: otherlv_1= RULE_ID
+            // InternalPcodeParser.g:2953:4: (otherlv_1= RULE_ID )
+            // InternalPcodeParser.g:2954:5: otherlv_1= RULE_ID
             {
             if ( state.backtracking==0 ) {
 
@@ -8824,7 +8924,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
               			newLeafNode(otherlv_2, grammarAccess.getFunctionCallAccess().getLeftParenthesisKeyword_2());
               		
             }
-            // InternalPcodeParser.g:2935:3: ( ( (lv_arguments_3_0= ruleLiteralExpression ) ) (otherlv_4= Comma ( (lv_arguments_5_0= ruleLiteralExpression ) ) )* )?
+            // InternalPcodeParser.g:2969:3: ( ( (lv_arguments_3_0= ruleLiteralExpression ) ) (otherlv_4= Comma ( (lv_arguments_5_0= ruleLiteralExpression ) ) )* )?
             int alt59=2;
             int LA59_0 = input.LA(1);
 
@@ -8833,13 +8933,13 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
             }
             switch (alt59) {
                 case 1 :
-                    // InternalPcodeParser.g:2936:4: ( (lv_arguments_3_0= ruleLiteralExpression ) ) (otherlv_4= Comma ( (lv_arguments_5_0= ruleLiteralExpression ) ) )*
+                    // InternalPcodeParser.g:2970:4: ( (lv_arguments_3_0= ruleLiteralExpression ) ) (otherlv_4= Comma ( (lv_arguments_5_0= ruleLiteralExpression ) ) )*
                     {
-                    // InternalPcodeParser.g:2936:4: ( (lv_arguments_3_0= ruleLiteralExpression ) )
-                    // InternalPcodeParser.g:2937:5: (lv_arguments_3_0= ruleLiteralExpression )
+                    // InternalPcodeParser.g:2970:4: ( (lv_arguments_3_0= ruleLiteralExpression ) )
+                    // InternalPcodeParser.g:2971:5: (lv_arguments_3_0= ruleLiteralExpression )
                     {
-                    // InternalPcodeParser.g:2937:5: (lv_arguments_3_0= ruleLiteralExpression )
-                    // InternalPcodeParser.g:2938:6: lv_arguments_3_0= ruleLiteralExpression
+                    // InternalPcodeParser.g:2971:5: (lv_arguments_3_0= ruleLiteralExpression )
+                    // InternalPcodeParser.g:2972:6: lv_arguments_3_0= ruleLiteralExpression
                     {
                     if ( state.backtracking==0 ) {
 
@@ -8870,7 +8970,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalPcodeParser.g:2955:4: (otherlv_4= Comma ( (lv_arguments_5_0= ruleLiteralExpression ) ) )*
+                    // InternalPcodeParser.g:2989:4: (otherlv_4= Comma ( (lv_arguments_5_0= ruleLiteralExpression ) ) )*
                     loop58:
                     do {
                         int alt58=2;
@@ -8883,7 +8983,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
                         switch (alt58) {
                     	case 1 :
-                    	    // InternalPcodeParser.g:2956:5: otherlv_4= Comma ( (lv_arguments_5_0= ruleLiteralExpression ) )
+                    	    // InternalPcodeParser.g:2990:5: otherlv_4= Comma ( (lv_arguments_5_0= ruleLiteralExpression ) )
                     	    {
                     	    otherlv_4=(Token)match(input,Comma,FOLLOW_13); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
@@ -8891,11 +8991,11 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
                     	      					newLeafNode(otherlv_4, grammarAccess.getFunctionCallAccess().getCommaKeyword_3_1_0());
                     	      				
                     	    }
-                    	    // InternalPcodeParser.g:2960:5: ( (lv_arguments_5_0= ruleLiteralExpression ) )
-                    	    // InternalPcodeParser.g:2961:6: (lv_arguments_5_0= ruleLiteralExpression )
+                    	    // InternalPcodeParser.g:2994:5: ( (lv_arguments_5_0= ruleLiteralExpression ) )
+                    	    // InternalPcodeParser.g:2995:6: (lv_arguments_5_0= ruleLiteralExpression )
                     	    {
-                    	    // InternalPcodeParser.g:2961:6: (lv_arguments_5_0= ruleLiteralExpression )
-                    	    // InternalPcodeParser.g:2962:7: lv_arguments_5_0= ruleLiteralExpression
+                    	    // InternalPcodeParser.g:2995:6: (lv_arguments_5_0= ruleLiteralExpression )
+                    	    // InternalPcodeParser.g:2996:7: lv_arguments_5_0= ruleLiteralExpression
                     	    {
                     	    if ( state.backtracking==0 ) {
 
@@ -8972,7 +9072,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleType"
-    // InternalPcodeParser.g:2989:1: entryRuleType returns [EObject current=null] : iv_ruleType= ruleType EOF ;
+    // InternalPcodeParser.g:3023:1: entryRuleType returns [EObject current=null] : iv_ruleType= ruleType EOF ;
     public final EObject entryRuleType() throws RecognitionException {
         EObject current = null;
 
@@ -8980,8 +9080,8 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalPcodeParser.g:2989:45: (iv_ruleType= ruleType EOF )
-            // InternalPcodeParser.g:2990:2: iv_ruleType= ruleType EOF
+            // InternalPcodeParser.g:3023:45: (iv_ruleType= ruleType EOF )
+            // InternalPcodeParser.g:3024:2: iv_ruleType= ruleType EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getTypeRule()); 
@@ -9012,7 +9112,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleType"
-    // InternalPcodeParser.g:2996:1: ruleType returns [EObject current=null] : ( () ( ( (lv_types_1_0= ruleTypeLiteral ) ) (otherlv_2= With ( (lv_types_3_0= ruleTypeLiteral ) ) )* ) ) ;
+    // InternalPcodeParser.g:3030:1: ruleType returns [EObject current=null] : ( () ( ( (lv_types_1_0= ruleTypeLiteral ) ) (otherlv_2= With ( (lv_types_3_0= ruleTypeLiteral ) ) )* ) ) ;
     public final EObject ruleType() throws RecognitionException {
         EObject current = null;
 
@@ -9026,14 +9126,14 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalPcodeParser.g:3002:2: ( ( () ( ( (lv_types_1_0= ruleTypeLiteral ) ) (otherlv_2= With ( (lv_types_3_0= ruleTypeLiteral ) ) )* ) ) )
-            // InternalPcodeParser.g:3003:2: ( () ( ( (lv_types_1_0= ruleTypeLiteral ) ) (otherlv_2= With ( (lv_types_3_0= ruleTypeLiteral ) ) )* ) )
+            // InternalPcodeParser.g:3036:2: ( ( () ( ( (lv_types_1_0= ruleTypeLiteral ) ) (otherlv_2= With ( (lv_types_3_0= ruleTypeLiteral ) ) )* ) ) )
+            // InternalPcodeParser.g:3037:2: ( () ( ( (lv_types_1_0= ruleTypeLiteral ) ) (otherlv_2= With ( (lv_types_3_0= ruleTypeLiteral ) ) )* ) )
             {
-            // InternalPcodeParser.g:3003:2: ( () ( ( (lv_types_1_0= ruleTypeLiteral ) ) (otherlv_2= With ( (lv_types_3_0= ruleTypeLiteral ) ) )* ) )
-            // InternalPcodeParser.g:3004:3: () ( ( (lv_types_1_0= ruleTypeLiteral ) ) (otherlv_2= With ( (lv_types_3_0= ruleTypeLiteral ) ) )* )
+            // InternalPcodeParser.g:3037:2: ( () ( ( (lv_types_1_0= ruleTypeLiteral ) ) (otherlv_2= With ( (lv_types_3_0= ruleTypeLiteral ) ) )* ) )
+            // InternalPcodeParser.g:3038:3: () ( ( (lv_types_1_0= ruleTypeLiteral ) ) (otherlv_2= With ( (lv_types_3_0= ruleTypeLiteral ) ) )* )
             {
-            // InternalPcodeParser.g:3004:3: ()
-            // InternalPcodeParser.g:3005:4: 
+            // InternalPcodeParser.g:3038:3: ()
+            // InternalPcodeParser.g:3039:4: 
             {
             if ( state.backtracking==0 ) {
 
@@ -9045,14 +9145,14 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalPcodeParser.g:3011:3: ( ( (lv_types_1_0= ruleTypeLiteral ) ) (otherlv_2= With ( (lv_types_3_0= ruleTypeLiteral ) ) )* )
-            // InternalPcodeParser.g:3012:4: ( (lv_types_1_0= ruleTypeLiteral ) ) (otherlv_2= With ( (lv_types_3_0= ruleTypeLiteral ) ) )*
+            // InternalPcodeParser.g:3045:3: ( ( (lv_types_1_0= ruleTypeLiteral ) ) (otherlv_2= With ( (lv_types_3_0= ruleTypeLiteral ) ) )* )
+            // InternalPcodeParser.g:3046:4: ( (lv_types_1_0= ruleTypeLiteral ) ) (otherlv_2= With ( (lv_types_3_0= ruleTypeLiteral ) ) )*
             {
-            // InternalPcodeParser.g:3012:4: ( (lv_types_1_0= ruleTypeLiteral ) )
-            // InternalPcodeParser.g:3013:5: (lv_types_1_0= ruleTypeLiteral )
+            // InternalPcodeParser.g:3046:4: ( (lv_types_1_0= ruleTypeLiteral ) )
+            // InternalPcodeParser.g:3047:5: (lv_types_1_0= ruleTypeLiteral )
             {
-            // InternalPcodeParser.g:3013:5: (lv_types_1_0= ruleTypeLiteral )
-            // InternalPcodeParser.g:3014:6: lv_types_1_0= ruleTypeLiteral
+            // InternalPcodeParser.g:3047:5: (lv_types_1_0= ruleTypeLiteral )
+            // InternalPcodeParser.g:3048:6: lv_types_1_0= ruleTypeLiteral
             {
             if ( state.backtracking==0 ) {
 
@@ -9083,7 +9183,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalPcodeParser.g:3031:4: (otherlv_2= With ( (lv_types_3_0= ruleTypeLiteral ) ) )*
+            // InternalPcodeParser.g:3065:4: (otherlv_2= With ( (lv_types_3_0= ruleTypeLiteral ) ) )*
             loop60:
             do {
                 int alt60=2;
@@ -9102,7 +9202,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
                 switch (alt60) {
             	case 1 :
-            	    // InternalPcodeParser.g:3032:5: otherlv_2= With ( (lv_types_3_0= ruleTypeLiteral ) )
+            	    // InternalPcodeParser.g:3066:5: otherlv_2= With ( (lv_types_3_0= ruleTypeLiteral ) )
             	    {
             	    otherlv_2=(Token)match(input,With,FOLLOW_9); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
@@ -9110,11 +9210,11 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
             	      					newLeafNode(otherlv_2, grammarAccess.getTypeAccess().getWithKeyword_1_1_0());
             	      				
             	    }
-            	    // InternalPcodeParser.g:3036:5: ( (lv_types_3_0= ruleTypeLiteral ) )
-            	    // InternalPcodeParser.g:3037:6: (lv_types_3_0= ruleTypeLiteral )
+            	    // InternalPcodeParser.g:3070:5: ( (lv_types_3_0= ruleTypeLiteral ) )
+            	    // InternalPcodeParser.g:3071:6: (lv_types_3_0= ruleTypeLiteral )
             	    {
-            	    // InternalPcodeParser.g:3037:6: (lv_types_3_0= ruleTypeLiteral )
-            	    // InternalPcodeParser.g:3038:7: lv_types_3_0= ruleTypeLiteral
+            	    // InternalPcodeParser.g:3071:6: (lv_types_3_0= ruleTypeLiteral )
+            	    // InternalPcodeParser.g:3072:7: lv_types_3_0= ruleTypeLiteral
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -9182,7 +9282,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTypeLiteral"
-    // InternalPcodeParser.g:3061:1: entryRuleTypeLiteral returns [String current=null] : iv_ruleTypeLiteral= ruleTypeLiteral EOF ;
+    // InternalPcodeParser.g:3095:1: entryRuleTypeLiteral returns [String current=null] : iv_ruleTypeLiteral= ruleTypeLiteral EOF ;
     public final String entryRuleTypeLiteral() throws RecognitionException {
         String current = null;
 
@@ -9190,8 +9290,8 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalPcodeParser.g:3061:51: (iv_ruleTypeLiteral= ruleTypeLiteral EOF )
-            // InternalPcodeParser.g:3062:2: iv_ruleTypeLiteral= ruleTypeLiteral EOF
+            // InternalPcodeParser.g:3095:51: (iv_ruleTypeLiteral= ruleTypeLiteral EOF )
+            // InternalPcodeParser.g:3096:2: iv_ruleTypeLiteral= ruleTypeLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getTypeLiteralRule()); 
@@ -9222,7 +9322,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTypeLiteral"
-    // InternalPcodeParser.g:3068:1: ruleTypeLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= Text | kw= Number | kw= Decimal | kw= Array_1 | kw= List_1 | kw= Table_1 ) ;
+    // InternalPcodeParser.g:3102:1: ruleTypeLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= Text | kw= Number | kw= Decimal | kw= Array_1 | kw= List_1 | kw= Table_1 ) ;
     public final AntlrDatatypeRuleToken ruleTypeLiteral() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -9232,10 +9332,10 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalPcodeParser.g:3074:2: ( (kw= Text | kw= Number | kw= Decimal | kw= Array_1 | kw= List_1 | kw= Table_1 ) )
-            // InternalPcodeParser.g:3075:2: (kw= Text | kw= Number | kw= Decimal | kw= Array_1 | kw= List_1 | kw= Table_1 )
+            // InternalPcodeParser.g:3108:2: ( (kw= Text | kw= Number | kw= Decimal | kw= Array_1 | kw= List_1 | kw= Table_1 ) )
+            // InternalPcodeParser.g:3109:2: (kw= Text | kw= Number | kw= Decimal | kw= Array_1 | kw= List_1 | kw= Table_1 )
             {
-            // InternalPcodeParser.g:3075:2: (kw= Text | kw= Number | kw= Decimal | kw= Array_1 | kw= List_1 | kw= Table_1 )
+            // InternalPcodeParser.g:3109:2: (kw= Text | kw= Number | kw= Decimal | kw= Array_1 | kw= List_1 | kw= Table_1 )
             int alt61=6;
             switch ( input.LA(1) ) {
             case Text:
@@ -9278,7 +9378,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
             switch (alt61) {
                 case 1 :
-                    // InternalPcodeParser.g:3076:3: kw= Text
+                    // InternalPcodeParser.g:3110:3: kw= Text
                     {
                     kw=(Token)match(input,Text,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -9291,7 +9391,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalPcodeParser.g:3082:3: kw= Number
+                    // InternalPcodeParser.g:3116:3: kw= Number
                     {
                     kw=(Token)match(input,Number,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -9304,7 +9404,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalPcodeParser.g:3088:3: kw= Decimal
+                    // InternalPcodeParser.g:3122:3: kw= Decimal
                     {
                     kw=(Token)match(input,Decimal,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -9317,7 +9417,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalPcodeParser.g:3094:3: kw= Array_1
+                    // InternalPcodeParser.g:3128:3: kw= Array_1
                     {
                     kw=(Token)match(input,Array_1,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -9330,7 +9430,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalPcodeParser.g:3100:3: kw= List_1
+                    // InternalPcodeParser.g:3134:3: kw= List_1
                     {
                     kw=(Token)match(input,List_1,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -9343,7 +9443,7 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalPcodeParser.g:3106:3: kw= Table_1
+                    // InternalPcodeParser.g:3140:3: kw= Table_1
                     {
                     kw=(Token)match(input,Table_1,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -9385,47 +9485,47 @@ public class InternalPcodeParser extends AbstractInternalAntlrParser {
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000012L,0x0000000000002000L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x4000000000000002L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0100000000000000L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0200000012410A00L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x1200000000000000L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000012410A00L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000200L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x00020020412280C0L,0x0000000000002400L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0004140000002000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x2140004200140000L,0x0000000000007848L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x00000A0000000000L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000100000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000004000002L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x2140004200140100L,0x0000000000007848L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0010000000000000L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x2140004208140000L,0x0000000000007848L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000010410000L});
-    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000080000002L});
-    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x1000000000000002L});
-    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x2140004200140000L,0x0000000000007948L});
-    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x1000000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x2140004200140000L,0x0000000000007858L});
-    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x1000000000000000L,0x0000000000000010L});
-    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000008L});
-    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000010L});
-    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000008L});
-    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0001000000000000L});
-    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x21400042001C0000L,0x0000000000007848L});
-    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0088001000000002L,0x0000000000000080L});
-    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000005L});
-    public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0000E08000000002L});
-    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x2800000020100002L});
-    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x8400000000801002L});
-    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0200000000000000L});
-    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x2340004200140000L,0x0000000000007848L});
-    public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000000L,0x0000000000020000L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000022L,0x0000000000020000L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000004L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x1000000000000000L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x2000000092082800L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x2000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000092082800L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000000002L,0x0000000000002000L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0010010209140180L,0x0000000000024000L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0020A00000008000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x1200021000A00000L,0x0000000000078482L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000500000000000L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000800000000L,0x0000000000002000L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000020000002L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x1200021000A00200L,0x0000000000078482L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0080000000000000L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x1200021040A00000L,0x0000000000078482L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000082080000L});
+    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000001L});
+    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x1200021000A00000L,0x0000000000079482L});
+    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001001L});
+    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x1200021000A00000L,0x0000000000078582L});
+    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000101L});
+    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000080L});
+    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0008000000000000L});
+    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x1200021000E00000L,0x0000000000078482L});
+    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0840008000000002L,0x0000000000000800L});
+    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0000000000000412L,0x0000000000000050L});
+    public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0007040000000002L});
+    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x8000000100800002L,0x0000000000000002L});
+    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x4400000004014002L,0x0000000000000008L});
+    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x2000000000000000L});
+    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x3200021000A00000L,0x0000000000078482L});
+    public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0000002000000002L});
 
 }

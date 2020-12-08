@@ -147,7 +147,7 @@ AndOperator:
 	
 Comparison returns Expression:
     Equals
-    (({Comparison.left=current} op=('<' | '>')) right=Equals)*;
+    (({Comparison.left=current} op=('<'|'lessThen'| '>'|'biggerThen')) right=Equals)*;
 
 Equals returns Expression:
     Addition
@@ -172,7 +172,7 @@ TimesOperator:
 	('*'|'times');
 	
 DivideOperator:
-	('/'|'divide');
+	('/'|'divide'|'%'|'modulo');
 Prefixed returns Expression:
     {BooleanNegation} => "!" expression=Atomic | /* right associativity */
     {ArithmeticSigned} => MinusOperator expression=Atomic | /* right associativity */
