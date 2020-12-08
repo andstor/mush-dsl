@@ -2786,7 +2786,7 @@ rule__IfExpression__Group_7__0__Impl
 :
 (
 	{ before(grammarAccess.getIfExpressionAccess().getElseKeyword_7_0()); }
-	(Else)
+	Else
 	{ after(grammarAccess.getIfExpressionAccess().getElseKeyword_7_0()); }
 )
 ;

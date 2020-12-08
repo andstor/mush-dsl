@@ -324,12 +324,12 @@ public class PcodeGenerator extends AbstractGenerator {
       if (_not) {
         _builder.append(" else {");
         _builder.newLineIfNotEmpty();
-        _builder.append("                                                    ");
+        _builder.append("     ");
         {
           EList<Feature> _otherwise = e.getOtherwise();
-          for(final Feature f_1 : _otherwise) {
-            Object _generateFeature_1 = this.generateFeature(f_1);
-            _builder.append(_generateFeature_1, "                                                    ");
+          for(final Feature f2 : _otherwise) {
+            Object _generateFeature_1 = this.generateFeature(f2);
+            _builder.append(_generateFeature_1, "     ");
           }
         }
         _builder.newLineIfNotEmpty();
@@ -402,6 +402,7 @@ public class PcodeGenerator extends AbstractGenerator {
     String _string = string;
     String _type = e.getType();
     string = (_string + _type);
+    string.replace("stop", "return");
     Expression _value = e.getValue();
     boolean _tripleNotEquals = (_value != null);
     if (_tripleNotEquals) {

@@ -785,13 +785,10 @@ ruleIfExpression returns [EObject current=null]
 			newLeafNode(this_END_6, grammarAccess.getIfExpressionAccess().getENDTerminalRuleCall_6());
 		}
 		(
-			(
-				(Else)=>
-				otherlv_7=Else
-				{
-					newLeafNode(otherlv_7, grammarAccess.getIfExpressionAccess().getElseKeyword_7_0());
-				}
-			)
+			otherlv_7=Else
+			{
+				newLeafNode(otherlv_7, grammarAccess.getIfExpressionAccess().getElseKeyword_7_0());
+			}
 			this_BEGIN_8=RULE_BEGIN
 			{
 				newLeafNode(this_BEGIN_8, grammarAccess.getIfExpressionAccess().getBEGINTerminalRuleCall_7_1());

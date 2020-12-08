@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<templates>
+    <template autoinsert="false" context="tdt4250.pseudocode.Pcode.ForExpression" deleted="false" description="for loop with from - to  range" enabled="true" name="for" id="tdt4250.pseudocode.xtext.Pcode.For">for ${value} to ${value}
+	${cursor}</template>
+    <template autoinsert="false" context="tdt4250.pseudocode.Pcode.Function" deleted="false" description="function" enabled="true" name="function" id="tdt4250.pseudocode.xtext.Pcode.Function">${name}(${params})
+	</template>
+    <template autoinsert="false" context="tdt4250.pseudocode.Pcode.IfExpression" deleted="false" description="if statement with condition" enabled="true" name="if" id="tdt4250.pseudocode.xtext.Pcode.If">if ${condition}
+	${line_selection}${cursor}</template>
+    <template autoinsert="false" context="tdt4250.pseudocode.Pcode.IfExpression" deleted="false" description="if-else statement with condition" enabled="true" name="ifelse" id="tdt4250.pseudocode.xtext.Pcode.Ifelse">if ${condition}
+	${line_selection}${cursor}
+else
+	</template>
+    <template autoinsert="false" context="tdt4250.pseudocode.Pcode.LiteralExpression" deleted="false" description="list" enabled="true" name="list literal" id="tdt4250.pseudocode.xtext.Pcode.ListLiteral">[${values}]</template>
+    <template autoinsert="false" context="tdt4250.pseudocode.Pcode.LiteralExpression" deleted="false" description="" enabled="true" name="set literal" id="tdt4250.pseudocode.xtext.Pcode.SetLiteral">{${values}}</template>
+    <template autoinsert="false" context="tdt4250.pseudocode.Pcode.Variable" deleted="false" description="variable" enabled="true" name="variable" id="tdt4250.pseudocode.xtext.Pcode.Variable">${name} = ${cursor}</template>
+    <template autoinsert="false" context="tdt4250.pseudocode.Pcode.Feature" deleted="false" description="while loop with condition" enabled="true" name="while" id="tdt4250.pseudocode.xtext.Pcode.While">while ${condition}
+	${line_selection}${cursor}</template>
+</templates>

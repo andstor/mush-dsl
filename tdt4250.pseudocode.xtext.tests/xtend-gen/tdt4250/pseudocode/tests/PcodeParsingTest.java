@@ -46,22 +46,27 @@ public class PcodeParsingTest {
     @Override
     public String apply() {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("package no.test.pseudo");
-      _builder.newLine();
-      _builder.append("PARTITION2(number p, number r)");
-      _builder.newLine();
-      _builder.append("executable PARTITION(list with list with text p, number r)");
+      _builder.append("executable PARTITION(list with text p, number r, text lol)");
       _builder.newLine();
       _builder.append("    ");
       _builder.newLine();
       _builder.append("    ");
-      _builder.append("ww=PARTITION2(p,r)");
+      _builder.append("for interval 1 to r");
+      _builder.newLine();
+      _builder.append("        ");
+      _builder.append("if 2 <= 1");
+      _builder.newLine();
+      _builder.append("            ");
+      _builder.append("kk=0");
+      _builder.newLine();
+      _builder.append("        ");
+      _builder.append("else");
+      _builder.newLine();
+      _builder.append("            ");
+      _builder.append("o=1");
       _builder.newLine();
       _builder.append("    ");
-      _builder.append("lol=\"lol \\n\"");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("return ww");
+      _builder.append("return 2");
       _builder.newLine();
       return _builder.toString();
     }

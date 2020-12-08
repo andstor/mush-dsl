@@ -36,10 +36,7 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final RuleCall cFunctionsFunctionParserRuleCall_2_0 = (RuleCall)cFunctionsAssignment_2.eContents().get(0);
 		
 		////generate pseudocode "http://www.pseudocode.tdt4250/xtext/Pcode"
-		///* Da burde det meste fungere ;) 
-		// * Da er det bare å gå i gang med å generere kode ;)
-		// * Dette gjøres i tdt4250.pseudocode.generator pakken!
-		// */ Model:
+		//Model:
 		//	{Model} ('package' package=QualifiedName)?
 		//	functions+=Function*;
 		@Override public ParserRule getRule() { return rule; }
@@ -417,14 +414,14 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//	{IfExpression} name='if' condition=LiteralExpression 'then'?
 		//	BEGIN
 		//	then+=Feature*
-		//	END (=> 'else'
+		//	END ('else'
 		//	BEGIN
 		//	otherwise+=Feature*
 		//	END)?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{IfExpression} name='if' condition=LiteralExpression 'then'? BEGIN then+=Feature* END (=> 'else' BEGIN
-		//otherwise+=Feature* END)?
+		//{IfExpression} name='if' condition=LiteralExpression 'then'? BEGIN then+=Feature* END ('else' BEGIN otherwise+=Feature*
+		//END)?
 		public Group getGroup() { return cGroup; }
 		
 		//{IfExpression}
@@ -457,10 +454,10 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//END
 		public RuleCall getENDTerminalRuleCall_6() { return cENDTerminalRuleCall_6; }
 		
-		//(=> 'else' BEGIN otherwise+=Feature* END)?
+		//('else' BEGIN otherwise+=Feature* END)?
 		public Group getGroup_7() { return cGroup_7; }
 		
-		//=> 'else'
+		//'else'
 		public Keyword getElseKeyword_7_0() { return cElseKeyword_7_0; }
 		
 		//BEGIN
@@ -2016,10 +2013,7 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 
 	
 	////generate pseudocode "http://www.pseudocode.tdt4250/xtext/Pcode"
-	///* Da burde det meste fungere ;) 
-	// * Da er det bare å gå i gang med å generere kode ;)
-	// * Dette gjøres i tdt4250.pseudocode.generator pakken!
-	// */ Model:
+	//Model:
 	//	{Model} ('package' package=QualifiedName)?
 	//	functions+=Function*;
 	public ModelElements getModelAccess() {
@@ -2111,7 +2105,7 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	//	{IfExpression} name='if' condition=LiteralExpression 'then'?
 	//	BEGIN
 	//	then+=Feature*
-	//	END (=> 'else'
+	//	END ('else'
 	//	BEGIN
 	//	otherwise+=Feature*
 	//	END)?;

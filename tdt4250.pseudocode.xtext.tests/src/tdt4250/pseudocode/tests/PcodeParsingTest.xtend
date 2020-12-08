@@ -26,14 +26,15 @@ class PcodeParsingTest {
 
     @Inject extension CompilationTestHelper
     val code = '''
-        package no.test.pseudo
-        PARTITION2(number p, number r)
-        executable PARTITION(list with list with text p, number r)
+        executable PARTITION(list with text p, number r, text lol)
             
-            ww=PARTITION2(p,r)
-            lol="lol \n"
-            return ww
-    '''
+            for interval 1 to r
+                if 2 <= 1
+                    kk=0
+                else
+                    o=1
+            return 2
+        '''
 
     /*val code = '''
      * 	ANNABELLE(nUMBeR alder, Number hoyde)

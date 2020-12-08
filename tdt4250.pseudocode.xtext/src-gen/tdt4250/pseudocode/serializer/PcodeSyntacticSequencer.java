@@ -69,8 +69,7 @@ public class PcodeSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * MinusOperator:
-	 *     ('-' | 'minus')
-	 * ;
+	 *     ('-' | 'minus');
 	 */
 	protected String getMinusOperatorToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
@@ -80,8 +79,7 @@ public class PcodeSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * PlusOperator:
-	 * 	('+' | 'plus')
-	 * ;
+	 *     ('+' | 'plus');
 	 */
 	protected String getPlusOperatorToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)

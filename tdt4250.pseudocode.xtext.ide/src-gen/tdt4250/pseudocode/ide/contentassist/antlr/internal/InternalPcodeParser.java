@@ -3516,11 +3516,6 @@ public class InternalPcodeParser extends AbstractInternalContentAssistParser {
             case RULE_ID:
                 {
                 switch ( input.LA(2) ) {
-                case Add:
-                    {
-                    alt3=3;
-                    }
-                    break;
                 case Remove:
                     {
                     alt3=4;
@@ -3535,6 +3530,11 @@ public class InternalPcodeParser extends AbstractInternalContentAssistParser {
                 case EqualsSign:
                     {
                     alt3=1;
+                    }
+                    break;
+                case Add:
+                    {
+                    alt3=3;
                     }
                     break;
                 default:
@@ -4274,11 +4274,11 @@ public class InternalPcodeParser extends AbstractInternalContentAssistParser {
                 {
                 int LA9_2 = input.LA(2);
 
-                if ( (LA9_2==EOF||(LA9_2>=Continue && LA9_2<=Exchange)||LA9_2==Return||LA9_2==Break||(LA9_2>=Minus && LA9_2<=Print)||LA9_2==While||(LA9_2>=Plus && LA9_2<=Stop)||LA9_2==Then||LA9_2==With||LA9_2==For||(LA9_2>=ExclamationMarkEqualsSign && LA9_2<=AmpersandAmpersand)||(LA9_2>=LessThanSignEqualsSign && LA9_2<=GreaterThanSignEqualsSign)||LA9_2==If||LA9_2==VerticalLineVerticalLine||(LA9_2>=LeftParenthesis && LA9_2<=HyphenMinus)||(LA9_2>=Solidus && LA9_2<=LessThanSign)||LA9_2==GreaterThanSign||LA9_2==RightSquareBracket||(LA9_2>=RightCurlyBracket && LA9_2<=RULE_END)||LA9_2==RULE_ID) ) {
-                    alt9=3;
-                }
-                else if ( (LA9_2==At||LA9_2==LeftSquareBracket) ) {
+                if ( (LA9_2==At||LA9_2==LeftSquareBracket) ) {
                     alt9=2;
+                }
+                else if ( (LA9_2==EOF||(LA9_2>=Continue && LA9_2<=Exchange)||LA9_2==Return||LA9_2==Break||(LA9_2>=Minus && LA9_2<=Print)||LA9_2==While||(LA9_2>=Plus && LA9_2<=Stop)||LA9_2==Then||LA9_2==With||LA9_2==For||(LA9_2>=ExclamationMarkEqualsSign && LA9_2<=AmpersandAmpersand)||(LA9_2>=LessThanSignEqualsSign && LA9_2<=GreaterThanSignEqualsSign)||LA9_2==If||LA9_2==VerticalLineVerticalLine||(LA9_2>=LeftParenthesis && LA9_2<=HyphenMinus)||(LA9_2>=Solidus && LA9_2<=LessThanSign)||LA9_2==GreaterThanSign||LA9_2==RightSquareBracket||(LA9_2>=RightCurlyBracket && LA9_2<=RULE_END)||LA9_2==RULE_ID) ) {
+                    alt9=3;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return ;}
@@ -9723,28 +9723,22 @@ public class InternalPcodeParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__IfExpression__Group_7__0__Impl"
-    // InternalPcodeParser.g:2782:1: rule__IfExpression__Group_7__0__Impl : ( ( Else ) ) ;
+    // InternalPcodeParser.g:2782:1: rule__IfExpression__Group_7__0__Impl : ( Else ) ;
     public final void rule__IfExpression__Group_7__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPcodeParser.g:2786:1: ( ( ( Else ) ) )
-            // InternalPcodeParser.g:2787:1: ( ( Else ) )
+            // InternalPcodeParser.g:2786:1: ( ( Else ) )
+            // InternalPcodeParser.g:2787:1: ( Else )
             {
-            // InternalPcodeParser.g:2787:1: ( ( Else ) )
-            // InternalPcodeParser.g:2788:2: ( Else )
+            // InternalPcodeParser.g:2787:1: ( Else )
+            // InternalPcodeParser.g:2788:2: Else
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getIfExpressionAccess().getElseKeyword_7_0()); 
             }
-            // InternalPcodeParser.g:2789:2: ( Else )
-            // InternalPcodeParser.g:2789:3: Else
-            {
             match(input,Else,FOLLOW_2); if (state.failed) return ;
-
-            }
-
             if ( state.backtracking==0 ) {
                after(grammarAccess.getIfExpressionAccess().getElseKeyword_7_0()); 
             }

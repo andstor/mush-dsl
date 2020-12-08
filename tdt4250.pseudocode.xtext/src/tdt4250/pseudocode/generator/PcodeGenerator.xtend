@@ -136,8 +136,6 @@ class PcodeGenerator extends AbstractGenerator {
      * - Skifte navn på ifExpression, for osv til ifStatement
      * - keyword: times
      */
-     
-     
     /**
      * Da har jeg  fikset litt til :)
      * 
@@ -292,7 +290,7 @@ class PcodeGenerator extends AbstractGenerator {
                 «f.generateFeature»
             «ENDFOR»
         }«IF !e.otherwise.isEmpty» else {
-                                                            «FOR f : e.otherwise»«f.generateFeature»«ENDFOR»
+             «FOR f2 : e.otherwise»«f2.generateFeature»«ENDFOR»
         }«ENDIF»
     '''
 
@@ -322,6 +320,8 @@ class PcodeGenerator extends AbstractGenerator {
     def dispatch generateStatement(Stop e) {
         var string = ''
         string += e.type
+        string.replace('stop', 'return')
+
         if (e.value !== null) {
             string += ' ' + e.value.LiteralExpression + ';'
         }
