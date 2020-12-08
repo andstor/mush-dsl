@@ -1,0 +1,19 @@
+package no.sort
+
+Quicksort(list with number t,  number left, number right)
+	i equals left
+	j equals right
+	pivot = t[left+((right-left)/2)]
+	while i<=j
+		while (t at i) < pivot
+			i++
+		while (t at j) > pivot
+			j--
+		if i <= j
+			exchange t at i with t at j
+			i++
+			j--
+		if left < j
+			Quicksort(t,left,j)
+		if i < right
+			Quicksort(t,i,right)

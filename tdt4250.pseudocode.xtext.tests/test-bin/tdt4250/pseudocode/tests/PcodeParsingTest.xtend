@@ -26,14 +26,10 @@ class PcodeParsingTest {
 
     @Inject extension CompilationTestHelper
     val code = '''
-        executable PARTITION(list with text p, number r, text lol)
-            
-            for interval 1 to r
-                if 2 <= 1
-                    kk=0
-                else
-                    o=1
-            return 2
+        
+        
+        Quicksort(list with list with number t, number left, number right)
+            i = t[0]
         '''
 
     /*val code = '''

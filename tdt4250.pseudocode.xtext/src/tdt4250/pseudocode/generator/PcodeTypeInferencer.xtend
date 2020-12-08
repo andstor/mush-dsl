@@ -85,6 +85,15 @@ class PcodeTypeInferencer {
         }
     }
 
+    def String unbox(String type) {
+        switch type.toLowerCase {
+            case 'boolean': return 'boolean'
+            case 'integer': return 'int'
+            case 'double': return 'double'
+            default: return type
+        }
+    }
+
     def dispatch String infer(SetLitteral e) {
         return 'Set<' + autobox(toJvmType(infer(e.elements.get(0)).toString)) + '>' // Handle if list is empty
     }
@@ -95,6 +104,13 @@ class PcodeTypeInferencer {
 
     def dispatch String infer(CollectionAccessor e) {
         var Collection v = e.collection.value as Collection
+        var variable = e.collection as Variable
+
+        if (variable.type !== null) {
+            var varType = variable.type as Type
+            return unbox(toJvmType(varType.types.get(e.accessor.length)))
+        }
+
         for (var i = 0; i <= e.accessor.length; i++) {
             var element = v.elements.get(0)
             if (element instanceof Collection) {
@@ -126,7 +142,7 @@ class PcodeTypeInferencer {
         if (leftType !== rightType && (leftType == 'String' || rightType == 'String')) {
             return 'String'
         }
-        
+
         if (leftType == 'double' || rightType == 'double') {
             return 'double'
         }
@@ -136,7 +152,7 @@ class PcodeTypeInferencer {
     def dispatch String infer(Minus e) {
         var leftType = infer(e.left)
         var rightType = infer(e.right)
-        
+
         if (leftType == 'double' || rightType == 'double') {
             return 'double'
         }
@@ -156,7 +172,7 @@ class PcodeTypeInferencer {
     }
 
     def dispatch String infer(NumberLiteral e) { return 'int' }
-    
+
     def dispatch String infer(DoubleLiteral e) { return 'double' }
 
     def dispatch String infer(StringLiteral e) { return 'String' }

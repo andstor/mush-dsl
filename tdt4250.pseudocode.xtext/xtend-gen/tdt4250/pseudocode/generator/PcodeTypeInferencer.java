@@ -117,6 +117,24 @@ public class PcodeTypeInferencer {
     }
   }
   
+  public String unbox(final String type) {
+    String _lowerCase = type.toLowerCase();
+    if (_lowerCase != null) {
+      switch (_lowerCase) {
+        case "boolean":
+          return "boolean";
+        case "integer":
+          return "int";
+        case "double":
+          return "double";
+        default:
+          return type;
+      }
+    } else {
+      return type;
+    }
+  }
+  
   protected String _infer(final SetLitteral e) {
     String _autobox = this.autobox(this.toJvmType(this.infer(e.getElements().get(0)).toString()));
     String _plus = ("Set<" + _autobox);
@@ -132,6 +150,15 @@ public class PcodeTypeInferencer {
   protected String _infer(final CollectionAccessor e) {
     Expression _value = e.getCollection().getValue();
     Collection v = ((Collection) _value);
+    Variable _collection = e.getCollection();
+    Variable variable = ((Variable) _collection);
+    Type _type = variable.getType();
+    boolean _tripleNotEquals = (_type != null);
+    if (_tripleNotEquals) {
+      Type _type_1 = variable.getType();
+      Type varType = ((Type) _type_1);
+      return this.unbox(this.toJvmType(varType.getTypes().get(((Object[])Conversions.unwrapArray(e.getAccessor(), Object.class)).length)));
+    }
     for (int i = 0; (i <= ((Object[])Conversions.unwrapArray(e.getAccessor(), Object.class)).length); i++) {
       {
         Expression element = v.getElements().get(0);

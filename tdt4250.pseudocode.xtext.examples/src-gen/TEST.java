@@ -1,11 +1,13 @@
 
 import java.util.List;
 import java.util.Arrays;
+import no.sort.Quicksort;
 import java.util.ArrayList;
 
-public class asd {
+public class test {
     public static void run() {
-        System.out.println(new ArrayList<List<Integer>>(Arrays.asList(new ArrayList<Integer>(Arrays.asList(2)),new ArrayList<Integer>(Arrays.asList(3)))));
+        List<Integer> x = new ArrayList<Integer>(Arrays.asList(4,3,6,7,4,2));
+        Quicksort.run(x,0,5);System.out.println(x);
     }
     
     public static void main(final String[] args) {

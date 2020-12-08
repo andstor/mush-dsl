@@ -271,13 +271,21 @@ public class PcodeGenerator extends AbstractGenerator {
       {
         final Variable variable = ((Variable) v);
         final String type = this.typeInferencer.infer(variable.getType());
-        String _parameters = parameters;
         String _jvmType = this.typeInferencer.toJvmType(type);
         String _plus = (_jvmType + " ");
         String _name = variable.getName();
         String _plus_1 = (_plus + _name);
-        String _plus_2 = (_plus_1 + ", ");
-        parameters = (_parameters + _plus_2);
+        String param = (_plus_1 + ", ");
+        String _parameters = parameters;
+        parameters = (_parameters + param);
+        boolean _contains = param.contains("List");
+        if (_contains) {
+          this.importTypes.add("java.util.List");
+        }
+        boolean _contains_1 = param.contains("Set");
+        if (_contains_1) {
+          this.importTypes.add("java.util.Set");
+        }
         this.varList.add(variable.getName());
       }
     }
@@ -324,12 +332,12 @@ public class PcodeGenerator extends AbstractGenerator {
       if (_not) {
         _builder.append(" else {");
         _builder.newLineIfNotEmpty();
-        _builder.append("     ");
+        _builder.append("             ");
         {
           EList<Feature> _otherwise = e.getOtherwise();
           for(final Feature f2 : _otherwise) {
             Object _generateFeature_1 = this.generateFeature(f2);
-            _builder.append(_generateFeature_1, "     ");
+            _builder.append(_generateFeature_1, "             ");
           }
         }
         _builder.newLineIfNotEmpty();
@@ -444,18 +452,19 @@ public class PcodeGenerator extends AbstractGenerator {
         String _name_1 = e.getName();
         String _op = e.getOp();
         String _plus_5 = (_name_1 + _op);
-        string = (_string_1 + _plus_5);
+        String _plus_6 = (_plus_5 + ";");
+        string = (_string_1 + _plus_6);
       } else {
         String _string_2 = string;
         String _name_2 = e.getName();
-        String _plus_6 = (_name_2 + " ");
+        String _plus_7 = (_name_2 + " ");
         String _op_1 = e.getOp();
-        String _plus_7 = (_plus_6 + _op_1);
-        String _plus_8 = (_plus_7 + " ");
+        String _plus_8 = (_plus_7 + _op_1);
+        String _plus_9 = (_plus_8 + " ");
         Object _LiteralExpression_1 = this.LiteralExpression(e.getValue());
-        String _plus_9 = (_plus_8 + _LiteralExpression_1);
-        String _plus_10 = (_plus_9 + ";");
-        string = (_string_2 + _plus_10);
+        String _plus_10 = (_plus_9 + _LiteralExpression_1);
+        String _plus_11 = (_plus_10 + ";");
+        string = (_string_2 + _plus_11);
       }
     }
     return (string + "\n");
@@ -502,6 +511,12 @@ public class PcodeGenerator extends AbstractGenerator {
     _builder.append(_LiteralExpression);
     _builder.append(");");
     return _builder;
+  }
+  
+  protected CharSequence _generateExpression(final FunctionCall e) {
+    Object _LiteralExpression = this.LiteralExpression(e);
+    String _plus = (_LiteralExpression + ";");
+    return (_plus + "\n");
   }
   
   protected CharSequence _generateExpression(final ValueExchange e) {
@@ -612,6 +627,8 @@ public class PcodeGenerator extends AbstractGenerator {
     String listType = this.typeInferencer.autobox(this.typeInferencer.infer(e.getElements().get(0)).toString());
     String _string = string;
     string = (_string + (("new ArrayList<" + listType) + ">"));
+    this.importTypes.add("java.util.ArrayList");
+    this.importTypes.add("java.util.List");
     boolean _isEmpty = e.getElements().isEmpty();
     if (_isEmpty) {
       String _string_1 = string;
@@ -619,6 +636,7 @@ public class PcodeGenerator extends AbstractGenerator {
     } else {
       String _string_2 = string;
       string = (_string_2 + "(Arrays.asList(");
+      this.importTypes.add("java.util.Arrays");
       StringJoiner joiner = new StringJoiner(",");
       EList<Expression> _elements = e.getElements();
       for (final Expression element : _elements) {
@@ -851,6 +869,8 @@ public class PcodeGenerator extends AbstractGenerator {
       return _generateExpression((CollectionAdd)e);
     } else if (e instanceof CollectionRemove) {
       return _generateExpression((CollectionRemove)e);
+    } else if (e instanceof FunctionCall) {
+      return _generateExpression((FunctionCall)e);
     } else if (e instanceof Print) {
       return _generateExpression((Print)e);
     } else if (e instanceof ValueExchange) {

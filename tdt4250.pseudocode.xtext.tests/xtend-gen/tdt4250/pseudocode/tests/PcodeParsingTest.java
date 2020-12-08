@@ -46,19 +46,12 @@ public class PcodeParsingTest {
     @Override
     public String apply() {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("executable PARTITION()");
       _builder.newLine();
-      _builder.append("\t");
-      _builder.append("n = 2 divide 3");
       _builder.newLine();
-      _builder.append("\t");
-      _builder.append("n = 2 * 2");
+      _builder.append("Quicksort(list with list with number t, number left, number right)");
       _builder.newLine();
-      _builder.append("\t");
-      _builder.append("if 2 notEqual 1");
-      _builder.newLine();
-      _builder.append("    \t");
-      _builder.append("kk=0");
+      _builder.append("    ");
+      _builder.append("i = t[0]");
       _builder.newLine();
       return _builder.toString();
     }

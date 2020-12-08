@@ -1,3 +1,4 @@
-package koko.oklol
-Test()
-	
+executable test()
+	x=[4,3,6,7,4,2]
+	Quicksort(x, 0, 5)
+	print line x

@@ -26,11 +26,10 @@ class PcodeParsingTest {
 
     @Inject extension CompilationTestHelper
     val code = '''
-        executable PARTITION()
-        	n = 2 divide 3
-        	n = 2 * 2
-        	if 2 notEqual 1
-            	kk=0
+        
+        
+        Quicksort(list with list with number t, number left, number right)
+            i = t[0]
         '''
 
     /*val code = '''

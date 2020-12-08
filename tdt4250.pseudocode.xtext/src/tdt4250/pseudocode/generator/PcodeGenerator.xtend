@@ -271,7 +271,10 @@ class PcodeGenerator extends AbstractGenerator {
             val variable = v as Variable
             val type = typeInferencer.infer(variable.type)
             // if( !varList.contains(variable.name)){ parameters += typeInferencer.toJvmType(type.name) + " " + variable.name + ", "}
-            parameters += typeInferencer.toJvmType(type) + " " + variable.name + ", "
+            var param = typeInferencer.toJvmType(type) + " " + variable.name + ", "
+            parameters += param
+            if(param.contains('List')) importTypes.add('java.util.List')
+            if(param.contains('Set')) importTypes.add('java.util.Set')
             varList.add(variable.name)
         }
         parameters = parameters.substring(0, parameters.length - 2)
@@ -290,7 +293,7 @@ class PcodeGenerator extends AbstractGenerator {
                 «f.generateFeature»
             «ENDFOR»
         }«IF !e.otherwise.isEmpty» else {
-             «FOR f2 : e.otherwise»«f2.generateFeature»«ENDFOR»
+                     «FOR f2 : e.otherwise»«f2.generateFeature»«ENDFOR»
         }«ENDIF»
     '''
 
@@ -341,7 +344,7 @@ class PcodeGenerator extends AbstractGenerator {
             varList.add(e.name)
         } else {
             if (e.op.equals('++') || e.op.equals('--')) {
-                string += e.name + e.op
+                string += e.name + e.op + ';'
             } else {
                 string += e.name + ' ' + e.op + ' ' + e.value.LiteralExpression + ';'
             }
@@ -367,6 +370,10 @@ class PcodeGenerator extends AbstractGenerator {
 
     def dispatch generateExpression(CollectionRemove e) '''
     «e.collection.name».remove(«e.value.LiteralExpression»);'''
+
+    def dispatch generateExpression(FunctionCall e) {
+        return e.LiteralExpression + ';' + '\n'
+    }
 
     def dispatch generateExpression(ValueExchange e) {
         var variable1 = uniqueVariable();
@@ -445,10 +452,13 @@ class PcodeGenerator extends AbstractGenerator {
         var string = ''
         var listType = typeInferencer.autobox(typeInferencer.infer(e.elements.get(0)).toString)
         string += 'new ArrayList<' + listType + '>'
+        importTypes.add('java.util.ArrayList')
+        importTypes.add('java.util.List')
         if (e.elements.isEmpty) {
             string += '()'
         } else {
             string += '(Arrays.asList('
+            importTypes.add('java.util.Arrays')
             var joiner = new StringJoiner(",");
             for (element : e.elements) {
                 joiner.add(element.LiteralExpression.toString)
@@ -466,17 +476,19 @@ class PcodeGenerator extends AbstractGenerator {
         }
         return string
     }
+
+    def checkAndORType(AndOrExpression e) {
+        if (e.op.equals('or'))
+            return '|'
+        else if(e.op.equals('and')) return '&' else return e.op
+    }
+
+    def checkMultiOrDiv(MultiOrDiv e) {
+        if (e.op.equals('times'))
+            return '*'
+        else if(e.op.equals('divide')) return '/' else return e.op
+    }
     
-    def checkAndORType(AndOrExpression e){
-    	if(e.op.equals('or')) return '|'
-    	else if(e.op.equals('and')) return '&'
-    	else return e.op
-    }
-    def checkMultiOrDiv(MultiOrDiv e){
-    	if(e.op.equals('times')) return '*'
-    	else if(e.op.equals('divide')) return '/'
-    	else return e.op
-    }
 
     def dispatch LiteralExpression(AndOrExpression e) '''
     «e.left.LiteralExpression»«checkAndORType(e)»«e.right.LiteralExpression»'''

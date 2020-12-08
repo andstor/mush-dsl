@@ -32,6 +32,7 @@ Statement:
 
 Expression returns Expression:
     Variable |
+    FunctionCall |
     Print |
     CollectionAdd |
     CollectionRemove |
