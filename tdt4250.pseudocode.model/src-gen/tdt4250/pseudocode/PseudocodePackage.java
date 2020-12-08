@@ -4,7 +4,6 @@ package tdt4250.pseudocode;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -1614,16 +1613,6 @@ public interface PseudocodePackage extends EPackage {
 	int DOUBLE_LITERAL_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link tdt4250.pseudocode.TypeEnum <em>Type Enum</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tdt4250.pseudocode.TypeEnum
-	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getTypeEnum()
-	 * @generated
-	 */
-	int TYPE_ENUM = 35;
-
-	/**
 	 * Returns the meta object for class '{@link tdt4250.pseudocode.Model <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2624,16 +2613,6 @@ public interface PseudocodePackage extends EPackage {
 	EAttribute getDoubleLiteral_Value();
 
 	/**
-	 * Returns the meta object for enum '{@link tdt4250.pseudocode.TypeEnum <em>Type Enum</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Type Enum</em>'.
-	 * @see tdt4250.pseudocode.TypeEnum
-	 * @generated
-	 */
-	EEnum getTypeEnum();
-
-	/**
 	 * Returns the meta object for class '{@link tdt4250.pseudocode.Collection <em>Collection</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3496,16 +3475,6 @@ public interface PseudocodePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DOUBLE_LITERAL__VALUE = eINSTANCE.getDoubleLiteral_Value();
-
-		/**
-		 * The meta object literal for the '{@link tdt4250.pseudocode.TypeEnum <em>Type Enum</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see tdt4250.pseudocode.TypeEnum
-		 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getTypeEnum()
-		 * @generated
-		 */
-		EEnum TYPE_ENUM = eINSTANCE.getTypeEnum();
 
 		/**
 		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.CollectionImpl <em>Collection</em>}' class.

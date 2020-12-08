@@ -9,9 +9,6 @@
   <foreignModel>pseudocode.ecore</foreignModel>
   <genPackages prefix="Pseudocode" basePackage="tdt4250" resource="XMI" disposableProviderFactory="true"
       ecorePackage="pseudocode.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="pseudocode.ecore#//TypeEnum">
-      <genEnumLiterals ecoreEnumLiteral="pseudocode.ecore#//TypeEnum/Text"/>
-    </genEnums>
     <genClasses ecoreClass="pseudocode.ecore#//Model">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//Model/functions"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//Model/package"/>

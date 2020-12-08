@@ -4,7 +4,6 @@ package tdt4250.pseudocode.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -43,7 +42,6 @@ import tdt4250.pseudocode.Statement;
 import tdt4250.pseudocode.Stop;
 import tdt4250.pseudocode.StringLiteral;
 import tdt4250.pseudocode.Type;
-import tdt4250.pseudocode.TypeEnum;
 import tdt4250.pseudocode.ValueExchange;
 import tdt4250.pseudocode.Variable;
 import tdt4250.pseudocode.VariableReference;
@@ -293,13 +291,6 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	private EClass doubleLiteralEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum typeEnumEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1318,16 +1309,6 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
-	public EEnum getTypeEnum() {
-		return typeEnumEEnum;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getCollection() {
 		return collectionEClass;
 	}
@@ -1502,9 +1483,6 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 
 		doubleLiteralEClass = createEClass(DOUBLE_LITERAL);
 		createEAttribute(doubleLiteralEClass, DOUBLE_LITERAL__VALUE);
-
-		// Create enums
-		typeEnumEEnum = createEEnum(TYPE_ENUM);
 	}
 
 	/**
@@ -1829,10 +1807,6 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 				IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDoubleLiteral_Value(), ecorePackage.getEString(), "value", null, 0, 1, DoubleLiteral.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		// Initialize enums and add enum literals
-		initEEnum(typeEnumEEnum, TypeEnum.class, "TypeEnum");
-		addEEnumLiteral(typeEnumEEnum, TypeEnum.TEXT);
 
 		// Create resource
 		createResource(eNS_URI);
