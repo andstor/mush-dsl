@@ -322,11 +322,12 @@ class PcodeGenerator extends AbstractGenerator {
 
     def dispatch generateStatement(Stop e) {
         var string = ''
-        string += e.type
-        string.replace('stop', 'return')
+        string += e.type.replace('stop', 'return')
 
         if (e.value !== null) {
             string += ' ' + e.value.LiteralExpression + ';'
+        }else{
+        	string += ';'
         }
         return string
 

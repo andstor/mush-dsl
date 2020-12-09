@@ -1,4 +1,12 @@
 executable Matrix()
-	m1 = [[1,3],[3,1]]
-	m2 = [[2,2],[2,2]]
-	print m1[0]
+	i = [1,2,3,4]
+	i add 3
+	i remove 1
+	print i
+
+	
+	
+	
+
+	
+	

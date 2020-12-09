@@ -75,7 +75,7 @@ WhileStatement returns WhileStatement:
 
 Stop returns Stop:
     {Stop}
-    (type=('stop' | 'break' | 'continue') | (type='return' value=LiteralExpression));
+    (type=('stop' | 'break' | 'continue') | (type='return' (value=LiteralExpression)));
 
 Print:
     name='print' (newline?='line')? value=LiteralExpression;
@@ -134,6 +134,7 @@ CollectionAccessor returns Expression:
     // used instead of list[i]. Eks. list[i][j]  equals list at i,j 
     collection=[Variable] 'at' ('index')? accessor+=LiteralExpression (',' accessor+=LiteralExpression)*);
 
+
     //----- Logic and Math------
 BooleanExpression returns Expression:
     Comparison
@@ -173,6 +174,7 @@ TimesOperator:
 	
 DivideOperator:
 	('/'|'divide'|'%'|'modulo');
+	
 Prefixed returns Expression:
     {BooleanNegation} => "!" expression=Atomic | /* right associativity */
     {ArithmeticSigned} => MinusOperator expression=Atomic | /* right associativity */

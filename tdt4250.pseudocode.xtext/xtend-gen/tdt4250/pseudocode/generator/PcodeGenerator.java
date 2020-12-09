@@ -408,9 +408,8 @@ public class PcodeGenerator extends AbstractGenerator {
   protected CharSequence _generateStatement(final Stop e) {
     String string = "";
     String _string = string;
-    String _type = e.getType();
-    string = (_string + _type);
-    string.replace("stop", "return");
+    String _replace = e.getType().replace("stop", "return");
+    string = (_string + _replace);
     Expression _value = e.getValue();
     boolean _tripleNotEquals = (_value != null);
     if (_tripleNotEquals) {
@@ -419,6 +418,9 @@ public class PcodeGenerator extends AbstractGenerator {
       String _plus = (" " + _LiteralExpression);
       String _plus_1 = (_plus + ";");
       string = (_string_1 + _plus_1);
+    } else {
+      String _string_2 = string;
+      string = (_string_2 + ";");
     }
     return string;
   }

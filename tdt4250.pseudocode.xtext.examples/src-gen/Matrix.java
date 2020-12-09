@@ -5,9 +5,8 @@ import java.util.ArrayList;
 
 public class Matrix {
     public static void run() {
-        List<List<Integer>> m1 = new ArrayList<List<Integer>>(Arrays.asList(new ArrayList<Integer>(Arrays.asList(1,3)),new ArrayList<Integer>(Arrays.asList(3,1))));
-        List<List<Integer>> m2 = new ArrayList<List<Integer>>(Arrays.asList(new ArrayList<Integer>(Arrays.asList(2,2)),new ArrayList<Integer>(Arrays.asList(2,2))));
-        System.out.print(m1.get(0));
+        List<Integer> i = new ArrayList<Integer>(Arrays.asList(1,2,3,4));
+        i.add(3);i.remove(1);System.out.print(i);
     }
     
     public static void main(final String[] args) {

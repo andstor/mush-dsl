@@ -15,7 +15,7 @@ public class ReverseNumber {
     }
     
     public static void main(final String[] args) {
-        int ARG0 = 64234;
+        int ARG0 = Integer.parseInt(args[0]);
         run(ARG0);
     }
 }
