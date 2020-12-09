@@ -25,6 +25,7 @@ import tdt4250.pseudocode.BooleanNegation;
 import tdt4250.pseudocode.CollectionAccessor;
 import tdt4250.pseudocode.CollectionAdd;
 import tdt4250.pseudocode.CollectionRemove;
+import tdt4250.pseudocode.CollectionSet;
 import tdt4250.pseudocode.Comparison;
 import tdt4250.pseudocode.DoubleLiteral;
 import tdt4250.pseudocode.Equals;
@@ -506,6 +507,33 @@ public class PcodeGenerator extends AbstractGenerator {
     }
   }
   
+  protected String _getSet(final CollectionSet e) {
+    String string = "";
+    int _length = ((Object[])Conversions.unwrapArray(e.getLeft(), Object.class)).length;
+    boolean _greaterThan = (_length > 1);
+    if (_greaterThan) {
+      Object _LiteralExpression = this.LiteralExpression(e.getLeft().get(0));
+      String _plus = ("DETTE ER FØRSTE: " + _LiteralExpression);
+      System.out.println(_plus);
+      Object _LiteralExpression_1 = this.LiteralExpression(e.getLeft().get(1));
+      String _plus_1 = ("DETTE ER ANDRE: " + _LiteralExpression_1);
+      System.out.println(_plus_1);
+      String _string = string;
+      Object _LiteralExpression_2 = this.LiteralExpression(e.getLeft().get(0));
+      String _plus_2 = (".get(" + _LiteralExpression_2);
+      String _plus_3 = (_plus_2 + ").set(");
+      Object _LiteralExpression_3 = this.LiteralExpression(e.getLeft().get(1));
+      String _plus_4 = (_plus_3 + _LiteralExpression_3);
+      string = (_string + _plus_4);
+    } else {
+      String _string_1 = string;
+      Object _LiteralExpression_4 = this.LiteralExpression(e.getLeft().get(0));
+      String _plus_5 = (".set(" + _LiteralExpression_4);
+      string = (_string_1 + _plus_5);
+    }
+    return string;
+  }
+  
   protected CharSequence _generateExpression(final CollectionAdd e) {
     StringConcatenation _builder = new StringConcatenation();
     String _name = e.getCollection().getName();
@@ -523,6 +551,19 @@ public class PcodeGenerator extends AbstractGenerator {
     _builder.append(_name);
     _builder.append(".remove(");
     Object _LiteralExpression = this.LiteralExpression(e.getValue());
+    _builder.append(_LiteralExpression);
+    _builder.append(");");
+    return _builder;
+  }
+  
+  protected CharSequence _generateExpression(final CollectionSet e) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _name = e.getCollection().getName();
+    _builder.append(_name);
+    String _set = this.getSet(e);
+    _builder.append(_set);
+    _builder.append(",");
+    Object _LiteralExpression = this.LiteralExpression(e.getRight());
     _builder.append(_LiteralExpression);
     _builder.append(");");
     return _builder;
@@ -908,6 +949,8 @@ public class PcodeGenerator extends AbstractGenerator {
       return _generateExpression((CollectionAdd)e);
     } else if (e instanceof CollectionRemove) {
       return _generateExpression((CollectionRemove)e);
+    } else if (e instanceof CollectionSet) {
+      return _generateExpression((CollectionSet)e);
     } else if (e instanceof FunctionCall) {
       return _generateExpression((FunctionCall)e);
     } else if (e instanceof Print) {
@@ -920,6 +963,10 @@ public class PcodeGenerator extends AbstractGenerator {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(e).toString());
     }
+  }
+  
+  public String getSet(final CollectionSet e) {
+    return _getSet(e);
   }
   
   public Object LiteralExpression(final Expression e) {

@@ -45,6 +45,7 @@ import tdt4250.pseudocode.VariableReference
 import tdt4250.pseudocode.WhileStatement
 import tdt4250.pseudocode.pseudocode.SizeExpression
 import tdt4250.pseudocode.SizeExpression
+import tdt4250.pseudocode.CollectionSet
 
 /**
  * Generates code from your model files on save.
@@ -367,14 +368,30 @@ class PcodeGenerator extends AbstractGenerator {
                 System.out.print(«e.value.LiteralExpression»);
             '''
         }
-
     }
+    
+   
+	def dispatch getSet(CollectionSet e) {
+		var string = ''
+		if(e.left.length>1){
+			System.out.println("DETTE ER FØRSTE: "+ e.left.get(0).LiteralExpression)
+			System.out.println("DETTE ER ANDRE: "+ e.left.get(1).LiteralExpression)
+			string+='.get('+(e.left.get(0).LiteralExpression)+').set('+(e.left.get(1).LiteralExpression)
+		}else{
+			string+='.set('+(e.left.get(0).LiteralExpression)
+		}
+		return string
+	}
 
     def dispatch generateExpression(CollectionAdd e) '''
     «e.collection.name».add(«e.value.LiteralExpression»);'''
 
     def dispatch generateExpression(CollectionRemove e) '''
     «e.collection.name».remove(«e.value.LiteralExpression»);'''
+
+	def dispatch generateExpression(CollectionSet e) '''
+    «e.collection.name»«getSet(e)»,«e.right.LiteralExpression»);'''
+
 
     def dispatch generateExpression(FunctionCall e) {
         return e.LiteralExpression + ';' + '\n'

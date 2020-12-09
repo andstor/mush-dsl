@@ -337,6 +337,15 @@ public interface PseudocodeFactory extends EFactory {
 	SizeExpression createSizeExpression();
 
 	/**
+	 * Returns a new object of class '<em>Collection Set</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Collection Set</em>'.
+	 * @generated
+	 */
+	CollectionSet createCollectionSet();
+
+	/**
 	 * Returns a new object of class '<em>Collection</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

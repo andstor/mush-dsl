@@ -36,6 +36,7 @@ Expression returns Expression:
     Print |
     CollectionAdd |
     CollectionRemove |
+    CollectionSet|
     ValueExchange;
 
     // Primarily variable assignment
@@ -87,6 +88,11 @@ CollectionAdd returns Expression:
 CollectionRemove returns Expression:
     {CollectionRemove}
     collection=[Variable] 'remove' value=LiteralExpression;
+
+CollectionSet returns Expression:
+	{CollectionSet}
+	collection=[Variable] 'set' (left+=LiteralExpression (','  left+=LiteralExpression)?) 'to' right=LiteralExpression;	
+	
 
     //TODO: change name to collection1 and collection 2
 ValueExchange returns Expression:

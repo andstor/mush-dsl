@@ -447,6 +447,17 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case PseudocodePackage.COLLECTION_SET: {
+			CollectionSet collectionSet = (CollectionSet) theEObject;
+			T result = caseCollectionSet(collectionSet);
+			if (result == null)
+				result = caseExpression(collectionSet);
+			if (result == null)
+				result = caseFeature(collectionSet);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		default:
 			return defaultCase(theEObject);
 		}
@@ -974,6 +985,21 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseSizeExpression(SizeExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Collection Set</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Collection Set</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCollectionSet(CollectionSet object) {
 		return null;
 	}
 

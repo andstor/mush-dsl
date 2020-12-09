@@ -1650,6 +1650,61 @@ public interface PseudocodePackage extends EPackage {
 	int SIZE_EXPRESSION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.CollectionSetImpl <em>Collection Set</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.CollectionSetImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getCollectionSet()
+	 * @generated
+	 */
+	int COLLECTION_SET = 36;
+
+	/**
+	 * The feature id for the '<em><b>Collection</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_SET__COLLECTION = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Left</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_SET__LEFT = EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Right</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_SET__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Collection Set</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_SET_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Collection Set</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_SET_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+
+	/**
 	 * Returns the meta object for class '{@link tdt4250.pseudocode.Model <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2671,6 +2726,49 @@ public interface PseudocodePackage extends EPackage {
 	EReference getSizeExpression_Value();
 
 	/**
+	 * Returns the meta object for class '{@link tdt4250.pseudocode.CollectionSet <em>Collection Set</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Collection Set</em>'.
+	 * @see tdt4250.pseudocode.CollectionSet
+	 * @generated
+	 */
+	EClass getCollectionSet();
+
+	/**
+	 * Returns the meta object for the reference '{@link tdt4250.pseudocode.CollectionSet#getCollection <em>Collection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Collection</em>'.
+	 * @see tdt4250.pseudocode.CollectionSet#getCollection()
+	 * @see #getCollectionSet()
+	 * @generated
+	 */
+	EReference getCollectionSet_Collection();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link tdt4250.pseudocode.CollectionSet#getLeft <em>Left</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Left</em>'.
+	 * @see tdt4250.pseudocode.CollectionSet#getLeft()
+	 * @see #getCollectionSet()
+	 * @generated
+	 */
+	EReference getCollectionSet_Left();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link tdt4250.pseudocode.CollectionSet#getRight <em>Right</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Right</em>'.
+	 * @see tdt4250.pseudocode.CollectionSet#getRight()
+	 * @see #getCollectionSet()
+	 * @generated
+	 */
+	EReference getCollectionSet_Right();
+
+	/**
 	 * Returns the meta object for class '{@link tdt4250.pseudocode.Collection <em>Collection</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3551,6 +3649,40 @@ public interface PseudocodePackage extends EPackage {
 		 * @generated
 		 */
 		EReference SIZE_EXPRESSION__VALUE = eINSTANCE.getSizeExpression_Value();
+
+		/**
+		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.CollectionSetImpl <em>Collection Set</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see tdt4250.pseudocode.impl.CollectionSetImpl
+		 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getCollectionSet()
+		 * @generated
+		 */
+		EClass COLLECTION_SET = eINSTANCE.getCollectionSet();
+
+		/**
+		 * The meta object literal for the '<em><b>Collection</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COLLECTION_SET__COLLECTION = eINSTANCE.getCollectionSet_Collection();
+
+		/**
+		 * The meta object literal for the '<em><b>Left</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COLLECTION_SET__LEFT = eINSTANCE.getCollectionSet_Left();
+
+		/**
+		 * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COLLECTION_SET__RIGHT = eINSTANCE.getCollectionSet_Right();
 
 		/**
 		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.CollectionImpl <em>Collection</em>}' class.

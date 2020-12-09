@@ -17,6 +17,7 @@ import tdt4250.pseudocode.Collection;
 import tdt4250.pseudocode.CollectionAccessor;
 import tdt4250.pseudocode.CollectionAdd;
 import tdt4250.pseudocode.CollectionRemove;
+import tdt4250.pseudocode.CollectionSet;
 import tdt4250.pseudocode.Comparison;
 import tdt4250.pseudocode.DoubleLiteral;
 import tdt4250.pseudocode.Equals;
@@ -299,6 +300,13 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	private EClass sizeExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass collectionSetEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1337,6 +1345,46 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
+	public EClass getCollectionSet() {
+		return collectionSetEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getCollectionSet_Collection() {
+		return (EReference) collectionSetEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getCollectionSet_Left() {
+		return (EReference) collectionSetEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getCollectionSet_Right() {
+		return (EReference) collectionSetEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getCollection() {
 		return collectionEClass;
 	}
@@ -1514,6 +1562,11 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 
 		sizeExpressionEClass = createEClass(SIZE_EXPRESSION);
 		createEReference(sizeExpressionEClass, SIZE_EXPRESSION__VALUE);
+
+		collectionSetEClass = createEClass(COLLECTION_SET);
+		createEReference(collectionSetEClass, COLLECTION_SET__COLLECTION);
+		createEReference(collectionSetEClass, COLLECTION_SET__LEFT);
+		createEReference(collectionSetEClass, COLLECTION_SET__RIGHT);
 	}
 
 	/**
@@ -1577,6 +1630,7 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		variableReferenceEClass.getESuperTypes().add(this.getExpression());
 		doubleLiteralEClass.getESuperTypes().add(this.getExpression());
 		sizeExpressionEClass.getESuperTypes().add(this.getExpression());
+		collectionSetEClass.getESuperTypes().add(this.getExpression());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1843,6 +1897,18 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		initEClass(sizeExpressionEClass, SizeExpression.class, "SizeExpression", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSizeExpression_Value(), this.getExpression(), null, "value", null, 0, 1, SizeExpression.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(collectionSetEClass, CollectionSet.class, "CollectionSet", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCollectionSet_Collection(), this.getVariable(), null, "collection", null, 0, 1,
+				CollectionSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCollectionSet_Left(), this.getExpression(), null, "left", null, 1, 2, CollectionSet.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCollectionSet_Right(), this.getExpression(), null, "right", null, 1, 1, CollectionSet.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

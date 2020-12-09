@@ -138,5 +138,10 @@
     <genClasses ecoreClass="pseudocode.ecore#//SizeExpression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//SizeExpression/value"/>
     </genClasses>
+    <genClasses ecoreClass="pseudocode.ecore#//CollectionSet">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pseudocode.ecore#//CollectionSet/collection"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//CollectionSet/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//CollectionSet/right"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>
