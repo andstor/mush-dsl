@@ -13,7 +13,6 @@ public abstract class AbstractPcodeValidator extends AbstractDeclarativeValidato
 	@Override
 	protected List<EPackage> getEPackages() {
 		List<EPackage> result = new ArrayList<EPackage>();
-		result.add(tdt4250.pseudocode.pseudocode.PseudocodePackage.eINSTANCE);
 		result.add(EPackage.Registry.INSTANCE.getEPackage("platform:/plugin/tdt4250.pseudocode.model/model/pseudocode.ecore"));
 		return result;
 	}

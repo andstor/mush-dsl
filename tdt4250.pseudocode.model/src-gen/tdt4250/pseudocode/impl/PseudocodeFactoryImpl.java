@@ -125,6 +125,8 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 			return createType();
 		case PseudocodePackage.DOUBLE_LITERAL:
 			return createDoubleLiteral();
+		case PseudocodePackage.SIZE_EXPRESSION:
+			return createSizeExpression();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -502,6 +504,17 @@ public class PseudocodeFactoryImpl extends EFactoryImpl implements PseudocodeFac
 	public DoubleLiteral createDoubleLiteral() {
 		DoubleLiteralImpl doubleLiteral = new DoubleLiteralImpl();
 		return doubleLiteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public SizeExpression createSizeExpression() {
+		SizeExpressionImpl sizeExpression = new SizeExpressionImpl();
+		return sizeExpression;
 	}
 
 	/**

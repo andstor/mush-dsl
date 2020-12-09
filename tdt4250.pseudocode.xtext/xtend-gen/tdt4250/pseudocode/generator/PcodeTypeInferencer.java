@@ -29,12 +29,12 @@ import tdt4250.pseudocode.MultiOrDiv;
 import tdt4250.pseudocode.NumberLiteral;
 import tdt4250.pseudocode.Plus;
 import tdt4250.pseudocode.SetLitteral;
+import tdt4250.pseudocode.SizeExpression;
 import tdt4250.pseudocode.Stop;
 import tdt4250.pseudocode.StringLiteral;
 import tdt4250.pseudocode.Type;
 import tdt4250.pseudocode.Variable;
 import tdt4250.pseudocode.VariableReference;
-import tdt4250.pseudocode.pseudocode.SizeExpression;
 
 @SuppressWarnings("all")
 public class PcodeTypeInferencer {
@@ -306,14 +306,14 @@ public class PcodeTypeInferencer {
       return _infer((NumberLiteral)e);
     } else if (e instanceof Plus) {
       return _infer((Plus)e);
+    } else if (e instanceof SizeExpression) {
+      return _infer((SizeExpression)e);
     } else if (e instanceof StringLiteral) {
       return _infer((StringLiteral)e);
     } else if (e instanceof Variable) {
       return _infer((Variable)e);
     } else if (e instanceof VariableReference) {
       return _infer((VariableReference)e);
-    } else if (e instanceof SizeExpression) {
-      return _infer((SizeExpression)e);
     } else if (e instanceof Expression) {
       return _infer((Expression)e);
     } else if (e instanceof Function) {

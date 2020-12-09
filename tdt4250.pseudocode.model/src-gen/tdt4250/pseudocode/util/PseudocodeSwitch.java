@@ -436,6 +436,17 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case PseudocodePackage.SIZE_EXPRESSION: {
+			SizeExpression sizeExpression = (SizeExpression) theEObject;
+			T result = caseSizeExpression(sizeExpression);
+			if (result == null)
+				result = caseExpression(sizeExpression);
+			if (result == null)
+				result = caseFeature(sizeExpression);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		default:
 			return defaultCase(theEObject);
 		}
@@ -948,6 +959,21 @@ public class PseudocodeSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDoubleLiteral(DoubleLiteral object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Size Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Size Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSizeExpression(SizeExpression object) {
 		return null;
 	}
 

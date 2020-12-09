@@ -44,6 +44,7 @@ import tdt4250.pseudocode.Variable
 import tdt4250.pseudocode.VariableReference
 import tdt4250.pseudocode.WhileStatement
 import tdt4250.pseudocode.pseudocode.SizeExpression
+import tdt4250.pseudocode.SizeExpression
 
 /**
  * Generates code from your model files on save.
@@ -563,6 +564,6 @@ class PcodeGenerator extends AbstractGenerator {
     }
     
     def dispatch LiteralExpression(SizeExpression e){
-        return e.value.LiteralExpression + '.length()'
+        return e.value.LiteralExpression + '.size()'
     }
 }

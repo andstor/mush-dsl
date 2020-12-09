@@ -38,6 +38,7 @@ import tdt4250.pseudocode.Print;
 import tdt4250.pseudocode.PseudocodeFactory;
 import tdt4250.pseudocode.PseudocodePackage;
 import tdt4250.pseudocode.SetLitteral;
+import tdt4250.pseudocode.SizeExpression;
 import tdt4250.pseudocode.Statement;
 import tdt4250.pseudocode.Stop;
 import tdt4250.pseudocode.StringLiteral;
@@ -291,6 +292,13 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	private EClass doubleLiteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass sizeExpressionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1309,6 +1317,26 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 	 * @generated
 	 */
 	@Override
+	public EClass getSizeExpression() {
+		return sizeExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getSizeExpression_Value() {
+		return (EReference) sizeExpressionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getCollection() {
 		return collectionEClass;
 	}
@@ -1483,6 +1511,9 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 
 		doubleLiteralEClass = createEClass(DOUBLE_LITERAL);
 		createEAttribute(doubleLiteralEClass, DOUBLE_LITERAL__VALUE);
+
+		sizeExpressionEClass = createEClass(SIZE_EXPRESSION);
+		createEReference(sizeExpressionEClass, SIZE_EXPRESSION__VALUE);
 	}
 
 	/**
@@ -1545,6 +1576,7 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 		booleanLiteralEClass.getESuperTypes().add(this.getExpression());
 		variableReferenceEClass.getESuperTypes().add(this.getExpression());
 		doubleLiteralEClass.getESuperTypes().add(this.getExpression());
+		sizeExpressionEClass.getESuperTypes().add(this.getExpression());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1807,6 +1839,12 @@ public class PseudocodePackageImpl extends EPackageImpl implements PseudocodePac
 				IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDoubleLiteral_Value(), ecorePackage.getEString(), "value", null, 0, 1, DoubleLiteral.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(sizeExpressionEClass, SizeExpression.class, "SizeExpression", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSizeExpression_Value(), this.getExpression(), null, "value", null, 0, 1, SizeExpression.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

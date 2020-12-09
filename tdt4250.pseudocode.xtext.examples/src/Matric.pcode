@@ -2,7 +2,7 @@ executable Matrix()
 	i = [1,2,3,4]
 	i add 3
 	i remove 1
-	print i
+	print size of i plus 1
 
 	
 	

@@ -1613,6 +1613,43 @@ public interface PseudocodePackage extends EPackage {
 	int DOUBLE_LITERAL_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link tdt4250.pseudocode.impl.SizeExpressionImpl <em>Size Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tdt4250.pseudocode.impl.SizeExpressionImpl
+	 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getSizeExpression()
+	 * @generated
+	 */
+	int SIZE_EXPRESSION = 35;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIZE_EXPRESSION__VALUE = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Size Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIZE_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Size Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIZE_EXPRESSION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+
+	/**
 	 * Returns the meta object for class '{@link tdt4250.pseudocode.Model <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2613,6 +2650,27 @@ public interface PseudocodePackage extends EPackage {
 	EAttribute getDoubleLiteral_Value();
 
 	/**
+	 * Returns the meta object for class '{@link tdt4250.pseudocode.SizeExpression <em>Size Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Size Expression</em>'.
+	 * @see tdt4250.pseudocode.SizeExpression
+	 * @generated
+	 */
+	EClass getSizeExpression();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link tdt4250.pseudocode.SizeExpression#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Value</em>'.
+	 * @see tdt4250.pseudocode.SizeExpression#getValue()
+	 * @see #getSizeExpression()
+	 * @generated
+	 */
+	EReference getSizeExpression_Value();
+
+	/**
 	 * Returns the meta object for class '{@link tdt4250.pseudocode.Collection <em>Collection</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3475,6 +3533,24 @@ public interface PseudocodePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DOUBLE_LITERAL__VALUE = eINSTANCE.getDoubleLiteral_Value();
+
+		/**
+		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.SizeExpressionImpl <em>Size Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see tdt4250.pseudocode.impl.SizeExpressionImpl
+		 * @see tdt4250.pseudocode.impl.PseudocodePackageImpl#getSizeExpression()
+		 * @generated
+		 */
+		EClass SIZE_EXPRESSION = eINSTANCE.getSizeExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SIZE_EXPRESSION__VALUE = eINSTANCE.getSizeExpression_Value();
 
 		/**
 		 * The meta object literal for the '{@link tdt4250.pseudocode.impl.CollectionImpl <em>Collection</em>}' class.

@@ -35,6 +35,7 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final Assignment cFunctionsAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cFunctionsFunctionParserRuleCall_2_0 = (RuleCall)cFunctionsAssignment_2.eContents().get(0);
 		
+		////generate pseudocode "http://www.pseudocode.tdt4250/xtext/Pcode"
 		//Model:
 		//	{Model} ('package' package=QualifiedName)?
 		//	functions+=Function*;
@@ -2145,6 +2146,7 @@ public class PcodeGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	}
 
 	
+	////generate pseudocode "http://www.pseudocode.tdt4250/xtext/Pcode"
 	//Model:
 	//	{Model} ('package' package=QualifiedName)?
 	//	functions+=Function*;

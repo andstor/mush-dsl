@@ -135,5 +135,8 @@
     <genClasses ecoreClass="pseudocode.ecore#//DoubleLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pseudocode.ecore#//DoubleLiteral/value"/>
     </genClasses>
+    <genClasses ecoreClass="pseudocode.ecore#//SizeExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pseudocode.ecore#//SizeExpression/value"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

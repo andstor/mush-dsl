@@ -328,6 +328,15 @@ public interface PseudocodeFactory extends EFactory {
 	DoubleLiteral createDoubleLiteral();
 
 	/**
+	 * Returns a new object of class '<em>Size Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Size Expression</em>'.
+	 * @generated
+	 */
+	SizeExpression createSizeExpression();
+
+	/**
 	 * Returns a new object of class '<em>Collection</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

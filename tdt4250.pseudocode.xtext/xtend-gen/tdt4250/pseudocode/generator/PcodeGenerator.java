@@ -44,6 +44,7 @@ import tdt4250.pseudocode.ParenthesizedExpression;
 import tdt4250.pseudocode.Plus;
 import tdt4250.pseudocode.Print;
 import tdt4250.pseudocode.SetLitteral;
+import tdt4250.pseudocode.SizeExpression;
 import tdt4250.pseudocode.Statement;
 import tdt4250.pseudocode.Stop;
 import tdt4250.pseudocode.StringLiteral;
@@ -53,7 +54,6 @@ import tdt4250.pseudocode.VariableReference;
 import tdt4250.pseudocode.WhileStatement;
 import tdt4250.pseudocode.generator.PcodeGeneratorUtils;
 import tdt4250.pseudocode.generator.PcodeTypeInferencer;
-import tdt4250.pseudocode.pseudocode.SizeExpression;
 
 /**
  * Generates code from your model files on save.
@@ -874,7 +874,7 @@ public class PcodeGenerator extends AbstractGenerator {
   
   protected Object _LiteralExpression(final SizeExpression e) {
     Object _LiteralExpression = this.LiteralExpression(e.getValue());
-    return (_LiteralExpression + ".length()");
+    return (_LiteralExpression + ".size()");
   }
   
   public CharSequence generateFeature(final Feature e) {
@@ -957,12 +957,12 @@ public class PcodeGenerator extends AbstractGenerator {
       return _LiteralExpression((ParenthesizedExpression)e);
     } else if (e instanceof Plus) {
       return _LiteralExpression((Plus)e);
+    } else if (e instanceof SizeExpression) {
+      return _LiteralExpression((SizeExpression)e);
     } else if (e instanceof StringLiteral) {
       return _LiteralExpression((StringLiteral)e);
     } else if (e instanceof VariableReference) {
       return _LiteralExpression((VariableReference)e);
-    } else if (e instanceof SizeExpression) {
-      return _LiteralExpression((SizeExpression)e);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(e).toString());

@@ -39,6 +39,7 @@ import tdt4250.pseudocode.Plus;
 import tdt4250.pseudocode.Print;
 import tdt4250.pseudocode.PseudocodePackage;
 import tdt4250.pseudocode.SetLitteral;
+import tdt4250.pseudocode.SizeExpression;
 import tdt4250.pseudocode.Stop;
 import tdt4250.pseudocode.StringLiteral;
 import tdt4250.pseudocode.Type;
@@ -46,7 +47,6 @@ import tdt4250.pseudocode.ValueExchange;
 import tdt4250.pseudocode.Variable;
 import tdt4250.pseudocode.VariableReference;
 import tdt4250.pseudocode.WhileStatement;
-import tdt4250.pseudocode.pseudocode.SizeExpression;
 import tdt4250.pseudocode.services.PcodeGrammarAccess;
 
 @SuppressWarnings("all")
@@ -135,6 +135,9 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case PseudocodePackage.SET_LITTERAL:
 				sequence_SetLitteral(context, (SetLitteral) semanticObject); 
 				return; 
+			case PseudocodePackage.SIZE_EXPRESSION:
+				sequence_SizeExpression(context, (SizeExpression) semanticObject); 
+				return; 
 			case PseudocodePackage.STOP:
 				sequence_Stop(context, (Stop) semanticObject); 
 				return; 
@@ -164,12 +167,6 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 				return; 
 			case PseudocodePackage.WHILE_STATEMENT:
 				sequence_WhileStatement(context, (WhileStatement) semanticObject); 
-				return; 
-			}
-		else if (epackage == tdt4250.pseudocode.pseudocode.PseudocodePackage.eINSTANCE)
-			switch (semanticObject.eClass().getClassifierID()) {
-			case tdt4250.pseudocode.pseudocode.PseudocodePackage.SIZE_EXPRESSION:
-				sequence_SizeExpression(context, (SizeExpression) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -801,8 +798,8 @@ public class PcodeSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 */
 	protected void sequence_SizeExpression(ISerializationContext context, SizeExpression semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, tdt4250.pseudocode.pseudocode.PseudocodePackage.Literals.SIZE_EXPRESSION__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, tdt4250.pseudocode.pseudocode.PseudocodePackage.Literals.SIZE_EXPRESSION__VALUE));
+			if (transientValues.isValueTransient(semanticObject, PseudocodePackage.Literals.SIZE_EXPRESSION__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PseudocodePackage.Literals.SIZE_EXPRESSION__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getSizeExpressionAccess().getValueAtomicParserRuleCall_3_0(), semanticObject.getValue());

@@ -26,7 +26,7 @@ import tdt4250.pseudocode.StringLiteral
 import tdt4250.pseudocode.Type
 import tdt4250.pseudocode.Variable
 import tdt4250.pseudocode.VariableReference
-import tdt4250.pseudocode.pseudocode.SizeExpression
+import tdt4250.pseudocode.SizeExpression
 
 class PcodeTypeInferencer {
 
