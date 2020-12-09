@@ -32,19 +32,7 @@ class PcodeParsingTest {
      	m2 = [[1,1],[2,3]]
      	for 0 to ((size of m2)-1)
      		newM add m1[0]
-     	print line newM
-     	newM set 0,0 to 9
-     	print line newM
-     	newM set 0,1 to 10
-     	print line newM
-     	
-     	newM set 1,0 to 11
-     	print line newM
-     	
-     	
-     	newM set 1,1 to 12
-     	print line newM
-     	
+     
      	
      	x = 0
      	l = 0
