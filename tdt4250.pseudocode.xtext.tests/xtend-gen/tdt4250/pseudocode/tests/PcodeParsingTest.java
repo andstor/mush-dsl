@@ -51,10 +51,15 @@ public class PcodeParsingTest {
       _builder.append("Quicksort(list with list with number t, number left, number right)");
       _builder.newLine();
       _builder.append("    ");
-      _builder.append("i = t[0]");
+      _builder.append("m1 = [[1,3],[1,1]]");
       _builder.newLine();
       _builder.append("    ");
-      _builder.append("print size of i");
+      _builder.append("m2 = [[1,3],[1,1]]");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("lol = [m1 at 0]");
       _builder.newLine();
       return _builder.toString();
     }

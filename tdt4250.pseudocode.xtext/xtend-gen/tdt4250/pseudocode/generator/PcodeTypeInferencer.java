@@ -160,17 +160,15 @@ public class PcodeTypeInferencer {
       Type varType = ((Type) _type_1);
       return this.unbox(this.toJvmType(varType.getTypes().get(((Object[])Conversions.unwrapArray(e.getAccessor(), Object.class)).length)));
     }
-    for (int i = 0; (i <= ((Object[])Conversions.unwrapArray(e.getAccessor(), Object.class)).length); i++) {
-      {
-        Expression element = v.getElements().get(0);
-        if ((element instanceof Collection)) {
-          v = ((Collection) element);
-        } else {
-          return this.infer(element);
-        }
-      }
+    Expression element = v.getElements().get(0);
+    if ((element instanceof Collection)) {
+      v = ((Collection) element);
+      String _autobox = this.autobox(this.toJvmType(this.infer(v.getElements().get(0))));
+      String _plus = ("List<" + _autobox);
+      return (_plus + ">");
+    } else {
+      return this.infer(element);
     }
-    return null;
   }
   
   protected String _infer(final AndOrExpression e) {

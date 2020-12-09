@@ -112,14 +112,15 @@ class PcodeTypeInferencer {
             return unbox(toJvmType(varType.types.get(e.accessor.length)))
         }
 
-        for (var i = 0; i <= e.accessor.length; i++) {
-            var element = v.elements.get(0)
-            if (element instanceof Collection) {
-                v = element as Collection
-            } else {
-                return infer(element)
-            }
+        var element = v.elements.get(0)
+        if (element instanceof Collection) {
+            v = element as Collection
+            
+            return 'List<' + autobox(toJvmType(infer(v.elements.get(0)))) + '>'
+        } else {
+            return infer(element)
         }
+
     }
 
     // Tree parsing!

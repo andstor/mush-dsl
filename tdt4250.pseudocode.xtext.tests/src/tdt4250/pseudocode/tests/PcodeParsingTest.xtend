@@ -29,8 +29,10 @@ class PcodeParsingTest {
         
         
         Quicksort(list with list with number t, number left, number right)
-            i = t[0]
-            print size of i
+            m1 = [[1,3],[1,1]]
+            m2 = [[1,3],[1,1]]
+            
+            lol = [m1 at 0]
         '''
 
     /*val code = '''
