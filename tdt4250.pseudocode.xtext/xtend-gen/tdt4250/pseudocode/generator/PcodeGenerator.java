@@ -53,6 +53,7 @@ import tdt4250.pseudocode.VariableReference;
 import tdt4250.pseudocode.WhileStatement;
 import tdt4250.pseudocode.generator.PcodeGeneratorUtils;
 import tdt4250.pseudocode.generator.PcodeTypeInferencer;
+import tdt4250.pseudocode.pseudocode.SizeExpression;
 
 /**
  * Generates code from your model files on save.
@@ -871,6 +872,11 @@ public class PcodeGenerator extends AbstractGenerator {
     return string;
   }
   
+  protected Object _LiteralExpression(final SizeExpression e) {
+    Object _LiteralExpression = this.LiteralExpression(e.getValue());
+    return (_LiteralExpression + ".length()");
+  }
+  
   public CharSequence generateFeature(final Feature e) {
     if (e instanceof Expression) {
       return _generateFeature((Expression)e);
@@ -955,6 +961,8 @@ public class PcodeGenerator extends AbstractGenerator {
       return _LiteralExpression((StringLiteral)e);
     } else if (e instanceof VariableReference) {
       return _LiteralExpression((VariableReference)e);
+    } else if (e instanceof SizeExpression) {
+      return _LiteralExpression((SizeExpression)e);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(e).toString());

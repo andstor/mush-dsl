@@ -53,6 +53,9 @@ public class PcodeParsingTest {
       _builder.append("    ");
       _builder.append("i = t[0]");
       _builder.newLine();
+      _builder.append("    ");
+      _builder.append("o = size of t");
+      _builder.newLine();
       return _builder.toString();
     }
   }.apply();

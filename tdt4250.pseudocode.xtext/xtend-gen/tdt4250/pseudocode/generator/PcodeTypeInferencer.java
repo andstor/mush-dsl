@@ -34,6 +34,7 @@ import tdt4250.pseudocode.StringLiteral;
 import tdt4250.pseudocode.Type;
 import tdt4250.pseudocode.Variable;
 import tdt4250.pseudocode.VariableReference;
+import tdt4250.pseudocode.pseudocode.SizeExpression;
 
 @SuppressWarnings("all")
 public class PcodeTypeInferencer {
@@ -241,6 +242,10 @@ public class PcodeTypeInferencer {
     return this.infer(e.getRef());
   }
   
+  protected String _infer(final SizeExpression e) {
+    return "int";
+  }
+  
   protected String _infer(final Type e) {
     String string = "";
     int _length = ((Object[])Conversions.unwrapArray(e.getTypes(), Object.class)).length;
@@ -307,6 +312,8 @@ public class PcodeTypeInferencer {
       return _infer((Variable)e);
     } else if (e instanceof VariableReference) {
       return _infer((VariableReference)e);
+    } else if (e instanceof SizeExpression) {
+      return _infer((SizeExpression)e);
     } else if (e instanceof Expression) {
       return _infer((Expression)e);
     } else if (e instanceof Function) {

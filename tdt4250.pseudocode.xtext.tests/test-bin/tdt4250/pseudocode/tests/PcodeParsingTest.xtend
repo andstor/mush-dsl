@@ -30,6 +30,7 @@ class PcodeParsingTest {
         
         Quicksort(list with list with number t, number left, number right)
             i = t[0]
+            o = size of t
         '''
 
     /*val code = '''
