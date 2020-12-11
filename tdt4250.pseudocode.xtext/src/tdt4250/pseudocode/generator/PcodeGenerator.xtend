@@ -374,8 +374,6 @@ class PcodeGenerator extends AbstractGenerator {
 	def dispatch getSet(CollectionSet e) {
 		var string = ''
 		if(e.left.length>1){
-			System.out.println("DETTE ER FØRSTE: "+ e.left.get(0).LiteralExpression)
-			System.out.println("DETTE ER ANDRE: "+ e.left.get(1).LiteralExpression)
 			string+='.get('+(e.left.get(0).LiteralExpression)+').set('+(e.left.get(1).LiteralExpression)
 		}else{
 			string+='.set('+(e.left.get(0).LiteralExpression)

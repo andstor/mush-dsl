@@ -512,24 +512,18 @@ public class PcodeGenerator extends AbstractGenerator {
     int _length = ((Object[])Conversions.unwrapArray(e.getLeft(), Object.class)).length;
     boolean _greaterThan = (_length > 1);
     if (_greaterThan) {
-      Object _LiteralExpression = this.LiteralExpression(e.getLeft().get(0));
-      String _plus = ("DETTE ER FØRSTE: " + _LiteralExpression);
-      System.out.println(_plus);
-      Object _LiteralExpression_1 = this.LiteralExpression(e.getLeft().get(1));
-      String _plus_1 = ("DETTE ER ANDRE: " + _LiteralExpression_1);
-      System.out.println(_plus_1);
       String _string = string;
-      Object _LiteralExpression_2 = this.LiteralExpression(e.getLeft().get(0));
-      String _plus_2 = (".get(" + _LiteralExpression_2);
-      String _plus_3 = (_plus_2 + ").set(");
-      Object _LiteralExpression_3 = this.LiteralExpression(e.getLeft().get(1));
-      String _plus_4 = (_plus_3 + _LiteralExpression_3);
-      string = (_string + _plus_4);
+      Object _LiteralExpression = this.LiteralExpression(e.getLeft().get(0));
+      String _plus = (".get(" + _LiteralExpression);
+      String _plus_1 = (_plus + ").set(");
+      Object _LiteralExpression_1 = this.LiteralExpression(e.getLeft().get(1));
+      String _plus_2 = (_plus_1 + _LiteralExpression_1);
+      string = (_string + _plus_2);
     } else {
       String _string_1 = string;
-      Object _LiteralExpression_4 = this.LiteralExpression(e.getLeft().get(0));
-      String _plus_5 = (".set(" + _LiteralExpression_4);
-      string = (_string_1 + _plus_5);
+      Object _LiteralExpression_2 = this.LiteralExpression(e.getLeft().get(0));
+      String _plus_3 = (".set(" + _LiteralExpression_2);
+      string = (_string_1 + _plus_3);
     }
     return string;
   }
