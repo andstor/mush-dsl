@@ -1,5 +1,3 @@
-
-
 public class ReverseNumber {
     public static void run(int nr) {
         int lastDigit = nr%10;
