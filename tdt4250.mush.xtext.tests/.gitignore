@@ -1,7 +1,6 @@
 ### XText ###
 target
 test-bin
-xtend-gen
 .settings
 .metadata
 bin
