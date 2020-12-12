@@ -9,9 +9,15 @@ import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.extensions.InjectionExtension;
 import org.eclipse.xtext.testing.util.ParseHelper;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import tdt4250.mush.model.Feature;
+import tdt4250.mush.model.Function;
+import tdt4250.mush.model.IfStatement;
 import tdt4250.mush.model.Model;
+import tdt4250.mush.model.Print;
+import tdt4250.mush.model.Variable;
 import tdt4250.mush.xtext.tests.MushInjectorProvider;
 
 @ExtendWith(InjectionExtension.class)
@@ -25,9 +31,62 @@ public class ModelTest {
   public void loadModel() {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("Hello Xtext!");
+      _builder.append("HelloWorld()");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("print \"Hello World!\"");
       _builder.newLine();
       final Model model = this.parseHelper.parse(_builder);
+      Function _get = model.getFunctions().get(0);
+      final Function function = ((Function) _get);
+      Assertions.assertEquals("HelloWorld", function.getName());
+      Feature _get_1 = function.getFeatures().get(0);
+      final Print feature = ((Print) _get_1);
+      Assertions.assertEquals("print", feature.getName());
+      Assertions.assertEquals("Hello World!", feature.getValue());
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testPerson() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("executable Person(text name, number age, text newName)");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("print \"New name and new age\"");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("name += newName");
+      _builder.newLine();
+      _builder.append("   \t");
+      _builder.append("age++");
+      _builder.newLine();
+      _builder.append("   \t");
+      _builder.append("if age > 0");
+      _builder.newLine();
+      _builder.append("   \t\t");
+      _builder.append("name = 15");
+      _builder.newLine();
+      _builder.append("    \t");
+      _builder.append("return name + \" \" + age + \" year old\"");
+      _builder.newLine();
+      final Model model = this.parseHelper.parse(_builder);
+      Function _get = model.getFunctions().get(0);
+      final Function function = ((Function) _get);
+      Assertions.assertEquals("Person", function.getName());
+      Assertions.assertEquals(Boolean.valueOf(true), Boolean.valueOf(function.isExecutable()));
+      Feature _get_1 = function.getFeatures().get(1);
+      final Variable variable1 = ((Variable) _get_1);
+      Assertions.assertEquals("name", variable1.getName());
+      Feature _get_2 = function.getFeatures().get(2);
+      final Variable variable2 = ((Variable) _get_2);
+      Assertions.assertEquals("age", variable2.getName());
+      Feature _get_3 = function.getFeatures().get(3);
+      final IfStatement statement = ((IfStatement) _get_3);
+      Assertions.assertEquals("if", statement.getName());
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

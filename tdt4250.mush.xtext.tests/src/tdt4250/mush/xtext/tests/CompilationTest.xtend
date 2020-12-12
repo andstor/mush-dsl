@@ -16,14 +16,46 @@ class CompilationTest {
 
     @Inject extension CompilationTestHelper
 
+@Test
+    def void testHelloWorld() {
+        '''
+         HelloWorld()
+         	print "Hello World!"
+        '''.assertCompilesTo('''
+       public class HelloWorld {
+           public static void run() {
+               System.out.print("Hello World!");
+           }
+           
+       }
+        ''')
+    }
+    
+    
     @Test
     def void compileModel() {
         '''
-            DSL code here
+         executable Person(text name, number age, text newName)
+         	print "New name and new age"
+         	name += newName
+         	age++
+         	return name + " " + age + " year old"
         '''.assertCompilesTo('''
-            class Foo {
-               String bla
-            }
+       public class Person {
+           public static String run(String name, int age, String newName) {
+               System.out.print("New name and new age");
+               name += newName;
+               age++;
+               return name+" "+age+" year old";
+           }
+           
+           public static void main(final String[] args) {
+               String ARG0 = args[0];
+               int ARG1 = Integer.parseInt(args[1]);
+               String ARG2 = args[2];
+               run(ARG0,ARG1,ARG2);
+           }
+       }
         ''')
     }
 }

@@ -11,6 +11,13 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.^extension.ExtendWith
 import tdt4250.mush.model.Model
+import tdt4250.mush.model.Function
+import tdt4250.mush.model.Print
+import tdt4250.mush.model.Variable
+import tdt4250.mush.model.Statement
+import tdt4250.mush.model.Stop
+import tdt4250.mush.model.IfStatement
+import tdt4250.mush.model.Expression
 
 @ExtendWith(InjectionExtension)
 @InjectWith(MushInjectorProvider)
@@ -18,17 +25,48 @@ class ModelTest {
 	@Inject
 	ParseHelper<Model> parseHelper
 	
-	@Test
+		@Test
 	def void loadModel() {
 		val model = parseHelper.parse('''
-			Hello Xtext!
+			HelloWorld()
+				print "Hello World!"
 		''')
 		
-		//val function = model.functions.get(0) as Function
-        //Assert.assertEquals("Sort", function.name)
-
-        //val function = model.functions.get(0) as Function
-        //Assert.assertEquals("Sort", function.name)
-        //Assert.assertEquals("open", rule.deviceState.name)
+		val function = model.functions.get(0) as Function
+        Assertions.assertEquals("HelloWorld", function.name)
+		val feature =function.features.get(0) as Print
+        Assertions.assertEquals("print", feature.name)
+        Assertions.assertEquals("Hello World!", feature.value)
+       
+	}
+	
+	
+	@Test
+	def void testPerson() {
+		val model = parseHelper.parse('''
+			executable Person(text name, number age, text newName)
+				print "New name and new age"
+			    name += newName
+			   	age++
+			   	if age > 0
+			   		name = 15
+			    	return name + " " + age + " year old"
+		''')
+		
+		val function = model.functions.get(0) as Function
+        Assertions.assertEquals("Person", function.name)
+        Assertions.assertEquals(true, function.executable)
+       
+        val variable1 = function.features.get(1) as Variable
+       
+       	Assertions.assertEquals("name", variable1.name)
+        
+		val variable2 = function.features.get(2) as Variable
+		Assertions.assertEquals("age", variable2.name)
+	
+        val statement = function.features.get(3) as IfStatement
+        Assertions.assertEquals("if", statement.name)
+        
+       
 	}
 }

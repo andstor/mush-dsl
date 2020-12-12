@@ -3,6 +3,7 @@
  */
 package tdt4250.mush.xtext.generator;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -73,7 +74,6 @@ public class MushGenerator extends AbstractGenerator {
   
   private String packageName = "";
   
-  @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     String resPrint = "";
     Iterable<Function> _filter = Iterables.<Function>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Function.class);
@@ -219,22 +219,30 @@ public class MushGenerator extends AbstractGenerator {
   }
   
   public String generateTypeConvertionCode(final String value, final String type) {
-    if (type != null) {
-      switch (type) {
-        case "String":
-          return value;
-        case "int":
-          return (("Integer.parseInt(" + value) + ")");
-        case "double":
-          return (("Double.parseDouble(" + value) + ")");
-        case "boolean":
-          return (("Boolean.parseBoolean(" + value) + ")");
-        default:
-          return value;
-      }
-    } else {
+    boolean _matched = false;
+    if (Objects.equal(type, "String")) {
+      _matched=true;
       return value;
     }
+    if (!_matched) {
+      if (Objects.equal(type, "int")) {
+        _matched=true;
+        return (("Integer.parseInt(" + value) + ")");
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(type, "double")) {
+        _matched=true;
+        return (("Double.parseDouble(" + value) + ")");
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(type, "boolean")) {
+        _matched=true;
+        return (("Boolean.parseBoolean(" + value) + ")");
+      }
+    }
+    return value;
   }
   
   public String generateParameters(final EList<Expression> variables) {

@@ -43,7 +43,6 @@ public class DevelopmentTesting {
   private CompilationTestHelper _compilationTestHelper;
   
   private final String code = new Function0<String>() {
-    @Override
     public String apply() {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("MatrixAddition()");
@@ -136,9 +135,11 @@ public class DevelopmentTesting {
   public void compileModel() {
     try {
       this.parseModel();
-      final IAcceptor<CompilationTestHelper.Result> _function = (CompilationTestHelper.Result it) -> {
-        CompilationTestHelper.Result _println = InputOutput.<CompilationTestHelper.Result>println(it);
-        /* Pair.<CompilationTestHelper.Result, CompilationTestHelper.Result>of(it, _println); */
+      final IAcceptor<CompilationTestHelper.Result> _function = new IAcceptor<CompilationTestHelper.Result>() {
+        public void accept(final CompilationTestHelper.Result it) {
+          CompilationTestHelper.Result _println = InputOutput.<CompilationTestHelper.Result>println(it);
+          /* Pair.<CompilationTestHelper.Result, CompilationTestHelper.Result>of(it, _println); */
+        }
       };
       this._compilationTestHelper.compile(this.code, _function);
     } catch (Throwable _e) {

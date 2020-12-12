@@ -29,8 +29,10 @@ public class MushFormatter extends AbstractFormatter2 {
   protected void _format(final Model model, @Extension final IFormattableDocument document) {
     EList<Function> _functions = model.getFunctions();
     for (final Function function : _functions) {
-      final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
-        it.setNewLines(1, 1, 2);
+      final Procedure1<IHiddenRegionFormatter> _function = new Procedure1<IHiddenRegionFormatter>() {
+        public void apply(final IHiddenRegionFormatter it) {
+          it.setNewLines(1, 1, 2);
+        }
       };
       document.<Function>append(document.<Function>format(function), _function);
     }
@@ -43,16 +45,22 @@ public class MushFormatter extends AbstractFormatter2 {
     }
     final ISemanticRegion begin = this.textRegionExtensions.regionFor(function).ruleCallTo(this._mushGrammarAccess.getBEGINRule());
     final ISemanticRegion end = this.textRegionExtensions.regionFor(function).ruleCallTo(this._mushGrammarAccess.getENDRule());
-    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
-      it.newLine();
+    final Procedure1<IHiddenRegionFormatter> _function = new Procedure1<IHiddenRegionFormatter>() {
+      public void apply(final IHiddenRegionFormatter it) {
+        it.newLine();
+      }
     };
     document.append(this.textRegionExtensions.regionFor(function).keyword("synthetic:BEGIN"), _function);
-    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
-      it.newLine();
+    final Procedure1<IHiddenRegionFormatter> _function_1 = new Procedure1<IHiddenRegionFormatter>() {
+      public void apply(final IHiddenRegionFormatter it) {
+        it.newLine();
+      }
     };
     document.prepend(this.textRegionExtensions.regionFor(function).keyword("synthetic:END"), _function_1);
-    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
-      it.indent();
+    final Procedure1<IHiddenRegionFormatter> _function_2 = new Procedure1<IHiddenRegionFormatter>() {
+      public void apply(final IHiddenRegionFormatter it) {
+        it.indent();
+      }
     };
     document.<ISemanticRegion, ISemanticRegion>interior(begin, end, _function_2);
     EList<Feature> _features = function.getFeatures();

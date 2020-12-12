@@ -78,62 +78,92 @@ public class MushTypeInferencer {
   
   public String toJvmType(final String type) {
     String _lowerCase = type.toLowerCase();
-    if (_lowerCase != null) {
-      switch (_lowerCase) {
-        case "number":
-          return "int";
-        case "text":
-          return "String";
-        case "decimal":
-          return "double";
-        case "array":
-        case "list":
-        case "table":
-          return "List";
-        case "set":
-          return "Set";
-        default:
-          return type;
-      }
-    } else {
-      return type;
+    boolean _matched = false;
+    if (Objects.equal(_lowerCase, "number")) {
+      _matched=true;
+      return "int";
     }
+    if (!_matched) {
+      if (Objects.equal(_lowerCase, "text")) {
+        _matched=true;
+        return "String";
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(_lowerCase, "decimal")) {
+        _matched=true;
+        return "double";
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(_lowerCase, "array")) {
+        _matched=true;
+      }
+      if (!_matched) {
+        if (Objects.equal(_lowerCase, "list")) {
+          _matched=true;
+        }
+      }
+      if (!_matched) {
+        if (Objects.equal(_lowerCase, "table")) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        return "List";
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(_lowerCase, "set")) {
+        _matched=true;
+        return "Set";
+      }
+    }
+    return type;
   }
   
   public String autobox(final String type) {
     String _lowerCase = type.toLowerCase();
-    if (_lowerCase != null) {
-      switch (_lowerCase) {
-        case "boolean":
-          return "Boolean";
-        case "int":
-          return "Integer";
-        case "double":
-          return "Double";
-        default:
-          return type;
-      }
-    } else {
-      return type;
+    boolean _matched = false;
+    if (Objects.equal(_lowerCase, "boolean")) {
+      _matched=true;
+      return "Boolean";
     }
+    if (!_matched) {
+      if (Objects.equal(_lowerCase, "int")) {
+        _matched=true;
+        return "Integer";
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(_lowerCase, "double")) {
+        _matched=true;
+        return "Double";
+      }
+    }
+    return type;
   }
   
   public String unbox(final String type) {
     String _lowerCase = type.toLowerCase();
-    if (_lowerCase != null) {
-      switch (_lowerCase) {
-        case "boolean":
-          return "boolean";
-        case "integer":
-          return "int";
-        case "double":
-          return "double";
-        default:
-          return type;
-      }
-    } else {
-      return type;
+    boolean _matched = false;
+    if (Objects.equal(_lowerCase, "boolean")) {
+      _matched=true;
+      return "boolean";
     }
+    if (!_matched) {
+      if (Objects.equal(_lowerCase, "integer")) {
+        _matched=true;
+        return "int";
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(_lowerCase, "double")) {
+        _matched=true;
+        return "double";
+      }
+    }
+    return type;
   }
   
   protected String _infer(final SetLitteral e) {

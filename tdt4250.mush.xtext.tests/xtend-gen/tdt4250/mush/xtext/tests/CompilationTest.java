@@ -23,16 +23,94 @@ public class CompilationTest {
   private CompilationTestHelper _compilationTestHelper;
   
   @Test
+  public void testHelloWorld() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("HelloWorld()");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("print \"Hello World!\"");
+      _builder.newLine();
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("public class HelloWorld {");
+      _builder_1.newLine();
+      _builder_1.append("    ");
+      _builder_1.append("public static void run() {");
+      _builder_1.newLine();
+      _builder_1.append("        ");
+      _builder_1.append("System.out.print(\"Hello World!\");");
+      _builder_1.newLine();
+      _builder_1.append("    ");
+      _builder_1.append("}");
+      _builder_1.newLine();
+      _builder_1.append("    ");
+      _builder_1.newLine();
+      _builder_1.append("}");
+      _builder_1.newLine();
+      this._compilationTestHelper.assertCompilesTo(_builder, _builder_1);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
   public void compileModel() {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("DSL code here");
+      _builder.append("executable Person(text name, number age, text newName)");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("print \"New name and new age\"");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("name += newName");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("age++");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("return name + \" \" + age + \" year old\"");
       _builder.newLine();
       StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append("class Foo {");
+      _builder_1.append("public class Person {");
       _builder_1.newLine();
-      _builder_1.append("   ");
-      _builder_1.append("String bla");
+      _builder_1.append("    ");
+      _builder_1.append("public static String run(String name, int age, String newName) {");
+      _builder_1.newLine();
+      _builder_1.append("        ");
+      _builder_1.append("System.out.print(\"New name and new age\");");
+      _builder_1.newLine();
+      _builder_1.append("        ");
+      _builder_1.append("name += newName;");
+      _builder_1.newLine();
+      _builder_1.append("        ");
+      _builder_1.append("age++;");
+      _builder_1.newLine();
+      _builder_1.append("        ");
+      _builder_1.append("return name+\" \"+age+\" year old\";");
+      _builder_1.newLine();
+      _builder_1.append("    ");
+      _builder_1.append("}");
+      _builder_1.newLine();
+      _builder_1.append("    ");
+      _builder_1.newLine();
+      _builder_1.append("    ");
+      _builder_1.append("public static void main(final String[] args) {");
+      _builder_1.newLine();
+      _builder_1.append("        ");
+      _builder_1.append("String ARG0 = args[0];");
+      _builder_1.newLine();
+      _builder_1.append("        ");
+      _builder_1.append("int ARG1 = Integer.parseInt(args[1]);");
+      _builder_1.newLine();
+      _builder_1.append("        ");
+      _builder_1.append("String ARG2 = args[2];");
+      _builder_1.newLine();
+      _builder_1.append("        ");
+      _builder_1.append("run(ARG0,ARG1,ARG2);");
+      _builder_1.newLine();
+      _builder_1.append("    ");
+      _builder_1.append("}");
       _builder_1.newLine();
       _builder_1.append("}");
       _builder_1.newLine();
