@@ -1,6 +1,7 @@
 bin/
 target/
 *.xtendbin
+*._trace
 
 # Compiled class file
 *.class
