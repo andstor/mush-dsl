@@ -1,0 +1,10 @@
+executable ReverseNumber(number nr)
+	lastDigit equals nr modulo 10
+	reverse equals 0
+	reverse equals ((reverse times 10) plus lastDigit)
+	nr equals nr divide 10
+	while nr biggerThen 0
+		lastDigit equals nr modulo 10
+		reverse equals (reverse times 10) plus lastDigit
+		nr equals nr divide 10
+	print line reverse

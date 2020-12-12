@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: Examples
-Bundle-SymbolicName: tdt4250.pseudocode.xtext.examples
-Bundle-Version: 1.0.0.qualifier
-Automatic-Module-Name: tdt4250.pseudocode.xtext.examples
-Bundle-RequiredExecutionEnvironment: JavaSE-10

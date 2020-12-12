@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: tdt4250.mush.xtext
+Bundle-ManifestVersion: 2
+Bundle-Name: tdt4250.mush.xtext
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: tdt4250.mush.xtext; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: tdt4250.mush.model,
+ org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: tdt4250.mush.xtext.validation,
+ tdt4250.mush.xtext.scoping,
+ tdt4250.mush.xtext.parser.antlr,
+ tdt4250.mush.xtext.services,
+ tdt4250.mush.xtext.formatting2,
+ tdt4250.mush.xtext,
+ tdt4250.mush.xtext.generator,
+ tdt4250.mush.xtext.parser.antlr.internal,
+ tdt4250.mush.xtext.parser.antlr.lexer,
+ tdt4250.mush.xtext.serializer
+Import-Package: org.apache.log4j

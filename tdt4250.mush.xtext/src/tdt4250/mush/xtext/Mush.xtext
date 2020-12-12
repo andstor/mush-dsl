@@ -1,0 +1,222 @@
+grammar tdt4250.mush.xtext.Mush with org.eclipse.xtext.common.Terminals
+
+import "platform:/plugin/tdt4250.mush.model/model/mush.ecore"
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+Model returns Model:
+    {Model}
+    ('package' package=QualifiedName)?
+    functions+=Function*;
+
+QualifiedName:
+    ID ('.' ID)*;
+
+Function:
+    {Function}
+    (executable?='executable')?
+    name=ID
+    '('
+    (parameters+=Parameter ("," parameters+=Parameter)*)?
+    ')'
+    (BEGIN
+    features+=Feature*
+    END)*;
+
+Feature:
+    Statement | Expression;
+
+Statement:
+    IfStatement | ForStatement | WhileStatement | Stop;
+
+Expression returns Expression:
+    Variable |
+    FunctionCall |
+    Print |
+    CollectionAdd |
+    CollectionRemove |
+    CollectionSet |
+    ValueExchange;
+
+    // Primarily variable assignment
+Variable returns Expression:
+    {Variable}
+    (name=ID op=('=' | 'equals' | 'is' | '+=' | '-=') value=(LiteralExpression)
+    | name=ID op=('++' | '--'));
+
+    // Variable declaration
+Parameter returns Expression:
+    {Variable} type=Type name=ID;
+
+IfStatement returns IfStatement:
+    {IfStatement}
+    name='if' condition=LiteralExpression ('then')?
+    BEGIN
+    then+=Feature*
+    END
+    ('else'
+    BEGIN
+    otherwise+=Feature*
+    END)?;
+
+ForStatement returns ForStatement:
+    {ForStatement}
+    'for' ('interval')? from=ArithmeticExpression 'to' to=ArithmeticExpression
+    BEGIN
+    block+=Feature*
+    END;
+
+WhileStatement returns WhileStatement:
+    {WhileStatement}
+    'while' condition=LiteralExpression
+    BEGIN
+    block+=Feature*
+    END;
+
+Stop returns Stop:
+    {Stop}
+    (type=('stop' | 'break' | 'continue') | (type='return' (value=LiteralExpression)));
+
+Print:
+    name='print' (newline?='line')? value=LiteralExpression;
+
+CollectionAdd returns Expression:
+    {CollectionAdd}
+    collection=[Variable] 'add' value=LiteralExpression;
+
+CollectionRemove returns Expression:
+    {CollectionRemove}
+    collection=[Variable] 'remove' value=LiteralExpression;
+
+CollectionSet returns Expression:
+    {CollectionSet}
+    collection=[Variable] 'set' (left+=LiteralExpression (',' left+=LiteralExpression)?) 'to' right=LiteralExpression;
+
+    //TODO: change name to collection1 and collection 2
+ValueExchange returns Expression:
+    {ValueExchange}
+    'exchange' collection=LiteralExpression 'with' value=LiteralExpression;
+
+    // Indentation
+terminal BEGIN:
+    'synthetic:BEGIN';
+
+terminal END:
+    'synthetic:END';
+
+    // -- Literal Expressions ---
+LiteralExpression returns Expression:
+    Collection |
+    CollectionAccessor |
+    BooleanExpression;
+
+Collection returns Expression:
+    CollectionLitteral | List;
+
+List returns Collection:
+    {List}
+    'new' ('array' | 'list' | 'table') 'with' type=Type
+    ('that' 'contains' elements+=LiteralExpression (',' elements+=LiteralExpression)*)?;
+
+    //TODO: implement Set
+CollectionLitteral returns Collection:
+    SetLitteral | ListLitteral;
+
+SetLitteral returns Collection:
+    {SetLitteral}
+    '{' elements+=LiteralExpression (',' elements+=LiteralExpression)* '}';
+
+ListLitteral returns Collection:
+    {ListLitteral}
+    '[' elements+=LiteralExpression (',' elements+=LiteralExpression)* ']';
+
+CollectionAccessor returns Expression:
+    {CollectionAccessor}
+    // TODO? "variables/scopes/CollectionAccessor etc should inherit from same class to be able to generate appropriate code?
+    (collection=[Variable] ('[' accessor+=LiteralExpression ']')+ |
+
+    // used instead of list[i]. Eks. list[i][j]  equals list at i,j 
+    collection=[Variable] 'at' ('index')? accessor+=LiteralExpression (',' accessor+=LiteralExpression)*);
+
+    //----- Logic and Math------
+BooleanExpression returns Expression:
+    Comparison
+    (({AndOrExpression.left=current} op=(OrOperator | AndOperator)) right=Comparison)*;
+
+OrOperator:
+    ('|' | 'or');
+
+AndOperator:
+    ('&' | 'and');
+
+Comparison returns Expression:
+    Equals
+    (({Comparison.left=current} op=('<' | 'lessThen' | '>' | 'biggerThen')) right=Equals)*;
+
+Equals returns Expression:
+    Addition
+    (({Equals.left=current} op=('==' | '<=' | '>=' | '!=')) right=Addition)*;
+
+ArithmeticExpression returns Expression:
+    Addition;
+
+Addition returns Expression:
+    Multiplication (({Plus.left=current} PlusOperator | {Minus.left=current} MinusOperator) right=Multiplication)*;
+
+PlusOperator:
+    ('+' | 'plus');
+
+MinusOperator:
+    ('-' | 'minus');
+
+Multiplication returns Expression:
+    Prefixed (({MultiOrDiv.left=current} op=(TimesOperator | DivideOperator)) right=Prefixed)*;
+
+TimesOperator:
+    ('*' | 'times');
+
+DivideOperator:
+    ('/' | 'divide' | '%' | 'modulo');
+
+Prefixed returns Expression:
+    {BooleanNegation} => "!" expression=Atomic | /* right associativity */
+    {ArithmeticSigned} => MinusOperator expression=Atomic | /* right associativity */
+    Atomic;
+
+Atomic returns Expression:
+    {ParenthesizedExpression} '(' expression=LiteralExpression ')' |
+    {NumberLiteral} value=INT |
+    {DoubleLiteral} value=DOUBLE |
+    {StringLiteral} value=STRING |
+    {BooleanLiteral} value=('true' | 'false') |
+    {VariableReference} ref=[Variable] |
+    FunctionCall |
+    SizeExpression;
+
+FunctionCall:
+    {FunctionCall}
+    ref=[Function] '(' (arguments+=LiteralExpression ("," arguments+=LiteralExpression)*)? ')';
+
+SizeExpression:
+    {SizeExpression}
+    'size' 'of' value=Atomic;
+
+    // --- Diff ---
+BooleanOperator:
+    '&&' | '||' | '!' | '^';
+
+BooleanTestOperator:
+    '==' | '<' | '<=' | '>' | '>=' | '!=';
+
+Type:
+    {Type}
+    (types+=TypeLiteral ('with' types+=TypeLiteral)*);
+
+TypeLiteral:
+    ('Text' | 'Number' | 'Decimal' |
+    'Array' | 'List' | 'Table');
+
+EString returns ecore::EString:
+    STRING | ID;
+
+terminal DOUBLE:
+    INT '.' INT;

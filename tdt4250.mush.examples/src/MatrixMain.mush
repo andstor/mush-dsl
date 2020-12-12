@@ -1,0 +1,21 @@
+package matrix
+
+executable MatrixMain()
+	//Runs matrixAddition code
+	m1 = [[1,1],[1,1],[1,3]]
+	m2 = [[1,1],[1,1],[1,1]]
+	matrixAddition = MatrixAddition(m1,m2)
+	print line "Matrix Addition of: " + m1 +  " and " + m2
+	print line "= "+ matrixAddition
+	print line ""
+
+	print line "--------------------" print line ""
+	
+	
+	// Runs 
+	m3 equals [[4,1],[1,1]]
+	m4 equals [[2,2],[1,3]]
+	matrixMultiplication = MatrixMultiplication(m3,m4)
+	print line "Matrix Addition of: " + m3 +  " and " + m4
+	print line "= "+ matrixMultiplication
+/* */ 

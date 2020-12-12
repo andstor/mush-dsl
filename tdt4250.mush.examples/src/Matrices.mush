@@ -1,0 +1,44 @@
+package matrix
+
+MatrixAddition(list with list with number m1,list with list with number m2)
+	newM = new list with list with number
+	for 0 to ((size of m2)-1)
+		p = new list with number
+		for 0 to ((size of (m2[0]))-1)
+			p add 0
+		newM add  p
+	x = 0
+	l = 0
+	y = 0
+	while (x != ((size of m1))) 
+		y = 0
+		while (y != ((size of (m1[0])))) 
+			l = (m1[x][y]) + (m2[x][y]) 		 
+			newM set x,y to l
+			y++
+		x++
+	return newM
+
+MatrixMultiplication(list with list with number m1,list with list with number m2)
+	newM equals new list with list with number
+	for 0 to ((size of m2) minus 1)
+		p equals new list with number
+		for 0 to ((size of (m2 at 0)) minus 1)
+			p add 0
+		newM add  p
+	x equals 0
+	i equals 0
+	l equals 0
+	while (x != ((size of m1))) 
+		y equals 0
+		while (y != ((size of (m2 at 0))))
+			z equals 0
+			i equals 0	
+			while (z != (size of (m2 at y)))
+				l equals ((m1[x][z]) times (m2[z][y]))
+				i += l
+				z++
+			newM set x,y to i
+			y++
+		x++
+	return newM

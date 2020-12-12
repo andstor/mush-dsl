@@ -1,0 +1,11 @@
+World(text language)
+	theText = ""
+	if language == "english" then
+		theText = "Hello World"
+	else
+		theText =  "Hei Verden"
+	return theText
+	
+executable MainRun()
+	language equals "english"
+	print line World(language)

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated mush -->
+      <package
+            uri="platform:/plugin/tdt4250.mush.model/model/mush.ecore"
+            class="tdt4250.mush.model.MushPackage"
+            genModel="model/mush.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated mush -->
+      <parser
+            type="mush"
+            class="tdt4250.mush.model.util.MushResourceFactoryImpl"/>
+   </extension>
+</plugin>

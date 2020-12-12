@@ -1,0 +1,9 @@
+### XText ###
+target
+src-gen
+test-bin
+xtend-gen
+.settings
+.metadata
+bin
+generated

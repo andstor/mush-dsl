@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/tdt4250.mush.model/src" editDirectory="/tdt4250.mush.model.edit/src"
+    editorDirectory="/tdt4250.mush.model.editor/src" modelPluginID="tdt4250.mush.model"
+    modelName="Mush" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    editPluginID="tdt4250.mush.model.edit" editorPluginID="tdt4250.mush.model.editor"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>mush.ecore</foreignModel>
+  <genPackages prefix="Mush" basePackage="tdt4250.mush" resource="XMI" disposableProviderFactory="true"
+      ecorePackage="mush.ecore#/">
+    <genClasses ecoreClass="mush.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//Model/functions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mush.ecore#//Model/package"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//Function">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//Function/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//Function/features"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mush.ecore#//Function/executable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mush.ecore#//Function/name"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//Feature"/>
+    <genClasses ecoreClass="mush.ecore#//Statement"/>
+    <genClasses ecoreClass="mush.ecore#//Expression"/>
+    <genClasses ecoreClass="mush.ecore#//IfStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mush.ecore#//IfStatement/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//IfStatement/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//IfStatement/then"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//IfStatement/otherwise"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//ForStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//ForStatement/from"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//ForStatement/to"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//ForStatement/block"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//WhileStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//WhileStatement/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//WhileStatement/block"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//Stop">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mush.ecore#//Stop/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//Stop/value"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//Print">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mush.ecore#//Print/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//Print/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mush.ecore#//Print/newline"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//FunctionCall">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mush.ecore#//FunctionCall/ref"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//FunctionCall/arguments"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//Collection">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//Collection/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//Variable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mush.ecore#//Variable/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//Variable/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//Variable/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mush.ecore#//Variable/op"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//CollectionAdd">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mush.ecore#//CollectionAdd/collection"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//CollectionAdd/value"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//CollectionRemove">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mush.ecore#//CollectionRemove/collection"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//CollectionRemove/value"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//ValueExchange">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//ValueExchange/collection"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//ValueExchange/value"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//List">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//List/type"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//SetLitteral"/>
+    <genClasses ecoreClass="mush.ecore#//ListLitteral"/>
+    <genClasses ecoreClass="mush.ecore#//CollectionAccessor">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mush.ecore#//CollectionAccessor/collection"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//CollectionAccessor/accessor"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//AndOrExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//AndOrExpression/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mush.ecore#//AndOrExpression/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//AndOrExpression/right"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//Comparison">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//Comparison/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mush.ecore#//Comparison/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//Comparison/right"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//Equals">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//Equals/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mush.ecore#//Equals/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//Equals/right"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//Plus">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//Plus/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//Plus/right"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//Minus">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//Minus/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//Minus/right"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//MultiOrDiv">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//MultiOrDiv/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mush.ecore#//MultiOrDiv/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//MultiOrDiv/right"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//BooleanNegation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//BooleanNegation/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//ArithmeticSigned">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//ArithmeticSigned/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//ParenthesizedExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//ParenthesizedExpression/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//NumberLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mush.ecore#//NumberLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//StringLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mush.ecore#//StringLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//BooleanLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mush.ecore#//BooleanLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//VariableReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mush.ecore#//VariableReference/ref"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//Type">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mush.ecore#//Type/types"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//DoubleLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mush.ecore#//DoubleLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//SizeExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//SizeExpression/value"/>
+    </genClasses>
+    <genClasses ecoreClass="mush.ecore#//CollectionSet">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mush.ecore#//CollectionSet/collection"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//CollectionSet/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mush.ecore#//CollectionSet/right"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<templates>
+    <template autoinsert="false" context="tdt4250.mush.xtext.Mush.ForStatement" deleted="false" description="for loop with from - to  range" enabled="true" name="for" id="tdt4250.mush.xtext.Mush.For">for ${value} to ${value}
+	${cursor}</template>
+    <template autoinsert="false" context="tdt4250.mush.Mush.Function" deleted="false" description="function" enabled="true" name="function" id="tdt4250.mush.xtext.Mush.Function">${name}(${params})
+	</template>
+    <template autoinsert="false" context="tdt4250.mush.xtext.Mush.IfStatement" deleted="false" description="if statement with condition" enabled="true" name="if" id="tdt4250.mush.xtext.Mush.If">if ${condition}
+	${line_selection}${cursor}</template>
+    <template autoinsert="false" context="tdt4250.mush.xtext.Mush.IfStatement" deleted="false" description="if-else statement with condition" enabled="true" name="ifelse" id="tdt4250.mush.xtext.Mush.Ifelse">if ${condition}
+	${line_selection}${cursor}
+else
+	</template>
+    <template autoinsert="false" context="tdt4250.mush.xtext.Mush.LiteralExpression" deleted="false" description="list" enabled="true" name="list literal" id="tdt4250.mush.xtext.Mush.ListLiteral">[${values}]</template>
+    <template autoinsert="false" context="tdt4250.mush.xtext.Mush.LiteralExpression" deleted="false" description="" enabled="true" name="set literal" id="tdt4250.mush.xtext.Mush.SetLiteral">{${values}}</template>
+    <template autoinsert="false" context="tdt4250.mush.xtext.Mush.Variable" deleted="false" description="variable" enabled="true" name="variable" id="tdt4250.mush.xtext.Mush.Variable">${name} = ${cursor}</template>
+    <template autoinsert="false" context="tdt4250.mush.xtext.Mush.WhileStatement" deleted="false" description="while loop with condition" enabled="true" name="while" id="tdt4250.mush.xtext.Mush.While">while ${condition}
+	${line_selection}${cursor}</template>
+</templates>
