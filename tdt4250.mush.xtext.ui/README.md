@@ -5,7 +5,14 @@
 This project provides an Eclipse plugin that contributes an Eclipse editor for Mush.
 
 ## Table of Contents
+- [Table of Contents](#table-of-contents)
 - [Project Structure](#project-structure)
+  - [Java packages (src/)](#java-packages-src)
+  - [Generated files (src-gen/)](#generated-files-src-gen)
+  - [Templates](#templates)
+- [Running Eclipse Plugin](#running-eclipse-plugin)
+  - [Prequisites](#prequisites)
+  - [Setup Run Configuration](#setup-run-configuration)
 
 ## Project Structure
 
@@ -34,7 +41,7 @@ You should already have Eclipse installed, and at least use Java 8 JDK.
 
 ![Run Configurations](assets/right-click-run-configuration.png)
 
-3. In the popup window, right-click `Acceleo Application` and select `New Configuration`  in order to create a new runnable Acceleo configuration.
+3. In the popup window, right-click `Eclipse Application` and select `New Configuration`  in order to create a new runnable Eclipse configuration.
 
 ![Eclipse Runner](assets/right-click-eclipse-application.png)
 
