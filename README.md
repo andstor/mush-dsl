@@ -68,9 +68,9 @@ Due to the language’s nature, it makes a great candidate for beginners to lear
 
 ## Structure
 
-[tdt4250.mush.model](tdt4250.mush.model/) - ModelModel for the Mush language.
+[tdt4250.mush.model](tdt4250.mush.model/) - Model for the Mush language.
 
-[tdt4250.mush.xtext](tdt4250.mush.xtext/) - Mush core Xtext project based on [Mush model](../assignment-1/tdt4250.studyprogramme.model/).
+[tdt4250.mush.xtext](tdt4250.mush.xtext/) - Mush core Xtext project based on [Mush model](tdt4250.mush.model/).
 
 [tdt4250.mush.xtext.tests](tdt4250.mush.xtext.tests/) - Tests for Mush core Xtext project.
 
