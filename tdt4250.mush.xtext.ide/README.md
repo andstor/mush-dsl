@@ -1,5 +1,3 @@
-# Xtext IDE
+# Xtext IDE project
 
-> 
-
-# Table of Contents
+> IDE related Xtext code
