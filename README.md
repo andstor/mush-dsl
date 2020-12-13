@@ -27,9 +27,9 @@ Mush is a DSL / Programming Language for writing in a pseudocode like style. The
 ## Getting Started
 There are multiple ways to get started using Mush. You may install the plugin using the prebuilt jar files. See the [installation instructions](#install) below. You may also manually build the project(s) and launch a new Eclipse application. See the [build](#build) section.
 
-Once you have installed Mush into Eclipse, you may create a new mush file. This is a file with the extension name `.mush`. For example `HelloWorld.mush`.
+Once you have installed Mush into Eclipse, you may create a new mush file. This is a file with the extension name `mush`. For example `HelloWorld.mush`.
 
-The following Mush code produces a [Hello, world](https://no.wikipedia.org/wiki/Hello,_world) program:
+The following Mush code produces a [Hello, world](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program) program:
 
 ```
 executable HelloWorld()
