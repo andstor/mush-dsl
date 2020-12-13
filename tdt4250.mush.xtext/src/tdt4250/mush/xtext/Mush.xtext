@@ -200,13 +200,6 @@ SizeExpression:
     {SizeExpression}
     'size' 'of' value=Atomic;
 
-    // --- Diff ---
-BooleanOperator:
-    '&&' | '||' | '!' | '^';
-
-BooleanTestOperator:
-    '==' | '<' | '<=' | '>' | '>=' | '!=';
-
 Type:
     {Type}
     (types+=TypeLiteral ('with' types+=TypeLiteral)*);
@@ -214,9 +207,6 @@ Type:
 TypeLiteral:
     ('Text' | 'Number' | 'Decimal' |
     'Array' | 'List' | 'Table');
-
-EString returns ecore::EString:
-    STRING | ID;
 
 terminal DOUBLE:
     INT '.' INT;
