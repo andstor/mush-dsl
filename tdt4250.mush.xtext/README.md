@@ -161,7 +161,8 @@ break //wil break out of the loop
 continue //wil jump to next iteration of the loop
 ```
 ```
-stop //is used to signal that a loop or a function has ended, after stop in the other blok of the function, there are not allowed to write more code
+stop //is used to signal that a loop or a function has ended, 
+//after stop in the other blok of the function, there are not allowed to write more code
 ```
 
 ### Expressions
