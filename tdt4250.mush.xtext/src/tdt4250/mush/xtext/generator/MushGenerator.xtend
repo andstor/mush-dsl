@@ -61,8 +61,6 @@ class MushGenerator extends AbstractGenerator {
 
     override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 
-        var resPrint = ""
-
         for (e : resource.allContents.toIterable.filter(Function)) {
             varCounter = 0 // Reset counter
             varList.clear() // Empty variable list
@@ -74,15 +72,8 @@ class MushGenerator extends AbstractGenerator {
                 folder += packageName.replace('.', '/') + '/'
             }
             var res = e.generate
-            resPrint += res
             fsa.generateFile(folder + e.name + '.java', res)
         }
-        // TODO: remove prints below before delivery
-        println(resPrint)
-        println("--------------------------------------------------")
-        println('Variable counter: ' + varCounter)
-        println('Variables: ' + varList)
-        println('Import types: ' + importTypes)
     }
 
     def generate(Function e) {
