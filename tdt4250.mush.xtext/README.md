@@ -38,8 +38,6 @@ decimal \
 list with number \
 list with text
 
-### Comparing operators
-
 
 ### Variables 
 When defining variables there are no types to set. Different ways to write equals are `=`, `equals` og `is`
@@ -51,27 +49,28 @@ name = “Hanne”
 ```
 ### Collections
 Different ways to write collections are `array`,`list` and `table`. There are tree types of syntax. One that use sets, and two that use lists. 
+This collection syntaxes has to have lists with at least one elemnt, so the list can not be empty.
 ```
 B = [1,2,3,4]
 B = [[1,2],[3,5]]
 
-B = {1,2,4} {all elements will be unique}
+B = {1,2,4} //all elements will be unique
 ```
-The syntax does allow empty lists.
+This collection syntax does allow empty lists.
 ```
-B is new list with number {empty list}
+B is new list with number //empty list
 B is new list with number that contains 1,3,5
 B equals new table with text that contains “hanne”, “petter”
 ```
 #### Retrieve element from list
 ```
-B at 0 {will retrieve the 0 element in the list}
-B[0] {will retrieve the 0 element in the list}
+B at 0 //will retrieve the 0 element in the list
+B[0] //will retrieve the 0 element in the list
 ```
 
 #### Add elements to list
 ```
-B add 1 {will add 1 to the list B}
+B add 1 //will add 1 to the list B
 ```
 #### Remove elements from list
 ```
@@ -102,11 +101,17 @@ size of B {get the length of the rows}
 #### While
 ```
 while name != “Hanne”
+	print name
 ```
 #### For
 ```
 for 0 to 10
+	print "Hello"
+```
+
+```
 for interval 2 to 9 
+	print "Hello"
 ```
 #### If
 ```
@@ -115,6 +120,23 @@ if language != “english” then
 else
 	print “Hei Verden”
 ```
+
+```
+if language != “english” then
+	print “Hello World”
+	if 2 != nr then
+		print “Hello London”
+	else
+		print “Hello New York”
+else 
+	print "Hei Verden"
+	if 2 >= year then
+		print “Hei Trondheim”
+	else
+		print “Hei Oslo”
+
+```
+
 ### Stop
 In a function or a statement it is possible to jump out of parts of the code or return variables, text or numbers. The stop statements can be used but are not necessary for the code syntax.
 
@@ -153,15 +175,6 @@ or | \|
 | | == |
 | | != |
 
-
-
-
-```
-
-```
-
-```
-```
 
 
 
