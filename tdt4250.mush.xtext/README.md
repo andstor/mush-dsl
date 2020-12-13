@@ -6,13 +6,16 @@
 - [Language syntax](#Language-syntax)
 
 ## Language syntax
-Short intro .. 
+Mush is a simplified code language based on multiple programming languages (Java, Python etc.). It allows for a greater use of pseudocode like syntax, hence making it more natural to read and write, therefore there are multiple ways to write the same code. The language is whitespace aware, making use of indentations to create structure (like Python). It compiles down to Java code. 
+
+Due to the language’s nature, it makes a great candidate for beginners to learn programming. Yet, it is powerful enough to for example try out algorithms, which is often expressed in a pseudo like syntax. We have used the book “Introduction to ALGORITHMS, 3.rd edition” as inspiration. 
+
 
 ### Package Declaration
 The language allows the use of packages. To use a packages write package and the package name. This way all the generated java code with the same package name is inside the same package. ```package world```
 
 ### Functions
- To use functions write the function name with parentheses behind. If the function requier inputs, these have to be inserted between the parentheses. All inputs has to start with a declaration of the type. This can be number, text, decimal, list with numbers, list with list with text ect. All content has to be inside a function.\ 
+To use functions write the function name with parentheses behind. If the function requier inputs, these have to be inserted between the parentheses. All inputs has to start with a declaration of the type. This can be number, text, decimal, list with numbers, list with list with text ect. All content has to be inside a function.\ 
 `Person()``Person(number year, text name, decimals height)`\
 To get the code to run, write executable before the function name. This way the code will get a run method calling the function.`executable Person()`
 
@@ -43,9 +46,15 @@ When defining variables write the name of the variables, an equal and what it is
 ```
 year = 1
 ```
-```year is 3```
-```year equals 1```
-```name = “Hanne”```
+```
+year is 3
+```
+```
+year equals 1
+```
+```
+name = “Hanne”
+```
 
 ### Collections
 Different ways to write collections are `array`,`list` and `table`. There are tree types of collection syntax. One that use sets, and two that use lists. For the lists one can have empty list and one can not.\ 
