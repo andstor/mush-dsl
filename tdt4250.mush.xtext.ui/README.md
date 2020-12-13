@@ -10,6 +10,7 @@ This project provides an Eclipse plugin that contributes an Eclipse editor for M
   - [Java packages (src/)](#java-packages-src)
   - [Generated files (src-gen/)](#generated-files-src-gen)
   - [Templates](#templates)
+- [Templates](#templates-1)
 - [Running Eclipse Plugin](#running-eclipse-plugin)
   - [Prequisites](#prequisites)
   - [Setup Run Configuration](#setup-run-configuration)
@@ -23,7 +24,12 @@ The src folder contains all the Xtext UI related files and folders. Several Java
 Generated Java files are located in the src-genfolder.
 
 ### Templates
-Mush ships a default code templates. These are provided by the [`templates.xml`](templates/templates.xml) file.
+Code templates are available in the [`templates.xml`](templates/templates.xml) file.
+
+## Templates
+Mush ships with several default code templates. These are compatible with Xtext-based editors. Following is a screenshot of the available templates.
+
+![Mush code template](assets/templates.png)
 
 ## Running Eclipse Plugin
 
