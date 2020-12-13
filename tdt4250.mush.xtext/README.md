@@ -2,4 +2,13 @@
 
 > Core Mush implementation
 
-# Table of Contents
+## Table of Contents
+- []()
+
+## Language specification
+Short intro ..  
+
+### Package Declaration
+Description...
+
+### Functions
