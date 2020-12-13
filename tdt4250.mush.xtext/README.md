@@ -34,7 +34,7 @@ Right click on the `GenerateMush.mwe2` in the core xtext bundle, and select `Run
 ## Language syntax
 Most programming languages has a very crude syntax, including a lot of specific symbols and characters. These are often hard to understand for a person without much programming experience. We therefore wanted to make a language that could be expressed in a more natural style. The result of this was Mush. Mush provides a more pseudocode like syntax, without a lot of syntactical clutter.
 
-Due to the language’s nature, it makes a great candidate for beginners to learn programming. Yet, it is powerful enough to express complex algorithms. Algorithms are often expressed in a pseudo like syntax. Mush would allow implementation of such "pseudo algorithms" in a more straight forward way. In particular, we have used the book “Introduction to ALGORITHMS, 3.rd edition” as inspiration.
+Due to the language’s nature, it makes a great candidate for beginners to learn programming. Yet, it is powerful enough to express complex algorithms. Algorithms are often expressed in a pseudo like syntax. Mush would allow implementation of such "pseudo algorithms" in a more straight forward way. In particular, we have used the book "Introduction to Algorithms by Thomas H. Cormen et al., 3rd Edition” as inspiration.
 
 
 ### Package Declaration
