@@ -144,7 +144,6 @@ The Arithmetic expressions have multiple ways to code the same thing, here are t
 The Comparing  operators have in some cases multiple ways to code the same thing, here are the different once.\
  pseudo | standard 
  -|-
- 
 lessThen | <
 biggerThen | >
 and | &
