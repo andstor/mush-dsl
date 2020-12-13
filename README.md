@@ -52,9 +52,13 @@ public class HelloWorld {
 Mush ships with several examples. These are found in the [tdt4250.mush.examples](tdt4250.mush.examples/) project.
 
 ## Install
-You can download the latest build [here](https://github.com/andstor/mush-dsl/releases/latest)
+You can download the latest archive build [here](https://github.com/andstor/mush-dsl/releases/latest).
 
-This needs to be manually installed into Eclipse. See here for manual [installation instructions]().
+This needs to be manually installed into Eclipse:
+1. Go to your Eclipse's dropins directory
+2. Create a subfolder (name doesn't matter)
+3. Uncompress `.zip` file here
+4. Restart Eclipse
 
 ## Rationale
 
