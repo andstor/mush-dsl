@@ -147,7 +147,7 @@ The Comparing  operators have in some cases multiple ways to code the same thing
 lessThen | <
 biggerThen | >
 and | &
-or | /|
+or | \|
  | <=
  | >=
  | ==
