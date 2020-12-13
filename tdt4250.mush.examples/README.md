@@ -10,11 +10,16 @@
 ## Examples
 
 ### HelloWorld.mush
-
-Description here...
-What features are used.
+This mush code takes in a parameter laguage and checks if it is english. If it is it prints out Hello World, if not it prints out Hei Verden.
 
 ### ReverseNumber.mush
+This mush code takes a positive number and reverse it. The code uses while-loops, print statements, as well as a comparing operations and arithmetic expressions
 
-Description here...
-Shows two examples where one can make use of Mush's pseudo code syntax, but also in a more traditional code style.
+### Quicksort
+This mush code takes tree parameterse, a list t, and two numbers left and right. The code recurs through the code and sorts the list from lowest to highest. The code uses while-loops, value of element in list swaps, as well as a comparing operations and arithmetic expressions
+
+### MatrixAddition
+This mush code takes takes in two, 2-dimentional lists and returns a new 2-dimentional list with the sum of the two inputs. The code uses for-loops, while-loops, makes new list, get size of list, add to list and change value in an element of the list, as well as a comparing operations and arithmetic expressions.
+
+### SchoolClass
+This code has a list with the names of the students, and a list with the grade of each student. The code prints out the name of each student with the grade there grade. The code uses for-loops, prints and get value of an element of the list, as well as a comparing operations and arithmetic expressions
