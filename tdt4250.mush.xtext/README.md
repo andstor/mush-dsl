@@ -133,27 +133,26 @@ print “hello world”
 ```
 #### Arithmetic Expressions
 The Arithmetic expressions have multiple ways to code the same thing, here are the different once:\
- plus | + 
+ pseudo | standard 
  -|-
+ plus | + 
  minus | - 
  divid | / 
  modulo | % 
  times | * 
-`plus` `+`\
-`minus` `-` \
-`divid` `/` \
-`modulo` `%` \
-`times` `*` 
 #### Comparing operators
 The Comparing  operators have in some cases multiple ways to code the same thing, here are the different once.\
-`lessThen` `<`\
-`biggerThen` `>` \
-`and` `&`
-`or` `|`
-`<=`\
-`>=`\
-`==`\
-`!=`
+ pseudo | standard 
+ -|-
+ 
+lessThen | <
+biggerThen | >
+and | &
+or | |
+ | <=
+ | >=
+ | ==
+ | !=
 
 
 
