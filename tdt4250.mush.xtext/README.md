@@ -133,11 +133,11 @@ print “hello world”
 ```
 #### Arithmetic Expressions
 The Arithmetic expressions have multiple ways to code the same thing, here are the different once:\
-|plus|+|
-|minus|-|
-|divid|/|
-|modulo|%|
-|times|*|
+| plus | + |
+| minus | - |
+| divid | / |
+| modulo | % |
+| times | * |
 `plus` `+`\
 `minus` `-` \
 `divid` `/` \
