@@ -8,3 +8,18 @@ executable ReverseNumber(number nr)
 		reverse equals (reverse times 10) plus lastDigit
 		nr equals nr divide 10
 	print line reverse
+
+	
+executable ReverseNumber2(number nr)
+	lastDigit = nr % 10
+	reverse = 0
+	reverse = ((reverse * 10) + lastDigit)
+	nr = nr / 10
+	while nr > 0
+		lastDigit = nr % 10
+		reverse = (reverse * 10) + lastDigit
+		nr = nr / 10
+	print line reverse
+
+	
+	
