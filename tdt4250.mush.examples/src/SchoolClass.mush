@@ -1,9 +1,21 @@
 executable SchoolClass()
 	classList is new list with text that contains "Hanne", "Ole", "Line","Fredrik"
 	grades is new list with number that contains 4,6,2,5
-	i = 0
+	i equals 0
 	print line"The gade for each student:"
 	for interval 0 to 3
+		c equals classList at i
+		g equals grades at i
+		print line c +": "+  g
+		i++
+		classList set 2 to "asd"
+
+executable SchoolClass2()
+	classList =["Hanne", "Ole", "Line","Fredrik"]
+	grades =[4,6,2,5]
+	i = 0
+	print line"The gade for each student:"
+	for 0 to 3
 		c = classList at i
 		g = grades at i
 		print line c +": "+  g
