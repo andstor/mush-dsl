@@ -15,7 +15,6 @@ Mush is a DSL / Programming Language for writing in a pseudocode like style. The
 [Wiki](https://github.com/andstor/mush-dsl/wiki)
 
 ## Table of Contents
-- [Table of Contents](#table-of-contents)
 - [Getting Started](#getting-started)
 - [Install](#install)
 - [Rationale](#rationale)
