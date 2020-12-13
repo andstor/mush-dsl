@@ -87,7 +87,7 @@ Right click on the [`GenerateMush.mwe2`](tdt4250.mush.xtext/src/tdt4250/mush/xte
 
 In order to test the new build, a second Eclipse application should be launched with the Mush bundles installed. This is done by creating a new Eclipse run configuration.
 
-Se the [build](tdt4250.mush.xtext/README.#build) instructions in the [tdt4250.mush.xtext](tdt4250.mush.xtext) project and the [Running Eclipse Plugin](tdt4250.mush.xtext.ui/README.md#running-eclipse-plugin) in the [tdt4250.mush.xtext.ui](tdt4250.mush.xtext.ui/) project for more detailed instructions.
+Se the [build](tdt4250.mush.xtext/README.md#build) instructions in the [tdt4250.mush.xtext](tdt4250.mush.xtext) project and the [Running Eclipse Plugin](tdt4250.mush.xtext.ui/README.md#running-eclipse-plugin) in the [tdt4250.mush.xtext.ui](tdt4250.mush.xtext.ui/) project for more detailed instructions.
 
 ## License
 

@@ -3,7 +3,6 @@
  */
 package tdt4250.mush.xtext.generator;
 
-import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,7 +16,6 @@ import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.Conversions;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import tdt4250.mush.model.AndOrExpression;
 import tdt4250.mush.model.ArithmeticSigned;
@@ -74,8 +72,8 @@ public class MushGenerator extends AbstractGenerator {
   
   private String packageName = "";
   
+  @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-    String resPrint = "";
     Iterable<Function> _filter = Iterables.<Function>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Function.class);
     for (final Function e : _filter) {
       {
@@ -93,19 +91,12 @@ public class MushGenerator extends AbstractGenerator {
           folder = (_folder + _plus);
         }
         String res = this.generate(e);
-        String _resPrint = resPrint;
-        resPrint = (_resPrint + res);
         String _name = e.getName();
         String _plus_1 = (folder + _name);
         String _plus_2 = (_plus_1 + ".java");
         fsa.generateFile(_plus_2, res);
       }
     }
-    InputOutput.<String>println(resPrint);
-    InputOutput.<String>println("--------------------------------------------------");
-    InputOutput.<String>println(("Variable counter: " + Integer.valueOf(this.varCounter)));
-    InputOutput.<String>println(("Variables: " + this.varList));
-    InputOutput.<String>println(("Import types: " + this.importTypes));
   }
   
   public String generate(final Function e) {
@@ -219,30 +210,22 @@ public class MushGenerator extends AbstractGenerator {
   }
   
   public String generateTypeConvertionCode(final String value, final String type) {
-    boolean _matched = false;
-    if (Objects.equal(type, "String")) {
-      _matched=true;
+    if (type != null) {
+      switch (type) {
+        case "String":
+          return value;
+        case "int":
+          return (("Integer.parseInt(" + value) + ")");
+        case "double":
+          return (("Double.parseDouble(" + value) + ")");
+        case "boolean":
+          return (("Boolean.parseBoolean(" + value) + ")");
+        default:
+          return value;
+      }
+    } else {
       return value;
     }
-    if (!_matched) {
-      if (Objects.equal(type, "int")) {
-        _matched=true;
-        return (("Integer.parseInt(" + value) + ")");
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(type, "double")) {
-        _matched=true;
-        return (("Double.parseDouble(" + value) + ")");
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(type, "boolean")) {
-        _matched=true;
-        return (("Boolean.parseBoolean(" + value) + ")");
-      }
-    }
-    return value;
   }
   
   public String generateParameters(final EList<Expression> variables) {
