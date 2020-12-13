@@ -5,6 +5,11 @@
 ## Table of Contents
 - [Language syntax](#Language-syntax)
 
+## Build
+Right click on the `GenerateMush.mwe2` in the core xtext bundle, and select `Run As` -> `MWE2 Workflow`.
+
+![Eclipse Runner](assets/mwe2-workflow.png)
+
 ## Language syntax
 Mush is a simplified code language based on multiple programming languages (Java, Python etc.). It allows for a greater use of pseudocode like syntax, hence making it more natural to read and write, therefore there are multiple ways to write the same code. The language is whitespace aware, making use of indentations to create structure (like Python). It compiles down to Java code. 
 
