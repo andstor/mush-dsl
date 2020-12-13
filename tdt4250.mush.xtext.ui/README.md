@@ -5,7 +5,6 @@
 This project provides an Eclipse plugin that contributes an Eclipse editor for Mush.
 
 ## Table of Contents
-- [Table of Contents](#table-of-contents)
 - [Project Structure](#project-structure)
   - [Java packages (src/)](#java-packages-src)
   - [Generated files (src-gen/)](#generated-files-src-gen)
