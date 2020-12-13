@@ -5,10 +5,18 @@
 ## Table of Contents
 - [Table of Contents](#table-of-contents)
 - [Setup](#setup)
+- [Examples](#examples)
+  - [HelloWorld.mush](#helloworldmush)
+  - [ReverseNumber.mush](#reversenumbermush)
+  - [Quicksort](#quicksort)
+  - [MatrixAddition](#matrixaddition)
+  - [SchoolClass](#schoolclass)
 ## Setup
+First, make sure the Mush plugin is  installed. See the [intstallation](../README.md#install) instructions.
 
+Then import the `tdt4250.mush.examples` project into the Eclipse workspace.
 ## Examples
-
+All examples are located in the [`src`](src) folder. When a mush file is edited and saved, the mush code gets compiled down to Java code, and  placed in the [`src-gen`](src-gen/) folder.
 ### HelloWorld.mush
 This mush code takes in a parameter laguage and checks if it is english. If it is it prints out Hello World, if not it prints out Hei Verden.
 
