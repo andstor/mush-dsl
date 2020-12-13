@@ -32,9 +32,9 @@ Right click on the `GenerateMush.mwe2` in the core xtext bundle, and select `Run
 ![Eclipse Runner](assets/mwe2-workflow.png)
 
 ## Language syntax
-Mush is a simplified code language based on multiple programming languages (Java, Python etc.). It allows for a greater use of pseudocode like syntax, hence making it more natural to read and write, therefore there are multiple ways to write the same code. The language is whitespace aware, making use of indentations to create structure (like Python). It compiles down to Java code. 
+Most programming languages has a very crude syntax, including a lot of specific symbols and characters. These are often hard to understand for a person without much programming experience. We therefore wanted to make a language that could be expressed in a more natural style. The result of this was Mush. Mush provides a more pseudocode like syntax, without a lot of syntactical clutter.
 
-Due to the language’s nature, it makes a great candidate for beginners to learn programming. Yet, it is powerful enough to for example try out algorithms, which is often expressed in a pseudo like syntax. We have used the book “Introduction to ALGORITHMS, 3.rd edition” as inspiration. 
+Due to the language’s nature, it makes a great candidate for beginners to learn programming. Yet, it is powerful enough to express complex algorithms. Algorithms are often expressed in a pseudo like syntax. Mush would allow implementation of such "pseudo algorithms" in a more straight forward way. In particular, we have used the book “Introduction to ALGORITHMS, 3.rd edition” as inspiration.
 
 
 ### Package Declaration
