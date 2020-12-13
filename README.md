@@ -21,7 +21,6 @@ Mush is a DSL / Programming Language for writing in a pseudocode like style. The
 - [Rationale](#rationale)
 - [Structure](#structure)
 - [Build](#build)
-  - [Requirements](#requirements)
 - [License](#license)
 
 ## Getting Started
@@ -65,33 +64,30 @@ Due to the language’s nature, it makes a great candidate for beginners to lear
 
 ## Structure
 
-[tdt4250.mush.model](tdt4250.mush.model/) - Model-to-text (M2T) transformation of [studyprogrammes model](../assignment-1/tdt4250.studyprogramme.model/) instance.
+[tdt4250.mush.model](tdt4250.mush.model/) - ModelModel for the Mush language.
 
-[tdt4250.mush.xtext](tdt4250.mush.xtext/) - Core Xtext project based on [mush.model](../assignment-1/tdt4250.studyprogramme.model/) instance.
+[tdt4250.mush.xtext](tdt4250.mush.xtext/) - Mush core Xtext project based on [Mush model](../assignment-1/tdt4250.studyprogramme.model/).
 
-[tdt4250.mush.xtext.tests](tdt4250.mush.xtext.tests/) - Tests for Mush Xtext project.
+[tdt4250.mush.xtext.tests](tdt4250.mush.xtext.tests/) - Tests for Mush core Xtext project.
 
-[tdt4250.mush.xtext.ide](tdt4250.mush.xtext.ide/) - Xtext IDE project.
+[tdt4250.mush.xtext.ide](tdt4250.mush.xtext.ide/) - Mush Xtext IDE project.
 
-[tdt4250.mush.xtext.ui](tdt4250.mush.xtext.ui/) - Tests for Xtext UI project.
+[tdt4250.mush.xtext.ui](tdt4250.mush.xtext.ui/) - Mush tests for Xtext UI project.
 
-[tdt4250.mush.xtext.ui.tests](tdt4250.mush.xtext.ui.tests/) - Tests for Xtext UI project (TODO).
+[tdt4250.mush.xtext.ui.tests](tdt4250.mush.xtext.ui.tests/) - Mush tests for Xtext UI project (TODO).
 
 [tdt4250.mush.examples](tdt4250.mush.examples/) - Mush example project.
 
 ## Build
 In order to build the project(s) you first need to import all the modules in this repository into your Eclipse workspace.
 
-Eclipse should build class files automatically. Ensure that the `Project` -> `Build Automatically`is checked.
+Eclipse should build class files automatically. Ensure that the `Project` -> `Build Automatically` is checked.
 
-Right click on the [`GenerateMush.mwe2`](tdt4250.mush.xtext/src/tdt4250/mush/xtext/GenerateMush.mwe2) and select `Run As` -> `MWE2 Workflow`.
+Right click on the [`GenerateMush.mwe2`](tdt4250.mush.xtext/src/tdt4250/mush/xtext/GenerateMush.mwe2) in the core xtext bundle, and select `Run As` -> `MWE2 Workflow`.
 
-In order to test the new build, 
+In order to test the new build, a second Eclipse application should be launched with the Mush bundles installed. This is done by creating a new Eclipse run configuration.
 
-Se the [build]() wiki page for more detailed instructions.
-
-### Requirements
-* Java 8+ JDK
+Se the [build](tdt4250.mush.xtext/README.#build) instructions in the [tdt4250.mush.xtext](tdt4250.mush.xtext) project and the [Running Eclipse Plugin](tdt4250.mush.xtext.ui/README.md#running-eclipse-plugin) in the [tdt4250.mush.xtext.ui](tdt4250.mush.xtext.ui/) project for more detailed instructions.
 
 ## License
 
