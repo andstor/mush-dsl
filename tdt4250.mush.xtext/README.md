@@ -142,16 +142,30 @@ else
 ### Stop statements
 In a function or a statement it is possible to jump out of parts of the code or return variables, text or numbers. The stop statements can be used but are not necessary for the code syntax.
 
-```return “and the statement you want to return” ```
-```break //wil break out of the loop```
-```continue //wil jump to next iteration of the loop```
-```stop //is used to signal that a loop or a function has ended, after stop in the other blok of the function, there are not allowed to write more code```
+```
+return “and the statement you want to return” 
+```
+```
+break //wil break out of the loop
+```
+```
+continue //wil jump to next iteration of the loop
+```
+```
+stop //is used to signal that a loop or a function has ended, after stop in the other blok of the function, there are not allowed to write more code
+```
 
 ### Expressions
 #### Print expressions
-```print «expression»```
-```print line «expression» //line is used to get new line after the print```
-```print “hello world”```
+```
+print «expression»
+```
+```
+print line «expression» //line is used to get new line after the print
+```
+```
+print “hello world”
+```
 
 #### Arithmetic expressions
 The Arithmetic expressions have for some expressions multiple ways to write the same thing. The table describes a psudo alternative and a standard alternative mush can be witten as.
@@ -166,11 +180,21 @@ The Arithmetic expressions have for some expressions multiple ways to write the 
  ||--|
  ||=+|
  ||=-|
- ```name = "Hanne" + " " + "Pettersen"```
-``` year = 3*2```
-``` year++```
-``` year equals 0 divid 2```
-``` year = 9 modulo 2```
+ ```
+ name = "Hanne" + " " + "Pettersen"
+ ```
+```
+year = 3*2
+```
+```
+year++
+```
+```
+year equals 0 divid 2
+```
+```
+year = 9 modulo 2
+```
  
 #### Comparing operators
 The Comparing  operators have for some operators multiple ways to write the same thing. thingThe table describes a psudo alternative and a standard alternative mush can be witten as.
