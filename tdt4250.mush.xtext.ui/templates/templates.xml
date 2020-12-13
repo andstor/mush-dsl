@@ -2,7 +2,7 @@
 <templates>
     <template autoinsert="false" context="tdt4250.mush.xtext.Mush.ForStatement" deleted="false" description="for loop with from - to  range" enabled="true" name="for" id="tdt4250.mush.xtext.Mush.For">for ${value} to ${value}
 	${cursor}</template>
-    <template autoinsert="false" context="tdt4250.mush.Mush.Function" deleted="false" description="function" enabled="true" name="function" id="tdt4250.mush.xtext.Mush.Function">${name}(${params})
+    <template autoinsert="false" context="tdt4250.mush.xtext.Mush.Function" deleted="false" description="function" enabled="true" name="function" id="tdt4250.mush.xtext.Mush.Function">${name}(${params})
 	</template>
     <template autoinsert="false" context="tdt4250.mush.xtext.Mush.IfStatement" deleted="false" description="if statement with condition" enabled="true" name="if" id="tdt4250.mush.xtext.Mush.If">if ${condition}
 	${line_selection}${cursor}</template>
