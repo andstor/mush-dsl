@@ -50,6 +50,7 @@ public class HelloWorld {
 }
 ```
 
+Mush ships with several examples. These are found in the [tdt4250.mush.examples](tdt4250.mush.examples/) project.
 
 ## Install
 You can download the latest build [here](https://github.com/andstor/mush-dsl/releases/latest)
@@ -66,11 +67,28 @@ Due to the language’s nature, it makes a great candidate for beginners to lear
 
 [tdt4250.mush.model](tdt4250.mush.model/) - Model-to-text (M2T) transformation of [studyprogrammes model](../assignment-1/tdt4250.studyprogramme.model/) instance.
 
-[tdt4250.mush.xtext](tdt4250.mush.xtext/) - Xtext project based on [mush.model](../assignment-1/tdt4250.studyprogramme.model/) instance.
+[tdt4250.mush.xtext](tdt4250.mush.xtext/) - Core Xtext project based on [mush.model](../assignment-1/tdt4250.studyprogramme.model/) instance.
 
+[tdt4250.mush.xtext.tests](tdt4250.mush.xtext.tests/) - Tests for Mush Xtext project.
+
+[tdt4250.mush.xtext.ide](tdt4250.mush.xtext.ide/) - Xtext IDE project.
+
+[tdt4250.mush.xtext.ui](tdt4250.mush.xtext.ui/) - Tests for Xtext UI project.
+
+[tdt4250.mush.xtext.ui.tests](tdt4250.mush.xtext.ui.tests/) - Tests for Xtext UI project (TODO).
+
+[tdt4250.mush.examples](tdt4250.mush.examples/) - Mush example project.
 
 ## Build
+In order to build the project(s) you first need to import all the modules in this repository into your Eclipse workspace.
 
+Eclipse should build class files automatically. Ensure that the `Project` -> `Build Automatically`is checked.
+
+Right click on the [`GenerateMush.mwe2`](tdt4250.mush.xtext/src/tdt4250/mush/xtext/GenerateMush.mwe2) and select `Run As` -> `MWE2 Workflow`.
+
+In order to test the new build, 
+
+Se the [build]() wiki page for more detailed instructions.
 
 ### Requirements
 * Java 8+ JDK
