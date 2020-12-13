@@ -3,7 +3,29 @@
 > Core Mush implementation
 
 ## Table of Contents
-- [Language syntax](#Language-syntax)
+- [Table of Contents](#table-of-contents)
+- [Build](#build)
+- [Language syntax](#language-syntax)
+	- [Package Declaration](#package-declaration)
+	- [Functions](#functions)
+	- [Types](#types)
+	- [Variables](#variables)
+	- [Collections](#collections)
+		- [Retrieve element from list](#retrieve-element-from-list)
+		- [Add elements to list](#add-elements-to-list)
+		- [Remove elements from list](#remove-elements-from-list)
+		- [Swap places of elements in list](#swap-places-of-elements-in-list)
+		- [Change element in a place in the list](#change-element-in-a-place-in-the-list)
+		- [Find the size of the list](#find-the-size-of-the-list)
+	- [Statements](#statements)
+		- [While statements](#while-statements)
+		- [For statements](#for-statements)
+		- [If statements](#if-statements)
+	- [Stop statements](#stop-statements)
+	- [Expressions](#expressions)
+		- [Print expressions](#print-expressions)
+		- [Arithmetic expressions](#arithmetic-expressions)
+		- [Comparing operators](#comparing-operators)
 
 ## Build
 Right click on the `GenerateMush.mwe2` in the core xtext bundle, and select `Run As` -> `MWE2 Workflow`.

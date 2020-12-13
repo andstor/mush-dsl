@@ -10,8 +10,8 @@
 
 Mush is a DSL / Programming Language for writing in a pseudocode like style. The language is created with [Ecore](https://wiki.eclipse.org/Ecore) and [Xtext](https://www.eclipse.org/Xtext/). Mush features a compiler, which compiles Mush code down to Java code. Editing support for Eclipse is also available.
 
-[Examples](https://andstor.github.io/mush-dsl/examples/) - 
-[Documentation](https://andstor.github.io/mush-dsl/) - 
+[Examples](tdt4250.mush.examples/) - 
+[Documentation](tdt4250.mush.xtext/README.md#language-syntax) - 
 [Wiki](https://github.com/andstor/mush-dsl/wiki)
 
 ## Table of Contents
@@ -52,7 +52,7 @@ public class HelloWorld {
 Mush ships with several examples. These are found in the [tdt4250.mush.examples](tdt4250.mush.examples/) project.
 
 ## Install
-You can download the latest build [here](https://github.com/andstor/mush-dsl/releases/latest).
+You can download the latest build [here](https://github.com/andstor/mush-dsl/releases/latest)
 
 This needs to be manually installed into Eclipse. See here for manual [installation instructions]().
 
