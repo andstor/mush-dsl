@@ -3,7 +3,6 @@
 > Core Mush implementation
 
 ## Table of Contents
-- [Table of Contents](#table-of-contents)
 - [Build](#build)
 - [Language syntax](#language-syntax)
 	- [Package Declaration](#package-declaration)
