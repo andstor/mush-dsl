@@ -42,17 +42,19 @@ list with text
 When defining variables write the name of the variables, an equal and what it is. The different ways to write equals are `=`, `equals` og `is`
 ```
 year = 1
-year is 3
-year equals 1
-name = “Hanne”
 ```
+```year is 3```
+```year equals 1```
+```name = “Hanne”```
+
 ### Collections
 Different ways to write collections are `array`,`list` and `table`. There are tree types of collection syntax. One that use sets, and two that use lists. For the lists one can have empty list and one can not.\ 
 This collection syntaxes has to have lists with at least one elemnt, so the list can not be empty.
 ```
 B = [1,2,3,4]
 B = [[1,2],[3,5]]
-
+```
+```
 B = {1,2,4} //all elements will be unique
 ```
 This collection syntax does allow empty lists.
@@ -89,10 +91,11 @@ B set 0,1 6 //this will set the number 6 on row 0 column 1
 ```
 #### Find the size of the list
 ```
-size of B
-if the list is 2 dimensions:
-size of (B[0]) //get the length of the columns
 size of B //get the length of the rows
+```
+If the list is 2 dimensions:
+```
+size of (B[0]) //get the length of the columns
 ```
 
 ### Statements
@@ -139,19 +142,17 @@ else
 ### Stop statements
 In a function or a statement it is possible to jump out of parts of the code or return variables, text or numbers. The stop statements can be used but are not necessary for the code syntax.
 
-```
-return “and the statement you want to return” 
-break //wil break out of the loop
-continue //wil jump to next iteration of the loop
-stop //is used to signal that a loop or a function has ended, after stop in the other blok of the function, there are not allowed to write more code
-```
+```return “and the statement you want to return” ```
+```break //wil break out of the loop```
+```continue //wil jump to next iteration of the loop```
+```stop //is used to signal that a loop or a function has ended, after stop in the other blok of the function, there are not allowed to write more code```
+
 ### Expressions
 #### Print expressions
-```
-print «expression»
-print line «expression» //line is used to get new line after the print
-print “hello world”
-```
+```print «expression»```
+```print line «expression» //line is used to get new line after the print```
+```print “hello world”```
+
 #### Arithmetic expressions
 The Arithmetic expressions have for some expressions multiple ways to write the same thing. The table describes a psudo alternative and a standard alternative mush can be witten as.
  pseudo | standard 
@@ -165,13 +166,11 @@ The Arithmetic expressions have for some expressions multiple ways to write the 
  ||--|
  ||=+|
  ||=-|
- ```
- name = "Hanne" + " " + "Pettersen"
- year = 3*2
- year++
- year equals 0 divid 2
- year = 9 modulo 2
- ```
+ ```name = "Hanne" + " " + "Pettersen"```
+``` year = 3*2```
+``` year++```
+``` year equals 0 divid 2```
+``` year = 9 modulo 2```
  
 #### Comparing operators
 The Comparing  operators have for some operators multiple ways to write the same thing. thingThe table describes a psudo alternative and a standard alternative mush can be witten as.
